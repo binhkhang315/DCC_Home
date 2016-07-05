@@ -1,1 +1,1 @@
-Thanh dep gai
+Thanh very dep gai
