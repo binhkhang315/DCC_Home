@@ -1,0 +1,35 @@
+{
+  "name": "applogin",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "acl": "^0.4.9",
+    "body-parser": "^1.15.2",
+    "bcryptjs": "^2.3.0",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.14.0",
+    "express-session": "^1.14.0",
+    "express-validator": "^2.20.8",
+    "express-handlebars": "^3.0.0",
+    "acl-mongodb": "^0.1.0",
+    "googleapis": "^9.0.0",
+    "handlebars": "^4.0.5",
+    "mongodb": "^2.1.18",
+    "mongoose": "^4.5.3",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
+    "express-authentication": "^0.3.2",
+    "session": "^0.1.0",
+    "util": "^0.10.3",
+    "graceful-fs": "^4.1.4",
+    "google-auth-library": "^0.9.8"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "thach",
+  "license": "ISC"
+}
