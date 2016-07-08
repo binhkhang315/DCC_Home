@@ -108,7 +108,7 @@ router.post("/register", function(req, res){
       acl.addUserRoles(username,role);
   });
     req.flash("success_msg","You are registered and can now login");
-    res.redirect("/users/login");
+    res.redirect("/");
   }
 });
 // passport Strategy
@@ -143,7 +143,7 @@ passport.use(new LocalStrategy(
   });
 
 router.post('/login',
-  passport.authenticate('local', {successRedirect:"/", failureRedirect:"/users/login", failureFlash: true}),
+  passport.authenticate('local', {successRedirect:"/", failureRedirect:"/", failureFlash: true}),
   function(req, res) {
     res.redirect("/");
   });

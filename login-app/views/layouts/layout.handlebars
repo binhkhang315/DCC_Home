@@ -2,24 +2,29 @@
 <html lang="en" ng-app="myApp">
 
 <head>
-
+  <script>
+  function myFunction(a) {
+      alert(a);
+  }
+  </script>
 </head>
 
 <body>
 
     <div class="col-lg-12">
-      {{#if success_msg}}
-        <div class="alert alert-success">{{success_msg}}</div>
-      {{/if}}
+      <!-- flash message
+          {{#if success_msg}}
+            <div class="alert alert-success">{{success_msg}}</div>
+          {{/if}}
 
-      {{#if error_msg}}
-        <div class="alert alert-danger">{{error_msg}}</div>
-      {{/if}}
+          {{#if error_msg}}
+            <div class="alert alert-danger">{{error_msg}}</div>
+          {{/if}}
 
-      {{#if error}}
-        <div class="alert alert-danger">{{error}}</div>
-      {{/if}}
-
+          {{#if error}}
+            <div class="alert alert-danger">{{error}}</div>
+          {{/if}}
+        -->
       {{{body}}}
     </div>
 
