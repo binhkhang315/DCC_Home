@@ -4183,8 +4183,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   }
 }
 .navbar-collapse {
-  padding-right: 15px;
-  padding-left: 15px;
+  padding: 35px 25px;
   overflow-x: visible;
   -webkit-overflow-scrolling: touch;
   border-top: 1px solid transparent;
@@ -4274,10 +4273,17 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   margin-bottom: 0;
   border-width: 1px 0 0;
 }
+.navbar-logo {
+  float: left right top bottom;
+  height: 50px;
+  padding: 30px 25px;
+  font-size: 18px;
+  line-height: 20px;
+}
 .navbar-brand {
   float: left;
   height: 50px;
-  padding: 15px 15px;
+  padding: 35px 25px;
   font-size: 18px;
   line-height: 20px;
 }
