@@ -3,7 +3,7 @@ var router = express.Router();
 var passport = require("passport");
 var LocalStrategy = require("passport-local").Strategy;
 var acl = require("acl");
-var mongodb = require("mongodb")
+var mongodb = require("mongodb");
 // Or Using the mongodb backend
 
 mongodb.connect("mongodb://localhost/loginapp", function(error, db) {
