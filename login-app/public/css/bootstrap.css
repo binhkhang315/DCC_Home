@@ -4280,9 +4280,14 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   font-size: 18px;
   line-height: 20px;
 }
-@media (max-width: 768px) {
-  .navbar-logo{
-   padding-left: 200px;
+@media all and (max-width: 768px) {
+  .navbar-logo2{
+    float:left;
+    padding:9px 10px;
+    margin-top:8px;
+    margin-right: 75px;
+    margin-bottom:18px;
+    border:1px solid transparent;
   }
 }
 .navbar-brand {
@@ -4511,7 +4516,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .navbar-default {
   background-color: #f8f8f8;
-  border-color: #e7e7e7;
+  border-color: #000000;
 }
 .navbar-default .navbar-brand {
   color: #777;
