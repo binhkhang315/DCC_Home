@@ -4,8 +4,25 @@ var passport = require("passport");
 var LocalStrategy = require("passport-local").Strategy;
 var acl = require("acl");
 var mongodb = require("mongodb");
-var emailExistence = require("email-existence");
-var emailCheck = require('email-check');
+var nodemailer = require('nodemailer');
+var transporter = nodemailer.createTransport('smtps://lukai.lotho%40gmail.com:conChuot@smtp.gmail.com');
+//Encrypt and decrypt function: used for email confirmation
+var crypto = require('crypto'),
+    algorithm = 'aes-256-ctr',
+    passwd = 'd6F3Efeq';
+
+function encrypt(text){
+  var cipher = crypto.createCipher(algorithm,passwd)
+  var crypted = cipher.update(text,'utf8','hex')
+  crypted += cipher.final('hex');
+  return crypted;
+}
+function decrypt(text){
+  var decipher = crypto.createDecipher(algorithm,passwd)
+  var dec = decipher.update(text,'hex','utf8')
+  dec += decipher.final('utf8');
+  return dec;
+}
 // Or Using the mongodb backend
 mongodb.connect("mongodb://localhost/loginapp", function(error, db) {
   var mongoBackend = new acl.mongodbBackend(db, "acl_");
@@ -35,6 +52,16 @@ router.get("/dashboard", ensureAuthenticated, function(req, res) {
     });
   });
 });
+// confirm email
+router.get("/confirm", function(req, res){
+  var code = req.query.code;
+	var user = decrypt(code);
+	User.update({username:user},{$set:{confirmed:true}},{ multi: false },function(err,num){
+		req.flash("success_msg", "Your email has been confirmed!");
+		res.redirect('/');
+	});
+});
+
 // ensure authenticated
 
 function ensureAuthenticated(req, res, next) {
@@ -68,6 +95,18 @@ router.post("/register", function(req, res) {
   var password = req.body.password;
   var password2 = req.body.password2;
   var role = req.body.role;
+  var mailOptions = {
+    from: '"DCC Mailer 🐉"<lukai.lotho@gmail.com>', // sender address
+    to: email, // list of receivers
+    subject: 'Confirmation email 💌', // Subject line
+    text: 'Please click the link below to complete registration:', // plaintext body
+    html: '<a href="http://'+req.get('host')+'/users/confirm?code='+encrypt(username)+'">Please click here to complete registration ✅</a>'
+	};
+	transporter.sendMail(mailOptions, function(error, info){
+    if(error){
+        return console.log(error);
+    }
+	});
   // validation
   req.checkBody("name", "Name is required").notEmpty();
   req.checkBody("email", "Email is required").notEmpty();
@@ -97,7 +136,8 @@ router.post("/register", function(req, res) {
               email: email,
               username: username,
               password: password,
-              role: role
+              role: role,
+			        confirmed: false
             });
             User.createUser(newUser, function(err, user) {
               if (err) throw err;

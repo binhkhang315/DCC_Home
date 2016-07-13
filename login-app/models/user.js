@@ -18,6 +18,9 @@ var UserSchema = mongoose.Schema({
   },
   role: {
     type: String
+  },
+  confirmed: {
+    type: Boolean
   }
 });
 
