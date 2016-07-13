@@ -5,7 +5,7 @@ var LocalStrategy = require("passport-local").Strategy;
 var acl = require("acl");
 var mongodb = require("mongodb");
 var nodemailer = require('nodemailer');
-var transporter = nodemailer.createTransport('smtps://lukai.lotho%40gmail.com:conChuot@smtp.gmail.com');
+var transporter = nodemailer.createTransport('smtps://dcc.verify.email%40gmail.com:dekvn2016@smtp.gmail.com');
 //Encrypt and decrypt function: used for email confirmation
 var crypto = require('crypto'),
     algorithm = 'aes-256-ctr',
@@ -102,11 +102,6 @@ router.post("/register", function(req, res) {
     text: 'Please click the link below to complete registration:', // plaintext body
     html: '<a href="http://'+req.get('host')+'/users/confirm?code='+encrypt(username)+'">Please click here to complete registration ✅</a>'
 	};
-	transporter.sendMail(mailOptions, function(error, info){
-    if(error){
-        return console.log(error);
-    }
-	});
   // validation
   req.checkBody("name", "Name is required").notEmpty();
   req.checkBody("email", "Email is required").notEmpty();
@@ -144,7 +139,12 @@ router.post("/register", function(req, res) {
               // add user and role to database
               acl.addUserRoles(username, role);
               //------------------------------
-              req.flash("success_msg", "You are registered and can now login");
+              transporter.sendMail(mailOptions, function(error, info){
+                if(error){
+                    return console.log(error);
+                }
+            	});
+              req.flash("success_msg", "You are registered. Please login your email to confirm!");
               res.redirect("/");
             });
           } else {
