@@ -4,6 +4,7 @@ var passport = require("passport");
 var LocalStrategy = require("passport-local").Strategy;
 var acl = require("acl");
 var mongodb = require("mongodb");
+// Email Setting
 var nodemailer = require('nodemailer');
 var transporter = nodemailer.createTransport('smtps://dcc.verify.email%40gmail.com:dekvn2016@smtp.gmail.com');
 //Encrypt and decrypt function: used for email confirmation
