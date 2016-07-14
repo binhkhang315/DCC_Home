@@ -93,25 +93,36 @@
             <h4 class="modal-title">Account Login</h4>
           </div>
           <div class="modal-body">
-            <form action="/users/login" method="post" role="form" class="form-horizontal">
-              <div class="form-group">
+
+            <form name="loginForm" ng-submit="submitForm()" action="/users/login" method="post" role="form" class="form-horizontal" novalidate>
+
+              <div class="form-group" ng-class="{ 'has-error' : loginForm.username.$invalid && !loginForm.username.$pristine }">
                 <label class="col-sm-4 control-label">Username</label>
                 <div class="col-sm-8">
-                  <input type="text" class="form-control" name="username" placeholder="Username">
+                  <!-- <input type="text" class="form-control" name="username" placeholder="Username"> -->
+                  <input type="text" class="form-control" name="username" ng-model="userName" placeholder="Username" required>
+                  <p ng-show="loginForm.username.$invalid && !loginForm.username.$pristine" class="help-block">Username is required.</p>
                 </div>
               </div>
-              <div class="form-group">
+
+              <div class="form-group" ng-class="{ 'has-error' : loginForm.password.$invalid && !loginForm.password.$pristine }">
                 <label class="col-sm-4 control-label">Password</label>
                 <div class="col-sm-8">
-                  <input type="password" class="form-control" name="password" placeholder="Password">
+                  <!-- <input type="password" class="form-control" name="password" placeholder="Password"> -->
+                  <input type="password" class="form-control" name="password" ng-model="userPassword" placeholder="Password" required>
+                  <p ng-show="loginForm.password.$invalid && !userForm.password.$pristine" class="help-block">Password is required.</p>
                 </div>
               </div>
+
               <div class="row">
                 <div class="col-xs-3 col-xs-push-9">
-                  <button type="submit" class="btn btn-default" >Submit</button>
+                  <!-- <button type="submit" class="btn btn-default" >Submit</button> -->
+                  <button type="submit" class="btn btn-default" ng-disabled="loginForm.$invalid">Submit</button>
                 </div>
               </div>
+
             </form>
+
           </div>
         </div>
       </div>
@@ -133,56 +144,72 @@
             </div>
             {{/each}}
             {{/if}}
-            <form action="/users/register" method="post" class="form-horizontal" role="form">
-              <div class="form-group">
+            <!-- Form start from here -->
+            <form name="registerForm" ng-submit="submitForm()" action="/users/register" method="post" class="form-horizontal" role="form" novalidate>
+
+              <!-- Name -->
+              <div class="form-group" ng-class="{ 'has-error' : registerForm.name.$invalid && !registerForm.name.$pristine }">
                 <label class="col-sm-4 control-label">Name</label>
                 <div class="col-sm-8">
-                  <input type="text" class="form-control" placeholder="Name" name="name">
+                  <input type="text" class="form-control" placeholder="Name" name="name" ng-model="regName" required>
+                  <p ng-show=" registerForm.name.$invalid && !registerForm.name.$pristine" class="help-block">Your name is required.</p>
                 </div>
               </div>
-              <div class="form-group">
+
+              <!-- Username -->
+              <div class="form-group" ng-class="{ 'has-error' : registerForm.username.$invalid && !registerForm.username.$pristine }">
                 <label class="col-sm-4 control-label">Username</label>
                 <div class="col-sm-8">
-                  <input type="text" class="form-control" placeholder="Username" name="username">
+                  <input type="text" class="form-control" placeholder="Username" name="username" ng-model="regUsername" required>
+                  <p ng-show=" registerForm.username.$invalid && !registerForm.username.$pristine" class="help-block">Your username is required.</p>
                 </div>
               </div>
-              <div class="form-group">
+
+              <!-- Email -->
+              <div class="form-group" ng-class="{ 'has-error' : registerForm.email.$invalid && !registerForm.email.$pristine }">
                 <label class="col-sm-4 control-label">Email</label>
                 <div class="col-sm-8">
-                  <input type="email" class="form-control" placeholder="Email" name="email">
+                  <input type="email" class="form-control" placeholder="Email" name="email" ng-model="regEmail" required>
+                  <p ng-show="registerForm.email.$invalid && !registerForm.email.$pristine" class="help-block">Please Enter a valid email!</p>
                 </div>
               </div>
-              <div class="form-group">
+
+              <!-- Password -->
+              <div class="form-group" ng-class="{ 'has-error' : registerForm.password.$invalid && !registerForm.password.$pristine }">
                 <label class="col-sm-4 control-label">Password</label>
                 <div class="col-sm-8">
-                  <input type="password" class="form-control" placeholder="Password" name="password">
+                  <input type="password" class="form-control" placeholder="Password" name="password" ng-model="regPassword" required>
+                  <p ng-show="registerForm.password.$invalid && !registerForm.password.$pristine" class="help-block"> Your password is required.</p>
                 </div>
               </div>
-              <div class="form-group">
+
+              <!-- Confirm Password -->
+              <div class="form-group" ng-class="{ 'has-error' : registerForm.password2.$invalid && !registerForm.password2.$pristine }">
                 <label class="col-sm-4 control-label">Confirm Password</label>
                 <div class="col-sm-8">
-                  <input type="password" class="form-control" placeholder="Confirm password" name="password2">
+                  <input type="password" class="form-control" placeholder="Confirm password" name="password2" ng-model="regPassword2" required>
+                  <p ng-show="registerForm.password2.$invalid && !registerForm.password2.$pristine" class="help-block"> Please confirm your password!</p>
                 </div>
               </div>
+
+              <!-- Radio button and Submit button -->
               <div class="row">
                 <div class="col-sm-8 col-sm-push-4">
+                  <!-- <label class="radio-inline"><input type="radio" name="role" ng-disabled="registerForm.$invalid" value="admin">Admin</label>
+                  <label class="radio-inline"><input type="radio" name="role" ng-disabled="registerForm.$invalid" value="guest">Guest</label> -->
                   <label class="radio-inline"><input type="radio" name="role" value="admin">Admin</label>
                   <label class="radio-inline"><input type="radio" name="role" value="guest">Guest</label>
                 </div>
                 <div class="col-sm-4 col-sm-push-1">
-                  <button type="submit" class="btn btn-default">Submit</button>
+                  <button type="submit" class="btn btn-default" ng-disabled="registerForm.$invalid">Submit</button>
                 </div>
               </div>
             </form>
           </div>
-          <!--
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-            -->
         </div>
       </div>
     </div>
+
     <!-- Header -->
     <a name="about"></a>
     <div class="intro-header">
@@ -296,5 +323,6 @@
         </div>
       </div>
     </footer>
+    <script src="js/myController.js"></script>
   </body>
 </html>
