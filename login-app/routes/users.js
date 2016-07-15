@@ -7,7 +7,8 @@ var acl = require("acl");
 var mongodb = require("mongodb");
 // Email Setting
 var nodemailer = require('nodemailer');
-var transporter = nodemailer.createTransport('smtps://dcc.verify.email%40gmail.com:dekvn2016@smtp.gmail.com');
+//var transporter = nodemailer.createTransport('smtps://lukai.lotho%40gmail.com:conChuot@smtp.gmail.com');
+var transporter = nodemailer.createTransport('smtps://lukai.lotho%40gmail.com:conChuot@smtp.gmail.com');
 //Encrypt and decrypt function: used for email confirmation
 var crypto = require('crypto'),
     algorithm = 'aes-256-ctr',
@@ -48,7 +49,6 @@ router.get("/dashboard", ensureAuthenticated, function(req, res) {
         console.log("Access ok " + user.username);
         res.render("dashboard");
       } else {
-        console.log("Access denied " + user.username);
         res.render("accessdenied");
       }
     });
@@ -147,7 +147,7 @@ router.post("/register", function(req, res) {
                     return console.log(error);
                 }
             	});
-              req.flash("success_msg", "You are registered. Please login your email to confirm!");
+              req.flash("success_msg", "You are registered.");
               res.redirect("/");
             });
           } else {
@@ -197,19 +197,28 @@ passport.deserializeUser(function(id, done) {
   });
 })
 router.post('/login',
-passport.authenticate('local', {
-  successRedirect: "/",
-  failureRedirect: "/",
-  failureFlash: true
-}),
+  passport.authenticate('local', {
+    successRedirect: "success",
+    failureRedirect: "failure",
+    failureFlash: true
+  }),
 
-function(req, res) {
+  function(req, res) {
+    res.redirect("/");
+});
+
+router.get('/success',function(req,res){
   res.redirect("/");
 });
+router.get('/failure', function(req, res){
+  res.redirect("/");
+});
+
 router.get("/logout", function(req, res) {
+
   req.logout();
   req.flash("success_msg", "You are logged out");
-
+  req.session.destroy();
   res.redirect("/");
 });
 //----------------------------------------------------
