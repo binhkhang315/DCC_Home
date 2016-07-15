@@ -1,6 +1,6 @@
 //var request = require('request');
 var request = require("supertest");
-var server = request.agent("http://192.168.122.152:3000");
+var server = request.agent("http://192.168.122.51");
 var assert = require('chai').assert;
 
 
