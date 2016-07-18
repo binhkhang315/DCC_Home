@@ -1,0 +1,29 @@
+.navbar-logo {
+  float: left right top bottom;
+  height: 50px;
+  padding: 30px 10px;
+  font-size: 18px;
+  line-height: 20px;
+}
+@media all and (max-width: 768px) {
+  .navbar-logo{
+    float:left;
+    padding:9px 10px;
+    margin-top:8px;
+    margin-left: 15px;
+    margin-bottom:30px;
+    border:1px solid transparent;
+  }
+}
+.navbar-DEK {
+  float: left top bottom right;
+  height: 50px;
+  padding: 2228px 25px;
+  font-size: 18px;
+  line-height: 20px;
+}
+@media all and (max-width: 768px) {
+  .navbar-brand{
+    display: none;
+  }
+}
