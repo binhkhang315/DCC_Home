@@ -152,14 +152,14 @@ router.post('/register', function(req, res) {
           }
           else {
             req.flash('error_msg', 'This email has been registed!');
-            res.redirect('/');
+            res.redirect('/#registedfail');
           }
         });
       }
       else {
         // username registered
         req.flash('error_msg', 'This username has been registed!');
-        res.redirect('/');
+        res.redirect('/#registedfail');
       }
     });
   }
