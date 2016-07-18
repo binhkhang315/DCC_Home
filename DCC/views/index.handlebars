@@ -17,6 +17,7 @@
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="/css/landing-page.css" rel="stylesheet">
+    <link href="css/full-slider.css" rel="stylesheet">
     <!-- Custom Fonts -->
     <link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
@@ -214,27 +215,109 @@
 
     <!-- Header -->
     <a name="about"></a>
-    <div class="intro-header">
-      <div class="container">
+
+    <div id="myCarousel" class="intro-header carousel slide" data-ride="carousel" style="background-size:auto;">
+      <div class="container" style="width:100%">
         <div class="row">
-          <div class="col-lg-12">
-            <div class="intro-message">
-              <h1>Landing Page</h1>
-              <h3>DEK Technologies - Where all of our Ironborn Devs are forged with our Fire of Passion</h3>
-              <hr class="intro-divider">
-              <p>
-                This could be some information and introduction about the training courses at DEK Technologies Vietnam
-              </p>
-              <hr class="intro-divider">
-              <ul class="list-inline intro-social-buttons">
-                <li>
-                  <a href="https://www.facebook.com/DEKTechnologiesGlobal/" class="btn btn-default btn-lg"><i class="fa fa-facebook fa-fw"></i> <span class="network-name">Facebook</span></a>
-                </li>
-                <li>
-                  <a href="https://www.linkedin.com/company/dek-technologies" class="btn btn-default btn-lg"><i class="fa fa-linkedin fa-fw"></i> <span class="network-name">Linkedin</span></a>
-                </li>
-              </ul>
-            </div>
+          <div class="col-lg-12" style="height:600px">
+                <!-- Indicators -->
+
+                <ol class="carousel-indicators">
+                  <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                  <li data-target="#myCarousel" data-slide-to="1"></li>
+                  <li data-target="#myCarousel" data-slide-to="2"></li>
+                  <li data-target="#myCarousel" data-slide-to="3"></li>
+                </ol>
+
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner" role="listbox">
+
+                  <div class="item active intro-message cover"  style = "background:url(../img/earth.jpg); object-fit: cover;">
+
+                    <h1>Landing Page</h1>
+                    <h3>DEK Technologies - Where all of our Ironborn Devs are forged with our Fire of Passion</h3>
+                    <hr class="intro-divider">
+                    <p>
+                      This could be some information and introduction about the training courses at DEK Technologies Vietnam
+                    </p>
+                    <hr class="intro-divider">
+                    <ul class="list-inline intro-social-buttons">
+                      <li>
+                        <a href="https://www.facebook.com/DEKTechnologiesGlobal/" class="btn btn-default btn-lg"><i class="fa fa-facebook fa-fw"></i> <span class="network-name">Facebook</span></a>
+                      </li>
+                      <li>
+                        <a href="https://www.linkedin.com/company/dek-technologies" class="btn btn-default btn-lg"><i class="fa fa-linkedin fa-fw"></i> <span class="network-name">Linkedin</span></a>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div class="item intro-message cover"  style = "background:url(../img/1.jpg); object-fit: cover;">
+                    <h1>Landing Page</h1>
+                    <h3>DEK Technologies - Where all of our Ironborn Devs are forged with our Fire of Passion</h3>
+                    <hr class="intro-divider">
+                    <p>
+                      This could be some information and introduction about the training courses at DEK Technologies Vietnam
+                    </p>
+                    <hr class="intro-divider">
+                    <ul class="list-inline intro-social-buttons">
+                      <li>
+                        <a href="https://www.facebook.com/DEKTechnologiesGlobal/" class="btn btn-default btn-lg"><i class="fa fa-facebook fa-fw"></i> <span class="network-name">Facebook</span></a>
+                      </li>
+                      <li>
+                        <a href="https://www.linkedin.com/company/dek-technologies" class="btn btn-default btn-lg"><i class="fa fa-linkedin fa-fw"></i> <span class="network-name">Linkedin</span></a>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div class="item intro-message" style = "background:url(../img/2.jpg)">
+                    <h1>Sample text</h1>
+                    <h3>Sample text Sample text Sample text Sample text Sample text Sample text Sample text Sample text </h3>
+                    <hr class="intro-divider">
+                    <p>
+                      Sample text Sample text Sample text Sample text Sample text Sample text Sample text
+                    </p>
+                    <hr class="intro-divider">
+                    <ul class="list-inline intro-social-buttons">
+                      <li>
+                        <a href="https://www.facebook.com/DEKTechnologiesGlobal/" class="btn btn-default btn-lg"><i class="fa fa-facebook fa-fw"></i> <span class="network-name">Facebook</span></a>
+                      </li>
+                      <li>
+                        <a href="https://www.linkedin.com/company/dek-technologies" class="btn btn-default btn-lg"><i class="fa fa-linkedin fa-fw"></i> <span class="network-name">Linkedin</span></a>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div class="item intro-message" style = "background:url(../img/3.jpg)">
+                    <h1 >Sample text Sample text Sample text Sample text Sample text </h1>
+                    <h3>Sample text Sample text Sample text Sample text Sample text Sample text Sample text </h3>
+                    <hr class="intro-divider">
+                    <p>
+                      Sample text Sample text Sample text Sample text Sample text Sample text Sample text
+                    </p>
+                    <hr class="intro-divider">
+                    <ul class="list-inline intro-social-buttons">
+                      <li>
+                        <a href="https://www.facebook.com/DEKTechnologiesGlobal/" class="btn btn-default btn-lg"><i class="fa fa-facebook fa-fw"></i> <span class="network-name">Facebook</span></a>
+                      </li>
+                      <li>
+                        <a href="https://www.linkedin.com/company/dek-technologies" class="btn btn-default btn-lg"><i class="fa fa-linkedin fa-fw"></i> <span class="network-name">Linkedin</span></a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <!-- Left and right controls -->
+                <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                  <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                  <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+                </a>
+
+              </div>
+
           </div>
         </div>
       </div>
@@ -244,7 +327,10 @@
     <!-- Page Content -->
     <a  name="courses"></a>
     <div class="content-section-a">
-    <div class="container">
+      <div class="container">
+    <br>
+
+
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nec consequat lectus. In nulla nulla, euismod vitae mauris id, tincidunt faucibus justo. Praesent maximus lacinia enim, tristique molestie odio laoreet a. Sed a nulla enim. In mattis nec lacus at commodo. Aliquam odio ipsum, rhoncus a vulputate id, pretium ac eros. Morbi vehicula leo maximus, vulputate massa nec, fringilla eros. Sed non interdum velit.
         Nam consequat nulla sem, ut bibendum leo pretium vel. Mauris at viverra ante. Duis dignissim consectetur massa, in pulvinar massa posuere sit amet. Mauris egestas arcu est, ac aliquet massa rhoncus in. Aenean hendrerit urna non urna laoreet, nec porta nibh consequat. Donec vitae lorem molestie, tincidunt justo eget, maximus urna. Aliquam a dui et metus elementum tempor sed eu sapien. Quisque bibendum mattis felis non scelerisque. Curabitur malesuada pharetra nisi, sed auctor leo imperdiet ac. Quisque et velit accumsan, varius nibh vitae, feugiat dolor. Maecenas quis semper metus. Integer eu finibus quam. Integer eget leo mi. Cras at leo ullamcorper, maximus erat eu, suscipit turpis. In at ultrices mauris, in ultrices mi.
@@ -279,9 +365,9 @@
     <!-- /.banner -->
     <!-- Footer -->
     <footer>
-      <div class="container">
         <div class="row">
           <div class="col-lg-12">
+            <div class="container">
             <ul class="list-inline">
               <li>
                 <a href="#">Home</a>
@@ -305,5 +391,16 @@
       </div>
     </footer>
     <script src="js/myController.js"></script>
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Script to Activate the Carousel -->
+    <script>
+    $('.carousel').carousel({
+        interval: 5000 //changes the speed
+    })
+    </script>
   </body>
 </html>
