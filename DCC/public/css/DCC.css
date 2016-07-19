@@ -15,12 +15,11 @@
     border:1px solid transparent;
   }
 }
-@media all and (max-width: 330px) {
+@media all and (max-width: 350px) {
   .navbar-logo{
     display: none;
   }
 }
-
 
 .navbar-name {
   float: left;
@@ -70,6 +69,106 @@
   }
 }
 
-/* responsive menu */
+.navbar-rowmenu {
+  padding: 25px 15px;
+  overflow-x: visible;
+  -webkit-overflow-scrolling: touch;
+  border-top: 1px solid transparent;
+  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, .1);
+          box-shadow: inset 0 1px 0 rgba(255, 255, 255, .1);
+}
+.navbar-rowmenu.in {
+  overflow-y: auto;
+}
+@media (min-width: 768px) {
+  .navbar-rowmenu {
+    width: auto;
+    border-top: 0;
+    -webkit-box-shadow: none;
+            box-shadow: none;
+  }
+  .navbar-rowmenu.collapse {
+    display: block !important;
+    height: auto !important;
+    padding-bottom: 0;
+    overflow: visible !important;
+  }
+  .navbar-rowmenu.in {
+    overflow-y: visible;
+  }
+  .navbar-fixed-top .navbar-rowmenu,
+  .navbar-static-top .navbar-rowmenu,
+  .navbar-fixed-bottom .navbar-rowmenu {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+.navbar-fixed-top .navbar-rowmenu,
+.navbar-fixed-bottom .navbar-rowmenu {
+  max-height: 340px;
+}
+@media (max-device-width: 480px) and (orientation: landscape) {
+  .navbar-fixed-top .navbar-rowmenu,
+  .navbar-fixed-bottom .navbar-rowmenu {
+    max-height: 200px;
+  }
+}
 
-/*------------------------------------------------------------------------------*/
+
+
+.container2 > .navbar-header,
+.container2-fluid > .navbar-header,
+.container2 > .navbar-rowmenu,
+.container2-fluid > .navbar-rowmenu {
+  margin-right: -15px;
+  margin-left: -15px;
+}
+@media (min-width: 768px) {
+  .container2 > .navbar-header,
+  .container2-fluid > .navbar-header,
+  .container2 > .navbar-rowmenu,
+  .container2-fluid > .navbar-rowmenu {
+    margin-right: 0;
+    margin-left: 0;
+  }
+}
+
+
+
+.container2 {
+
+  padding: 100px 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+@media (max-width: 768px) {
+  .container2 {
+    height: 300px;
+  }
+}
+@media (min-width: 768px) {
+  .container2 {
+    width: 750px;
+  }
+}
+@media (min-width: 992px) {
+  .container2 {
+    width: 970px;
+  }
+}
+@media (min-width: 1200px) {
+  .container2 {
+    width: 1170px;
+  }
+}
+@media (max-width: 1200px) {
+  .container2 {
+    height: 480px;
+  }
+}
+.container2-fluid {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
