@@ -35,7 +35,7 @@
 .navbar-name > img {
   display: block;
 }
-@media (max-width: 768px) {
+@media (max-width: 996px) {
   .navbar-name{
     display: none;
   }
@@ -132,7 +132,6 @@
     margin-left: 0;
   }
 }
-
 
 
 .container2 {
