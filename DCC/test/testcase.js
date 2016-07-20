@@ -1,7 +1,15 @@
-//var request = require('request');
 var request = require("supertest");
 var server = request.agent("http://192.168.122.51");
 var assert = require('chai').assert;
+var expect = require('chai').expect;
+var mongoose = require('mongoose');
+
+mongoose.connect('mongodb://localhost/loginapp');
+var db = mongoose.connection;
+
+function isEmpty(str) {
+    return (!str || 0 === str.length);
+}
 
 
 //Test for authentication
@@ -477,3 +485,121 @@ describe("<Unit Test Register >", function ()
 });
 
 //-----------------------------------------------------------------------
+
+describe("<Unit test for getUserByUsername function>", function ()
+{
+    describe("", function ()
+    {
+        return it("Test case 1 : username is existed in the database", function (done)
+        {
+            var User = require('../models/user');
+			User.getUserByUsername('dek', function(err, user) {
+				assert.equal(isEmpty(user), false, "This is ok!!!!")
+				done();
+			});
+        });
+    });
+	
+	describe("", function ()
+    {
+        return it("Test case 2 : username didn't exist in the database", function (done)
+        {
+            var User = require('../models/user');
+			User.getUserByUsername('fakeUserThatDidntExsit', function(err, user) {
+				assert.equal(user, null, "This is ok!!!!")
+				done();
+			});
+        });
+    });
+});
+
+//-----------------------------------------------------------------------
+
+describe("<Unit test for getUserByEmail function>", function ()
+{
+    describe("", function ()
+    {
+        return it("Test case 1 : email is existed in the database", function (done)
+        {
+            var User = require('../models/user');
+			User.getUserByEmail('dek@dek.vn', function(err, user) {
+				assert.equal(isEmpty(user), false, "This is ok!!!!")
+				done();
+			});
+        });
+    });
+	
+	describe("", function ()
+    {
+        return it("Test case 2 : email didn't exist in the database", function (done)
+        {
+            var User = require('../models/user');
+			User.getUserByEmail('fakeEmailThatDidntExsit@dek.vn', function(err, user) {
+				assert.equal(user, null, "This is ok!!!!")
+				done();
+			});
+        });
+    });
+});
+
+//-----------------------------------------------------------------------
+
+describe("<Unit test for getUserById function>", function ()
+{
+    describe("", function ()
+    {
+        return it("Test case 1 : id is existed in the database", function (done)
+        {
+            var User = require('../models/user');
+			User.getUserById('578f3fe845752574196f202c', function(err, user) {
+				assert.equal(isEmpty(user), false, "This is ok!!!!")
+				done();
+			});
+        });
+    });
+	
+	describe("", function ()
+    {
+        return it("Test case 2 : id didn't exist in the database", function (done)
+        {
+            var User = require('../models/user');
+			User.getUserById('fakeIdThatDidntExsit', function(err, user) {
+				assert.equal(user, null, "This is ok!!!!")
+				done();
+			});
+        });
+    });
+});
+
+//-----------------------------------------------------------------------
+
+describe("<Unit test for comparePassword function>", function ()
+{
+    describe("", function ()
+    {
+        return it("Test case 1 : Compare function work ok!", function (done)
+        {
+            var User = require('../models/user');
+			User.getUserByUsername('dek', function(err, user) {
+				User.comparePassword('123', user.password, function(err, isMatch) {
+				assert.equal(isMatch, true, "This is ok!!!!")
+				done();
+				});
+			});
+        });
+    });
+	
+	describe("", function ()
+    {
+        return it("Test case 2 : two passwords are different", function (done)
+        {
+			var User = require('../models/user');
+			User.getUserByUsername('dek', function(err, user) {
+				User.comparePassword('123456', user.password, function(err, isMatch) {
+				assert.equal(isMatch, false, "This is ok!!!!")
+				done();
+				});
+			});
+        });
+    });
+});
