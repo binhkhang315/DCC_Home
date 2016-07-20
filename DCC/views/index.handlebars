@@ -29,16 +29,14 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-		<link rel="stylesheet" type="text/css" href="/css/component.css" />
-		<script src="/js/modernizr.custom.js"></script>
-		<script src="/js/jquery.dlmenu.js"></script>
-		<script>
-			$(function() {
-				$( '#dl-menu' ).dlmenu();
-			});
-		</script>
-
-
+	<link rel="stylesheet" type="text/css" href="/css/component.css" />
+	<script src="/js/modernizr.custom.js"></script>
+	<script src="/js/jquery.dlmenu.js"></script>
+	<script>
+		$(function() {
+			$( '#dl-menu' ).dlmenu();
+		});
+	</script>
     <style>
       a:visited{
       text-decoration: none;
@@ -47,65 +45,64 @@
   </head>
 <body>
     <!-- Navigation -->
-  <div class="">
-          <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
+	<div class="">
+        <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
             <div class="container topnav">
 
 
-              <div class="navbar-menu">
-              <div id="dl-menu" class="dl-menuwrapper">
-                <button class="dl-trigger">Open Menu</button>
-                <ul class="dl-menu">
-                  <li><a href="#about">About</a></li>
-                  <li><a href="#contact">Contact</a></li>
-                  <li role="presentation"><a data-toggle="modal" href="#loginModal">Login</a></li>
-                  <li><a href="/users/coursesoverview">Courses</a></li>
-                </ul>
-              </div>
-              </div>
+				<div class="navbar-menu">
+					<div id="dl-menu" class="dl-menuwrapper">
+						<button class="dl-trigger">Open Menu</button>
+						<ul class="dl-menu">
+							<li><a href="#about">About</a></li>
+							<li><a href="#contact">Contact</a></li>
+							<li role="presentation"><a data-toggle="modal" href="#loginModal">Login</a></li>
+							<li><a href="/users/coursesoverview">Courses</a></li>
+						</ul>
+					</div>
+				</div>
 
-              <!-- Brand and toggle get grouped for better mobile display -->
-              <div class="navbar-header">
-                <a class="navbar-logo" href="#">
-                <img class="img-responsive" src="/img/DCC-ver5.png" alt="" width="100" height="40">
-                </a>
-              </div>
-              <div>
-                <a class="navbar-name" href="#">DEK</br>Competence Center</a>
-              </div>
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<a class="navbar-logo" href="#">
+						<img class="img-responsive" src="/img/DCC-ver5.png" alt="" width="100" height="40">
+					</a>
+				</div>
+				<div>
+					<a class="navbar-name" href="#">DEK</br>Competence Center</a>
+				</div>
 
           <!-- Collect the nav links, forms, and other content for toggling -->
-          <div class="collapse navbar-rowmenu">
-              <ul class="nav navbar-nav navbar-right">
-                      <li><a href="#about">About us</a></li>
-                      <li><a href="#contact">Contact</a></li>
-                      {{#if user}}
-                      <li role="presentation"><a href="#">Hello {{user.username}}! You are {{user.role}}</a></li>
-                      <li role="presentation"><a href="/users/logout">Logout</a></li>
-                      <li role="presentation"><a href="/users/dashboard">Dashboard</a></li>
-                      {{else}}
-                      <li role="presentation"><a data-toggle="modal" href="#loginModal">Login</a></li>
-                      <li role="presentation"><a data-toggle="modal" href="#registerModal">Register</a></li>
-                      {{/if}}
-                      <li><a href="/users/coursesoverview">Courses</a></li>
-                <!-- page for admin -->
-              </ul>
-            </div>
-          <div class="">
-            {{#if success_msg}}
-            <div class="alert alert-success">{{success_msg}}</div>
-            {{/if}}
-            {{#if error_msg}}
-            <div class="alert alert-danger">{{error_msg}}</div>
-            {{/if}}
-            {{#if error}}
-            <div class="alert alert-danger">{{error}}</div>
-            {{/if}}
-          </div>
+				<div class="collapse navbar-rowmenu">
+					  <ul class="nav navbar-nav navbar-right">
+							  <li><a href="#about">About us</a></li>
+							  <li><a href="#contact">Contact</a></li>
+							  {{#if user}}
+							  <li role="presentation"><a href="#">Hello {{user.username}}! You are {{user.role}}</a></li>
+							  <li role="presentation"><a href="/users/logout">Logout</a></li>
+							  <li role="presentation"><a href="/users/dashboard">Dashboard</a></li>
+							  {{else}}
+							  <li role="presentation"><a data-toggle="modal" href="#loginModal">Login</a></li>
+							  <li role="presentation"><a data-toggle="modal" href="#registerModal">Register</a></li>
+							  {{/if}}
+							  <li><a href="/users/coursesoverview">Courses</a></li>
+						<!-- page for admin -->
+					  </ul>
+				</div>
+				<div class="">
+					{{#if success_msg}}
+					<div class="alert alert-success">{{success_msg}}</div>
+					{{/if}}
+					{{#if error_msg}}
+					<div class="alert alert-danger">{{error_msg}}</div>
+					{{/if}}
+					{{#if error}}
+					<div class="alert alert-danger">{{error}}</div>
+					{{/if}}
+				 </div>
           <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
-      </nav>
+			</div>
+		</nav>
     </div>
     <!-- The login form here -->
     <div class="modal fade" id="loginModal" role="dialog">
@@ -238,185 +235,179 @@
     <a  name="header"></a>
     <!-- Header -->
     <div class="container2">
-    <div id="myCarousel" class="intro-header carousel slide" data-ride="carousel">
-      <div class="container2" style=" width:100%">
-        <div class="row">
-                <!-- Indicators -->
-                <ol class="carousel-indicators">
-                  <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                  <li data-target="#myCarousel" data-slide-to="1"></li>
-                  <li data-target="#myCarousel" data-slide-to="2"></li>
-                  <li data-target="#myCarousel" data-slide-to="3"></li>
-                </ol>
+		<div id="myCarousel" class="intro-header carousel slide" data-ride="carousel">
+			<div class="container2" style=" width:100%">
+				<div class="row">
+					<!-- Indicators -->
+					<ol class="carousel-indicators">
+					  <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+					  <li data-target="#myCarousel" data-slide-to="1"></li>
+					  <li data-target="#myCarousel" data-slide-to="2"></li>
+					  <li data-target="#myCarousel" data-slide-to="3"></li>
+					</ol>
 
-                <!-- Wrapper for slides -->
-                <div class="carousel-inner" role="listbox">
+					<!-- Wrapper for slides -->
+					<div class="carousel-inner" role="listbox">
 
-                  <div class="item active intro-message cover"  style = "background:url(../img/earth.jpg) no-repeat center center; background-size: contain; object-fit: cover;">
+					  <div class="item active intro-message cover"  style = "background:url(../img/earth.jpg) no-repeat center center; background-size: contain; object-fit: cover;">
 
-                    <h1>Landing Page</h1>
-                    <h3>DEK Technologies - Where all of our Ironborn Devs are forged with our Fire of Passion</h3>
-                    <hr class="intro-divider">
-                    <p>
-                      This could be some information and introduction about the training courses at DEK Technologies Vietnam
-                    </p>
-                    <hr class="intro-divider">
-                    <ul class="list-inline intro-social-buttons">
-                      <li>
-                        <a href="https://www.facebook.com/DEKTechnologiesGlobal/" class="btn btn-default btn-lg"><i class="fa fa-facebook fa-fw"></i> <span class="network-name">Facebook</span></a>
-                      </li>
-                      <li>
-                        <a href="https://www.linkedin.com/company/dek-technologies" class="btn btn-default btn-lg"><i class="fa fa-linkedin fa-fw"></i> <span class="network-name">Linkedin</span></a>
-                      </li>
-                    </ul>
-                  </div>
+						<h1>Landing Page</h1>
+						<h3>DEK Technologies - Where all of our Ironborn Devs are forged with our Fire of Passion</h3>
+						<hr class="intro-divider">
+						<p>
+						  This could be some information and introduction about the training courses at DEK Technologies Vietnam
+						</p>
+						<hr class="intro-divider">
+						<ul class="list-inline intro-social-buttons">
+						  <li>
+							<a href="https://www.facebook.com/DEKTechnologiesGlobal/" class="btn btn-default btn-lg"><i class="fa fa-facebook fa-fw"></i> <span class="network-name">Facebook</span></a>
+						  </li>
+						  <li>
+							<a href="https://www.linkedin.com/company/dek-technologies" class="btn btn-default btn-lg"><i class="fa fa-linkedin fa-fw"></i> <span class="network-name">Linkedin</span></a>
+						  </li>
+						</ul>
+					  </div>
 
-                  <div class="item intro-message cover"  style = "background:url(../img/1.jpg) no-repeat center center; background-size: contain; object-fit: cover;">
-                    <h1>Landing Page</h1>
-                    <h3>DEK Technologies - Where all of our Ironborn Devs are forged with our Fire of Passion</h3>
-                    <hr class="intro-divider">
-                    <p>
-                      This could be some information and introduction about the training courses at DEK Technologies Vietnam
-                    </p>
-                    <hr class="intro-divider">
-                    <ul class="list-inline intro-social-buttons">
-                      <li>
-                        <a href="https://www.facebook.com/DEKTechnologiesGlobal/" class="btn btn-default btn-lg"><i class="fa fa-facebook fa-fw"></i> <span class="network-name">Facebook</span></a>
-                      </li>
-                      <li>
-                        <a href="https://www.linkedin.com/company/dek-technologies" class="btn btn-default btn-lg"><i class="fa fa-linkedin fa-fw"></i> <span class="network-name">Linkedin</span></a>
-                      </li>
-                    </ul>
-                  </div>
+					  <div class="item intro-message cover"  style = "background:url(../img/1.jpg) no-repeat center center; background-size: contain; object-fit: cover;">
+						<h1>Landing Page</h1>
+						<h3>DEK Technologies - Where all of our Ironborn Devs are forged with our Fire of Passion</h3>
+						<hr class="intro-divider">
+						<p>
+						  This could be some information and introduction about the training courses at DEK Technologies Vietnam
+						</p>
+						<hr class="intro-divider">
+						<ul class="list-inline intro-social-buttons">
+						  <li>
+							<a href="https://www.facebook.com/DEKTechnologiesGlobal/" class="btn btn-default btn-lg"><i class="fa fa-facebook fa-fw"></i> <span class="network-name">Facebook</span></a>
+						  </li>
+						  <li>
+							<a href="https://www.linkedin.com/company/dek-technologies" class="btn btn-default btn-lg"><i class="fa fa-linkedin fa-fw"></i> <span class="network-name">Linkedin</span></a>
+						  </li>
+						</ul>
+					  </div>
 
-                  <div class="item intro-message" style = "background:url(../img/2.jpg) no-repeat center center; background-size: contain; object-fit: cover;">
-                    <h1>Landing Page</h1>
-                    <h3>DEK Technologies - Where all of our Ironborn Devs are forged with our Fire of Passion</h3>
-                    <hr class="intro-divider">
-                    <p>
-                      This could be some information and introduction about the training courses at DEK Technologies Vietnam
-                    </p>
-                    <hr class="intro-divider">
-                    <ul class="list-inline intro-social-buttons">
-                      <li>
-                        <a href="https://www.facebook.com/DEKTechnologiesGlobal/" class="btn btn-default btn-lg"><i class="fa fa-facebook fa-fw"></i> <span class="network-name">Facebook</span></a>
-                      </li>
-                      <li>
-                        <a href="https://www.linkedin.com/company/dek-technologies" class="btn btn-default btn-lg"><i class="fa fa-linkedin fa-fw"></i> <span class="network-name">Linkedin</span></a>
-                      </li>
-                    </ul>
-                  </div>
+					  <div class="item intro-message" style = "background:url(../img/2.jpg) no-repeat center center; background-size: contain; object-fit: cover;">
+						<h1>Landing Page</h1>
+						<h3>DEK Technologies - Where all of our Ironborn Devs are forged with our Fire of Passion</h3>
+						<hr class="intro-divider">
+						<p>
+						  This could be some information and introduction about the training courses at DEK Technologies Vietnam
+						</p>
+						<hr class="intro-divider">
+						<ul class="list-inline intro-social-buttons">
+						  <li>
+							<a href="https://www.facebook.com/DEKTechnologiesGlobal/" class="btn btn-default btn-lg"><i class="fa fa-facebook fa-fw"></i> <span class="network-name">Facebook</span></a>
+						  </li>
+						  <li>
+							<a href="https://www.linkedin.com/company/dek-technologies" class="btn btn-default btn-lg"><i class="fa fa-linkedin fa-fw"></i> <span class="network-name">Linkedin</span></a>
+						  </li>
+						</ul>
+					  </div>
 
-                  <div class="item intro-message" style = "background:url(../img/3.jpg) no-repeat center center; background-size: contain; object-fit: cover;">
-                    <h1>Landing Page</h1>
-                    <h3>DEK Technologies - Where all of our Ironborn Devs are forged with our Fire of Passion</h3>
-                    <hr class="intro-divider">
-                    <p>
-                      This could be some information and introduction about the training courses at DEK Technologies Vietnam
-                    </p>
-                    <hr class="intro-divider">
-                    <ul class="list-inline intro-social-buttons">
-                      <li>
-                        <a href="https://www.facebook.com/DEKTechnologiesGlobal/" class="btn btn-default btn-lg"><i class="fa fa-facebook fa-fw"></i> <span class="network-name">Facebook</span></a>
-                      </li>
-                      <li>
-                        <a href="https://www.linkedin.com/company/dek-technologies" class="btn btn-default btn-lg"><i class="fa fa-linkedin fa-fw"></i> <span class="network-name">Linkedin</span></a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
+					  <div class="item intro-message" style = "background:url(../img/3.jpg) no-repeat center center; background-size: contain; object-fit: cover;">
+						<h1>Landing Page</h1>
+						<h3>DEK Technologies - Where all of our Ironborn Devs are forged with our Fire of Passion</h3>
+						<hr class="intro-divider">
+						<p>
+						  This could be some information and introduction about the training courses at DEK Technologies Vietnam
+						</p>
+						<hr class="intro-divider">
+						<ul class="list-inline intro-social-buttons">
+						  <li>
+							<a href="https://www.facebook.com/DEKTechnologiesGlobal/" class="btn btn-default btn-lg"><i class="fa fa-facebook fa-fw"></i> <span class="network-name">Facebook</span></a>
+						  </li>
+						  <li>
+							<a href="https://www.linkedin.com/company/dek-technologies" class="btn btn-default btn-lg"><i class="fa fa-linkedin fa-fw"></i> <span class="network-name">Linkedin</span></a>
+						  </li>
+						</ul>
+					  </div>
+					</div>
 
-                <!-- Left and right controls -->
-                <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-                  <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                  <span class="sr-only">Previous</span>
-                </a>
-                <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-                  <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                  <span class="sr-only">Next</span>
-                </a>
-          </div>
-        </div>
-      </div>
-      <!-- /.container -->
+					<!-- Left and right controls -->
+					<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+					  <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+					  <span class="sr-only">Previous</span>
+					</a>
+					<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+					  <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+					  <span class="sr-only">Next</span>
+					</a>
+				</div>
+			</div>
+		</div>
     </div>
 
 
     <!-- About -->
     <a  name="about"></a>
-      <div class="container">
-        <div class="about">
-        <p>  Developing tomorrow’s technology – DEK Technologies develops cutting edge solutions across a diverse range of high technology sectors.
-        </br>
-Over 15 years experience – Established in Melbourne (Australia) in 1999, DEK Technologies signed its first official corporate agreement with the world’s largest telecommunications supplier in 2004 enabling DEK Technologies to supply research and development services globally.
-  <br>
-Global expansion – DEK Technologies began expanding its operations by opening offices around the globe starting with Stockholm (Sweden) in 2006, where focus was placed on new business development, both within Australia and Scandinavia. Shortly thereafter, in 2007-2008, offices were opened in Ho Chi Minh City (Vietnam), Rome (Italy) and Gold Coast (Australia).
-</br>
-Multiple industries – With over 300 employees worldwide DEK Technologies has managed to successfully cross multiple industry sectors with the ambition to be a global, best in class provider of high technology development services.
-
-
-        </p>
-      </div>
-      </div>
+    <div class="container">
+		<div class="about">
+			<p>  Developing tomorrow’s technology – DEK Technologies develops cutting edge solutions across a diverse range of high technology sectors.
+				</br> Over 15 years experience – Established in Melbourne (Australia) in 1999, DEK Technologies signed its first official corporate agreement with the world’s largest telecommunications supplier in 2004 enabling DEK Technologies to supply research and development services globally.
+				<br>Global expansion – DEK Technologies began expanding its operations by opening offices around the globe starting with Stockholm (Sweden) in 2006, where focus was placed on new business development, both within Australia and Scandinavia. Shortly thereafter, in 2007-2008, offices were opened in Ho Chi Minh City (Vietnam), Rome (Italy) and Gold Coast (Australia).
+				</br>Multiple industries – With over 300 employees worldwide DEK Technologies has managed to successfully cross multiple industry sectors with the ambition to be a global, best in class provider of high technology development services.
+			</p>
+		</div>
+    </div>
 
 
 
     <!-- Contact -->
     <a  name="contact"></a>
     <div class="container">
-    <div class="banner">
-        <div class="row">
-          <div class="col-lg-6">
-            <h2>Contact to DEK Competence Center</h2>
-          </div>
-          <div class="col-lg-6">
-            <ul class="list-inline banner-social-buttons">
-              <li>
-                <a href="https://www.dektech.com.au/" class="btn btn-default btn-lg"><span class="network-name">Website</span></a>
-              </li>
-              <li>
-                <a href="https://www.facebook.com/DEKTechnologiesGlobal/" class="btn btn-default btn-lg"><i class="fa fa-facebook fa-fw"></i> <span class="network-name">Facebook</span></a>
-              </li>
-              <li>
-                <a href="https://www.linkedin.com/company/dek-technologies" class="btn btn-default btn-lg"><i class="fa fa-linkedin fa-fw"></i> <span class="network-name">Linkedin</span></a>
-              </li>
-              <li>
-                <a href="" class="btn btn-default btn-lg"><span class="network-name">Message</span></a>
-              </li>
-            </ul>
-          </div>
-        </div>
-    </div>
-  </div>
+		<div class="banner">
+			<div class="row">
+			  <div class="col-lg-6">
+				<h2>Contact to DEK Competence Center</h2>
+			  </div>
+			  <div class="col-lg-6">
+				<ul class="list-inline banner-social-buttons">
+				  <li>
+					<a href="https://www.dektech.com.au/" class="btn btn-default btn-lg"><span class="network-name">Website</span></a>
+				  </li>
+				  <li>
+					<a href="https://www.facebook.com/DEKTechnologiesGlobal/" class="btn btn-default btn-lg"><i class="fa fa-facebook fa-fw"></i> <span class="network-name">Facebook</span></a>
+				  </li>
+				  <li>
+					<a href="https://www.linkedin.com/company/dek-technologies" class="btn btn-default btn-lg"><i class="fa fa-linkedin fa-fw"></i> <span class="network-name">Linkedin</span></a>
+				  </li>
+				  <li>
+					<a href="" class="btn btn-default btn-lg"><span class="network-name">Message</span></a>
+				  </li>
+				</ul>
+			  </div>
+			</div>
+		</div>
+	</div>
 
 
 
     <!-- Footer -->
     <footer>
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12">
-            <ul class="list-inline">
-              <li>
-                <a href="#">Home</a>
-              </li>
-              <li class="footer-menu-divider">&sdot;</li>
-              <li>
-                <a href="#about">About</a>
-              </li>
-              <li class="footer-menu-divider">&sdot;</li>
-              <li>
-                <a href="#courses">Courses</a>
-              </li>
-              <li class="footer-menu-divider">&sdot;</li>
-              <li>
-                <a href="#contact">Contact</a>
-              </li>
-            </ul>
-            <p class="copyright text-muted small">Copyright &copy; DEK Technologies Vietnam 2016. All Rights Reserved</p>
-          </div>
-        </div>
-      </div>
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<ul class="list-inline">
+					  <li>
+						<a href="#">Home</a>
+					  </li>
+					  <li class="footer-menu-divider">&sdot;</li>
+					  <li>
+						<a href="#about">About</a>
+					  </li>
+					  <li class="footer-menu-divider">&sdot;</li>
+					  <li>
+						<a href="#courses">Courses</a>
+					  </li>
+					  <li class="footer-menu-divider">&sdot;</li>
+					  <li>
+						<a href="#contact">Contact</a>
+					  </li>
+					</ul>
+					<p class="copyright text-muted small">Copyright &copy; DEK Technologies Vietnam 2016. All Rights Reserved</p>
+				 </div>
+			</div>
+		</div>
     </footer>
     <script src="js/myController.js"></script>
   </body>
