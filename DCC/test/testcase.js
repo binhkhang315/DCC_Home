@@ -603,3 +603,196 @@ describe("<Unit test for comparePassword function>", function ()
         });
     });
 });
+
+//-----------------------------------------------------------------------
+
+describe("<Unit test for createUser function>", function ()
+{
+    describe("", function ()
+    {
+        return it("Test case 1 : Create a test user", function (done)
+        {
+            var User = require('../models/user');
+			var newUser = new User({
+				name: 'testcreateUser1',
+				email: 'createUser@dek.vn',
+				username: 'testcreateUser',
+				password: '123',
+				role: 'guest',
+			    confirmed: false
+            });
+			User.createUser(newUser, function(err, user) {});
+			User.getUserByUsername(newUser.username, function(err, user) {
+				assert.equal(isEmpty(user), false, "This is ok!!!!")
+				done();
+			});
+        });
+    });
+	
+	
+    describe("", function ()
+    {
+        return it("Test case 2 : name is empty", function (done)
+        {
+            var User = require('../models/user');
+			var newUser = new User({
+				name: '',
+				email: 'createUser@dek.vn',
+				username: 'testcreateUser',
+				password: '123',
+				role: 'guest',
+			    confirmed: false
+            });
+			User.createUser(newUser, function(err, user) {
+				assert.equal(newUser.name, '', "This is ok!!!!")
+				User.getUserByUsername(newUser.username, function(err, user) {
+				assert.equal(isEmpty(user), false, "This is ok!!!!")
+				done();
+				});
+			});
+		});
+   });	
+	
+	
+    describe("", function ()
+    {
+        return it("Test case 3 : email is empty", function (done)
+        {
+            var User = require('../models/user');
+			var newUser = new User({
+				name: 'testcreateUser2',
+				email: '',
+				username: 'testcreateUser',
+				password: '123',
+				role: 'guest',
+			    confirmed: false
+            });
+			User.createUser(newUser, function(err, user) {
+				assert.equal(newUser.email, '', "This is ok!!!!")
+				User.getUserByUsername(newUser.username, function(err, user) {
+					assert.equal(isEmpty(user), false, "This is ok!!!!")
+					done();
+				});
+			});
+        });
+    });	
+
+    describe("", function ()
+    {
+        return it("Test case 4 : username is empty", function (done)
+        {
+            var User = require('../models/user');
+			var newUser = new User({
+				name: 'testcreateUser3',
+				email: 'createUser@dek.vn',
+				username: '',
+				password: '123',
+				role: 'guest',
+			    confirmed: false
+            });
+			User.createUser(newUser, function(err, user) {
+				assert.equal(isEmpty(user), false, "This is ok!!!!")
+				User.getUserByUsername(newUser.username, function(err, user) {
+					assert.equal(isEmpty(user), false, "This is ok!!!!")
+					done();
+				});
+			});
+        });
+    });	
+
+    describe("", function ()
+    {
+        return it("Test case 5 : password is empty", function (done)
+        {
+            var User = require('../models/user');
+			var newUser = new User({
+				name: 'testcreateUser4',
+				email: 'createUser@dek.vn',
+				username: 'testcreateUser',
+				password: '',
+				role: 'guest',
+			    confirmed: false
+            });
+			User.createUser(newUser, function(err, user) {
+				assert.equal(isEmpty(user), false, "This is ok!!!!")
+				User.getUserByUsername(newUser.username, function(err, user) {
+					assert.equal(isEmpty(user), false, "This is ok!!!!")
+					done();
+				});
+			});
+        });
+    });	
+
+    describe("", function ()
+    {
+        return it("Test case 6 : role is empty", function (done)
+        {
+            var User = require('../models/user');
+			var newUser = new User({
+				name: 'testcreateUser5',
+				email: 'createUser@dek.vn',
+				username: 'testcreateUser',
+				password: '123',
+				role: '',
+			    confirmed: false
+            });
+			User.createUser(newUser, function(err, user) {
+				assert.equal(isEmpty(user), false, "This is ok!!!!")
+				User.getUserByUsername(newUser.username, function(err, user) {
+					assert.equal(isEmpty(user), false, "This is ok!!!!")
+					done();
+				});
+			});
+        });
+    });		
+	
+	
+    describe("", function ()
+    {
+        return it("Test case 7 :  confirmed is empty", function (done)
+        {
+            var User = require('../models/user');
+			var newUser = new User({
+				name: 'testcreateUser6',
+				email: 'createUser@dek.vn',
+				username: 'testcreateUser',
+				password: '123',
+				role: '',
+			    confirmed: ''
+            });
+			User.createUser(newUser, function(err, user) {
+				assert.equal(isEmpty(user), false, "This is ok!!!!")
+				User.getUserByUsername(newUser.username, function(err, usertest) {
+					assert.equal(isEmpty(usertest), false, "This is ok!!!!")
+					done();
+				});
+			});
+        });
+    });			
+	
+	describe("", function ()
+    {
+        return it("Test case 8 :  all are empty", function (done)
+        {
+            var User = require('../models/user');
+			var newUser = new User({
+				name: '',
+				email: '',
+				username: '',
+				password: '',
+				role: '',
+			    confirmed: ''
+            });
+			User.createUser(newUser, function(err, user) {
+				assert.equal(isEmpty(user), false, "This is ok!!!!")
+				User.getUserByUsername(newUser.username, function(err, user) {
+					assert.equal(isEmpty(user), false, "This is ok!!!!")
+					done();
+				});
+			});
+        });
+    });	
+});
+
+//-----------------------------------------------------------------------
+
