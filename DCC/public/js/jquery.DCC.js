@@ -1,13 +1,5 @@
-/**
- * jquery.dlmenu.js v1.0.1
- * http://www.codrops.com
- *
- * Licensed under the MIT license.
- * http://www.opensource.org/licenses/mit-license.php
- * 
- * Copyright 2013, Codrops
- * http://www.codrops.com
- */
+
+/*----------transparent dropdown menu--------------*/
 ;( function( $, window, undefined ) {
 
 	'use strict';
@@ -39,7 +31,7 @@
 			this.options = $.extend( true, {}, $.DLMenu.defaults, options );
 			// cache some elements and initialize some variables
 			this._config();
-			
+
 			var animEndEventNames = {
 					'WebkitAnimation' : 'webkitAnimationEnd',
 					'OAnimation' : 'oAnimationEnd',
@@ -77,10 +69,10 @@
 			var self = this;
 
 			this.$trigger.on( 'click.dlmenu', function() {
-				
+
 				if( self.open ) {
 					self._closeMenu();
-				} 
+				}
 				else {
 					self._openMenu();
 				}
@@ -89,7 +81,7 @@
 			} );
 
 			this.$menuitems.on( 'click.dlmenu', function( event ) {
-				
+
 				event.stopPropagation();
 
 				var $item = $(this),
@@ -127,7 +119,7 @@
 			} );
 
 			this.$back.on( 'click.dlmenu', function( event ) {
-				
+
 				var $this = $( this ),
 					$submenu = $this.parents( 'ul.dl-submenu:first' ),
 					$item = $submenu.parent(),
@@ -150,7 +142,7 @@
 					}
 
 					$item.removeClass( 'dl-subviewopen' );
-					
+
 					var $subview = $this.parents( '.dl-subview:first' );
 					if( $subview.is( 'li' ) ) {
 						$subview.addClass( 'dl-subviewopen' );
@@ -161,7 +153,7 @@
 				return false;
 
 			} );
-			
+
 		},
 		closeMenu : function() {
 			if( this.open ) {
@@ -174,11 +166,11 @@
 					self.$menu.off( self.transEndEventName );
 					self._resetMenu();
 				};
-			
+
 			this.$menu.removeClass( 'dl-menuopen' );
 			this.$menu.addClass( 'dl-menu-toggle' );
 			this.$trigger.removeClass( 'dl-active' );
-			
+
 			if( this.supportTransitions ) {
 				this.$menu.on( this.transEndEventName, onTransitionEndFn );
 			}
@@ -234,9 +226,9 @@
 				}
 				instance[ options ].apply( instance, args );
 			});
-		} 
+		}
 		else {
-			this.each(function() {	
+			this.each(function() {
 				var instance = $.data( this, 'dlmenu' );
 				if ( instance ) {
 					instance._init();
@@ -248,5 +240,50 @@
 		}
 		return this;
 	};
-
 } )( jQuery, window );
+
+
+
+
+
+/*---------read-more button------------*/
+$(function() {
+
+			var $el, $ps, $up, totalHeight;
+
+			$(".sidebar-box .button").click(function() {
+
+				// IE 7 doesn't even get this far. I didn't feel like dicking with it.
+
+				totalHeight = 111
+
+				$el = $(this);
+				$p  = $el.parent();
+				$up = $p.parent();
+				$ps = $up.find("p:not('.read-more')");
+
+				// measure how tall inside should be by adding together heights of all inside paragraphs (except read-more paragraph)
+				$ps.each(function() {
+					totalHeight += $(this).outerHeight();
+					// FAIL totalHeight += $(this).css("margin-bottom");
+				});
+
+				$up
+					.css({
+						// Set height to prevent instant jumpdown when max height is removed
+						"height": $up.height(),
+						"max-height": 9999
+					})
+					.animate({
+						"height": totalHeight
+					});
+
+				// fade out read-more
+				$p.fadeOut();
+
+				// prevent jump-down
+				return false;
+
+			});
+
+		});

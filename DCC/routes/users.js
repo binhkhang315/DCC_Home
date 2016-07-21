@@ -30,19 +30,18 @@ mongodb.connect('mongodb://localhost/loginapp', function(error, db) {
   setRoles();
 });
 var User = require('../models/user');
-// get homepage
+
 router.get('/register', function(req, res) {
   res.render('register');
 });
-// login route
-router.get('/login', function(req, res) {
-  res.render('login');
+router.get('/courses', function(req, res) {
+  res.render('courses');
 });
 router.get('/coursesoverview', function(req, res) {
   res.render('coursesoverview');
 });
-router.get('/userid', function(req, res) {
-  res.render('userdashboard');
+router.get('/trainerdashboard', function(req, res) {
+  res.render('trainerdashboard');
 });
 // dashboard route is only for admin
 router.get('/dashboard', ensureAuthenticated, function(req, res) {
