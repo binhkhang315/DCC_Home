@@ -151,9 +151,9 @@ describe("<Unit test for Login>", function ()
 
 //-----------------------------------------------------------------------
 
-describe("<Unit Test Register >", function ()
+/*describe("<Unit Test Register >", function ()
 {
-    /*describe("", function ()
+    describe("", function ()
     {
         return it("Test case 1 : true with role is admin", function (done)
         {
@@ -545,9 +545,9 @@ describe("<Unit test for getUserByEmail function>", function ()
 
 //-----------------------------------------------------------------------
 
-/*describe("<Unit test for getUserById function>", function ()
+describe("<Unit test for getUserById function>", function ()
 {
-    describe("", function ()
+    /*describe("", function ()
     {
         return it("Test case 1 : id is existed in the database", function (done)
         {
