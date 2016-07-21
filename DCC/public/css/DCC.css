@@ -1,3 +1,10 @@
+.text{
+  border: 2px solid #000000;
+  padding: 10px 10px;
+  background-color: #D3D3D3 ;
+}
+
+
 .navbar-logo {
   float: left right top bottom;
   height: 50px;
@@ -259,23 +266,20 @@
 	transform: translateY(0px);
 }
 
+
+
 /*------------  ( FEATURES )  ------------*/
 .features {
 	padding-top: 10px;
 	margin-bottom: 30px;
 	/*border-top: 2px solid #f4f4f4;*/
-}
 
+}
 .features .features {
 	text-align: center;
-}
+  max-width: 350px;
 
-.features .features-title, .comment-reply-title, .comments-title, .pings-title {
-	font-size: 16px;
-	margin-bottom: 16px;
-	letter-spacing: 1px;
 }
-
 .features .features-thumb {
 	margin-bottom: 12px;
 	overflow: hidden;
@@ -286,34 +290,9 @@
     -webkit-transition: background-color 0.3s ease-in-out;
     -o-transition: background-color 0.3s ease-in-out;
 }
-
-.features .features-thumb:hover {
-	background-color: #f1b458;
-}
-
-.features .features-thumb a {
-	display: block;
-	width: 100%;
-}
-
 .features .features-thumb a img {
 	width: 100%;
 }
-
-.features .features-thumb.no-thumb {
-	min-height: 120px;
-}
-
-.rfeatures .features-thumb i {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	color: #fff;
-	font-size: 16px;
-	margin-left: -8px;
-	margin-top: -8px;
-}
-
 .features .features-thumb .overlay {
 	opacity: 0;
 	position: absolute;
@@ -327,11 +306,9 @@
     -webkit-transition: opacity 0.3s ease-in-out;
     -o-transition: opacity 0.3s ease-in-out;
 }
-
 .features .features-thumb:hover .overlay {
 	opacity: 0.5;
 }
-
 .features h4 {
 	font-size: 11px;
 	font-weight: 700;
