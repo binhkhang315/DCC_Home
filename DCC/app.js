@@ -31,14 +31,23 @@ app.use(cookieParser());
 
 // Set Static Folder
 app.use(express.static(path.join(__dirname, 'public')));
+var fs = require('fs');
+var util = require('util');
+var log_file = fs.createWriteStream(__dirname + '/debug.log', {flags : 'w'});
+var log_stdout = process.stdout;
 
+delog = function(d) {
+  var date = new Date();
+  log_file.write(  "["+ date.getMonth()+"/"+ date.getDate()+"/" +date.getFullYear()+" : " +
+    date.getHours() +":"+date.getMinutes()+":"+date.getSeconds() + "] : " + util.format(d) + '\n' );
+};
 // Express Session
 app.use(session({
     secret: 'secret',
     saveUninitialized: true,
     resave: true
 }));
-
+delog("testing log");
 // Passport init
 app.use(passport.initialize());
 app.use(passport.session());
