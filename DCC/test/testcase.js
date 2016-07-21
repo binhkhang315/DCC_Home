@@ -3,7 +3,7 @@ var server = request.agent("http://192.168.122.51");
 var assert = require('chai').assert;
 var expect = require('chai').expect;
 var mongoose = require('mongoose');
-
+var delog = require('../delog');
 mongoose.connect('mongodb://localhost/loginapp');
 var db = mongoose.connection;
 
@@ -589,7 +589,7 @@ describe("<Unit test for comparePassword function>", function ()
 			});
         });
     });
-	
+
 	describe("", function ()
     {
         return it("Test case 2 : two passwords are different", function (done)
@@ -603,7 +603,7 @@ describe("<Unit test for comparePassword function>", function ()
 			});
         });
     });
-	
+
 	describe("", function ()
     {
         return it("Test case 3 : test if there are err or not, fail if err appeare", function (done)

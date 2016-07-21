@@ -10,7 +10,7 @@ var transporter = nodeMailer.createTransport('smtps://lukai.lotho%40gmail.com:co
 var crypto = require('crypto');
 var algorithm = 'aes-256-ctr';
 var passwd = 'd6F3Efeq';
-
+var delog = require('../delog');
 function encrypt(text){
   var cipher = crypto.createCipher(algorithm,passwd)
   var crypted = cipher.update(text,'utf8','hex')
@@ -98,6 +98,7 @@ router.post('/register', function(req, res) {
   var password = req.body.password;
   var password2 = req.body.password2;
   var role = req.body.role;
+  delog(req.body);
   var mailOptions = {
     from: '"DCC Mailer"<lukai.lotho@gmail.com>', // sender address
     to: email, // list of receivers

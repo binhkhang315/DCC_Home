@@ -1,0 +1,13 @@
+[6/21/2016 : 16:18:26] : testing log
+[6/21/2016 : 16:19:6] : { name: 'Tesss',
+  username: 'tessss',
+  email: 'testting@gmail.com',
+  password: 'Aa123456',
+  password2: 'Aa123456',
+  role: 'admin' }
+[6/21/2016 : 16:20:33] : { name: 'Vo',
+  username: 'Vo',
+  email: 'mr.death.305@gmail.com',
+  password: 'Aa123456',
+  password2: 'Aa123456',
+  role: 'guest' }
