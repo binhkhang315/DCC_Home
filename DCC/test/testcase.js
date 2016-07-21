@@ -589,7 +589,7 @@ describe("<Unit test for comparePassword function>", function ()
 			});
         });
     });
-
+	
 	describe("", function ()
     {
         return it("Test case 2 : two passwords are different", function (done)
@@ -598,6 +598,21 @@ describe("<Unit test for comparePassword function>", function ()
 			User.getUserByUsername('dek', function(err, user) {
 				User.comparePassword('123456', user.password, function(err, isMatch) {
 				assert.equal(isMatch, false, "This is ok!!!!")
+				done();
+				});
+			});
+        });
+    });
+	
+	describe("", function ()
+    {
+        return it("Test case 3 : test if there are err or not, fail if err appeare", function (done)
+        {
+			var User = require('../models/user');
+			User.getUserByUsername('dek', function(err, user) {
+				User.comparePassword('123', user.password, function(err, isMatch) {
+				assert.equal(isMatch, true, "This is ok!!!!")
+				assert.equal(err, null, "This is ok!!!!")
 				done();
 				});
 			});
