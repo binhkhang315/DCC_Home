@@ -5,24 +5,9 @@ var LocalStrategy = require('passport-local').Strategy;
 var acl = require('acl');
 var mongodb = require('mongodb');
 // Email Setting
-var nodeMailer = require('nodemailer');
-var transporter = nodeMailer.createTransport('smtps://lukai.lotho%40gmail.com:conChuot@smtp.gmail.com');
-var crypto = require('crypto');
-var algorithm = 'aes-256-ctr';
-var passwd = 'd6F3Efeq';
+
 var delog = require('../delog');
-function encrypt(text){
-  var cipher = crypto.createCipher(algorithm,passwd)
-  var crypted = cipher.update(text,'utf8','hex')
-  crypted += cipher.final('hex');
-  return crypted;
-}
-function decrypt(text){
-  var decipher = crypto.createDecipher(algorithm,passwd)
-  var dec = decipher.update(text,'hex','utf8')
-  dec += decipher.final('utf8');
-  return dec;
-}
+
 // Or Using the mongodb backend
 mongodb.connect('mongodb://localhost/loginapp', function(error, db) {
   var mongoBackend = new acl.mongodbBackend(db, 'acl_');
@@ -58,15 +43,7 @@ router.get('/dashboard', ensureAuthenticated, function(req, res) {
     });
   });
 });
-// confirm email
-router.get('/confirm', function(req, res){
-  var code = req.query.code;
-	var user = decrypt(code);
-	User.update({username:user},{$set:{confirmed:true}},{ multi: false },function(){
-		req.flash('success_msg', 'Your email has been confirmed!');
-		res.redirect('/');
-	});
-});
+
 
 // ensure authenticated
 function ensureAuthenticated(req, res, next) {
@@ -102,13 +79,7 @@ router.post('/register', function(req, res) {
 
   var role = req.body.role;
   delog(req.body);
-  var mailOptions = {
-    from: '"DCC Mailer"<lukai.lotho@gmail.com>', // sender address
-    to: email, // list of receivers
-    subject: 'Confirmation email', // Subject line
-    text: 'Please click the link below to complete registration:', // plaintext body
-    html: '<a href="http://'+req.get('host')+'/users/confirm?code='+encrypt(username)+'">Please click here to complete registration âœ…</a>'
-	};
+
 
   var errors = req.validationErrors();
 
@@ -135,8 +106,7 @@ router.post('/register', function(req, res) {
               email: email,
               username: username,
               password: password,
-              role: role,
-			        confirmed: false
+              role: role
             });
             User.createUser(newUser, function(err) {
               if (err)
@@ -144,10 +114,7 @@ router.post('/register', function(req, res) {
               // add user and role to database
               acl.addUserRoles(username, role);
               //------------------------------
-              transporter.sendMail(mailOptions, function(error, info){
-                if (error)
-                  throw error;
-            	});
+
               req.flash('success_msg', 'You are registered.');
               res.redirect('/');
             });
