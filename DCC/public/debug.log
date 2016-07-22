@@ -1,1 +1,7 @@
 [6/22/2016 : 9:56:15] : testing log
+[6/22/2016 : 10:49:16] : { name: 'truc',
+  username: 'tructran',
+  email: 'congtruc@gmail.com',
+  password: '1',
+  password2: '1',
+  role: 'guest' }
