@@ -12,16 +12,7 @@ function isEmpty(str) {
     return (!str || 0 === str.length);
 }
 
-describe('Test route module', function() {
-  describe('GET /', function() {
-     it('should respond 200', function (done) {
-        request(route)
-               .get('/')
-               .expect(200)
-               .end(done)
-     });
-  });
-});
+
 describe("<Unit test for Login>", function ()
 {
 	describe("", function ()
@@ -820,4 +811,16 @@ describe("<Unit test for createUser function>", function ()
     });
 });
 
+//-----------------------------------------------------------------------
+describe('Test function route', function() {
+  describe('GET /', function() {
+     it('Test case 1 : return statuscode 200', function () {
+        request(route)
+               .get('/',function(req, res){
+                 expect(res.statusCode).to.equal(200);
+               })
+
+     });
+  });
+});
 //-----------------------------------------------------------------------
