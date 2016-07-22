@@ -4,6 +4,7 @@ var assert = require('chai').assert;
 var expect = require('chai').expect;
 var mongoose = require('mongoose');
 var delog = require('../delog');
+var route = require('../routes/index.js');
 mongoose.connect('mongodb://localhost/loginapp');
 var db = mongoose.connection;
 
@@ -11,7 +12,16 @@ function isEmpty(str) {
     return (!str || 0 === str.length);
 }
 
-
+describe('Test route module', function() {
+  describe('GET /', function() {
+     it('should respond 200', function (done) {
+        request(route)
+               .get('/')
+               .expect(200)
+               .end(done)
+     });
+  });
+});
 describe("<Unit test for Login>", function ()
 {
 	describe("", function ()

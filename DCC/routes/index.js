@@ -4,6 +4,8 @@ var delog = require('../delog');
 // get homepage
 router.get('/',function(req, res){
     res.render('index');
+    res.statusCode = 200;
+    res.end()
   });
 
 function ensureAuthenticated(req, res, next){
