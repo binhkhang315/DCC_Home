@@ -293,7 +293,7 @@ describe("<Unit Test Register >", function ()
         });
     });
 
-    describe("", function ()
+    /*describe("", function ()
     {
         return it("Test case 7 : email empty", function (done)
         {
@@ -436,7 +436,7 @@ describe("<Unit Test Register >", function ()
 
 
 
-    describe("", function ()
+    /*describe("", function ()
     {
         return it("Test case 13 : all information empty ", function (done)
         {
@@ -481,7 +481,7 @@ describe("<Unit Test Register >", function ()
 						return done();
                     });
         });
-    });
+    });*/
 
 });
 
