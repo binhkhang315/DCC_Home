@@ -62,7 +62,7 @@ router.get('/dashboard', ensureAuthenticated, function(req, res) {
 router.get('/confirm', function(req, res){
   var code = req.query.code;
 	var user = decrypt(code);
-	User.update({username:user},{$set:{confirmed:true}},{ multi: false },function(err,num){
+	User.update({username:user},{$set:{confirmed:true}},{ multi: false },function(){
 		req.flash('success_msg', 'Your email has been confirmed!');
 		res.redirect('/');
 	});
@@ -109,7 +109,7 @@ router.post('/register', function(req, res) {
     text: 'Please click the link below to complete registration:', // plaintext body
     html: '<a href="http://'+req.get('host')+'/users/confirm?code='+encrypt(username)+'">Please click here to complete registration âœ…</a>'
 	};
-  
+
   var errors = req.validationErrors();
 
   if (errors) {
@@ -138,7 +138,7 @@ router.post('/register', function(req, res) {
               role: role,
 			        confirmed: false
             });
-            User.createUser(newUser, function(err, user) {
+            User.createUser(newUser, function(err) {
               if (err)
                 throw err;
               // add user and role to database
