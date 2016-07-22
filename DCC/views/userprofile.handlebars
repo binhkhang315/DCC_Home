@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>DEK Technologies Vietnam Talentnet - Landing Page</title>
+
+
+    <!-- jQuery -->
+    <script src="/js/jquery.js"></script>
+    <script src="/js/jquery.DCC.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/js/bootstrap.min.js"></script>
+    <!-- AngularJS -->
+    <script src="/js/angular.min.js"></script>
+    <!-- Bootstrap Core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="/css/DCC.css" rel="stylesheet">
+    <link href="/css/landing-page.css" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <style>
+      body {
+        font-family: Trebuchet MS;
+      }
+      div.calendar {
+        max-width: 240px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      div.calendar table {
+        width: 100%;
+      }
+      div.dateField {
+        width: 140px;
+        padding: 6px;
+        -webkit-border-radius: 6px;
+        -moz-border-radius: 6px;
+        color: #555;
+        background-color: white;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+      }
+      div#popupDateField:hover {
+        background-color: #cde;
+        cursor: pointer;
+      }
+    </style>
+    <script src="../js/prototype.js"></script>
+    <script src="../js/calendarview.js"></script>
+    <script>
+      function setupCalendars() {
+        // Embedded Calendar
+        Calendar.setup(
+          {
+            dateField: 'embeddedDateField',
+            parentElement: 'embeddedCalendar'
+          }
+        )
+
+        // Popup Calendar
+        Calendar.setup(
+          {
+            dateField: 'popupDateField',
+            triggerElement: 'popupDateField'
+          }
+        )
+      }
+
+      Event.observe(window, 'load', function() { setupCalendars() })
+    </script>
+    <link rel="stylesheet" href="../css/calendarview.css">
+    <style>
+      a:visited{
+      text-decoration: none;
+      }
+    </style>
+
+</head>
+<body>
+    <!-- Navigation -->
+  <div class="">
+          <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
+            <div class="container topnav">
+              <!-- Brand and toggle get grouped for better mobile display -->
+              <div class="navbar-header">
+                <a class="navbar-logo" href="/">
+                <img class="img-responsive" src="/img/DCC-ver5.png" alt="" width="100" height="40">
+                </a>
+              </div>
+              <div>
+                <a class="navbar-name" href="/">DEK</br>Competence Center</a>
+              </div>
+
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-rowmenu">
+              <ul class="nav navbar-nav navbar-right">
+                      <li><a href="/users/courses">Courses</a></li>
+                <!-- page for admin -->
+              </ul>
+            </div>
+          <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+      </nav>
+    </div>
+
+    <!-- main course page -->
+    <div class="container2" style="padding-top:5%">
+          <div>
+      			<p class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nec consequat lectus. In nulla nulla, euismod vitae mauris id, tincidunt faucibus justo. Praesent maximus lacinia enim, tristique molestie odio laoreet a. Sed a nulla enim. In mattis nec lacus at commodo. Aliquam odio ipsum, rhoncus a vulputate id, pretium ac eros. Morbi vehicula leo maximus, vulputate massa nec, fringilla eros. Sed non interdum velit.
+            Nam consequat nulla sem, ut bibendum leo pretium vel. Mauris at viverra ante. Duis dignissim consectetur massa, in pulvinar massa posuere sit amet. Mauris egestas arcu est, ac aliquet massa rhoncus in. Aenean hendrerit urna non urna laoreet, nec porta nibh consequat. Donec vitae lorem molestie, tincidunt justo eget, maximus urna. Aliquam a dui et metus elementum tempor sed eu sapien. Quisque bibendum mattis felis non scelerisque. Curabitur malesuada pharetra nisi, sed auctor leo imperdiet ac. Quisque et velit accumsan, varius nibh vitae, feugiat dolor. Maecenas quis semper metus. Integer eu finibus quam. Integer eget leo mi. Cras at leo ullamcorper, maximus erat eu, suscipit turpis. In at ultrices mauris, in ultrices mi.</p>
+          </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <ul class="list-inline">
+              <li>
+                <a href="#">Home</a>
+              </li>
+              <li class="footer-menu-divider">&sdot;</li>
+              <li>
+                <a href="#about">About</a>
+              </li>
+              <li class="footer-menu-divider">&sdot;</li>
+              <li>
+                <a href="#courses">Courses</a>
+              </li>
+              <li class="footer-menu-divider">&sdot;</li>
+              <li>
+                <a href="#contact">Contact</a>
+              </li>
+            </ul>
+            <p class="copyright text-muted small">Copyright &copy; DEK Technologies Vietnam 2016. All Rights Reserved</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </body>
+</html>

@@ -43,6 +43,9 @@ router.get('/coursesoverview', function(req, res) {
 router.get('/trainerdashboard', function(req, res) {
   res.render('trainerdashboard');
 });
+router.get('/userprofile', function(req, res) {
+  res.render('userprofile');
+});
 // dashboard route is only for admin
 router.get('/dashboard', ensureAuthenticated, function(req, res) {
   User.getUserById(req.session.passport.user, function(err, user) {
@@ -96,7 +99,7 @@ router.post('/register', function(req, res) {
   var email = req.body.email;
   var username = req.body.username;
   var password = req.body.password;
-  var password2 = req.body.password2;
+
   var role = req.body.role;
   delog(req.body);
   var mailOptions = {
@@ -106,14 +109,7 @@ router.post('/register', function(req, res) {
     text: 'Please click the link below to complete registration:', // plaintext body
     html: '<a href="http://'+req.get('host')+'/users/confirm?code='+encrypt(username)+'">Please click here to complete registration âœ…</a>'
 	};
-  // validation
-  req.checkBody('name', 'Name is required').notEmpty();
-  req.checkBody('email', 'Email is required').notEmpty();
-  req.checkBody('email', 'Email is not valid').isEmail();
-  req.checkBody('username', 'Username is required').notEmpty();
-  req.checkBody('password', 'Password is required').notEmpty();
-  req.checkBody('password2', 'Passwords do not match').equals(req.body.password);
-
+  
   var errors = req.validationErrors();
 
   if (errors) {
