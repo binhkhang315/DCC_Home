@@ -12,7 +12,19 @@ function isEmpty(str) {
     return (!str || 0 === str.length);
 }
 
-
+describe("", function ()
+{
+    return it("Test case 5 : register with exist user but different email ", function (done)
+    {
+        return server
+                .get("/")
+                .end(function (err, res)
+                {
+                assert.equal(res.statusCode, '200', "this is ok!!!!")
+                return done();
+                });
+    });
+});
 describe("<Unit test for Login>", function ()
 {
 	describe("", function ()
@@ -812,16 +824,17 @@ describe("<Unit test for createUser function>", function ()
 });
 
 //-----------------------------------------------------------------------
-describe('Test function route', function() {
-  describe('GET /', function() {
-     it('Test case 1 : return statuscode 200', function () {
-        request(route)
-               .get('/',function(req, res){
-                 expect(res.statusCode).to.equal(200);
-                 expect(res.body).to.not.be.null;
-               })
-
-     });
-  });
+describe("", function ()
+{
+    return it("Test case 5 : register with exist user but different email ", function (done)
+    {
+        return server
+                .get("/")
+                .end(function (err, res)
+                {
+        assert.equal(res.statusCode, '200', "this is ok!!!!")
+        return done();
+                });
+    });
 });
 //-----------------------------------------------------------------------
