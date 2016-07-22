@@ -818,6 +818,7 @@ describe('Test function route', function() {
         request(route)
                .get('/',function(req, res){
                  expect(res.statusCode).to.equal(200);
+                 expect(res.body).to.not.be.null;
                })
 
      });
