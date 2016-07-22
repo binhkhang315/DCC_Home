@@ -12,15 +12,53 @@ function isEmpty(str) {
     return (!str || 0 === str.length);
 }
 
-describe("", function ()
+describe("Testing routing", function ()
 {
-    return it("Test case 5 : register with exist user but different email ", function (done)
+    return it("Test case 1 : get / ", function (done)
     {
         return server
                 .get("/")
                 .end(function (err, res)
                 {
                 assert.equal(res.statusCode, '200', "this is ok!!!!")
+                return done();
+                });
+    });
+});
+describe("Testing routing", function ()
+{
+    return it("Test case 2 : get /courses ", function (done)
+    {
+        return server
+                .get("/users/courses")
+                .end(function (err, res)
+                {
+                assert.equal(res.statusCode, '200', "this is ok!!!!")
+                return done();
+                });
+    });
+});
+describe("Testing routing", function ()
+{
+    return it("Test case 3 : get /coursesoverview ", function (done)
+    {
+        return server
+                .get("/users/coursesoverview")
+                .end(function (err, res)
+                {
+                assert.equal(res.statusCode, '200', "this is ok!!!!")
+                return done();
+                });
+    });
+});describe("Testing routing", function ()
+{
+    return it("Test case 4 : redirect /coursesoverview ", function (done)
+    {
+        return server
+                .get("/users/success")
+                .end(function (err, res)
+                {
+                assert.equal(res.statusCode, '302', "this is ok!!!!")
                 return done();
                 });
     });
