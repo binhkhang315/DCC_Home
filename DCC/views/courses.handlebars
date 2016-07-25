@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
+
+
     <title>DEK Technologies Vietnam Talentnet - Landing Page</title>
     <link rel="icon" href="/img/course-icon.jpg" />
     <!-- jQuery -->
@@ -32,7 +34,14 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <style>
+    <script src="/js/jquery-2.1.4.js"></script>
+    <script src="/js/jquery.mobile.custom.min.js"></script>
+    <script src="/js/main.js"></script> <!-- Resource jQuery -->
+    <link rel="stylesheet" href="/css/reset.css"> <!-- CSS reset -->
+  	<link rel="stylesheet" href="/css/style2.css"> <!-- Resource style -->
+  	<script src="/js/modernizr.js"></script> <!-- Modernizr -->
+    <
+    style>
       a:visited{
       text-decoration: none;
       }
@@ -67,76 +76,127 @@
     </div>
 
     <!-- main course page -->
-    <div class="container">
-      <div class="row" style="padding-top: 10%">
-        <div class="col-sm-8">
-          <div>
-            <h1>
-              <p>
-                Timeline
-              </p>
-            </h1>
-          </div>
-          <p>
-           TimeLine
-          </p>
-          <div class="features">
-            <div class="row">
-              <div class="col-md-12">
-                <h3>
-                  FEATURES
-                </h3>
-              </div>
+    <div class="container" style="padding-top: 10%">
+        <section class="cd-horizontal-timeline">
+        	<div class="timeline">
+        		<div class="events-wrapper">
+        			<div class="events">
+        				<ol>
+        					<li><a href="#0" data-date="16/01/2014" class="selected">16 Jan</a></li>
+        					<li><a href="#0" data-date="28/02/2014">28 Feb</a></li>
+        					<li><a href="#0" data-date="20/04/2014">20 Mar</a></li>
+        					<li><a href="#0" data-date="20/05/2014">20 May</a></li>
+        					<li><a href="#0" data-date="09/07/2014">09 Jul</a></li>
+        					<li><a href="#0" data-date="30/08/2014">30 Aug</a></li>
+        					<li><a href="#0" data-date="15/09/2014">15 Sep</a></li>
+        					<li><a href="#0" data-date="01/11/2014">01 Nov</a></li>
+        					<li><a href="#0" data-date="10/12/2014">10 Dec</a></li>
+        					<li><a href="#0" data-date="19/01/2015">29 Jan</a></li>
+        					<li><a href="#0" data-date="03/03/2015">3 Mar</a></li>
+        				</ol>
 
-              <div class="features col-md-4">
-                <div class="features-thumb">
-                  <a href="https://www.dektech.com.au/">
-                    <img width="189" height="120" src="../img/doc-1.jpg" class="attachment-related-post size-related-post wp-post-image" alt="Website or salesman"/>
-                    <div class="overlay">
-                      <em class="icon-expand4">
-                      </em>
-                    </div>
-                  </a>
-                </div>
-                <h4>
-                  <a href="https://www.dektech.com.au/">DOCUMENTS</a>
-                </h4>
-              </div>
+        				<span class="filling-line" aria-hidden="true"></span>
+        			</div> <!-- .events -->
+        		</div> <!-- .events-wrapper -->
 
-              <div class="features col-md-4">
-                <div class="features-thumb">
-                  <a href="https://www.dektech.com.au/">
-                    <img width="189" height="120" src="../img/onl-test.jpg" class="attachment-related-post size-related-post wp-post-image" alt="Website or salesman"/>
-                    <div class="overlay">
-                      <em class="icon-expand4">
-                      </em>
-                    </div>
-                  </a>
-                </div>
-                <h4>
-                  <a href="https://www.dektech.com.au/">ONLINE TESTING</a>
-                </h4>
-              </div>
+        		<ul class="cd-timeline-navigation">
+        			<li><a href="#0" class="prev inactive">Prev</a></li>
+        			<li><a href="#0" class="next">Next</a></li>
+        		</ul> <!-- .cd-timeline-navigation -->
+        	</div> <!-- .timeline -->
 
-              <div class="features col-md-4">
-                <div class="features-thumb">
-                  <a href="https://www.dektech.com.au/">
-                    <img width="189" height="120" src="../img/feed-back.jpg" class="attachment-related-post size-related-post wp-post-image" alt="Website or salesman"/>
-                    <div class="overlay">
-                      <em class="icon-expand4">
-                      </em>
-                    </div>
-                  </a>
-                </div>
-                <h4>
-                  <a href="https://www.dektech.com.au/">FEEDBACKS</a>
-                </h4>
-              </div>
-            </div>
-          </div>
-        </div>
+        	<div class="events-content">
+        		<ol>
+        			<li class="selected" data-date="16/01/2014">
+        				<h2>Horizontal Timeline</h2>
+        				<em>January 16th, 2014</em>
+        				<p>
+        					Lorem ipsum dolor sit amet
+        				</p>
+        			</li>
 
-      </div>
+        			<li data-date="28/02/2014">
+        				<h2>Event title here</h2>
+        				<em>February 28th, 2014</em>
+        				<p>
+        					Lorem ipsum dolor sit amet
+        				</p>
+        			</li>
+
+        			<li data-date="20/04/2014">
+        				<h2>Event title here</h2>
+        				<em>March 20th, 2014</em>
+        				<p>
+        					Lorem ipsum dolor sit amet
+        				</p>
+        			</li>
+
+        			<li data-date="20/05/2014">
+        				<h2>Event title here</h2>
+        				<em>May 20th, 2014</em>
+        				<p>
+        					Lorem ipsum dolor sit amet
+        				</p>
+        			</li>
+
+        			<li data-date="09/07/2014">
+        				<h2>Event title here</h2>
+        				<em>July 9th, 2014</em>
+        				<p>
+        					Lorem ipsum dolor sit amet
+        				</p>
+        			</li>
+
+        			<li data-date="30/08/2014">
+        				<h2>Event title here</h2>
+        				<em>August 30th, 2014</em>
+        				<p>
+        					Lorem ipsum dolor sit amet
+        				</p>
+        			</li>
+
+        			<li data-date="15/09/2014">
+        				<h2>Event title here</h2>
+        				<em>September 15th, 2014</em>
+        				<p>
+        					Lorem ipsum dolor sit amet
+        				</p>
+        			</li>
+
+        			<li data-date="01/11/2014">
+        				<h2>Event title here</h2>
+        				<em>November 1st, 2014</em>
+        				<p>
+        					Lorem ipsum dolor sit amet
+        				</p>
+        			</li>
+
+        			<li data-date="10/12/2014">
+        				<h2>Event title here</h2>
+        				<em>December 10th, 2014</em>
+        				<p>
+        					Lorem ipsum dolor sit amet
+        				</p>
+        			</li>
+
+        			<li data-date="19/01/2015">
+        				<h2>Event title here</h2>
+        				<em>January 19th, 2015</em>
+        				<p>
+        					Lorem ipsum dolor sit amet
+        				</p>
+        			</li>
+
+        			<li data-date="03/03/2015">
+        				<h2>Event title here</h2>
+        				<em>March 3rd, 2015</em>
+        				<p>
+        					Lorem ipsum dolor sit amet
+        				</p>
+        			</li>
+        		</ol>
+        	</div> <!-- .events-content -->
+        </section>
     </div>
 
     <!-- Footer -->
