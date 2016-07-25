@@ -4,9 +4,9 @@ var assert = require('chai').assert;
 var expect = require('chai').expect;
 var mongoose = require('mongoose');
 var delog = require('../delog');
-var route = require('../routes/index.js');
-mongoose.connect('mongodb://localhost/loginapp');
-var db = mongoose.connection;
+var route = require('../app.js');
+//mongoose.connect('mongodb://localhost/loginapp');
+//var db = mongoose.connection;
 
 function isEmpty(str) {
     return (!str || 0 === str.length);
@@ -16,15 +16,76 @@ describe("Testing routing", function ()
 {
     return it("Test case 1 : get / ", function (done)
     {
-        return server
-                .get("/")
-                .end(function (err, res)
-                {
-                assert.equal(res.statusCode, '200', "this is ok!!!!")
-                return done();
-                });
+        request(route)
+          .get('/')
+          .expect(200,done)
     });
 });
+
+describe("Testing routing", function ()
+{
+    return it("Test case 2 : get /users/courses ", function (done)
+    {
+        request(route)
+          .get('/users/courses')
+          .expect(200,done)
+    });
+});
+
+describe("Testing routing", function ()
+{
+    return it("Test case 3 : get /users/success ", function (done)
+    {
+        request(route)
+          .get('/users/success')
+          .expect(302,done)
+    });
+});
+
+describe("Testing routing", function ()
+{
+    return it("Test case 4 : post /users/register ", function (done)
+    {
+        request(route)
+          .post('/users/register')
+          .send(
+                  {
+                      name: "admin",
+                      username: "admin",
+                      email: "admin@dek.vn",
+                      password: "dekvn123",
+                      role: "admin"
+                                  })
+                          .end(function (err, res)
+                          {
+                  assert.equal(res.headers.location, '/#registedfail', "this is ok!!!!")
+                  return done();
+                          });
+    });
+});
+
+describe("Testing routing", function ()
+{
+    return it("Test case 1 : get / ", function (done)
+    {
+        request(route)
+          .get('/')
+          .expect(200,done)
+    });
+});
+
+describe("Testing routing", function ()
+{
+    return it("Test case 1 : get / ", function (done)
+    {
+        request(route)
+          .get('/')
+          .expect(200,done)
+    });
+});
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
 describe("Testing routing", function ()
 {
     return it("Test case 2 : get /courses ", function (done)

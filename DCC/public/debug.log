@@ -1,0 +1,6 @@
+[6/25/2016 : 10:36:45] : testing log
+[6/25/2016 : 10:36:46] : { name: 'admin',
+  username: 'admin',
+  email: 'admin@dek.vn',
+  password: 'dekvn123',
+  role: 'admin' }
