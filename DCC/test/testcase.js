@@ -4,7 +4,7 @@ var assert = require('chai').assert;
 var expect = require('chai').expect;
 var mongoose = require('mongoose');
 var delog = require('../delog');
-
+var route = require('../app.js');
 //mongoose.connect('mongodb://localhost/loginapp');
 //var db = mongoose.connection;
 
@@ -14,14 +14,6 @@ function isEmpty(str) {
 
 describe("Testing routing", function ()
 {
-  //  var route = require('../app.js');
-    var route;
-  beforeEach(function () {
-    route = require('../app.js');
-  });
-  afterEach(function () {
-    route.close();
-  });
     return it("Test case 1 : get / ", function (done)
     {
         request(route)
@@ -32,13 +24,6 @@ describe("Testing routing", function ()
 
 describe("Testing routing", function ()
 {
-  var route;
-beforeEach(function () {
-  route = require('../app.js');
-});
-afterEach(function () {
-  route.close();
-});
     return it("Test case 2 : get /users/courses ", function (done)
     {
         request(route)
@@ -49,13 +34,6 @@ afterEach(function () {
 
 describe("Testing routing", function ()
 {
-  var route;
-beforeEach(function () {
-  route = require('../app.js');
-});
-afterEach(function () {
-  route.close();
-});
     return it("Test case 3 : get /users/success ", function (done)
     {
         request(route)
@@ -66,13 +44,6 @@ afterEach(function () {
 
 describe("Testing routing", function ()
 {
-  var route;
-beforeEach(function () {
-  route = require('../app.js');
-});
-afterEach(function () {
-  route.close();
-});
     return it("Test case 4 : post /users/register ", function (done)
     {
         request(route)
@@ -93,7 +64,25 @@ afterEach(function () {
     });
 });
 
+describe("Testing routing", function ()
+{
+    return it("Test case 1 : get / ", function (done)
+    {
+        request(route)
+          .get('/')
+          .expect(200,done)
+    });
+});
 
+describe("Testing routing", function ()
+{
+    return it("Test case 1 : get / ", function (done)
+    {
+        request(route)
+          .get('/')
+          .expect(200,done)
+    });
+});
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
