@@ -11,79 +11,122 @@ var route = require('../app.js');
 function isEmpty(str) {
     return (!str || 0 === str.length);
 }
+describe("<Unit Test for Routing>", function (){
+  describe("", function ()
+  {
+      return it("Test case 1 : get / ", function (done)
+      {
+          request(route)
+            .get('/')
+            .expect(200,done)
+      });
+  });
 
-describe("Testing routing", function ()
-{
-    return it("Test case 1 : get / ", function (done)
+  describe("", function ()
+  {
+      return it("Test case 2 : get /users/courses ", function (done)
+      {
+          request(route)
+            .get('/users/courses')
+            .expect(200,done)
+      });
+  });
+
+  describe("", function ()
+  {
+      return it("Test case 3 : get /users/success ", function (done)
+      {
+          request(route)
+            .get('/users/success')
+            .expect(302,done)
+      });
+  });
+
+  describe("", function ()
+  {
+      return it("Test case 4 : post /users/register ", function (done)
+      {
+          request(route)
+            .post('/users/register')
+            .send(
+                    {
+                        name: "admin",
+                        username: "admin",
+                        email: "admin@dek.vn",
+                        password: "dekvn123",
+                        role: "admin"
+                                    })
+                            .end(function (err, res)
+                            {
+                    assert.equal(res.headers.location, '/#registedfail', "this is ok!!!!")
+                    return done();
+                            });
+      });
+  });
+
+  describe("", function ()
+  {
+      return it("Test case 5 : get /users/coursesoverview ", function (done)
+      {
+          request(route)
+            .get('/users/coursesoverview')
+            .expect(200,done)
+      });
+  });
+
+  describe("", function ()
+  {
+      return it("Test case 6 : get /users/trainerdashboard ", function (done)
+      {
+          request(route)
+            .get('/users/trainerdashboard')
+            .expect(200,done)
+      });
+  });
+
+  describe("", function ()
+  {
+      return it("Test case 7 : get /users/userprofile ", function (done)
+      {
+          request(route)
+            .get('/users/userprofile')
+            .expect(200,done)
+      });
+  });
+
+  describe("", function ()
+  {
+    return it("Test case 8 : get /users/dashboard ", function (done)
     {
         request(route)
-          .get('/')
-          .expect(200,done)
+          .get('/users/dashboard')
+          .end(function (err, res)
+          {
+             assert.equal(res.headers.location, '/', "this is ok!!!!")
+             return done();
+          });
     });
+  });
+  describe("", function ()
+  {
+      return it("Test case 9 : post /users/login ", function (done)
+      {
+          request(route)
+            .post('/users/login')
+            .send(
+                {
+                  username: "admin",
+                  password: "dekvn123"
+                })
+            .get('/users/dashboard')
+            .end(function (err, res)
+            {
+               assert.equal(res.headers.location, 'dashboard', "this is ok!!!!")
+               return done();
+            });
+      });
+  });
 });
-
-describe("Testing routing", function ()
-{
-    return it("Test case 2 : get /users/courses ", function (done)
-    {
-        request(route)
-          .get('/users/courses')
-          .expect(200,done)
-    });
-});
-
-describe("Testing routing", function ()
-{
-    return it("Test case 3 : get /users/success ", function (done)
-    {
-        request(route)
-          .get('/users/success')
-          .expect(302,done)
-    });
-});
-
-describe("Testing routing", function ()
-{
-    return it("Test case 4 : post /users/register ", function (done)
-    {
-        request(route)
-          .post('/users/register')
-          .send(
-                  {
-                      name: "admin",
-                      username: "admin",
-                      email: "admin@dek.vn",
-                      password: "dekvn123",
-                      role: "admin"
-                                  })
-                          .end(function (err, res)
-                          {
-                  assert.equal(res.headers.location, '/#registedfail', "this is ok!!!!")
-                  return done();
-                          });
-    });
-});
-
-describe("Testing routing", function ()
-{
-    return it("Test case 1 : get / ", function (done)
-    {
-        request(route)
-          .get('/')
-          .expect(200,done)
-    });
-});
-
-describe("Testing routing", function ()
-{
-    return it("Test case 1 : get / ", function (done)
-    {
-        request(route)
-          .get('/')
-          .expect(200,done)
-    });
-});
-
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 describe("Testing routing", function ()
@@ -111,7 +154,8 @@ describe("Testing routing", function ()
                 return done();
                 });
     });
-});describe("Testing routing", function ()
+});
+describe("Testing routing", function ()
 {
     return it("Test case 4 : redirect /coursesoverview ", function (done)
     {
