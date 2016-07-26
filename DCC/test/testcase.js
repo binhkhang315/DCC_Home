@@ -226,7 +226,7 @@ describe("<Unit test for Login>", function ()
 
 describe("<Unit Test Register >", function ()
 {
-    describe("", function ()
+    /*describe("", function ()
 	{
       return it("Test case 1 : register success", function (done)
       {
@@ -246,7 +246,7 @@ describe("<Unit Test Register >", function ()
 				return done();
             });
 		});
-	});
+	});*/
 	
 	describe("", function ()
 	{
