@@ -183,13 +183,33 @@ describe("<Unit test for Login>", function ()
 	
 	describe("", function ()
 	{
-		return it("Test case 2 : Login fail", function (done)
+		return it("Test case 2 : username did not exist, login fail", function (done)
 		{
 			request(route)
 				.post('/users/login')
 				.send(
                 {
 					username: "fakeUser",
+					password: "fakeUser"
+                })
+
+				.end(function (err, res)
+				{
+					assert.equal(res.headers.location, 'failure', "this is ok!!!!")
+					return done();
+				});
+		});
+	});
+	
+	describe("", function ()
+	{
+		return it("Test case 3 : username true, password false. Login fail", function (done)
+		{
+			request(route)
+				.post('/users/login')
+				.send(
+                {
+					username: "admin",
 					password: "fakeUser"
                 })
 
