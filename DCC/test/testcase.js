@@ -226,7 +226,7 @@ describe("<Unit test for Login>", function ()
 
 describe("<Unit Test Register >", function ()
 {
-    /*describe("", function ()
+    describe("", function ()
 	{
       return it("Test case 1 : register success", function (done)
       {
@@ -234,10 +234,10 @@ describe("<Unit Test Register >", function ()
             .post('/users/register')
             .send(
 				{
-					name: "testRegister",
-					username: "testRegister",
-					email: "testRegister@dek.vn",
-					password: "testRegister",
+					name: "testRegisterForTest",
+					username: "testRegisterForTest",
+					email: "testRegisterForTest@dek.vn",
+					password: "testRegisterForTest",
 					role: "admin"
 				})
 			.end(function (err, res)
@@ -246,7 +246,7 @@ describe("<Unit Test Register >", function ()
 				return done();
             });
 		});
-	});*/
+	});
 	
 	describe("", function ()
 	{
