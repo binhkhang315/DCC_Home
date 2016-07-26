@@ -21,6 +21,7 @@
     <!-- Custom CSS -->
     <link href="/css/DCC.css" rel="stylesheet">
     <link href="/css/landing-page.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" media="all" href="/css/styles.css">
     <!-- Custom Fonts -->
     <link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
@@ -32,59 +33,6 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
-    <style>
-      body {
-        font-family: Trebuchet MS;
-      }
-      div.calendar {
-        max-width: 240px;
-        margin-left: auto;
-        margin-right: auto;
-      }
-      div.calendar table {
-        width: 100%;
-      }
-      div.dateField {
-        width: 140px;
-        padding: 6px;
-        -webkit-border-radius: 6px;
-        -moz-border-radius: 6px;
-        color: #555;
-        background-color: white;
-        margin-left: auto;
-        margin-right: auto;
-        text-align: center;
-      }
-      div#popupDateField:hover {
-        background-color: #cde;
-        cursor: pointer;
-      }
-    </style>
-    <script src="../js/prototype.js"></script>
-    <script src="../js/calendarview.js"></script>
-    <script>
-      function setupCalendars() {
-        // Embedded Calendar
-        Calendar.setup(
-          {
-            dateField: 'embeddedDateField',
-            parentElement: 'embeddedCalendar'
-          }
-        )
-
-        // Popup Calendar
-        Calendar.setup(
-          {
-            dateField: 'popupDateField',
-            triggerElement: 'popupDateField'
-          }
-        )
-      }
-
-      Event.observe(window, 'load', function() { setupCalendars() })
-    </script>
-    <link rel="stylesheet" href="../css/calendarview.css">
     <style>
       a:visited{
       text-decoration: none;
@@ -110,7 +58,7 @@
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-rowmenu">
               <ul class="nav navbar-nav navbar-right">
-                      <li><a href="/users/courses">Courses</a></li>
+                      <li><a href="/">Main</a></li>
                 <!-- page for admin -->
               </ul>
             </div>
@@ -120,12 +68,57 @@
       </nav>
     </div>
 
-    <!-- main course page -->
-    <div class="container2" style="padding-top:5%">
-          <div>
-      			<p class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nec consequat lectus. In nulla nulla, euismod vitae mauris id, tincidunt faucibus justo. Praesent maximus lacinia enim, tristique molestie odio laoreet a. Sed a nulla enim. In mattis nec lacus at commodo. Aliquam odio ipsum, rhoncus a vulputate id, pretium ac eros. Morbi vehicula leo maximus, vulputate massa nec, fringilla eros. Sed non interdum velit.
-            Nam consequat nulla sem, ut bibendum leo pretium vel. Mauris at viverra ante. Duis dignissim consectetur massa, in pulvinar massa posuere sit amet. Mauris egestas arcu est, ac aliquet massa rhoncus in. Aenean hendrerit urna non urna laoreet, nec porta nibh consequat. Donec vitae lorem molestie, tincidunt justo eget, maximus urna. Aliquam a dui et metus elementum tempor sed eu sapien. Quisque bibendum mattis felis non scelerisque. Curabitur malesuada pharetra nisi, sed auctor leo imperdiet ac. Quisque et velit accumsan, varius nibh vitae, feugiat dolor. Maecenas quis semper metus. Integer eu finibus quam. Integer eget leo mi. Cras at leo ullamcorper, maximus erat eu, suscipit turpis. In at ultrices mauris, in ultrices mi.</p>
+
+    <div class="container" style="padding-top: 10%">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+          <div class="panel panel-info">
+            <div class="panel-heading">
+              <h3 class="panel-title">Nguyen Van A</h3>
+            </div>
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-md-3 col-lg-3 " align="center">
+                  <img alt="User Pic" src="/img/profile.jpg" class="img-responsive" width="auto" height="150px">
+                </div>
+                <div class=" col-md-9 col-lg-9 ">
+                  <table class="table table-user-information">
+                            <tbody>
+                              <tr>
+                                <td>Department:</td>
+                                <td>Programming</td>
+                              </tr>
+                              <tr>
+                                <td>Hire date:</td>
+                                <td>06/23/2013</td>
+                              </tr>
+                              <tr>
+                                <td>Date of Birth</td>
+                                <td>01/24/1988</td>
+                              </tr>
+                              <tr>
+                                <td>Gender</td>
+                                <td>Male</td>
+                              </tr>
+                                <tr>
+                                <td>Home Address</td>
+                                <td>TP Ho Chi Minh</td>
+                              </tr>
+                              <tr>
+                                <td>Email</td>
+                                <td><a href="mailto:info@support.com">abc@gmail.com</a></td>
+                              </tr>
+                                <td>Phone Number</td>
+                                <td>0123456789</td>
+                              </tr>
+                            </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
           </div>
+        </div>
+      </div>
     </div>
 
     <!-- Footer -->
