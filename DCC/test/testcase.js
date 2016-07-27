@@ -130,7 +130,7 @@ describe("<Unit Test for Routing>", function (){
 	
 	describe("", function ()
 	{
-		return it("Test case 11 : redirect /coursesoverview ", function (done)
+		return it("Test case 11 : redirect /success ", function (done)
 		{
 			return server
 					.get("/users/success")
@@ -142,9 +142,23 @@ describe("<Unit Test for Routing>", function (){
 		});
 	}); 
 	
+	describe("", function ()
+	{
+		return it("Test case 12 : redirect /failure ", function (done)
+		{
+			return server
+					.get("/users/failure")
+					.end(function (err, res)
+					{
+					assert.equal(res.statusCode, '302', "this is ok!!!!")
+					return done();
+					});
+		});
+	}); 
+	
  	describe("", function ()
 	{
-		return it("Test case 12 : get /logout ", function (done)
+		return it("Test case 13 : get /logout ", function (done)
 		{
 			return server
 					.get("/users/logout")
@@ -158,7 +172,7 @@ describe("<Unit Test for Routing>", function (){
 	
  	describe("", function ()
 	{
-		return it("Test case 13 : get /trainer ", function (done)
+		return it("Test case 14 : get /trainer ", function (done)
 		{
 			request(route)
 					.get("/users/trainer")
@@ -168,7 +182,7 @@ describe("<Unit Test for Routing>", function (){
 	
  	describe("", function ()
 	{
-		return it("Test case 14 : get /studentlist ", function (done)
+		return it("Test case 15 : get /studentlist ", function (done)
 		{
 			request(route)
 					.get("/users/studentlist")
