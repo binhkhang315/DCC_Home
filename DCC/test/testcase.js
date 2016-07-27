@@ -141,6 +141,7 @@ describe("<Unit Test for Routing>", function (){
 					});
 		});
 	}); 
+	
  	describe("", function ()
 	{
 		return it("Test case 12 : get /logout ", function (done)
@@ -154,6 +155,26 @@ describe("<Unit Test for Routing>", function (){
 					});
 		});
 	}); 
+	
+ 	describe("", function ()
+	{
+		return it("Test case 13 : get /trainer ", function (done)
+		{
+			request(route)
+					.get("/users/trainer")
+					.expect(200,done)
+		});
+	}); 	
+	
+ 	describe("", function ()
+	{
+		return it("Test case 14 : get /studentlist ", function (done)
+		{
+			request(route)
+					.get("/users/studentlist")
+					.expect(200,done)
+		});
+	}); 	
 	
 });
 
