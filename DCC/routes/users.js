@@ -28,6 +28,12 @@ router.get('/trainerdashboard', function(req, res) {
 router.get('/userprofile', function(req, res) {
   res.render('userprofile');
 });
+router.get('/trainer', function(req, res) {
+  res.render('trainer');
+});
+router.get('/studentlist', function(req, res) {
+  res.render('studentlist');
+});
 // dashboard route is only for admin
 router.get('/dashboard', ensureAuthenticated, function(req, res) {
   User.getUserById(req.session.passport.user, function(err, user) {

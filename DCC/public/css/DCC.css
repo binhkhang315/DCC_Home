@@ -4,30 +4,56 @@
   padding: 10px 1px;
 }
 
-
+/***********main logo**********/
 .navbar-logo {
   float: left right top bottom;
   height: 50px;
   padding: 30px 10px;
+
   font-size: 18px;
   line-height: 20px;
 }
 @media all and (max-width: 768px) {
   .navbar-logo{
     float:left;
-    padding:9px 10px;
-    margin-top:8px;
-    margin-left: 15px;
-    margin-bottom:30px;
+    padding-top:15px;
+    padding-bottom: 15px;
+    padding-left: 80px;
+    padding-right: 1px;
     border:1px solid transparent;
   }
 }
-@media all and (max-width: 350px) {
+@media all and (max-width:380px) {
   .navbar-logo{
+    display: none ;
+  }
+}
+/***********main logo**********/
+.navbar-logo2 {
+  float: left right top bottom;
+  height: 50px;
+  padding: 30px 10px;
+
+  font-size: 18px;
+  line-height: 20px;
+}
+@media all and (max-width: 768px) {
+  .navbar-logo2{
+    float:left;
+    padding-top:15px;
+    padding-bottom: 15px;
+    padding-left: 80px;
+    padding-right: 1px;
+    border:1px solid transparent;
+    margin-bottom: 30px;
+  }
+}
+@media all and (max-width:260px) {
+  .navbar-logo2{
     display: none;
   }
 }
-
+/*************DCC Name****************/
 .navbar-name {
   float: left;
   height: 50px;
@@ -55,7 +81,7 @@
   color: #5e5e5e;
   background-color: transparent;
 }
-
+/**************Dropdown menu**********************/
 .navbar-menu {
   position: relative;
   float: right;
@@ -67,8 +93,8 @@
   margin-top: 19px;
   margin-left: 1px;
   margin-bottom: 17px;
-  background-image: none;
   border: 1px;
+  background-color: #000;
 }
 @media (min-width: 768px) {
   .navbar-menu {
@@ -76,7 +102,7 @@
   }
 }
 
-
+/****************row  menu (main page)*****************/
 .navbar-rowmenu {
   padding: 25px 15px;
   overflow-x: visible;
@@ -121,6 +147,7 @@
     max-height: 200px;
   }
 }
+
 
 /*-----------container2-------------*/
 .container2 {
@@ -182,6 +209,7 @@
 }
 .dl-menuwrapper {
 	width: 100%;
+  height: auto;
 	max-width: 300px;
 	float: left;
 	position: relative;
@@ -201,8 +229,7 @@
 	border: none;
 	width: 48px;
 	height: 45px;
-	margin-left: 70px;
-
+  margin-left: 50px;
 	text-indent: -900em;
 	overflow: hidden;
 	position: relative;
@@ -241,10 +268,11 @@
 	color: #ffffff;
 	outline: none;
 }
+
 .dl-menuwrapper .dl-menu {
-	margin-top: 24px;
+	margin-top: 19px;
 	position: absolute;
-	width: 100%;
+	width: 540px;
 	opacity: 0;
 	pointer-events: none;
 	-webkit-transform: translateY(10px);
