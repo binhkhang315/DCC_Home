@@ -146,12 +146,12 @@ describe("<Unit Test for Routing>", function (){
 	{
 		return it("Test case 12 : redirect /failure ", function (done)
 		{
-			return server
+			request(route)
 					.get("/users/failure")
 					.end(function (err, res)
 					{
-					assert.equal(res.statusCode, '302', "this is ok!!!!")
-					return done();
+						assert.equal(res.headers.location, '/', "this is ok!!!!")
+						return done();
 					});
 		});
 	}); 
