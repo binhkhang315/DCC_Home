@@ -1,11 +1,1 @@
-[6/27/2016 : 16:48:43] : testing log
-[6/27/2016 : 16:48:44] : { name: 'testRegister2',
-  username: 'testRegister',
-  email: 'testRegister2@dek.vn',
-  password: 'testRegister',
-  role: 'admin' }
-[6/27/2016 : 16:48:44] : { name: 'testRegister3',
-  username: 'testRegister3',
-  email: 'testRegister@dek.vn',
-  password: 'testRegister',
-  role: 'admin' }
+[6/27/2016 : 16:56:41] : testing log
