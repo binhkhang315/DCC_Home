@@ -3,7 +3,6 @@ var router = express.Router();
 var delog = require('../delog');
 // get homepage
 router.get('/',function(req, res){
-    //res.render('index');
     res.status(200).render('index');
   });
 
