@@ -81,34 +81,22 @@
     border:1px solid transparent;
   }
 }
+@media all and (max-width:480px) {
+  .navbar-logo{
+    width:120px;
+    padding-top:5px;
+    padding-bottom: 15px;
+    padding-left: 40px;
+    padding-right: 1px;
+  }
+}
 @media all and (max-width:290px) {
   .navbar-logo{
-    display: none ;
-  }
-}
-/***********main logo**********/
-.navbar-logo2 {
-  float: left right top bottom;
-  height: 50px;
-  padding: 30px 10px;
-
-  font-size: 18px;
-  line-height: 20px;
-}
-@media all and (max-width: 768px) {
-  .navbar-logo2{
-    float:left;
-    padding-top:15px;
+    width:90px;
+    padding-top:11px;
     padding-bottom: 15px;
-    padding-left: 60px;
+    padding-left: 40px;
     padding-right: 1px;
-    border:1px solid transparent;
-    margin-bottom: 30px;
-  }
-}
-@media all and (max-width:260px) {
-  .navbar-logo2{
-    display: none;
   }
 }
 /*************DCC Name****************/
@@ -158,7 +146,13 @@
     display: none;
   }
 }
-
+@media all and (max-width:480px) {
+  .navbar-menu{
+    margin-top: 1px;
+    margin-left: 1px;
+    margin-bottom: 1px;
+  }
+}
 /****************row  menu (main page)*****************/
 .navbar-rowmenu {
   padding: 25px 15px;
@@ -208,7 +202,7 @@
 
 /*-----------container2-------------*/
 .container2 {
-  padding-top: 90px;
+  padding-top:90px;
   padding-right: 15px;
   padding-left: 15px;
   margin-right: auto;
@@ -300,6 +294,7 @@
 		0 20px 0 #fff;
 }
 
+
 .dl-menuwrapper ul {
 	padding-left: 0px;
 	padding-top: 5px;
@@ -332,7 +327,16 @@
 	backface-visibility: hidden;
 	background: linear-gradient( rgba(0,0,0,0.8), rgba(0,0,0,0.8) );
 }
-
+@media all and (max-width:480px) {
+  .dl-menuwrapper .dl-menu{
+    margin-top: 4px;
+  }
+}
+@media all and (max-width:290px) {
+  .dl-menuwrapper .dl-menu{
+    margin-top: 3px;
+  }
+}
 .dl-menuwrapper .dl-menu > li > a:hover,
 .dl-menuwrapper .dl-menu > li > a:focus {
   color: #333;
