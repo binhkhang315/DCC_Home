@@ -85,7 +85,7 @@ describe("<Unit Test for Routing>", function (){
           });
     });
   });
-
+/*
   describe("", function ()
   {
     return it("Test case 8 : get /courses ", function (done)
@@ -99,7 +99,7 @@ describe("<Unit Test for Routing>", function (){
                 });
     });
   });
-  
+
 	describe("", function ()
 	{
 		return it("Test case 9 : get /courses ", function (done)
@@ -113,7 +113,7 @@ describe("<Unit Test for Routing>", function (){
 					});
 		});
 	});
-	
+
 	describe("", function ()
 	{
 		return it("Test case 10 : get /coursesoverview ", function (done)
@@ -127,7 +127,7 @@ describe("<Unit Test for Routing>", function (){
 					});
 		});
 	});
-	
+
 	describe("", function ()
 	{
 		return it("Test case 11 : redirect /success ", function (done)
@@ -140,8 +140,8 @@ describe("<Unit Test for Routing>", function (){
 					return done();
 					});
 		});
-	}); 
-	
+	});
+	*/
 	describe("", function ()
 	{
 		return it("Test case 12 : redirect /failure ", function (done)
@@ -154,8 +154,8 @@ describe("<Unit Test for Routing>", function (){
 						return done();
 					});
 		});
-	}); 
-	
+	});
+	/*
  	describe("", function ()
 	{
 		return it("Test case 13 : get /logout ", function (done)
@@ -168,8 +168,8 @@ describe("<Unit Test for Routing>", function (){
 					return done();
 					});
 		});
-	}); 
-	
+	});
+	*/
  	describe("", function ()
 	{
 		return it("Test case 14 : get /trainer ", function (done)
@@ -178,8 +178,8 @@ describe("<Unit Test for Routing>", function (){
 					.get("/users/trainer")
 					.expect(200,done)
 		});
-	}); 	
-	
+	});
+
  	describe("", function ()
 	{
 		return it("Test case 15 : get /studentlist ", function (done)
@@ -188,12 +188,12 @@ describe("<Unit Test for Routing>", function (){
 					.get("/users/studentlist")
 					.expect(200,done)
 		});
-	}); 	
-	
+	});
+
 });
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-
+/*
 describe("<Unit test for Login>", function ()
 {
 	describe("", function ()
@@ -215,7 +215,7 @@ describe("<Unit test for Login>", function ()
 				});
 		});
 	});
-	
+
 	describe("", function ()
 	{
 		return it("Test case 2 : username did not exist, login fail", function (done)
@@ -235,7 +235,7 @@ describe("<Unit test for Login>", function ()
 				});
 		});
 	});
-	
+
 	describe("", function ()
 	{
 		return it("Test case 3 : username true, password false. Login fail", function (done)
@@ -256,78 +256,8 @@ describe("<Unit test for Login>", function ()
 		});
 	});
 });
-
+*/
 //-----------------------------------------------------------------------
-
-describe("<Unit Test Register >", function ()
-{
-    /*describe("", function ()
-	{
-      return it("Test case 1 : register success", function (done)
-      {
-          request(route)
-            .post('/users/register')
-            .send(
-				{
-					name: "testRegisterForTest1",
-					username: "testRegisterForTest1",
-					email: "testRegisterForTest1@dek.vn",
-					password: "testRegisterForTest",
-					role: "admin"
-				})
-			.end(function (err, res)
-			{
-				assert.equal(res.headers.location, '/', "this is ok!!!!")
-				return done();
-            });
-		});
-	});*/
-	
-	describe("", function ()
-	{
-      return it("Test case 2 : username is existed, register fail", function (done)
-      {
-          request(route)
-            .post('/users/register')
-            .send(
-				{
-					name: "testRegister2",
-					username: "testRegister",
-					email: "testRegister2@dek.vn",
-					password: "testRegister",
-					role: "admin"
-				})
-			.end(function (err, res)
-			{
-				assert.equal(res.headers.location, '/#registedfail', "this is ok!!!!")
-				return done();
-            });
-		});
-	});
-		
-	describe("", function ()
-	{
-      return it("Test case 3 : email is existed, register fail", function (done)
-      {
-          request(route)
-            .post('/users/register')
-            .send(
-				{
-					name: "testRegister3",
-					username: "testRegister3",
-					email: "testRegister@dek.vn",
-					password: "testRegister",
-					role: "admin"
-				})
-			.end(function (err, res)
-			{
-				assert.equal(res.headers.location, '/#registedfail', "this is ok!!!!")
-				return done();
-            });
-		});
-	});
-});
-
 //-----------------------------------------------------------------------
 
 describe("<Unit test for getUserByUsername function>", function ()
@@ -654,6 +584,7 @@ describe("<Unit test for createUser function>", function ()
 });
 
 //-----------------------------------------------------------------------
+/*
 describe("", function ()
 {
     return it("Test case 5 : register with exist user but different email ", function (done)
@@ -667,4 +598,5 @@ describe("", function ()
                 });
     });
 });
+*/
 //-----------------------------------------------------------------------
