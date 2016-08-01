@@ -23,7 +23,6 @@ var User = require('../models/user');
 router.get('/courses', function(req, res) {
 
   res.render('courses');
-  log.info(req.body,'get courses ', res.statusCode);
 });
 router.get('/coursesoverview', function(req, res) {
   res.render('coursesoverview');
