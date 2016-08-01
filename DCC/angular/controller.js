@@ -5,7 +5,7 @@ myApp.config(function($interpolateProvider) {
 });
 
 // creat angular controller
-myApp.controller('controller', function($scope, $http, $cookies, $rootScope, AuthService) {
+myApp.controller('LoginCtrl', function($scope, $http, $cookies, $rootScope, AuthService) {
     // function to submit the form after all validation has occurred
     $http.get('/isLogged')
         .then(function(res) {

@@ -19,61 +19,80 @@ var BASE_OPTS = {
         searchFilter: '(uid={{username}})'
     }
 };
+// Email Setting
+var opts = {
+    logDirectory:'./public/log',
+    fileNamePattern:'roll-<DATE>.log',
+    dateFormat:'YYYY.MM.DD'
+};
+var log = require('simple-node-logger').createLogManager(opts).createLogger();
+
 // Or Using the mongodb backend
 mongodb.connect('mongodb://localhost/loginapp', function(error, db) {
-    var mongoBackend = new acl.mongodbBackend(db, 'acl_');
-    acl = new acl(mongoBackend);
-    setRoles();
+  var mongoBackend = new acl.mongodbBackend(db, 'acl_');
+  acl = new acl(mongoBackend);
+  setRoles();
 });
-// routing to pages
+var User = require('../models/user');
+
 router.get('/courses', function(req, res) {
-    res.render('courses');
+
+  res.render('courses');
+  log.info(req.body,'get courses ', res.statusCode);
 });
 router.get('/coursesoverview', function(req, res) {
-    res.render('coursesoverview');
+  res.render('coursesoverview');
 });
 router.get('/trainerdashboard', function(req, res) {
-    res.render('trainerdashboard');
+  res.render('trainerdashboard');
 });
 router.get('/userprofile', function(req, res) {
-    res.render('userprofile');
+  res.render('userprofile');
+});
+router.get('/trainer', function(req, res) {
+  res.render('trainer');
+});
+router.get('/studentlist', function(req, res) {
+  res.render('studentlist');
 });
 // dashboard route is only for admin
 router.get('/dashboard', ensureAuthenticated, function(req, res) {
-    User.getUserById(req.session.passport.user, function(err, user) {
-        acl.isAllowed(user.username, (req.url).split('/')[1], 'view', function(err, isAllowed) {
-            if (isAllowed) {
-                res.render('dashboard');
-            } else {
-                res.render('accessdenied');
-            }
-        });
+  User.getUserById(req.session.passport.user, function(err, user) {
+    acl.isAllowed(user.username, (req.url).split('/')[1], 'view', function(err, isAllowed) {
+      if (isAllowed) {
+        res.render('dashboard');
+      } else {
+        res.render('accessdenied');
+      }
     });
+  });
 });
 
-// check authenticated or not
+
+// ensure authenticated
 function ensureAuthenticated(req, res, next) {
-    if (req.isAuthenticated()) {
-        return next();
-    } else {
-        req.flash('error_msg', 'Please log in as an admin to view that');
-        res.redirect('/');
-    }
+  if (req.isAuthenticated()) {
+    return next();
+  }
+  else {
+    req.flash('error_msg', 'Please log in as an admin to view that');
+    res.redirect('/');
+  }
 }
 // This creates a set of roles which have permissions on
 //  different resources.
 
 function setRoles() {
-    acl.allow([{
-        roles: 'admin',
-        allows: [{
-            resources: 'dashboard',
-            permissions: 'view'
-        }]
-    }, {
-        roles: 'guest',
-        allows: []
-    }]);
+  acl.allow([{
+    roles: 'admin',
+    allows: [{
+      resources: 'dashboard',
+      permissions: 'view'
+    }]
+  }, {
+    roles: 'guest',
+    allows: []
+  }]);
 }
 // passport Strategy
 passport.use(new LdapStrategy(BASE_OPTS, function(user, callback) {
@@ -90,7 +109,6 @@ passport.deserializeUser(function(uid, callback) {
         uid: uid
     });
 });
-// route ro login url
 router.post('/login', function(req, res, next) {
     passport.authenticate('ldapauth', {
         session: true
@@ -113,20 +131,19 @@ router.post('/login', function(req, res, next) {
     })(req, res, next);
 });
 
-//------maybe be deleted-----
-router.get('/success', function(req, res) {
-    res.redirect('/');
+router.get('/success',function(req,res){
+  res.redirect('/');
 });
-router.get('/failure', function(req, res) {
-    res.redirect('/');
+router.get('/failure', function(req, res){
+  res.redirect('/');
 });
-// route log out
+
 router.get('/logout', function(req, res) {
 
-    req.logout();
-    req.flash('success_msg', 'You are logged out');
-    req.session.destroy();
-    res.redirect('/');
+  req.logout();
+  req.flash('success_msg', 'You are logged out');
+  req.session.destroy();
+  res.redirect('/');
 });
 //----------------------------------------------------
 module.exports = router;
