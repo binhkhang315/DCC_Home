@@ -10,12 +10,20 @@ var passport = require('passport');
 var mongo = require('mongodb');
 var mongoose = require('mongoose');
 
+var serveIndex = require('serve-index');
+
+var opts = {
+    logDirectory:'./public/log',
+    fileNamePattern:'roll-<DATE>.log',
+    dateFormat:'YYYY.MM.DD'
+};
+var log = require('simple-node-logger').createLogManager(opts).createLogger();
+
 mongoose.connect('mongodb://localhost/loginapp');
 var db = mongoose.connection;
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
-var delog = require('./delog');
 // Init App
 var app = express();
 
@@ -30,11 +38,14 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 // Set Static Folder
+
 app.use(express.static(path.join(__dirname, 'public')));
-var fs = require('fs');
-var util = require('util');
-var log_file = fs.createWriteStream(__dirname + '/public/debug.log', {flags : 'w'});
-var log_stdout = process.stdout;
+app.use('/log', serveIndex('./public/log'));
+
+// var fs = require('fs');
+// var util = require('util');
+// var log_file = fs.createWriteStream(__dirname + '/public/debug.log', {flags : 'w'});
+// var log_stdout = process.stdout;
 
 
 // Express Session
@@ -43,7 +54,6 @@ app.use(session({
     saveUninitialized: true,
     resave: true
 }));
-delog("testing log");
 // Passport init
 app.use(passport.initialize());
 app.use(passport.session());
@@ -83,8 +93,10 @@ app.use('/users', users);
 
 // Set Port
 app.set('port', (process.env.PORT || 3210));
-
+log.info( 'Server started on port '+ app.get('port'));
 var server = app.listen(app.get('port'), function() {
 	console.log('Server started on port '+ app.get('port'));
 });
+
 module.exports = server;
+exports.log = log;

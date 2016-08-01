@@ -5,8 +5,12 @@ var LocalStrategy = require('passport-local').Strategy;
 var acl = require('acl');
 var mongodb = require('mongodb');
 // Email Setting
-
-var delog = require('../delog');
+var opts = {
+    logDirectory:'./public/log',
+    fileNamePattern:'roll-<DATE>.log',
+    dateFormat:'YYYY.MM.DD'
+};
+var log = require('simple-node-logger').createLogManager(opts).createLogger();
 
 // Or Using the mongodb backend
 mongodb.connect('mongodb://localhost/loginapp', function(error, db) {
@@ -17,7 +21,9 @@ mongodb.connect('mongodb://localhost/loginapp', function(error, db) {
 var User = require('../models/user');
 
 router.get('/courses', function(req, res) {
+
   res.render('courses');
+  log.info(req.body,'get courses ', res.statusCode);
 });
 router.get('/coursesoverview', function(req, res) {
   res.render('coursesoverview');
@@ -81,7 +87,6 @@ router.post('/register', function(req, res) {
   var password = req.body.password;
 
   var role = req.body.role;
-  delog(req.body);
 
 
   var errors = req.validationErrors();
