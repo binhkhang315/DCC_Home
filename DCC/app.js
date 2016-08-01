@@ -31,6 +31,8 @@ app.use(cookieParser());
 
 // Set Static Folder
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/angular',express.static(path.join(__dirname, 'angular')));
+
 var fs = require('fs');
 var util = require('util');
 var log_file = fs.createWriteStream(__dirname + '/public/debug.log', {flags : 'w'});
@@ -74,7 +76,6 @@ app.use(function (req, res, next) {
   res.locals.success_msg = req.flash('success_msg');
   res.locals.error_msg = req.flash('error_msg');
   res.locals.error = req.flash('error');
-  res.locals.user = req.user || null;
   next();
 });
 
