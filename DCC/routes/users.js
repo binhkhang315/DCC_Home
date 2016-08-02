@@ -7,6 +7,7 @@ var mongodb = require('mongodb');
 var ldap = require('ldapjs');
 var delog = require('../delog');
 var User = require('../models/user');
+
 var server = null;
 var LDAP_PORT = 389;
 // admin's credentials for connecting to openLDAP server
@@ -141,7 +142,6 @@ router.get('/failure', function(req, res){
 router.get('/logout', function(req, res) {
 
   req.logout();
-  req.flash('success_msg', 'You are logged out');
   req.session.destroy();
   res.redirect('/');
 });
