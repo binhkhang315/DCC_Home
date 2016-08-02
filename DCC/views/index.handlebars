@@ -33,7 +33,7 @@
         							  <li><a href="#about">About us</a></li>
         							  <li><a href="#contact">Contact</a></li>
         							  <li role="presentation" ng-hide="!userid"><a href="#">Hello {[{userid}]}!</a></li>
-        							  <li role="presentation" ng-hide="!userid" ng-submit="logout()"><a href="/users/logout">Logout</a></li>
+        							  <li role="presentation" ng-hide="!userid" ng-lick="logout()"><a href="/users/logout">Logout</a></li>
         							  <li role="presentation" ng-hide="!userid"><a href="/users/dashboard">Dashboard</a></li>
         							  <li role="presentation" ng-hide="userid"><a data-toggle="modal" href="#loginModal">Login</a></li>
                         <li><a href="/users/userprofile">Profile</a></li>
@@ -58,7 +58,7 @@
     							  <li><a href="#about">About us</a></li>
     							  <li><a href="#contact">Contact</a></li>
     							  <li role="presentation" ng-hide="!userid"><a href="#">Hello {[{userid}]}!</a></li>
-    							  <li role="presentation" ng-hide="!userid" ng-submit="logout()"><a href="/users/logout">Logout</a></li>
+    							  <li role="presentation" ng-hide="!userid" ng-click="logout()"><a href="/users/logout">Logout</a></li>
     							  <li role="presentation" ng-hide="!userid"><a href="/users/dashboard">Dashboard</a></li>
     							  <li role="presentation" ng-hide="userid"><a data-toggle="modal" href="#loginModal">Login</a></li>
                     <li><a href="/users/userprofile">Profile</a></li>

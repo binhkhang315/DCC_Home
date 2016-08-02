@@ -42,11 +42,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/log', serveIndex('./public/log'));
 app.use('/angular',express.static(path.join(__dirname, 'angular')));
-// var fs = require('fs');
-// var util = require('util');
-// var log_file = fs.createWriteStream(__dirname + '/public/debug.log', {flags : 'w'});
-// var log_stdout = process.stdout;
-
 
 // Express Session
 app.use(session({
