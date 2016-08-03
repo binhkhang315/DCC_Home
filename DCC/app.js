@@ -50,6 +50,7 @@ app.use('/angular',express.static(path.join(__dirname, 'angular')));
 // Express Session
 app.use(session({
     secret: 'secret',
+    cookie: {maxAge: 10*24*3600*1000},
     saveUninitialized: true,
     resave: true
 }));
@@ -82,7 +83,7 @@ app.use('/', routes);
 app.use('/users', users);
 app.use('/course', course);
 // Set Port
-app.set('port', (process.env.PORT || 3210));
+app.set('port', (process.env.PORT || 3000));
 log.info( 'Server started on port '+ app.get('port'));
 var server = app.listen(app.get('port'), function() {
 	console.log('Server started on port '+ app.get('port'));

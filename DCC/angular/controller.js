@@ -8,7 +8,8 @@ myApp.controller('LoginCtrl', function($scope, $http, $cookies, $rootScope) {
     // function to submit the form after all validation has occurred
     $http.get('/isLogged')
         .then(function(res) {
-            $cookies.put('userid', res.data.userid);
+            $cookies.put('userid', res.data);
+            $rootScope.userid = $cookies.get('userid');
         });
     if ($cookies.get('userid')) {
         $rootScope.userid = $cookies.get('userid');
