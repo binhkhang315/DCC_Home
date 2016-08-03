@@ -24,6 +24,7 @@ var db = mongoose.connection;
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var course = require('./routes/course');
 // Init App
 var app = express(), handlebars;
 
@@ -79,7 +80,7 @@ app.use(flash());
 
 app.use('/', routes);
 app.use('/users', users);
-
+app.use('/course', course);
 // Set Port
 app.set('port', (process.env.PORT || 3210));
 log.info( 'Server started on port '+ app.get('port'));

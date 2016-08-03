@@ -21,77 +21,77 @@ var BASE_OPTS = {
 };
 // Email Setting
 var opts = {
-    logDirectory:'./public/log',
-    fileNamePattern:'roll-<DATE>.log',
-    dateFormat:'YYYY.MM.DD'
+    logDirectory: './public/log',
+    fileNamePattern: 'roll-<DATE>.log',
+    dateFormat: 'YYYY.MM.DD'
 };
 var log = require('simple-node-logger').createLogManager(opts).createLogger();
 
 // Or Using the mongodb backend
 mongodb.connect('mongodb://localhost/loginapp', function(error, db) {
-  var mongoBackend = new acl.mongodbBackend(db, 'acl_');
-  acl = new acl(mongoBackend);
-  setRoles();
+    var mongoBackend = new acl.mongodbBackend(db, 'acl_');
+    acl = new acl(mongoBackend);
+    setRoles();
 });
 var User = require('../models/user');
 
 router.get('/courses', function(req, res) {
 
-  res.render('courses');
-  log.info('get courses ', res.statusCode);
+    res.render('courses');
+    log.info('get courses ', res.statusCode);
 });
 router.get('/coursesoverview', function(req, res) {
-  res.render('coursesoverview');
+    res.render('coursesoverview');
 });
+
 router.get('/trainerdashboard', function(req, res) {
-  res.render('trainerdashboard');
+    res.render('trainerdashboard');
 });
 router.get('/userprofile', function(req, res) {
-  res.render('userprofile');
+    res.render('userprofile');
 });
 router.get('/trainer', function(req, res) {
-  res.render('trainer');
+    res.render('trainer');
 });
 router.get('/studentlist', function(req, res) {
-  res.render('studentlist');
+    res.render('studentlist');
 });
 // dashboard route is only for admin
 // this function need to be modified
 router.get('/dashboard', ensureAuthenticated, function(req, res) {
-  User.getUserById(req.session.passport.user, function(err, user) {
-    acl.isAllowed(user.username, (req.url).split('/')[1], 'view', function(err, isAllowed) {
-      if (isAllowed) {
-        res.render('dashboard');
-      } else {
-        res.render('accessdenied');
-      }
+    User.getUserById(req.session.passport.user, function(err, user) {
+        acl.isAllowed(user.username, (req.url).split('/')[1], 'view', function(err, isAllowed) {
+            if (isAllowed) {
+                res.render('dashboard');
+            } else {
+                res.render('accessdenied');
+            }
+        });
     });
-  });
 });
 
 // ensure authenticated
 function ensureAuthenticated(req, res, next) {
-  if (req.isAuthenticated()) {
-    return next();
-  }
-  else {
-    res.redirect('/');
-  }
+    if (req.isAuthenticated()) {
+        return next();
+    } else {
+        res.redirect('/');
+    }
 }
 // This creates a set of roles which have permissions on
 //  different resources.
 
 function setRoles() {
-  acl.allow([{
-    roles: 'admin',
-    allows: [{
-      resources: 'dashboard',
-      permissions: 'view'
-    }]
-  }, {
-    roles: 'guest',
-    allows: []
-  }]);
+    acl.allow([{
+        roles: 'admin',
+        allows: [{
+            resources: 'dashboard',
+            permissions: 'view'
+        }]
+    }, {
+        roles: 'guest',
+        allows: []
+    }]);
 }
 // passport Strategy
 passport.use(new LdapStrategy(BASE_OPTS, function(user, callback) {
@@ -112,7 +112,7 @@ router.post('/login', function(req, res, next) {
     passport.authenticate('ldapauth', {
         session: true
     }, function(err, user, info) {
-        if (err) return next(err);// log to file
+        if (err) return next(err); // log to file
         if (!user) {
             res.send({
                 userid: null,
@@ -131,11 +131,21 @@ router.post('/login', function(req, res, next) {
     })(req, res, next);
 });
 
+<<<<<<< HEAD
+=======
+router.get('/success', function(req, res) {
+    res.redirect('/');
+});
+router.get('/failure', function(req, res) {
+    res.redirect('/');
+});
+
+>>>>>>> 5e1ada52fdf444a2388f8d3f9cbd2a2a4f1befee
 router.get('/logout', function(req, res) {
 
-  req.logout();
-  req.session.destroy();
-  res.redirect('/');
+    req.logout();
+    req.session.destroy();
+    res.redirect('/');
 });
 //----------------------------------------------------
 module.exports = router;
