@@ -19,18 +19,22 @@ var opts = {
 };
 var log = require('simple-node-logger').createLogManager(opts).createLogger();
 
-mongoose.connect('mongodb://localhost/loginapp');
+mongoose.connect('mongodb://localhost/DCC');
 var db = mongoose.connection;
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
 // Init App
-var app = express();
+var app = express(), handlebars;
 
 // View Engine
+handlebars = exphbs.create({
+    defaultLayout: 'layout',
+    extname      : '.html', //set extension to .html so handlebars knows what to look for
+});
 app.set('views', path.join(__dirname, 'views'));
-app.engine('handlebars', exphbs({defaultLayout:'layout'}));
-app.set('view engine', 'handlebars');
+app.engine('html',handlebars.engine);
+app.set('view engine', 'html');
 
 // BodyParser Middleware
 app.use(bodyParser.json());
