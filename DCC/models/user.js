@@ -1,7 +1,5 @@
 var mongoose = require('mongoose');
 var bcrypt = require('bcryptjs');
-var delog = require('../delog');
-
 var UserSchema = mongoose.Schema({
   username: {
     type: String,

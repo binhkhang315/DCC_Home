@@ -5,7 +5,6 @@ var LdapStrategy = require('passport-ldapauth').Strategy;
 var acl = require('acl');
 var mongodb = require('mongodb');
 var ldap = require('ldapjs');
-var delog = require('../delog');
 var User = require('../models/user');
 
 var server = null;
@@ -39,7 +38,7 @@ var User = require('../models/user');
 router.get('/courses', function(req, res) {
 
   res.render('courses');
-  log.info(req.body,'get courses ', res.statusCode);
+  log.info('get courses ', res.statusCode);
 });
 router.get('/coursesoverview', function(req, res) {
   res.render('coursesoverview');
@@ -76,7 +75,6 @@ function ensureAuthenticated(req, res, next) {
     return next();
   }
   else {
-    req.flash('error_msg', 'Please log in as an admin to view that');
     res.redirect('/');
   }
 }
@@ -114,15 +112,16 @@ router.post('/login', function(req, res, next) {
     passport.authenticate('ldapauth', {
         session: true
     }, function(err, user, info) {
-        if (err) return next(err);
+        if (err) return next(err);// log to file
         if (!user) {
             res.send({
-                userid: '',
+                userid: null,
                 msg: 'You are not authenticated!'
             });
         } else {
             return req.login(user, function(err) {
-                if (err) return res.sendStatus(500);
+                if (err) return res.sendStatus(500); // log to file
+                log.info(user.uid);
                 return res.send({
                     userid: user.uid,
                     msg: 'You are authenticated!'

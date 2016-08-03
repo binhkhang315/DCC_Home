@@ -38,7 +38,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 // Set Static Folder
-
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/log', serveIndex('./public/log'));
 app.use('/angular',express.static(path.join(__dirname, 'angular')));
@@ -74,15 +73,6 @@ app.use(expressValidator({
 // Connect Flash
 app.use(flash());
 
-// Global Vars
-app.use(function (req, res, next) {
-  res.locals.success_msg = req.flash('success_msg');
-  res.locals.error_msg = req.flash('error_msg');
-  res.locals.error = req.flash('error');
-  res.locals.user = req.user || null;
-  next();
-});
-
 app.use('/', routes);
 app.use('/users', users);
 
@@ -94,4 +84,4 @@ var server = app.listen(app.get('port'), function() {
 });
 
 module.exports = server;
-exports.log = log;
+//exports.log = log;

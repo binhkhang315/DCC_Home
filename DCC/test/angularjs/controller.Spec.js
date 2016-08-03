@@ -48,5 +48,22 @@ describe("LoginCtrl Unit testing #1", function() {
         expect($rootScope.isAuthenticated).toBe(true);
     });
     //Init data
+    it('Test 3: Check Login Fail ', function() {
+        controller = createController.loginCtrl();
+        var user = {
+            username: 'thach',
+            password: 'thach12'
+        };
+        $rootScope.user = user;
+        var data = {
+            userid: '',
+            msg: 'You are not authenticated!'
+        };
+        $rootScope.login();
+        $httpBackend.whenPOST('/users/login', user).respond(data);
+        $httpBackend.whenGET('/isLogged').respond(data);
+        $httpBackend.flush();
+        expect($rootScope.isAuthenticated).toBe(false);
+    });
 
 });
