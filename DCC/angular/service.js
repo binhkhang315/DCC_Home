@@ -1,3 +1,13 @@
+var cCourse = angular.module('myCourse', ['ngCookies']);
+myApp.config(function($interpolateProvider) {
+    $interpolateProvider.startSymbol('{[{').endSymbol('}]}');
+});
+
+
+
+
+
+
 // /**
 //  * service.js implements post or get method, function such as login, log out...
 //  * and saves information to cookie ...
