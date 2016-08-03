@@ -131,16 +131,6 @@ router.post('/login', function(req, res, next) {
     })(req, res, next);
 });
 
-<<<<<<< HEAD
-=======
-router.get('/success', function(req, res) {
-    res.redirect('/');
-});
-router.get('/failure', function(req, res) {
-    res.redirect('/');
-});
-
->>>>>>> 5e1ada52fdf444a2388f8d3f9cbd2a2a4f1befee
 router.get('/logout', function(req, res) {
 
     req.logout();

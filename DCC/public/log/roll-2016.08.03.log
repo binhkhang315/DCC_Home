@@ -1,0 +1,69 @@
+09:44:56.689 INFO  Server started on port 3210 
+09:45:49.406 INFO  Server started on port 3210 
+09:46:30.791 INFO  Server started on port 3210 
+09:46:56.181 INFO  Server started on port 3210 
+09:47:20.443 INFO  Server started on port 3210 
+09:51:15.873 INFO  Server started on port 3210 
+09:52:56.915 INFO  Server started on port 3210 
+09:54:09.450 INFO  Server started on port 3210 
+09:56:14.505 INFO  Server started on port 3210 
+09:57:31.562 INFO  Server started on port 3210 
+09:58:26.746 INFO  Server started on port 3210 
+09:59:07.047 INFO  Server started on port 3210 
+09:59:59.168 INFO  Server started on port 3210 
+10:01:49.513 INFO  Server started on port 3210 
+10:02:46.902 INFO  Server started on port 3210 
+10:03:34.379 INFO  Server started on port 3210 
+10:05:39.954 INFO  Server started on port 3210 
+10:07:59.531 INFO  Server started on port 3210 
+10:12:40.627 INFO  Server started on port 3210 
+10:15:02.585 INFO  Server started on port 3210 
+10:36:22.396 INFO  Server started on port 3210 
+10:37:04.095 INFO  Server started on port 3210 
+10:37:04.282 INFO  {"dn":"uid=thach,cn=trainees,cn=users,dc=example,dc=com","controls":[],"uid":"thach","sn":"huynh","cn":"thach","objectClass":["inetOrgPerson","organizationalPerson","person","top"],"userPassword":"thach123"} 
+10:37:04.474 INFO  get courses 200 
+10:37:04.910 INFO  {"dn":"uid=thach,cn=trainees,cn=users,dc=example,dc=com","controls":[],"uid":"thach","sn":"huynh","cn":"thach","objectClass":["inetOrgPerson","organizationalPerson","person","top"],"userPassword":"thach123"} 
+10:37:45.444 INFO  Server started on port 3210 
+10:37:45.624 INFO  thach 
+10:37:45.795 INFO  get courses 200 
+10:37:45.993 INFO  thach 
+10:37:54.626 INFO  Server started on port 3210 
+10:38:12.745 INFO  Server started on port 3210 
+11:01:46.599 INFO  Server started on port 3210 
+11:01:46.773 INFO  get courses 200 
+11:01:50.303 INFO  thach 
+11:11:22.122 INFO  Server started on port 3210 
+11:11:24.908 INFO  get courses 200 
+11:11:25.151 INFO  thach 
+11:15:03.869 INFO  Server started on port 3210 
+12:48:34.102 INFO  Server started on port 3210 
+12:49:33.435 INFO  Server started on port 3210 
+12:51:28.526 INFO  get courses 200 
+12:52:57.609 INFO  get courses 200 
+13:07:28.212 INFO  Server started on port 3210 
+13:09:00.039 INFO  get courses 200 
+13:09:42.905 INFO  get courses 200 
+13:16:10.475 INFO  thach 
+13:32:03.534 INFO  Server started on port 3210 
+13:32:28.403 INFO  get courses 200 
+13:40:34.432 INFO  Server started on port 3210 
+13:49:55.739 INFO  Server started on port 3210 
+13:50:20.900 INFO  get courses 200 
+14:09:55.471 INFO  Server started on port 3210 
+14:10:08.173 INFO  get courses 200 
+14:10:49.284 INFO  Server started on port 3210 
+14:11:03.592 INFO  get courses 200 
+14:12:01.718 INFO  Server started on port 3210 
+14:13:35.082 INFO  Server started on port 3210 
+14:15:00.798 INFO  get courses 200 
+14:21:58.332 INFO  Server started on port 3210 
+14:22:03.890 INFO  get courses 200 
+14:25:35.532 INFO  Server started on port 3210 
+14:25:42.802 INFO  get courses 200 
+15:01:06.327 INFO  Server started on port 3210 
+15:01:10.491 INFO  get courses 200 
+15:01:12.395 INFO  Get Course Information 
+15:03:33.288 INFO  Server started on port 3210 
+15:06:25.666 INFO  get courses 200 
+15:06:27.272 INFO  Get Course Information 
+15:10:45.301 INFO  Get Course Information 
