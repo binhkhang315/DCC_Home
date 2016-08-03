@@ -56,6 +56,7 @@ router.get('/studentlist', function(req, res) {
   res.render('studentlist');
 });
 // dashboard route is only for admin
+// this function need to be modified
 router.get('/dashboard', ensureAuthenticated, function(req, res) {
   User.getUserById(req.session.passport.user, function(err, user) {
     acl.isAllowed(user.username, (req.url).split('/')[1], 'view', function(err, isAllowed) {
@@ -67,7 +68,6 @@ router.get('/dashboard', ensureAuthenticated, function(req, res) {
     });
   });
 });
-
 
 // ensure authenticated
 function ensureAuthenticated(req, res, next) {
@@ -129,13 +129,6 @@ router.post('/login', function(req, res, next) {
             });
         }
     })(req, res, next);
-});
-
-router.get('/success',function(req,res){
-  res.redirect('/');
-});
-router.get('/failure', function(req, res){
-  res.redirect('/');
 });
 
 router.get('/logout', function(req, res) {
