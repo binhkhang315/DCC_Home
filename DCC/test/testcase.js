@@ -287,7 +287,7 @@ describe('<Unit test for database>', function(){
       });
     });
  });
- 
+
 describe('<Unit Test for Routing>', function() {
   describe('', function() {
     return it('Test case 1 : get / ', function(done) {
@@ -306,15 +306,7 @@ describe('<Unit Test for Routing>', function() {
   });
 
   describe('', function() {
-    return it('Test case 3 : get /users/success ', function(done) {
-      request(route)
-        .get('/users/success')
-        .expect(302, done)
-    });
-  });
-
-  describe('', function() {
-    return it('Test case 4 : get /users/coursesoverview ', function(done) {
+    return it('Test case 3 : get /users/coursesoverview ', function(done) {
       request(route)
         .get('/users/coursesoverview')
         .expect(200, done)
@@ -322,7 +314,7 @@ describe('<Unit Test for Routing>', function() {
   });
 
   describe('', function() {
-    return it('Test case 5 : get /users/trainerdashboard ', function(done) {
+    return it('Test case 4 : get /users/trainerdashboard ', function(done) {
       request(route)
         .get('/users/trainerdashboard')
         .expect(200, done)
@@ -330,7 +322,7 @@ describe('<Unit Test for Routing>', function() {
   });
 
   describe('', function() {
-    return it('Test case 6 : get /users/userprofile ', function(done) {
+    return it('Test case 5 : get /users/userprofile ', function(done) {
       request(route)
         .get('/users/userprofile')
         .expect(200, done)
@@ -338,7 +330,7 @@ describe('<Unit Test for Routing>', function() {
   });
 
   describe('', function() {
-    return it('Test case 7 : get /users/dashboard ', function(done) {
+    return it('Test case 6 : get /users/dashboard ', function(done) {
       request(route)
         .get('/users/dashboard')
         .end(function(err, res) {
@@ -349,18 +341,7 @@ describe('<Unit Test for Routing>', function() {
   });
 
   describe('', function() {
-    return it('Test case 8 : redirect /failure ', function(done) {
-      request(route)
-        .get('/users/failure')
-        .end(function(err, res) {
-          assert.equal(res.headers.location, '/')
-          return done();
-        });
-    });
-  });
-
-  describe('', function() {
-    return it('Test case 9 : get /trainer ', function(done) {
+    return it('Test case 7 : get /trainer ', function(done) {
       request(route)
         .get('/users/trainer')
         .expect(200, done)
@@ -368,7 +349,7 @@ describe('<Unit Test for Routing>', function() {
   });
 
   describe('', function() {
-    return it('Test case 10 : get /studentlist ', function(done) {
+    return it('Test case 8 : get /studentlist ', function(done) {
       request(route)
         .get('/users/studentlist')
         .expect(200, done)

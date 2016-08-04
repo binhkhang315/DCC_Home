@@ -3,8 +3,6 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var exphbs = require('express-handlebars');
-var expressValidator = require('express-validator');
-var flash = require('connect-flash');
 var session = require('express-session');
 var passport = require('passport');
 var mongo = require('mongodb');
@@ -58,32 +56,11 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-// Express Validator ???
-app.use(expressValidator({
-  errorFormatter: function(param, msg, value) {
-      var namespace = param.split('.');
-      var root    = namespace.shift();
-      var formParam = root;
-
-    while(namespace.length) {
-      formParam += '[' + namespace.shift() + ']';
-    }
-    return {
-      param : formParam,
-      msg   : msg,
-      value : value
-    };
-  }
-}));
-
-// Connect Flash
-app.use(flash());
-
 app.use('/', routes);
 app.use('/users', users);
 app.use('/course', course);
 // Set Port
-app.set('port', (process.env.PORT || 3000));
+app.set('port', (process.env.PORT || 3210));
 log.info( 'Server started on port '+ app.get('port'));
 var server = app.listen(app.get('port'), function() {
 	console.log('Server started on port '+ app.get('port'));

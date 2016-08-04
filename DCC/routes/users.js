@@ -33,8 +33,6 @@ mongodb.connect('mongodb://localhost/loginapp', function(error, db) {
     acl = new acl(mongoBackend);
     setRoles();
 });
-var User = require('../models/user');
-
 router.get('/courses', function(req, res) {
 
     res.render('courses');
@@ -112,16 +110,23 @@ router.post('/login', function(req, res, next) {
     passport.authenticate('ldapauth', {
         session: true
     }, function(err, user, info) {
-        if (err) return next(err); // log to file
+        if (err){
+          log.error(err);
+          return next();
+        }
         if (!user) {
+          log.info('User login failed.');
             res.send({
                 userid: null,
                 msg: 'You are not authenticated!'
             });
         } else {
             return req.login(user, function(err) {
-                if (err) return res.sendStatus(500); // log to file
-                log.info(user.uid);
+                if (err){
+                  log.error(err);
+                  return next();
+                }
+                log.info('User login: ' + user.uid);
                 return res.send({
                     userid: user.uid,
                     msg: 'You are authenticated!'
@@ -131,15 +136,7 @@ router.post('/login', function(req, res, next) {
     })(req, res, next);
 });
 
-router.get('/success', function(req, res) {
-    res.redirect('/');
-});
-router.get('/failure', function(req, res) {
-    res.redirect('/');
-});
-
 router.get('/logout', function(req, res) {
-
     req.logout();
     req.session.destroy();
     res.redirect('/');

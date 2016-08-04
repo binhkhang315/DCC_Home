@@ -35,9 +35,15 @@
     "util": "^0.10.3"
   },
   "devDependencies": {
+    "jasmine": "^2.4.1",
     "karma": "^1.1.2",
     "karma-chrome-launcher": "^1.0.1",
-    "karma-jasmine": "^1.0.2"
+    "karma-coverage": "^1.1.1",
+    "karma-jasmine": "^1.0.2",
+    "karma-junit-reporter": "^1.1.0",
+    "karma-mocha": "^1.1.1",
+    "karma-phantomjs-launcher": "^1.0.1",
+    "karma-sinon-chai": "^1.2.3"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

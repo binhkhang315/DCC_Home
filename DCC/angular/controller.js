@@ -49,7 +49,6 @@ myApp.controller('setCourse', function($scope, $http) {
         $scope.cTrainer = result.data.cTrainer;
         $scope.cTrainerPage = result.data.cTrainerPage;
         $scope.cDescription = result.data.cDescription;
-
     });
 });
 myApp.controller('setFeature', function($scope, $http) {
