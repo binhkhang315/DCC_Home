@@ -47,12 +47,66 @@ describe("LoginCtrl Unit testing #1", function() {
         $httpBackend.flush();
         expect($rootScope.isAuthenticated).toBe(true);
     });
-    //Init data
-    it('Test 3: Check Login Fail ', function() {
+
+    it('Test 3: Check Login Fail: username true, password false ', function() {
         controller = createController.loginCtrl();
         var user = {
             username: 'thach',
             password: 'thach12'
+        };
+        $rootScope.user = user;
+        var data = {
+            userid: null,
+            msg: 'You are not authenticated!'
+        };
+        $rootScope.login();
+        $httpBackend.whenPOST('/users/login', user).respond(data);
+        $httpBackend.whenGET('/isLogged').respond(data);
+        $httpBackend.flush();
+        expect($rootScope.isAuthenticated).toBe(false);
+    });
+
+    it('Test 4: Check Login Fail: username false, password true ', function() {
+        controller = createController.loginCtrl();
+        var user = {
+            username: 'thach1',
+            password: 'thach123'
+        };
+        $rootScope.user = user;
+        var data = {
+            userid: null,
+            msg: 'You are not authenticated!'
+        };
+        $rootScope.login();
+        $httpBackend.whenPOST('/users/login', user).respond(data);
+        $httpBackend.whenGET('/isLogged').respond(data);
+        $httpBackend.flush();
+        expect($rootScope.isAuthenticated).toBe(false);
+    });
+
+    it('Test 5: Check Login Fail: username null', function() {
+        controller = createController.loginCtrl();
+        var user = {
+            username: null,
+            password: 'thach123'
+        };
+        $rootScope.user = user;
+        var data = {
+            userid: null,
+            msg: 'You are not authenticated!'
+        };
+        $rootScope.login();
+        $httpBackend.whenPOST('/users/login', user).respond(data);
+        $httpBackend.whenGET('/isLogged').respond(data);
+        $httpBackend.flush();
+        expect($rootScope.isAuthenticated).toBe(false);
+    });
+
+    it('Test 6: Check Login Fail: password null ', function() {
+        controller = createController.loginCtrl();
+        var user = {
+            username: 'thach',
+            password: null
         };
         $rootScope.user = user;
         var data = {
