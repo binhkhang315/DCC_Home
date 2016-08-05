@@ -7,8 +7,8 @@ var opts = {
 };
 var log = require('simple-node-logger').createLogManager(opts).createLogger();
 
-var sequelize = new Sequelize('test', 'root', '', {
-    host: 'localhost',
+var sequelize = new Sequelize('nodejs', 'root', 'dekvn@123321', {
+    host: '192.168.122.51',
     dialect: 'mysql',
     pool: {
         max: 5,

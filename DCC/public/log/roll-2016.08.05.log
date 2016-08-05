@@ -30,3 +30,23 @@
 11:14:35.085 INFO  User login failed. 
 11:14:35.093 INFO  User login failed. 
 11:14:35.101 INFO  User login failed. 
+11:16:59.488 INFO  Server started on port 3210 
+11:17:12.948 INFO  get courses 200 
+11:17:12.963 INFO  get coursesoverview 200 
+11:17:13.104 INFO  User login: thach 
+11:17:13.135 INFO  User login failed. 
+11:17:13.182 INFO  User login failed. 
+11:17:13.198 INFO  User login failed. 
+11:17:13.198 INFO  User login failed. 
+11:17:13.213 INFO  User login failed. 
+11:17:13.213 INFO  User login failed. 
+11:17:40.324 INFO  Server started on port 3210 
+11:17:40.727 INFO  get courses 200 
+11:17:40.752 INFO  get coursesoverview 200 
+11:17:40.920 INFO  User login: thach 
+11:17:40.967 INFO  User login failed. 
+11:17:41.010 INFO  User login failed. 
+11:17:41.020 INFO  User login failed. 
+11:17:41.029 INFO  User login failed. 
+11:17:41.039 INFO  User login failed. 
+11:17:41.047 INFO  User login failed. 
