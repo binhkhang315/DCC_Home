@@ -339,23 +339,6 @@ describe('<Unit Test for Routing>', function() {
         });
     });
   });
-
-  describe('', function() {
-    return it('Test case 7 : get /trainer ', function(done) {
-      request(route)
-        .get('/users/trainer')
-        .expect(200, done)
-    });
-  });
-
-  describe('', function() {
-    return it('Test case 8 : get /studentlist ', function(done) {
-      request(route)
-        .get('/users/studentlist')
-        .expect(200, done)
-    });
-  });
-
 });
 
 //---------------------------------------------------------------------------------------
