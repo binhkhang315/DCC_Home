@@ -298,25 +298,25 @@ describe('<Unit Test for Routing>', function() {
   });
 
   describe('', function() {
-    return it('Test case 2 : get /users/courses ', function(done) {
+    return it('Test case 2 : get /course ', function(done) {
       request(route)
-        .get('/users/courses')
+        .get('/course')
         .expect(200, done)
     });
   });
 
   describe('', function() {
-    return it('Test case 3 : get /users/coursesoverview ', function(done) {
+    return it('Test case 3 : get /course/coursesoverview ', function(done) {
       request(route)
-        .get('/users/coursesoverview')
+        .get('/course/coursesoverview')
         .expect(200, done)
     });
   });
 
   describe('', function() {
-    return it('Test case 4 : get /users/trainerdashboard ', function(done) {
+    return it('Test case 4 : get /course/trainerdashboard ', function(done) {
       request(route)
-        .get('/users/trainerdashboard')
+        .get('/course/trainerdashboard')
         .expect(200, done)
     });
   });

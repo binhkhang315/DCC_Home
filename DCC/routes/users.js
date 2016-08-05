@@ -33,14 +33,6 @@ mongodb.connect('mongodb://localhost/loginapp', function(error, db) {
     acl = new acl(mongoBackend);
     setRoles();
 });
-router.get('/courses', function(req, res) {
-
-    res.render('courses');
-    log.info('get courses ', res.statusCode);
-});
-router.get('/coursesoverview', function(req, res) {
-    res.render('coursesoverview');
-});
 
 router.get('/trainerdashboard', function(req, res) {
     res.render('trainerdashboard');
@@ -51,9 +43,7 @@ router.get('/userprofile', function(req, res) {
 router.get('/trainer', function(req, res) {
     res.render('trainer');
 });
-router.get('/studentlist', function(req, res) {
-    res.render('studentlist');
-});
+
 // dashboard route is only for admin
 router.get('/dashboard', ensureAuthenticated, function(req, res) {
     User.getUserById(req.session.passport.user, function(err, user) {

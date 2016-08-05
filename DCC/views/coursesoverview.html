@@ -49,7 +49,7 @@
 
       <div class="row">
         <div class="features">
-          <div class="row">
+          <div class="row" ng-controller="setFeature" >
             <div class="col-md-12">
               <h2>
                 FEATURES
@@ -58,7 +58,7 @@
 
             <div class="features col-md-3">
               <div class="features-thumb">
-                <a href="https://www.drive.google.com/">
+                <a href="{[{ cDocs }]}">
                   <img alt="" width="189" height="120" src="../img/doc-1.jpg" class="attachment-related-post size-related-post wp-post-image"/>
                   <div class="overlay">
                     <em class="icon-expand4">
@@ -67,13 +67,13 @@
                 </a>
               </div>
               <h4>
-                <a href="https://www.drive.google.com/">DOCUMENTS</a>
+                <a href="">DOCUMENTS</a>
               </h4>
             </div>
 
             <div class="features col-md-3">
               <div class="features-thumb">
-                <a href="https://www.dektech.com.au/">
+                <a href="{[{ cTest }]}">
                   <img alt="" width="189" height="120" src="../img/onl-test.jpg" class="attachment-related-post size-related-post wp-post-image"/>
                   <div class="overlay">
                     <em class="icon-expand4">
@@ -119,6 +119,10 @@
           </div>
         </div>
       </div>
+    </div>
+    <!-- test delete course ---->
+    <div ng-controller="deleteCourse">
+
     </div>
     <!---Feedback modal ---->
     <div id="feedbackModal" class="modal fade" role="dialog">

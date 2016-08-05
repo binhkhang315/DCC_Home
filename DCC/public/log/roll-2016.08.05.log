@@ -1,1 +1,32 @@
 09:14:20.627 INFO  Server started on port 3210 
+11:05:49.610 INFO  Server started on port 3210 
+11:06:01.678 INFO  get courses 200 
+11:06:04.292 INFO  Get Course Information 
+11:06:04.295 INFO  Get Features Information 
+11:06:04.297 INFO  Get Delete Command 
+11:07:51.924 INFO  Server started on port 3210 
+11:08:44.853 INFO  Server started on port 3210 
+11:08:45.440 INFO  get courses 200 
+11:08:45.692 INFO  User login: thach 
+11:08:45.727 INFO  User login failed. 
+11:08:45.776 INFO  User login failed. 
+11:08:45.786 INFO  User login failed. 
+11:08:45.795 INFO  User login failed. 
+11:08:45.804 INFO  User login failed. 
+11:12:38.998 INFO  Server started on port 3210 
+11:13:28.468 INFO  get courses 200 
+11:14:11.650 INFO  get courses 200 
+11:14:13.494 INFO  get coursesoverview 200 
+11:14:13.809 INFO  Get Course Information 
+11:14:13.811 INFO  Get Features Information 
+11:14:13.813 INFO  Get Delete Command 
+11:14:25.202 INFO  Server started on port 3210 
+11:14:34.814 INFO  get courses 200 
+11:14:34.838 INFO  get coursesoverview 200 
+11:14:34.975 INFO  User login: thach 
+11:14:35.035 INFO  User login failed. 
+11:14:35.068 INFO  User login failed. 
+11:14:35.077 INFO  User login failed. 
+11:14:35.085 INFO  User login failed. 
+11:14:35.093 INFO  User login failed. 
+11:14:35.101 INFO  User login failed. 

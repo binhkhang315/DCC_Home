@@ -61,4 +61,23 @@ myApp.controller('setFeature', function($scope, $http) {
 
     });
 });
+
+myApp.controller('setProfile', function($scope, $http) {
+    $http.get('/users/profile').then(function(result) {
+        console.log(result.data);
+        $scope.pStatus = result.data.pStatus;
+        $scope.pName = result.data.pName;
+        $scope.pDoB = result.data.pDoB;
+        $scope.pPhone = result.data.pPhone;
+        $scope.pLocation = result.data.pLocation;
+        $scope.pEmail = result.data.pEmail;
+    });
+});
+
+myApp.controller('deleteCourse', function($scope, $http) {
+    $http.get('/course/deleteCourse').then(function(result) {
+
+    });
+});
+
 //myApp.controller('')

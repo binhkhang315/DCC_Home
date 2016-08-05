@@ -30,11 +30,11 @@
   		    </nav>
       </div>
     <!--  List of courses -->
-    <div class="container">
+    <div class="container"  ng-controller = "setProfile">
       <div  class="col-xs-12 col-sm-12 " style="padding-top:100px">
         <div class="panel panel-info">
           <div class="panel-heading">
-            <h3 class="panel-title">Nguyen Van A</h3>
+            <h3 class="panel-title">{[{ pName }]}</h3>
           </div>
           <div class="panel-body">
             <div class="row">
@@ -46,31 +46,24 @@
                 <table class="table table-user-information">
                           <tbody>
                             <tr>
-                              <td>Department:</td>
-                              <td>Programming</td>
-                            </tr>
-                            <tr>
-                              <td>Hire date:</td>
-                              <td>06/23/2013</td>
+                              <td>Status</td>
+                              <td>{[{ pStatus }]}</td>
                             </tr>
                             <tr>
                               <td>Date of Birth</td>
-                              <td>01/24/1988</td>
+                              <td>{[{ pDoB }]}</td>
                             </tr>
                             <tr>
-                              <td>Gender</td>
-                              <td>Male</td>
+                              <td>Phone</td>
+                              <td>{[{ pPhone }]}</td>
                             </tr>
                               <tr>
-                              <td>Home Address</td>
-                              <td>TP Ho Chi Minh</td>
+                              <td>Location</td>
+                              <td>{[{ pLocation }]}</td>
                             </tr>
                             <tr>
                               <td>Email</td>
-                              <td><a href="mailto:info@support.com">abc@gmail.com</a></td>
-                            </tr>
-                              <td>Phone Number</td>
-                              <td>0123456789</td>
+                              <td><a href="{[{ pEmail }]}">{[{ pEmail }]}</a></td>
                             </tr>
                           </tbody>
                     </table>
