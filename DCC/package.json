@@ -21,6 +21,7 @@
     "googleapis": "^9.0.0",
     "graceful-fs": "^4.1.4",
     "handlebars": "^4.0.5",
+    "karma-chrome-launcher": "^1.0.1",
     "mocha": "^2.3.4",
     "mongodb": "^2.1.18",
     "mongoose": "^4.5.3",
