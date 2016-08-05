@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="myApp">
   <head>
-    <link href="/css/ninja-slider.css" rel="stylesheet" type="text/css" />
-    <script src="/js/ninja-slider.js" type="text/javascript"></script>
   	<script>
   		$(function() {
   			$( '#dl-menu' ).dlmenu();
@@ -111,48 +109,75 @@
         </div>
       </div>
     </div>
+
+
     <!-- Header -->
-    <div class="" style="padding-top:50px" >
-      <div id="ninja-slider">
-        <div class="slider-inner" >
-          <div>
-            <ul>
-                <li>
-                    <a class="ns-img" href="/img/slider-1.jpg"></a>
-                    <div class="caption">Landing Page</div>
-                </li>
-                <li>
-                    <a class="ns-img" href="/img/slider-2.jpg"></a>
-                    <div class="caption">DEK Conpetence Center</div>
-                </li>
-                <li>
-                    <a class="ns-img" href="/img/slider-3.jpg"></a>
-                    <div class="caption">DCC</div>
-                </li>
-                <li>
-                    <a class="ns-img" href="/img/slider-4.jpg"></a>
-                    <div class="caption">DEK</div>
-                </li>
-              </ul>
-            </div>
-            <div class="navsWrapper">
-                <div id="ninja-slider-prev"></div>
-                <div id="ninja-slider-next"></div>
-            </div>
-        </div>
+<div style="padding-top:50px" >
+  <div id="myCarousel" class="intro-header carousel slide" data-ride="carousel" style="height=100%">
+              <!-- Indicators -->
+              <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+                <li data-target="#myCarousel" data-slide-to="3"></li>
+              </ol>
+              <!-- Wrapper for slides -->
+              <div class="carousel-inner" role="listbox">
+                <div class="item active intro-message" style = "background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ),
+                                                              url(/img/slider-1.jpg) no-repeat center center ;
+                                                              -webkit-background-size: cover;
+                                                              -moz-background-size: cover;
+                                                              -o-background-size: cover;
+                                                              background-size: cover;" >
+                  <p class="slidertext">DCC</p>
+                </div>
+
+                <div class="item intro-message" style = "background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ),
+                                                              url(/img/slider-2.jpg) no-repeat center center ;
+                                                              -webkit-background-size: cover;
+                                                              -moz-background-size: cover;
+                                                              -o-background-size: cover;
+                                                              background-size: cover;" >
+                  <p class="slidertext">DEK</p>
+                </div>
+
+                <div class="item intro-message" style = "background:linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ),
+                                                              url(../img/slider-3.jpg)no-repeat center center;
+                                                              -webkit-background-size: cover;
+                                                              -moz-background-size: cover;
+                                                              -o-background-size: cover;
+                                                              background-size: cover;">
+                  <p class="slidertext">Compentence Center</p>
+                </div>
+
+                <div class="item intro-message" style = "background:linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ),
+                                                              url(../img/slider-4.jpg)no-repeat center center;
+                                                              -webkit-background-size: cover;
+                                                              -moz-background-size: cover;
+                                                              -o-background-size: cover;
+                                                              background-size: cover;">
+                  <p class="slidertext">Hydra</p>
+                </div>
+              </div>
+              <!-- Left and right controls -->
+              <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
       </div>
-    </div>
+  </div>
 
     <!-- About -->
-    <div class="container" id ="about">
+    <div class="" id ="about" style="background: url(../img/about.jpg)">
 		<div class="about">
-			<p>  Developing tomorrow’s technology – DEK Technologies develops cutting edge solutions across a diverse range of high technology sectors.
-				</br> Over 15 years experience – Established in Melbourne (Australia) in 1999, DEK Technologies signed its first official corporate agreement with the world’s largest telecommunications supplier in 2004 enabling DEK Technologies to supply research and development services globally.
-				<br>Global expansion – DEK Technologies began expanding its operations by opening offices around the globe starting with Stockholm (Sweden) in 2006, where focus was placed on new business development, both within Australia and Scandinavia. Shortly thereafter, in 2007-2008, offices were opened in Ho Chi Minh City (Vietnam), Rome (Italy) and Gold Coast (Australia).
-				</br>Multiple industries – With over 300 employees worldwide DEK Technologies has managed to successfully cross multiple industry sectors with the ambition to be a global, best in class provider of high technology development services.
-        Developing tomorrow’s technology – DEK Technologies develops cutting edge solutions across a diverse range of high technology sectors.
-  				</br> Over 15 years experience – Established in Melbourne (Australia) in 1999, DEK Technologies signed its first official corporate agreement with the world’s largest telecommunications supplier in 2004 enabling DEK Technologies to supply research and development services globally.
-  				<br>Global expansion – DEK Technologies began expanding its operations by opening offices around the globe starting with Stockholm (Sweden) in 2006, where focus was placed on new business development, both within Australia and Scandinavia. Shortly thereafter, in 2007-2008, offices were opened in Ho Chi Minh City (Vietnam), Rome (Italy) and Gold Coast (Australia).
+			<p> <h3>About DEK Competence center</h3>
+        </br><h1>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In id urna consequat, tincidunt turpis non, laoreet lacus. Vivamus varius elit non diam mattis tincidunt. Phasellus at maximus nisi. Suspendisse fermentum ipsum et turpis dignissim, id imperdiet justo volutpat. Donec imperdiet sollicitudin dolor sed porta.</h1>
+        </br><h1>Phasellus molestie ligula arcu, ac molestie justo pulvinar congue. Aenean semper metus neque, eget ultricies diam semper eget. Donec magna nisl, placerat a auctor varius, lacinia a mauris. Suspendisse commodo in augue eget sagittis. Morbi at volutpat augue, at aliquam diam.</h1>
+        </br><h1>Aenean volutpat ex risus, sit amet pulvinar libero molestie sed. Maecenas nulla leo, eleifend et cursus eget, scelerisque sed risus. Mauris eu scelerisque sapien, quis rhoncus dui. Curabitur at vestibulum turpis, in tristique sem.</h1>
 			</p>
 		</div>
     </div>

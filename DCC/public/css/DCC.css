@@ -3,6 +3,12 @@
   border-bottom: 2px solid #E8E8E8;
   padding: 10px 1px;
 }
+/***********slider text****************/
+.slidertext {
+    padding-top: 200px;
+    font-size: 150px;
+}
+
 /***********navbar dcc****************/
 .navbar-dcc {
   background-color: #1C1C1C;
@@ -308,7 +314,6 @@
 	display: block;
 	position: relative;
 	padding: 15px 15px;
-	font-style: oblique;;
 	font-size: 23px;
 	line-height: 20px;
 	font-weight: bold;
