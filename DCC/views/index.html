@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="myApp">
   <head>
-  	<script>
+    <script>
   		$(function() {
   			$( '#dl-menu' ).dlmenu();
   		});
@@ -33,7 +33,7 @@
         							  <li role="presentation" ng-hide="!userid"><a href="#">Hello {[{userid}]}!</a></li>
         							  <li role="presentation" ng-hide="!userid" ng-lick="logout()"><a href="/users/logout">Logout</a></li>
         							  <li role="presentation" ng-hide="!userid"><a href="/users/dashboard">Dashboard</a></li>
-        							  <li role="presentation" ng-hide="userid"><a data-toggle="modal" href="#loginModal">Login</a></li>
+        							  <li ng-hide="userid"><a id="login">Login</a></li>
                         <li><a href="/users/userprofile">Profile</a></li>
         							  <li><a href="/course">Courses</a></li>
         						<!-- page for admin -->
