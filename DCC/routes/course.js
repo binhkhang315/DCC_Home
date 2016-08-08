@@ -72,7 +72,9 @@ router.get('/getCourse', function(req, res) {
             courseName: course.name,
             courseTrainer: course.trainerID,
             courseTrainerPage: '/users/trainerdashboard',
-            courseDescription: course.description
+            courseDescription: course.description,
+            courseDocuments: course.documents,
+            courseCategory: course.category
         });
       });
 
@@ -87,7 +89,7 @@ router.get('/features', function(req, res) {
   log.info('Get Features Information');
   models.course.findOne({
     where: {
-      name: 'LDE'
+      id: 1
     }
     }).then(function(course) {
       console.log(course);
@@ -99,10 +101,27 @@ router.get('/features', function(req, res) {
       });
     });
 });
+
+// findAll
+router.get('/list', function(req, res) {
+  log.info('Get List of Courses');
+  models.course.findAll().then(function(course) {
+      console.log(course);
+      var data = JSON.stringify(course);
+      data = JSON.parse(data);
+      var datasend = {
+        course: data
+      }
+      res.send(datasend);
+    });
+});
+
+
 router.get('/', function(req, res) {
     res.render('courses');
     log.info('get courses ', res.statusCode);
 });
+
 router.get('/coursesoverview', function(req, res) {
     res.render('coursesoverview');
     log.info('get coursesoverview ', res.statusCode);

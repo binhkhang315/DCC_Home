@@ -132,3 +132,82 @@
 11:33:52.190 INFO  Get Course Information 
 11:33:52.195 INFO  Get Features Information 
 11:33:52.196 INFO  Get Delete Command 
+13:21:43.245 INFO  Server started on port 3210 
+13:21:54.317 INFO  get courses 200 
+13:21:54.707 INFO  Get Course Information 
+13:22:27.187 INFO  Server started on port 3210 
+13:22:42.074 INFO  get courses 200 
+13:22:42.486 INFO  Get Course Information 
+13:23:19.283 INFO  get courses 200 
+13:23:19.682 INFO  Get Course Information 
+13:23:40.635 INFO  get courses 200 
+13:23:41.023 INFO  Get Course Information 
+13:27:25.176 INFO  Server started on port 3210 
+13:27:32.530 INFO  get courses 200 
+13:27:32.930 INFO  Get Course Information 
+13:30:13.150 INFO  get courses 200 
+13:30:13.605 INFO  Get Course Information 
+13:30:48.719 INFO  get coursesoverview 200 
+13:30:49.187 INFO  Get Course Information 
+13:30:49.188 INFO  Get Features Information 
+13:30:49.195 INFO  Get Delete Command 
+13:30:56.428 INFO  get coursesoverview 200 
+13:30:56.853 INFO  Get Course Information 
+13:30:56.869 INFO  Get Features Information 
+13:30:56.890 INFO  Get Delete Command 
+13:31:38.635 INFO  get coursesoverview 200 
+13:31:39.050 INFO  Get Course Information 
+13:31:39.056 INFO  Get Features Information 
+13:31:39.065 INFO  Get Delete Command 
+13:31:53.401 INFO  get coursesoverview 200 
+13:31:53.763 INFO  Get Course Information 
+13:31:53.772 INFO  Get Features Information 
+13:31:53.773 INFO  Get Delete Command 
+13:32:11.476 INFO  get coursesoverview 200 
+13:32:11.841 INFO  Get Course Information 
+13:32:11.846 INFO  Get Features Information 
+13:32:11.848 INFO  Get Delete Command 
+13:34:11.851 INFO  Get Delete Command 
+13:36:11.857 INFO  Get Delete Command 
+13:37:23.637 INFO  get courses 200 
+13:37:24.104 INFO  Get Course Information 
+13:48:17.613 INFO  Server started on port 3210 
+13:48:27.204 INFO  get courses 200 
+13:48:27.530 INFO  Get List of Courses 
+13:50:06.780 INFO  Server started on port 3210 
+13:50:27.585 INFO  get courses 200 
+13:50:27.778 INFO  Get List of Courses 
+13:51:19.622 INFO  Server started on port 3210 
+13:51:31.633 INFO  get courses 200 
+13:51:31.866 INFO  Get List of Courses 
+13:53:43.118 INFO  Server started on port 3210 
+13:54:04.462 INFO  get courses 200 
+13:54:04.694 INFO  Get List of Courses 
+13:54:37.015 INFO  get coursesoverview 200 
+13:54:37.292 INFO  Get Course Information 
+13:54:37.294 INFO  Get Features Information 
+13:54:37.295 INFO  Get Delete Command 
+13:54:40.858 INFO  get coursesoverview 200 
+13:54:41.025 INFO  Get Course Information 
+13:54:41.025 INFO  Get Features Information 
+13:54:41.064 INFO  Get Delete Command 
+13:54:51.470 INFO  get coursesoverview 200 
+13:54:51.628 INFO  Get Course Information 
+13:54:51.631 INFO  Get Features Information 
+13:54:51.632 INFO  Get Delete Command 
+13:54:55.304 INFO  get coursesoverview 200 
+13:54:55.453 INFO  Get Course Information 
+13:54:55.467 INFO  Get Features Information 
+13:54:55.493 INFO  Get Delete Command 
+13:56:11.207 INFO  get coursesoverview 200 
+13:56:11.490 INFO  Get Course Information 
+13:56:11.499 INFO  Get Features Information 
+13:56:11.506 INFO  Get Delete Command 
+13:56:18.231 INFO  get coursesoverview 200 
+13:56:18.399 INFO  Get Course Information 
+13:56:18.410 INFO  Get Features Information 
+13:56:18.429 INFO  Get Delete Command 
+13:56:21.490 INFO  get courses 200 
+13:56:21.667 INFO  Get List of Courses 
+13:56:22.204 INFO  get courses 200 
+13:56:22.408 INFO  Get List of Courses 

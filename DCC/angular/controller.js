@@ -49,12 +49,22 @@ myApp.controller('setCourse', function($scope, $http) {
         $scope.courseTrainer = result.data.courseTrainer;
         $scope.courseTrainerPage = result.data.courseTrainerPage;
         $scope.courseDescription = result.data.courseDescription;
+        $scope.courseCategory = result.data.courseCategory;
+        $scope.courseDocuments = result.data.courseDocuments;
     });
 });
+
+myApp.controller('getList', function($scope, $http) {
+    $http.get('/course/list').then(function(result) {
+      console.log(result.data);
+      $scope.coursesList = result.data.course;
+    });
+});
+
 myApp.controller('setFeature', function($scope, $http) {
     $http.get('/course/features').then(function(result) {
         console.log(result.data);
-        $scope.courseDocs = result.data.courseDocs;
+        $scope.courseDocuments = result.data.courseDocuments;
         $scope.courseFeedback = result.data.courseFeedback;
         $scope.courseTest = result.data.courseTest;
         $scope.courseRating = result.data.courseRating;

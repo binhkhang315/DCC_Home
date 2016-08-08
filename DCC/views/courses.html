@@ -161,54 +161,43 @@
 
     <!--  List of courses -->
     <div class="container">
-      <div class=" col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3">
-          <div class="panel panel-info">
-            <div class="panel-heading">
-              <h3 class="panel-title">List of courses</h3>
-            </div>
-            <div class="panel-body">
-              <div class="row">
-                <div class=" col-md-12 col-lg-12 ">
-                  <table class="table table-user-information">
-                            <tbody>
-                              <tr>
-                                <td>Course Name</td>
-                                <td> Trainer</td>
-                                <td>Status</td>
-                              </tr>
-                              <tr>
-                                <td><a href="/course/coursesoverview">Agile Course</a></td>
-                                <td><a href="/course/trainerdashboard">Nguyen Dang Quang</a></td>
-                                <td><input type="checkbox" name="course" value="Agile"></td>
-                              </tr>
-                              <tr>
-                                <td><a href="/course/coursesoverview">Agile Course</a></td>
-                                <td><a href="/course/trainerdashboard">Nguyen Dang Quang</a></td>
-                                <td><input type="checkbox" name="course" value="Agile"></td>
-                              </tr><tr>
-                                <td><a href="/course/coursesoverview">Agile Course</a></td>
-                                <td><a href="/course/trainerdashboard">Nguyen Dang Quang</a></td>
-                                <td><input type="checkbox" name="course" value="Agile"></td>
-                              </tr><tr>
-                                <td><a href="/course/coursesoverview">Agile Course</a></td>
-                                <td><a href="/course/trainerdashboard">Nguyen Dang Quang</a></td>
-                                <td><input type="checkbox" name="course" value="Agile"></td>
-                              </tr><tr>
-                                <td><a href="/course/coursesoverview">Agile Course</a></td>
-                                <td><a href="/course/trainerdashboard">Nguyen Dang Quang</a></td>
-                                <td><input type="checkbox" name="course" value="Agile"></td>
-                              </tr><tr>
-                                <td><a href="/course/coursesoverview">Agile Course</a></td>
-                                <td><a href="/course/trainerdashboard">Nguyen Dang Quang</a></td>
-                                <td><input type="checkbox" name="course" value="Agile"></td>
-                              </tr>
-                            </tbody>
-                      </table>
+        <div>
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title">List of courses</h3>
+                    <div class="btn btn-default" data-toggle="modal" href="#addCourseModal">Add Course</div>
                 </div>
-              </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class=" col-md-12 col-lg-12 ">
+                            <table class="table table-user-information" ng-controller="getList">
+                                <thead>
+                                    <tr >
+                                        <th>Name</th>
+                                        <th>Category</th>
+                                        <th>Trainer Name</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="course in coursesList">
+                                        <!-- <td>{[{ courseid }]}</td> -->
+                                        <td><a href="/course/coursesoverview/{[{course.id}]} ">{[{ course.name }]}</td>
+                                        <td>{[{ course.category }]}</td>
+                                        <td>{[{ course.trainerID }]}</td>
+
+                                        <td>
+                                            <a class="a-inside edit" href=" ">Edit&nbsp</a>
+                                            <a class="a-inside delete" href="">Delete</a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-      </div>
+        </div>
     </div>
 
     <!-- Footer -->
