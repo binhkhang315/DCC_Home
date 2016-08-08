@@ -6,6 +6,7 @@ var acl = require('acl');
 var mongodb = require('mongodb');
 var ldap = require('ldapjs');
 var User = require('../models/user');
+var models  = require('../models');
 
 var server = null;
 var LDAP_PORT = 389;
@@ -37,9 +38,34 @@ mongodb.connect('mongodb://localhost/loginapp', function(error, db) {
 router.get('/trainerdashboard', function(req, res) {
     res.render('trainerdashboard');
 });
+
 router.get('/userprofile', function(req, res) {
-    res.render('userprofile');
+  res.render('userprofile');
 });
+
+router.get('/userprofileController', function(req, res) {
+    models.User
+      .findOrCreate({
+        where: {username: 'admin'},
+        defaults: {
+          status: 'Im admin',
+          dob: '20/10/1995',
+          phone: '0123456789',
+          location: 'DEK Technologies',
+          email: 'dek@dek.vn'
+        }})
+      .then(function(user) {
+        res.send({
+           pStatus: user[0].dataValues.status,
+           pName: user[0].dataValues.username,
+           pDoB: user[0].dataValues.dob,
+           pPhone: user[0].dataValues.phone,
+           pLocation: user[0].dataValues.location,
+           pEmail: user[0].dataValues.email
+        });
+    });
+});
+
 router.get('/trainer', function(req, res) {
     res.render('trainer');
 });

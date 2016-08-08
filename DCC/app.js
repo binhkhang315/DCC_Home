@@ -23,6 +23,7 @@ var db = mongoose.connection;
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var course = require('./routes/course');
+var models = require('./models');
 // Init App
 var app = express(), handlebars;
 
@@ -60,11 +61,13 @@ app.use('/', routes);
 app.use('/users', users);
 app.use('/course', course);
 // Set Port
-app.set('port', (process.env.PORT || 3210));
+app.set('port', process.env.PORT || 3210);
 log.info( 'Server started on port '+ app.get('port'));
-var server = app.listen(app.get('port'), function() {
-	console.log('Server started on port '+ app.get('port'));
+models.sequelize.sync().then(function () {
+  var server = app.listen(app.get('port'), function() {
+    console.log('Server started on port ' + server.address().port);
+  });
 });
 
-module.exports = server;
+// module.exports = server;
 //exports.log = log;

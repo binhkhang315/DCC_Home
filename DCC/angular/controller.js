@@ -73,8 +73,7 @@ myApp.controller('setFeature', function($scope, $http) {
 });
 
 myApp.controller('setProfile', function($scope, $http) {
-    $http.get('/users/profile').then(function(result) {
-        console.log(result.data);
+    $http.get('/users/userprofileController').then(function(result) {
         $scope.pStatus = result.data.pStatus;
         $scope.pName = result.data.pName;
         $scope.pDoB = result.data.pDoB;
