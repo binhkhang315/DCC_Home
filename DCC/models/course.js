@@ -1,5 +1,5 @@
 /* jshint indent: 2 */
-var Sequelize = require('sequelize');
+"use strict";
 var opts = {
     logDirectory: './public/log',
     fileNamePattern: 'roll-<DATE>.log',
@@ -7,61 +7,34 @@ var opts = {
 };
 var log = require('simple-node-logger').createLogManager(opts).createLogger();
 
-var sequelize = new Sequelize('nodejs', 'root', 'dekvn@123321', {
-    host: '192.168.122.51',
-    dialect: 'mysql',
-    pool: {
-        max: 5,
-        min: 0,
-        idle: 10000
-    },
-});
-sequelize
-    .authenticate()
-    .then(function(err) {
-        console.log('Connection has been established successfully.');
-    })
-    .catch(function(err) {
-        console.log('Unable to connect to the database:', err);
-    });
-
-var Course = module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('course', {
-    courseID: {
-      type: DataTypes.INTEGER(10),
-      allowNull: false,
-      primaryKey: true,
-      autoIncrement: true
-    },
+module.exports = function(sequelize, DataTypes) {
+  var Course = sequelize.define('course', {
     name: {
       type: DataTypes.STRING,
       allowNull: false
     },
     description: {
-      type: DataTypes.STRING,
-      allowNull: false
+      type: DataTypes.TEXT,
+      allowNull: true
     },
     category: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    document: {
+    documents: {
       type: DataTypes.STRING,
       allowNull: true
     },
     trainerID: {
-      type: DataTypes.INTEGER(10),
-      allowNull: false
+      type: DataTypes.STRING,
+      allowNull: true
     },
-    feedbackID: {
-      type: DataTypes.INTEGER(10),
-      allowNull: true,
-      references: {
-        model: 'feedback',
-        key: 'feedbackID'
-      }
+    test: {
+      type: DataTypes.STRING,
+      allowNull: true
     }
   }, {
     tableName: 'course'
   });
+  return Course;
 };

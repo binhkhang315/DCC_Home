@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
-var Course = require('../models/course');
+var models = require('../models');
+
 
 // force: true will drop the table if it already exists
 
@@ -14,25 +15,68 @@ var opts = {
 
 var log = require('simple-node-logger').createLogManager(opts).createLogger();
 
-// Course.createCourseT({
-//     cName: 'Agile',
-//     cTrainer: 'Nguyen Dang QUang'
-// });
-// Course.createCourseT({
-//     cName: 'ICT',
-//     cTrainer: 'Nguyen Truc'
-// });
+models.course.sync({
+  force:true
+})
+.then(function(){
+  return models.course.create ({
+    name: 'CBA Overview',
+    description: 'This is CBA Overview description',
+    category: 'Technical',
+    test: 'This is CBA Overview test',
+    documents: 'This is CBA Overview document',
+    trainerID: 'Khai Doan'
+  });
+    })
+  .then(function(){
+    return models.course.create ({
+      name: 'CoreMW Overview',
+      description: 'This is CoreMW Overview description',
+      category: 'Technical',
+      test: 'This is CoreMW Overview test',
+      documents: 'This is CoreMW Overview document',
+      trainerID: 'Tai Dinh'
+    });
+      })
+    .then(function(){
+      return models.course.create ({
+        name: 'LDE',
+        description: 'This is LDE description',
+        category: 'Technical',
+        test: 'This is LDE test',
+        documents: 'This is LDE document',
+        trainerID: 'King Nguyen'
+      });
+        })
+      .then(function(){
+        return models.course.create ({
+          name: 'GIT & GERRIT',
+          description: 'This is GIT & GERRIT description',
+          category: 'Technical',
+          test: 'This is GIT & GERRIT test',
+          documents: 'This is GIT & GERRIT document',
+          trainerID: 'Bao Nguyen'
+        });
+});
+
+
 router.get('/getCourse', function(req, res) {
     log.info('Get Course Information');
-    // Course.getCourseByCoursename('ICT', function(user) {
-    //     log.info(user);
-    // });
-    res.send({
-        cName: 'ssss',
-        cTrainer: 'ssss',
-        cTrainerPage: '/users/trainerdashboard',
-        cDescription: "Lorem ipsum dolor sit ametfgdfgdfgdfgdfgdfg"
-    });
+    models.course.findOne({
+      where: {
+        id: 1
+      }
+      }).then(function(course) {
+        console.log(course);
+        res.send({
+            courseName: course.name,
+            courseTrainer: course.trainerID,
+            courseTrainerPage: '/users/trainerdashboard',
+            courseDescription: course.description
+        });
+      });
+
+
 });
 
 router.get('/deleteCourse', function(req,res){
@@ -40,12 +84,19 @@ router.get('/deleteCourse', function(req,res){
   //Course.deleteCourse('abc');
 })
 router.get('/features', function(req, res) {
-    log.info('Get Features Information')
-    res.send({
-        cDocs: 'https://www.dektech.com.au/',
-        cTest: 'https://www.dektech.com.au/',
-        cFeedback: 'https://www.dektech.com.au/"',
-        cRating: 'https://www.dektech.com.au/'
+  log.info('Get Features Information');
+  models.course.findOne({
+    where: {
+      name: 'LDE'
+    }
+    }).then(function(course) {
+      console.log(course);
+      res.send({
+          courseDocs: course.documents,
+          courseTest: course.test,
+          courseFeedback: 'This is my Feedback',
+          courseRating: 5
+      });
     });
 });
 router.get('/', function(req, res) {

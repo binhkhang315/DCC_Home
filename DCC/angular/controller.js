@@ -45,19 +45,19 @@ myApp.controller('LoginCtrl', function($scope, $http, $cookies, $rootScope) {
 myApp.controller('setCourse', function($scope, $http) {
     $http.get('/course/getCourse').then(function(result) {
         console.log(result.data);
-        $scope.cName = result.data.cName;
-        $scope.cTrainer = result.data.cTrainer;
-        $scope.cTrainerPage = result.data.cTrainerPage;
-        $scope.cDescription = result.data.cDescription;
+        $scope.courseName = result.data.courseName;
+        $scope.courseTrainer = result.data.courseTrainer;
+        $scope.courseTrainerPage = result.data.courseTrainerPage;
+        $scope.courseDescription = result.data.courseDescription;
     });
 });
 myApp.controller('setFeature', function($scope, $http) {
     $http.get('/course/features').then(function(result) {
         console.log(result.data);
-        $scope.cDocs = result.data.cDocs;
-        $scope.cFeedback = result.data.cFeedback;
-        $scope.cTest = result.data.cTest;
-        $scope.cRating = result.data.cRating;
+        $scope.courseDocs = result.data.courseDocs;
+        $scope.courseFeedback = result.data.courseFeedback;
+        $scope.courseTest = result.data.courseTest;
+        $scope.courseRating = result.data.courseRating;
 
     });
 });
