@@ -173,21 +173,21 @@ describe('<Unit Test for Routing>', function() {
 });
 
 //---------------------------------------------------------------------------------------
-describe('<Unit test for Login>', function() {
-  describe('', function() {
-    return it('Test case 1 : Login success', function(done) {
-      request(route)
-        .post('/users/login')
-        .send({
-          username: 'thach',
-          password: 'thach123'
-        })
-        .end(function(err, res) {
-          assert.equal(res.body.userid, 'thach');
-          return done();
-        });
-    });
-  });
+// describe('<Unit test for Login>', function() {
+//   describe('', function() {
+//     return it('Test case 1 : Login success', function(done) {
+//       request(route)
+//         .post('/users/login')
+//         .send({
+//           username: 'thach',
+//           password: 'thach123'
+//         })
+//         .end(function(err, res) {
+//           assert.equal(res.body.userid, 'thach');
+//           return done();
+//         });
+//     });
+//   });
 
   describe('', function() {
     return it('Test case 2 : Login fail, username true, password false', function(done) {
