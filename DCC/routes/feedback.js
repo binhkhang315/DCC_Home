@@ -17,7 +17,7 @@ models.Feedback.sync({
   force:true
 })
 .then(function(){
-  return models.course.create ({
-    comment: 'Fucking bad'
+  return models.Feedback.create ({
+    comment: 'this is feed'
   });
 });

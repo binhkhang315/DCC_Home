@@ -19,7 +19,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     category: {
       type: DataTypes.STRING,
-      allowNull: true
+      allowNull: false
     },
     documents: {
       type: DataTypes.STRING,

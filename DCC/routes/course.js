@@ -14,7 +14,7 @@ var opts = {
 
 
 var log = require('simple-node-logger').createLogManager(opts).createLogger();
-
+var cid;
 models.course.sync({
   force:true
 })
@@ -59,15 +59,15 @@ models.course.sync({
         });
 });
 
-
-router.get('/getCourse', function(req, res) {
+router.get('/getCourse',function(req, res) {
     log.info('Get Course Information');
+
     models.course.findOne({
       where: {
-        id: 1
+        id:  cid
       }
       }).then(function(course) {
-        console.log(course);
+        console.log("show course" +course);
         res.send({
             courseName: course.name,
             courseTrainer: course.trainerID,
@@ -89,7 +89,7 @@ router.get('/features', function(req, res) {
   log.info('Get Features Information');
   models.course.findOne({
     where: {
-      id: 1
+      id: cid
     }
     }).then(function(course) {
       console.log(course);
@@ -121,8 +121,15 @@ router.get('/', function(req, res) {
     res.render('courses');
     log.info('get courses ', res.statusCode);
 });
+router.get('/coursesoverview/', function(req, res) {
+    res.render('coursesoverview');
+    log.info('get coursesoverview ', res.statusCode);
+});
 
-router.get('/coursesoverview', function(req, res) {
+router.get('/coursesoverview/:id', function(req, res) {
+  var id = req.params.id;
+  cid =  req.params.id;
+  console.log('show params id', id)
     res.render('coursesoverview');
     log.info('get coursesoverview ', res.statusCode);
 });

@@ -1,8 +1,41 @@
-var myApp = angular.module('myApp', ['ngCookies']);
+var myApp = angular.module('myApp', ['ngCookies', 'ngRoute']);
 //change angular symbol from '{{' and '}}' to '{[{' and'}]}' to avoid conflicting with handlebars's synstax
-myApp.config(function($interpolateProvider) {
-    $interpolateProvider.startSymbol('{[{').endSymbol('}]}');
-});
+myApp.config(
+    function($interpolateProvider) {
+        $interpolateProvider.startSymbol('{[{').endSymbol('}]}');
+    },
+     ['$routeProvider', 'locationProvider', '$rootScope', function($routeProvider, $scope,$rootScope) {
+    //
+    //     $routeProvider
+    //         .when('/course/coursesoverview/:id', {
+    //             controller: function($rootScope){
+    //               console.log(params.id);
+    //               $rootScope.id = params.id;
+    //             },
+    //             templateUrl: 'views/coursesoverview.html'
+    //
+    //         })
+    //         .otherwise({
+    //           redirectTo: '/'
+    //         });
+    //
+            $locationProvider.html5Mode(true);
+     }]
+);
+// myApp.config(
+//     function($routeProvider) {
+//         $routeProvider.
+//             when('/', {templateUrl:'/home'}).
+//             when('/course/coursesoverview/:id',
+//                 {
+//                     controller:setCourse,
+//                     templateUrl: function(params){ return '/course/coursesoverview/' + params.id; }
+//                 }
+//             ).
+//             otherwise({redirectTo:'/'});
+//     }
+// );
+
 // creat angular controller
 myApp.controller('LoginCtrl', function($scope, $http, $cookies, $rootScope) {
     // function to submit the form after all validation has occurred
@@ -42,7 +75,8 @@ myApp.controller('LoginCtrl', function($scope, $http, $cookies, $rootScope) {
         }
     }
 });
-myApp.controller('setCourse', function($scope, $http) {
+myApp.controller('setCourse', function($scope, $http, $location) {
+
     $http.get('/course/getCourse').then(function(result) {
         console.log(result.data);
         $scope.courseName = result.data.courseName;
@@ -56,8 +90,8 @@ myApp.controller('setCourse', function($scope, $http) {
 
 myApp.controller('getList', function($scope, $http) {
     $http.get('/course/list').then(function(result) {
-      console.log(result.data);
-      $scope.coursesList = result.data.course;
+        console.log(result.data);
+        $scope.coursesList = result.data.course;
     });
 });
 
@@ -73,7 +107,8 @@ myApp.controller('setFeature', function($scope, $http) {
 });
 
 myApp.controller('setProfile', function($scope, $http) {
-    $http.get('/users/userprofileController').then(function(result) {
+    $http.get('/users/profile').then(function(result) {
+        console.log(result.data);
         $scope.pStatus = result.data.pStatus;
         $scope.pName = result.data.pName;
         $scope.pDoB = result.data.pDoB;
@@ -88,6 +123,9 @@ myApp.controller('deleteCourse', function($scope, $http) {
 
     });
 });
+
+//myApp.controller('')
+
 
 myApp.controller('FeedbackCtrl',function($scope, $http){
   $scope.addFeedback = function() {
