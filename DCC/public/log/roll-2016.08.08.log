@@ -245,3 +245,25 @@
 17:07:19.922 INFO  Get Course Information 
 17:07:19.942 INFO  Get Features Information 
 17:07:19.946 INFO  Get Delete Command 
+17:08:55.285 INFO  get coursesoverview 200 
+17:08:55.476 INFO  Get Course Information 
+17:08:55.483 INFO  Get Features Information 
+17:08:55.488 INFO  Get Delete Command 
+17:09:00.240 INFO  Get Delete Command 
+17:09:02.717 INFO  get coursesoverview 200 
+17:09:02.872 INFO  Get Course Information 
+17:09:02.875 INFO  Get Features Information 
+17:09:02.928 INFO  Get Delete Command 
+17:09:06.796 INFO  Get Delete Command 
+17:09:09.812 INFO  get coursesoverview 200 
+17:09:09.972 INFO  Get Course Information 
+17:09:09.973 INFO  Get Features Information 
+17:09:10.018 INFO  Get Delete Command 
+17:09:13.286 INFO  get coursesoverview 200 
+17:09:13.449 INFO  Get Course Information 
+17:09:13.449 INFO  Get Features Information 
+17:09:13.487 INFO  Get Delete Command 
+17:10:38.649 INFO  get courses 200 
+17:10:39.078 INFO  Get List of Courses 
+17:12:48.731 INFO  User login failed. 
+17:13:00.340 INFO  User login failed. 

@@ -1,26 +1,9 @@
-var myApp = angular.module('myApp', ['ngCookies', 'ngRoute']);
+var myApp = angular.module('myApp', ['ngCookies']);
 //change angular symbol from '{{' and '}}' to '{[{' and'}]}' to avoid conflicting with handlebars's synstax
 myApp.config(
     function($interpolateProvider) {
         $interpolateProvider.startSymbol('{[{').endSymbol('}]}');
-    },
-     ['$routeProvider', 'locationProvider', '$rootScope', function($routeProvider, $scope,$rootScope) {
-    //
-    //     $routeProvider
-    //         .when('/course/coursesoverview/:id', {
-    //             controller: function($rootScope){
-    //               console.log(params.id);
-    //               $rootScope.id = params.id;
-    //             },
-    //             templateUrl: 'views/coursesoverview.html'
-    //
-    //         })
-    //         .otherwise({
-    //           redirectTo: '/'
-    //         });
-    //
-            $locationProvider.html5Mode(true);
-     }]
+    }
 );
 // myApp.config(
 //     function($routeProvider) {
