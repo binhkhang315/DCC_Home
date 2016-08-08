@@ -59,7 +59,7 @@
             <div class="features col-md-3">
               <div class="features-thumb">
                 <a href="{[{ courseDocuments }]}">
-                  <img alt="" width="189" height="120" src="../img/doc-1.jpg" class="attachment-related-post size-related-post wp-post-image"/>
+                  <img alt="" width="189" height="120" src="/img/doc-1.jpg" class="attachment-related-post size-related-post wp-post-image"/>
                   <div class="overlay">
                     <em class="icon-expand4">
                     </em>
@@ -74,7 +74,7 @@
             <div class="features col-md-3">
               <div class="features-thumb">
                 <a href="{[{ courseTest }]}">
-                  <img alt="" width="189" height="120" src="../img/onl-test.jpg" class="attachment-related-post size-related-post wp-post-image"/>
+                  <img alt="" width="189" height="120" src="/img/onl-test.jpg" class="attachment-related-post size-related-post wp-post-image"/>
                   <div class="overlay">
                     <em class="icon-expand4">
                     </em>
@@ -89,7 +89,7 @@
             <div class="features col-md-3">
               <div class="features-thumb">
                 <a data-toggle="modal" href="#feedbackModal">
-                  <img alt="" width="189" height="120" src="../img/feed-back.jpg" class="attachment-related-post size-related-post wp-post-image"/>
+                  <img alt="" width="189" height="120" src="/img/feed-back.jpg" class="attachment-related-post size-related-post wp-post-image"/>
                   <div class="overlay">
                     <em class="icon-expand4">
                     </em>
@@ -125,7 +125,7 @@
 
     </div>
     <!---Feedback modal ---->
-    <div id="feedbackModal" class="modal fade" role="dialog">
+<div id="feedbackModal" class="modal fade" role="dialog" ng-controller="FeedbackCtrl">
       <div class="modal-dialog">
         <!-- Modal content-->
         <div class="modal-content">
@@ -134,10 +134,10 @@
             <h4 class="modal-title">Feedback</h4>
           </div>
           <div class="modal-body">
-            <textarea style="width:100%;  height:100%"/></textarea>
+            <textarea style="width:100%;  height:100%" ng-model="comment"></textarea>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Send</Button>
+            <button type="button" class="btn btn-default" ng-click="addFeedback()" data-dismiss="modal">Send</Button>
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
           </div>
         </div>

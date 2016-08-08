@@ -218,3 +218,14 @@
 15:52:33.100 INFO  Server started on port 3210 
 15:53:12.631 INFO  Server started on port 3210 
 15:53:33.346 INFO  Server started on port 3210 
+16:53:01.882 INFO  Server started on port 3210 
+16:53:19.609 INFO  get courses 200 
+16:53:20.321 INFO  Get List of Courses 
+16:53:25.279 INFO  get coursesoverview 200 
+16:53:25.790 INFO  Get Course Information 
+16:53:25.811 INFO  Get Features Information 
+16:53:25.824 INFO  Get Delete Command 
+16:54:41.614 INFO  get coursesoverview 200 
+16:54:42.274 INFO  Get Course Information 
+16:54:42.279 INFO  Get Features Information 
+16:54:42.289 INFO  Get Delete Command 

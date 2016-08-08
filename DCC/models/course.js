@@ -11,7 +11,7 @@ module.exports = function(sequelize, DataTypes) {
   var Course = sequelize.define('course', {
     name: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: true
     },
     description: {
       type: DataTypes.TEXT,
@@ -19,7 +19,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     category: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: true
     },
     documents: {
       type: DataTypes.STRING,

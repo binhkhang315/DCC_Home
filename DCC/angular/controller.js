@@ -89,4 +89,20 @@ myApp.controller('deleteCourse', function($scope, $http) {
     });
 });
 
+myApp.controller('FeedbackCtrl',function($scope, $http){
+  $scope.addFeedback = function() {
+      $http.post('/course/coursesoverview/feedback', {
+          comment : $scope.comment,
+          // rating : $scope.rating,
+      }).success(function(data, status, headers, config) {
+          $scope.feedbacks.push({
+            comment : $scope.comment,
+            // rating : $scope.rating
+          });
+          $scope.comment = '';
+      }).error(function(data, status, headers, config) {
+          console.log("Ops: " + data);
+      });
+  };
+});
 //myApp.controller('')

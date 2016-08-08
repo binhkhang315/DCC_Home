@@ -23,6 +23,8 @@ var db = mongoose.connection;
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var course = require('./routes/course');
+var feedback = require('./routes/feedback');
+
 // Init App
 var app = express(), handlebars;
 
@@ -59,6 +61,8 @@ app.use(passport.session());
 app.use('/', routes);
 app.use('/users', users);
 app.use('/course', course);
+app.post('/course/coursesoverview/feedback',feedback.savefeedback);
+
 // Set Port
 app.set('port', (process.env.PORT || 3210));
 log.info( 'Server started on port '+ app.get('port'));
