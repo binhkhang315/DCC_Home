@@ -344,3 +344,59 @@
 14:12:05.734 INFO  /models/course: getCourseByName() : CBA Overview 
 14:12:05.749 INFO  /models/course: getCourseByCategory() : Technical 
 14:12:05.765 INFO  /models/course: getCourseByTrainerID() : King Nguyen 
+14:22:02.336 INFO  Server started on port 3210 
+14:22:02.914 INFO  /route/course: GET /course 
+14:22:02.945 INFO  /route/course: GET /course/coursesoverview 
+14:22:02.961 INFO  /route/course: GET /course/trainerdashboard 
+14:22:02.992 INFO  /routes/users: GET /users/userprofile 
+14:22:03.133 INFO  User login failed. 
+14:22:03.180 INFO  User login: qwe@gmail.com 
+14:22:03.258 INFO  User login: qwe@gmail.com 
+14:22:03.305 INFO  User login failed. 
+14:22:03.320 INFO  /models/course: getCourseByID() : 1 
+14:22:03.352 INFO  /models/course: getCourseByName() : CBA Overview 
+14:22:03.367 INFO  /models/course: getCourseByCategory() : Technical 
+14:22:03.383 INFO  /models/course: getCourseByTrainerID() : King Nguyen 
+14:22:03.430 INFO  /models/usersdata: getUserByID() : 1 
+14:22:03.445 INFO  /models/usersdata: getCourseByName() : admin 
+14:22:03.445 INFO  /models/course: getCourseByCategory() : Technical 
+14:22:03.461 INFO  /models/course: getCourseByTrainerID() : King Nguyen 
+14:24:12.236 INFO  Server started on port 3210 
+14:24:12.846 INFO  /route/course: GET /course 
+14:24:12.877 INFO  /route/course: GET /course/coursesoverview 
+14:24:12.908 INFO  /route/course: GET /course/trainerdashboard 
+14:24:12.924 INFO  /routes/users: GET /users/userprofile 
+14:24:13.065 INFO  User login failed. 
+14:24:13.158 INFO  User login: qwe@gmail.com 
+14:24:13.205 INFO  User login: qwe@gmail.com 
+14:24:13.221 INFO  User login failed. 
+14:24:13.236 INFO  /models/course: getCourseByID() : 1 
+14:24:13.268 INFO  /models/course: getCourseByName() : CBA Overview 
+14:24:13.283 INFO  /models/course: getCourseByCategory() : Technical 
+14:24:13.299 INFO  /models/course: getCourseByTrainerID() : King Nguyen 
+14:24:13.361 INFO  /models/usersdata: getUserByID() : 1 
+14:24:13.393 INFO  /models/usersdata: getCourseByName() : admin 
+14:24:13.424 INFO  /models/course: getCourseByCategory() : Technical 
+14:24:13.471 INFO  /models/course: getCourseByTrainerID() : King Nguyen 
+14:24:57.914 INFO  Server started on port 3210 
+14:25:07.810 INFO  /routes/users: GET /users/userprofile 
+14:25:08.678 INFO  /routes/users: GET /users/userprofileController 
+14:25:16.397 INFO  /routes/users: GET /users/userprofile 
+14:25:17.065 INFO  /routes/users: GET /users/userprofileController 
+14:26:06.785 INFO  /routes/users: GET /users/userprofile 
+14:26:07.053 INFO  /routes/users: GET /users/userprofile 
+14:26:07.329 INFO  /routes/users: GET /users/userprofile 
+14:26:07.669 INFO  /routes/users: GET /users/userprofile 
+14:26:08.285 INFO  /routes/users: GET /users/userprofileController 
+14:26:08.341 INFO  /routes/users: GET /users/userprofile 
+14:26:08.365 INFO  /routes/users: GET /users/userprofile 
+14:26:08.513 INFO  /routes/users: GET /users/userprofile 
+14:26:08.837 INFO  /routes/users: GET /users/userprofileController 
+14:26:09.136 INFO  /routes/users: GET /users/userprofile 
+14:26:09.620 INFO  /routes/users: GET /users/userprofileController 
+14:26:52.633 INFO  /route/course: GET /course 
+14:26:53.321 INFO  /route/course: get course list data 
+14:26:54.787 INFO  /route/course: GET /course/coursesoverview/:id 
+14:26:55.339 INFO  /route/course: Get Course Information 
+14:26:55.351 INFO  /route/course: get feature data 
+14:26:55.359 INFO  /route/course: Delete course 

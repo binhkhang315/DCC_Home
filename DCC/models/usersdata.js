@@ -8,8 +8,8 @@ var opts = {
 
 var log = require('simple-node-logger').createLogManager(opts).createLogger();
 
-var User = module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('User', {
+module.exports = function(sequelize, DataTypes) {
+  var User = sequelize.define('User', {
     username: {
       type: DataTypes.STRING,
       allowNull: false
@@ -53,4 +53,5 @@ var User = module.exports = function(sequelize, DataTypes) {
     },
     tableName: 'User'
   });
+  return User;
 };
