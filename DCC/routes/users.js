@@ -17,7 +17,7 @@ var BASE_OPTS = {
         bindDn: 'cn=admin,dc=example,dc=com',
         bindCredentials: '123456',
         searchBase: 'dc=example,dc=com',
-        searchFilter: '(uid={{username}})'
+        searchFilter: '(mail={{username}})'
     }
 };
 // Email Setting
@@ -38,7 +38,8 @@ var db = new Sequelize('nodejs', 'root', 'dekvn@123321', {
     min: 0,
     idle: 10000
   },
-  port: 3306
+  port: 3306,
+  logging: false
 });
 var acl       = new Acl(new AclSeq(db, { prefix: 'acl_' }));
 
@@ -121,12 +122,12 @@ passport.use(new LdapStrategy(BASE_OPTS, function(user, callback) {
 }));
 // save user's credentials to session
 passport.serializeUser(function(user, done) {
-    done(null, user.uid);
+    done(null, user.mail);
 });
 // get user's credentials from session
-passport.deserializeUser(function(uid, callback) {
+passport.deserializeUser(function(mail, callback) {
     callback(null, {
-        uid: uid
+        mail: mail
     });
 });
 router.post('/login', function(req, res, next) {
@@ -149,9 +150,9 @@ router.post('/login', function(req, res, next) {
                   log.error(err);
                   return next();
                 }
-                log.info('User login: ' + user.uid);
+                log.info('User login: ' + user.mail);
                 return res.send({
-                    userid: user.uid,
+                    userid: user.mail,
                     msg: 'You are authenticated!'
                 })
             });

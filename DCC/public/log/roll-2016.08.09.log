@@ -22,3 +22,18 @@
 10:28:21.722 INFO  Get Delete Command 
 10:30:21.722 INFO  Get Delete Command 
 10:31:24.599 INFO  Server started on port 3210 
+10:48:35.328 INFO  Server started on port 3210 
+10:49:15.565 INFO  User login failed. 
+10:49:47.160 INFO  User login: qwe@gmail.com 
+10:49:59.808 INFO  User login: qwe@gmail.com 
+10:50:23.472 INFO  User login: qwe@gmail.com 
+10:56:10.383 INFO  Server started on port 3210 
+10:56:10.658 INFO  get courses 200 
+10:56:10.714 INFO  get coursesoverview 200 
+10:56:10.831 INFO  User login: qwe@gmail.com 
+10:56:10.840 INFO  User login failed. 
+10:56:10.879 INFO  User login failed. 
+10:56:10.905 INFO  User login failed. 
+10:56:10.918 INFO  User login failed. 
+10:56:10.931 INFO  User login failed. 
+10:56:10.942 INFO  User login failed. 
