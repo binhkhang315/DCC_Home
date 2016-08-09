@@ -331,3 +331,16 @@
 14:00:24.071 INFO  /models/course: getCourseByName() : CBA Overview 
 14:00:24.086 INFO  /models/course: getCourseByCategory() : Technical 
 14:00:24.102 INFO  /models/course: getCourseByTrainerID() : King Nguyen 
+14:12:04.741 INFO  Server started on port 3210 
+14:12:05.312 INFO  /route/course: GET /course 
+14:12:05.359 INFO  /route/course: GET /course/coursesoverview 
+14:12:05.374 INFO  /route/course: GET /course/trainerdashboard 
+14:12:05.406 INFO  /routes/users: GET /users/userprofile 
+14:12:05.562 INFO  User login failed. 
+14:12:05.609 INFO  User login: qwe@gmail.com 
+14:12:05.656 INFO  User login: qwe@gmail.com 
+14:12:05.687 INFO  User login failed. 
+14:12:05.703 INFO  /models/course: getCourseByID() : 1 
+14:12:05.734 INFO  /models/course: getCourseByName() : CBA Overview 
+14:12:05.749 INFO  /models/course: getCourseByCategory() : Technical 
+14:12:05.765 INFO  /models/course: getCourseByTrainerID() : King Nguyen 

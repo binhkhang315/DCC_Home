@@ -105,7 +105,7 @@ router.post('/addCourse', function(req, res) {
     });
 })
 
-router.get('/deleteCourse', function(req, res) {
+router.get('/deleteCourse', function() {
     log.info('/route/course: Delete course');;
 })
 router.get('/features', function(req, res) {
@@ -147,7 +147,6 @@ router.get('/coursesoverview/', function(req, res) {
 });
 
 router.get('/coursesoverview/:id', function(req, res) {
-    var id = req.params.id;
     cid = req.params.id;
     res.render('coursesoverview');
     log.info('/route/course: GET /course/coursesoverview/:id');

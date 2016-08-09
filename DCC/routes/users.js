@@ -42,11 +42,6 @@ var db = new Sequelize('nodejs', 'root', 'dekvn@123321', {
 });
 var acl       = new Acl(new AclSeq(db, { prefix: 'acl_' }));
 
-
-var acl = new Acl(new AclSeq(db, {
-    prefix: 'acl_'
-}));
-
 models.User.sync({
     force: false
 });
@@ -136,7 +131,7 @@ passport.deserializeUser(function(mail, callback) {
 router.post('/login', function(req, res, next) {
     passport.authenticate('ldapauth', {
         session: true
-    }, function(err, user, info) {
+    }, function(err, user) {
         if (err) {
             log.error(err);
             return next();
