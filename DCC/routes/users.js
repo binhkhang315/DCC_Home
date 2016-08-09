@@ -16,7 +16,7 @@ var BASE_OPTS = {
         url: 'ldap://192.168.122.51:' + LDAP_PORT.toString(),
         bindDn: 'cn=admin,dc=example,dc=com',
         bindCredentials: '123456',
-        searchBase: 'cn=trainees,cn=users,dc=example,dc=com',
+        searchBase: 'dc=example,dc=com',
         searchFilter: '(uid={{username}})'
     }
 };
