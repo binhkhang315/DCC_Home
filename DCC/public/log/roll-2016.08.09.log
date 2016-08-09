@@ -22,3 +22,31 @@
 10:28:21.722 INFO  Get Delete Command 
 10:30:21.722 INFO  Get Delete Command 
 10:31:24.599 INFO  Server started on port 3210 
+10:51:03.201 INFO  Server started on port 3210 
+10:52:48.861 INFO  Server started on port 3210 
+10:53:15.308 INFO  Server started on port 3210 
+10:54:14.251 INFO  get coursesoverview 200 
+10:54:14.567 INFO  Get Course Information 
+10:54:14.581 INFO  Get Features Information 
+10:54:14.582 INFO  Get Delete Command 
+10:54:19.990 INFO  get coursesoverview 200 
+10:54:20.151 INFO  Get Course Information 
+10:54:20.162 INFO  Get Features Information 
+10:54:20.205 INFO  Get Delete Command 
+10:54:34.256 INFO  get courses 200 
+10:54:34.422 INFO  Get List of Courses 
+11:02:58.653 INFO  get coursesoverview 200 
+11:02:58.917 INFO  Get Course Information 
+11:02:58.930 INFO  Get Features Information 
+11:02:58.932 INFO  Get Delete Command 
+11:09:16.200 INFO  Server started on port 3210 
+11:09:29.894 INFO  /route/course: GET /course 
+11:09:30.303 INFO  /route/course: get course list data 
+11:09:32.261 INFO  /route/course: GET /course/coursesoverview/:id 
+11:09:32.612 INFO  /route/course: Get Course Information 
+11:09:32.633 INFO  /route/course: get feature data 
+11:09:32.641 INFO  /route/course: Delete course 
+11:09:33.604 INFO  /route/course: GET /course/trainerdashboard 
+11:09:35.421 INFO  /route/course: Delete course 
+11:09:38.502 INFO  /routes/users: GET /users/userprofile 
+11:09:38.798 INFO  /routes/users: GET /users/userprofileController 

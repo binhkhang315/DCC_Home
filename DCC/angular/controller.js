@@ -40,15 +40,11 @@ myApp.controller('LoginCtrl', function($scope, $http, $cookies, $rootScope) {
     };
     // logout function
     $rootScope.logout = function() {
-        if (true) { //logout data response
             $cookies.remove('userid');
-        }
     }
 });
 myApp.controller('setCourse', function($scope, $http, $location) {
-
     $http.get('/course/getCourse').then(function(result) {
-        console.log(result.data);
         $scope.courseName = result.data.courseName;
         $scope.courseTrainer = result.data.courseTrainer;
         $scope.courseTrainerPage = result.data.courseTrainerPage;
@@ -60,14 +56,12 @@ myApp.controller('setCourse', function($scope, $http, $location) {
 
 myApp.controller('getList', function($scope,$rootScope, $http) {
     $http.get('/course/list').then(function(result) {
-      console.log(result.data);
       $rootScope.coursesList = result.data.course;
     });
 });
 
 myApp.controller('setFeature', function($scope, $http) {
     $http.get('/course/features').then(function(result) {
-        console.log(result.data);
         $scope.courseDocuments = result.data.courseDocuments;
         $scope.courseFeedback = result.data.courseFeedback;
         $scope.courseTest = result.data.courseTest;
@@ -78,7 +72,6 @@ myApp.controller('setFeature', function($scope, $http) {
 
 myApp.controller('setProfile', function($scope, $http) {
     $http.get('/users/userprofileController').then(function(result) {
-        console.log(result.data);
         $scope.pStatus = result.data.pStatus;
         $scope.pName = result.data.pName;
         $scope.pDoB = result.data.pDoB;
@@ -100,9 +93,7 @@ myApp.controller('addCourse', function($scope,$rootScope, $http) {
         };
         $scope.addCourse = function() {
             $http.post('/course/addCourse', $scope.courseslist).then(function(result) {
-                console.log(result.data.msg);
                 $http.get('/course/list').then(function(result) {
-                  console.log(result.data);
                   $rootScope.coursesList = result.data.course;
                 });
             });
@@ -133,7 +124,6 @@ myApp.controller('FeedbackCtrl',function($scope, $http){
           });
           $scope.comment = '';
       }).error(function(data, status, headers, config) {
-          console.log("Ops: " + data);
       });
   };
 });

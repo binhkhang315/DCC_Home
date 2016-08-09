@@ -35,6 +35,22 @@ var User = module.exports = function(sequelize, DataTypes) {
       allowNull: false
     }
   }, {
+    classMethods: {
+      getUserByID: function(id,cb){
+        log.info('/models/usersdata: getUserByID() : ' + id);
+        var query = {
+          where: {id: id}
+        };
+        User.findOne(query).then(cb);
+      },
+      getUserByName: function(username,cb){
+        log.info('/models/usersdata: getCourseByName() : ' + username);
+        var query = {
+          where: {username: username}
+        };
+        User.findOne(query).then(cb);
+      }
+    },
     tableName: 'User'
   });
 };

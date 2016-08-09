@@ -36,24 +36,28 @@ module.exports = function(sequelize, DataTypes) {
   }, {
     classMethods: {
       getCourseByID: function(id,cb){
+        log.info('/models/course: getCourseByID() : ' + id);
         var query = {
           where: {id: id}
         };
         Course.findOne(query).then(cb);
       },
       getCourseByName: function(name,cb){
+        log.info('/models/course: getCourseByName() : ' + name);
         var query = {
           where: {name: name}
         };
         Course.findOne(query).then(cb);
       },
       getCourseByCategory: function(category,cb){
+        log.info('/models/course: getCourseByCategory() : ' + category);
         var query = {
           where: {category: category}
         };
         Course.findAll(query).then(cb);
       },
       getCourseByTrainerID: function(trainerID,cb){
+        log.info('/models/course: getCourseByTrainerID() : ' + trainerID);
         var query = {
           where: {trainerID: trainerID}
         };

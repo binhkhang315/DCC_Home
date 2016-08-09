@@ -9,9 +9,9 @@ var passport = require('passport');
 var serveIndex = require('serve-index');
 
 var opts = {
-    logDirectory:'./public/log',
-    fileNamePattern:'roll-<DATE>.log',
-    dateFormat:'YYYY.MM.DD'
+    logDirectory: './public/log',
+    fileNamePattern: 'roll-<DATE>.log',
+    dateFormat: 'YYYY.MM.DD'
 };
 var log = require('simple-node-logger').createLogManager(opts).createLogger();
 
@@ -22,31 +22,36 @@ var course = require('./routes/course');
 var feedback = require('./routes/feedback');
 
 // Init App
-var app = express(), handlebars;
+var app = express(),
+    handlebars;
 
 // View Engine
 handlebars = exphbs.create({
     defaultLayout: 'layout',
-    extname      : '.html', //set extension to .html so handlebars knows what to look for
+    extname: '.html', //set extension to .html so handlebars knows what to look for
 });
 app.set('views', path.join(__dirname, 'views'));
-app.engine('html',handlebars.engine);
+app.engine('html', handlebars.engine);
 app.set('view engine', 'html');
 
 // BodyParser Middleware
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({
+    extended: false
+}));
 app.use(cookieParser());
 
 // Set Static Folder
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/log', serveIndex('./public/log'));
-app.use('/angular',express.static(path.join(__dirname, 'angular')));
+app.use('/angular', express.static(path.join(__dirname, 'angular')));
 
 // Express Session
 app.use(session({
     secret: 'secret',
-    cookie: {maxAge: 10*24*3600*1000},
+    cookie: {
+        maxAge: 10 * 24 * 3600 * 1000
+    },
     saveUninitialized: true,
     resave: true
 }));
@@ -57,13 +62,13 @@ app.use(passport.session());
 app.use('/', routes);
 app.use('/users', users);
 app.use('/course', course);
-app.post('/course/coursesoverview/feedback',feedback.savefeedback);
+app.post('/course/coursesoverview/feedback', feedback.savefeedback);
 
 // Set Port
 app.set('port', (process.env.PORT || 3210));
-log.info( 'Server started on port '+ app.get('port'));
+log.info('Server started on port ' + app.get('port'));
 var server = app.listen(app.get('port'), function() {
-	console.log('Server started on port '+ app.get('port'));
+    console.log('Server started on port ' + app.get('port'));
 });
 
 module.exports = server;
