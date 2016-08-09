@@ -10,3 +10,15 @@
 09:56:31.056 INFO  User login failed. 
 09:56:31.056 INFO  User login failed. 
 09:56:31.072 INFO  User login failed. 
+10:22:08.060 INFO  Server started on port 3210 
+10:22:25.503 INFO  Server started on port 3210 
+10:23:31.150 INFO  Server started on port 3210 
+10:27:41.836 INFO  Server started on port 3210 
+10:28:16.936 INFO  get courses 200 
+10:28:17.148 INFO  Get List of Courses 
+10:28:21.499 INFO  get coursesoverview 200 
+10:28:21.705 INFO  Get Course Information 
+10:28:21.717 INFO  Get Features Information 
+10:28:21.722 INFO  Get Delete Command 
+10:30:21.722 INFO  Get Delete Command 
+10:31:24.599 INFO  Server started on port 3210 

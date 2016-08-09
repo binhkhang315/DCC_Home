@@ -28,12 +28,7 @@ var opts = {
 };
 var log = require('simple-node-logger').createLogManager(opts).createLogger();
 
-// Or Using the mongodb backend
-// mongodb.connect('mongodb://localhost/loginapp', function(error, db) {
-//     var mongoBackend = new acl.mongodbBackend(db, 'acl_');
-//     acl = new acl(mongoBackend);
-//     setRoles();
-// });
+
 var db = new Sequelize('nodejs', 'root', 'dekvn@123321', {
   host: '192.168.122.51',
   dialect: 'mysql',
@@ -46,8 +41,17 @@ var db = new Sequelize('nodejs', 'root', 'dekvn@123321', {
   port: 3306
 });
 var acl       = new Acl(new AclSeq(db, { prefix: 'acl_' }));
+
 router.get('/trainerdashboard', function(req, res) {
     res.render('trainerdashboard');
+});
+
+router.get('/userprofile', function(req, res) {
+  res.render('userprofile');
+});
+
+models.User.sync({
+  force:false
 });
 
 router.get('/userprofile', function(req, res) {
@@ -59,7 +63,7 @@ router.get('/userprofileController', function(req, res) {
       .findOrCreate({
         where: {username: 'admin'},
         defaults: {
-          status: 'Im admin',
+          status: 'I am admin',
           dob: '20/10/1995',
           phone: '0123456789',
           location: 'DEK Technologies',

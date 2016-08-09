@@ -5,8 +5,6 @@ var bodyParser = require('body-parser');
 var exphbs = require('express-handlebars');
 var session = require('express-session');
 var passport = require('passport');
-var mongo = require('mongodb');
-var mongoose = require('mongoose');
 
 var serveIndex = require('serve-index');
 
@@ -17,8 +15,6 @@ var opts = {
 };
 var log = require('simple-node-logger').createLogManager(opts).createLogger();
 
-mongoose.connect('mongodb://localhost/DCC');
-var db = mongoose.connection;
 
 var routes = require('./routes/index');
 var users = require('./routes/users');

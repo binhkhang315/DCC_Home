@@ -59,8 +59,7 @@ module.exports = function(sequelize, DataTypes) {
         };
         Course.findOne(query).then(cb);
       },
-    }
-  }, {
+    },
     tableName: 'course'
   });
   return Course;

@@ -14,6 +14,7 @@ var opts = {
 
 
 var log = require('simple-node-logger').createLogManager(opts).createLogger();
+// add course detail to database
 var cid;
 models.course.sync({
   force:true
@@ -80,6 +81,33 @@ router.get('/getCourse',function(req, res) {
 
 
 });
+
+// add course to database
+router.post('/addCourse', function(req, res){
+  models.course.sync({
+    force:false
+  }).then(function () {
+    return models.course.create({
+      name: req.body.courseName,
+      description: req.body.courseDescription,
+      category: req.body.courseCategory,
+      test: req.body.courseTest,
+      documents: req.body.courseDocuments,
+      trainerID: req.body.courseTrainerID
+    }).then(function (data) {
+    console.log(data.dataValues);
+    if (data.dataValues){
+      res.send({
+        msg: 'Add course success!'
+      });
+    } else {
+      res.send({
+        msg: 'Add course fail!'
+      });
+    }
+   })
+  });
+})
 
 router.get('/deleteCourse', function(req,res){
   log.info('Get Delete Command');
