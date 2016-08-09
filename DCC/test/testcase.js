@@ -2,15 +2,16 @@ var request = require('supertest');
 var assert = require('chai').assert;
 var expect = require('chai').expect;
 var route = require('../app.js');
+var models = require('../models');
+models.course.sync({
+    force: false
+});
 // mongoose.connect('mongodb://localhost/loginapp');
 // var db = mongoose.connection;
 
 function isEmpty(str) {
     return (!str || 0 === str.length);
 };
-
-
-
 
 describe('<Unit Test for Routing>', function() {
     describe('', function() {
@@ -202,6 +203,42 @@ describe('<Unit test for Login>', function() {
             });
         });
 
+    });
+});
+describe('<Unit test for Course model', function() {
+    describe('Method Course', function() {
+        return it('Test case 1: getCourseByID', function(done) {
+            models.course.getCourseByID('1', function(course) {
+                assert.equal(course.name, 'CBA Overview');
+                return done();
+            })
+        });
+    });
+
+    describe('', function() {
+        return it('Test case 2: getCourseByName', function(done) {
+            models.course.getCourseByName('CBA Overview', function(course) {
+                assert.equal(course.id, '1');
+                return done();
+            })
+        });
+    });
+    describe('', function() {
+        return it('Test case 3: getCourseByCategory', function(done) {
+            models.course.getCourseByCategory('Technical', function(course) {
+                assert.equal(course[2].id, '3');
+                return done();
+            })
+        });
+    });
+
+    describe('', function() {
+        return it('Test case 4: getCourseByTrainerID', function(done) {
+            models.course.getCourseByTrainerID('King Nguyen', function(course) {
+                assert.equal(course.name, 'LDE');
+                return done();
+            })
+        });
     });
 });
 //-----------------------------------------------------------------------

@@ -16,49 +16,48 @@ var log = require('simple-node-logger').createLogManager(opts).createLogger();
 // add course detail to database
 var cid;
 models.course.sync({
-        force: true
-    })
-    .then(function() {
-        return models.course.create({
-            name: 'CBA Overview',
-            description: 'This is CBA Overview description',
-            category: 'Technical',
-            test: 'This is CBA Overview test',
-            documents: 'This is CBA Overview document',
-            trainerID: 'Khai Doan'
-        });
-    })
-    .then(function() {
-        return models.course.create({
-            name: 'CoreMW Overview',
-            description: 'This is CoreMW Overview description',
-            category: 'Technical',
-            test: 'This is CoreMW Overview test',
-            documents: 'This is CoreMW Overview document',
-            trainerID: 'Tai Dinh'
-        });
-    })
-    .then(function() {
-        return models.course.create({
-            name: 'LDE',
-            description: 'This is LDE description',
-            category: 'Technical',
-            test: 'This is LDE test',
-            documents: 'This is LDE document',
-            trainerID: 'King Nguyen'
-        });
-    })
-    .then(function() {
-        return models.course.create({
-            name: 'GIT & GERRIT',
-            description: 'This is GIT & GERRIT description',
-            category: 'Technical',
-            test: 'This is GIT & GERRIT test',
-            documents: 'This is GIT & GERRIT document',
-            trainerID: 'Bao Nguyen'
-        });
+        force: false
     });
-
+    // .then(function() {
+    //     return models.course.create({
+    //         name: 'CBA Overview',
+    //         description: 'This is CBA Overview description',
+    //         category: 'Technical',
+    //         test: 'This is CBA Overview test',
+    //         documents: 'This is CBA Overview document',
+    //         trainerID: 'Khai Doan'
+    //     });
+    // })
+    // .then(function() {
+    //     return models.course.create({
+    //         name: 'CoreMW Overview',
+    //         description: 'This is CoreMW Overview description',
+    //         category: 'Technical',
+    //         test: 'This is CoreMW Overview test',
+    //         documents: 'This is CoreMW Overview document',
+    //         trainerID: 'Tai Dinh'
+    //     });
+    // })
+    // .then(function() {
+    //     return models.course.create({
+    //         name: 'LDE',
+    //         description: 'This is LDE description',
+    //         category: 'Technical',
+    //         test: 'This is LDE test',
+    //         documents: 'This is LDE document',
+    //         trainerID: 'King Nguyen'
+    //     });
+    // })
+    // .then(function() {
+    //     return models.course.create({
+    //         name: 'GIT & GERRIT',
+    //         description: 'This is GIT & GERRIT description',
+    //         category: 'Technical',
+    //         test: 'This is GIT & GERRIT test',
+    //         documents: 'This is GIT & GERRIT document',
+    //         trainerID: 'Bao Nguyen'
+    //     });
+    // });
 router.get('/getCourse', function(req, res) {
     log.info('/route/course: Get Course Information');
     models.course.findOne({
