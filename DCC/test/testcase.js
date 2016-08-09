@@ -67,22 +67,7 @@ describe('<Unit Test for Routing>', function() {
 
 //---------------------------------------------------------------------------------------
 describe('<Unit test for Login>', function() {
-<<<<<<< HEAD
-<<<<<<< HEAD
-    // describe('', function() {
-    //   return it('Test case 1 : Login success', function(done) {
-    //     request(route)
-    //       .post('/users/login')
-    //       .send({
-    //         username: 'qwe',
-    //         password: 'qwe'
-    //       })
-    //       .end(function(err, res) {
-    //         assert.equal(res.body.userid, 'qwe');
-    //         return done();
-    //       });
-    //   });
-    // });
+
 
     describe('', function() {
         return it('Test case 2 : Login fail, username true, password false', function(done) {
@@ -96,8 +81,7 @@ describe('<Unit test for Login>', function() {
                     assert.equal(res.body.userid, null);
                     return done();
                 });
-=======
-=======
+
   describe('', function() {
     return it('Test case 1 : Login success', function(done) {
       request(route)
@@ -113,7 +97,6 @@ describe('<Unit test for Login>', function() {
     });
   });
 
->>>>>>> refs/remotes/origin/master
   describe('', function() {
     return it('Test case 1 : Login success', function(done) {
       request(route)
@@ -140,7 +123,6 @@ describe('<Unit test for Login>', function() {
         .end(function(err, res) {
           assert.equal(res.body.userid, null);
           return done();
->>>>>>> 402b7e880046df0f378dcaf3e8222c40abd5ff44
         });
     });
 
