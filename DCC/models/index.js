@@ -13,6 +13,7 @@ var sequelize = module.exports = new Sequelize('DCC', 'root', 'dekvn@123321', {
         min: 0,
         idle: 10000
     },
+    logging: false
 });
 var db = {};
 

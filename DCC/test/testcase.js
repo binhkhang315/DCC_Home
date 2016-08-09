@@ -68,6 +68,7 @@ describe('<Unit Test for Routing>', function() {
 //---------------------------------------------------------------------------------------
 describe('<Unit test for Login>', function() {
 <<<<<<< HEAD
+<<<<<<< HEAD
     // describe('', function() {
     //   return it('Test case 1 : Login success', function(done) {
     //     request(route)
@@ -96,6 +97,23 @@ describe('<Unit test for Login>', function() {
                     return done();
                 });
 =======
+=======
+  describe('', function() {
+    return it('Test case 1 : Login success', function(done) {
+      request(route)
+        .post('/users/login')
+        .send({
+          username: 'qwe@gmail.com',
+          password: 'qwe'
+        })
+        .end(function(err, res) {
+          assert.equal(res.body.userid, 'qwe@gmail.com');
+          return done();
+        });
+    });
+  });
+
+>>>>>>> refs/remotes/origin/master
   describe('', function() {
     return it('Test case 1 : Login success', function(done) {
       request(route)
