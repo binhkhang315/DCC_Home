@@ -81,128 +81,129 @@ describe('<Unit test for Login>', function() {
                     assert.equal(res.body.userid, null);
                     return done();
                 });
-
-  describe('', function() {
-    return it('Test case 1 : Login success', function(done) {
-      request(route)
-        .post('/users/login')
-        .send({
-          username: 'qwe@gmail.com',
-          password: 'qwe'
-        })
-        .end(function(err, res) {
-          assert.equal(res.body.userid, 'qwe@gmail.com');
-          return done();
         });
     });
-  });
-
-  describe('', function() {
-    return it('Test case 1 : Login success', function(done) {
-      request(route)
-        .post('/users/login')
-        .send({
-          username: 'qwe@gmail.com',
-          password: 'qwe'
-        })
-        .end(function(err, res) {
-          assert.equal(res.body.userid, 'qwe@gmail.com');
-          return done();
-        });
-    });
-  });
-
-  describe('', function() {
-    return it('Test case 2 : Login fail, username true, password false', function(done) {
-      request(route)
-        .post('/users/login')
-        .send({
-          username: 'thach',
-          password: 'thach13'
-        })
-        .end(function(err, res) {
-          assert.equal(res.body.userid, null);
-          return done();
-        });
-    });
-
     describe('', function() {
-        return it('Test case 3 : Login fail, username false, password true', function(done) {
+        return it('Test case 1 : Login success', function(done) {
             request(route)
                 .post('/users/login')
                 .send({
-                    username: 'thach1',
-                    password: 'thach123'
+                    username: 'qwe@gmail.com',
+                    password: 'qwe'
                 })
                 .end(function(err, res) {
-                    assert.equal(res.body.userid, null);
+                    assert.equal(res.body.userid, 'qwe@gmail.com');
                     return done();
                 });
         });
     });
 
     describe('', function() {
-        return it('Test case 4 : Login fail, username null, password true', function(done) {
+        return it('Test case 1 : Login success', function(done) {
             request(route)
                 .post('/users/login')
                 .send({
-                    username: null,
-                    password: 'thach123'
+                    username: 'qwe@gmail.com',
+                    password: 'qwe'
                 })
                 .end(function(err, res) {
-                    assert.equal(res.body.userid, null);
+                    assert.equal(res.body.userid, 'qwe@gmail.com');
                     return done();
                 });
         });
     });
 
     describe('', function() {
-        return it('Test case 5 : Login fail, username true, password null', function(done) {
+        return it('Test case 2 : Login fail, username true, password false', function(done) {
             request(route)
                 .post('/users/login')
                 .send({
                     username: 'thach',
-                    password: null
+                    password: 'thach13'
                 })
                 .end(function(err, res) {
                     assert.equal(res.body.userid, null);
                     return done();
                 });
         });
-    });
 
-    describe('', function() {
-        return it('Test case 6 : Login fail, username false, password null', function(done) {
-            request(route)
-                .post('/users/login')
-                .send({
-                    username: 'thach2',
-                    password: null
-                })
-                .end(function(err, res) {
-                    assert.equal(res.body.userid, null);
-                    return done();
-                });
+        describe('', function() {
+            return it('Test case 3 : Login fail, username false, password true', function(done) {
+                request(route)
+                    .post('/users/login')
+                    .send({
+                        username: 'thach1',
+                        password: 'thach123'
+                    })
+                    .end(function(err, res) {
+                        assert.equal(res.body.userid, null);
+                        return done();
+                    });
+            });
         });
-    });
 
-    describe('', function() {
-        return it('Test case 7 : Login fail, username null, password false', function(done) {
-            request(route)
-                .post('/users/login')
-                .send({
-                    username: null,
-                    password: '123'
-                })
-                .end(function(err, res) {
-                    assert.equal(res.body.userid, null);
-                    return done();
-                });
+        describe('', function() {
+            return it('Test case 4 : Login fail, username null, password true', function(done) {
+                request(route)
+                    .post('/users/login')
+                    .send({
+                        username: null,
+                        password: 'thach123'
+                    })
+                    .end(function(err, res) {
+                        assert.equal(res.body.userid, null);
+                        return done();
+                    });
+            });
         });
-    });
 
+        describe('', function() {
+            return it('Test case 5 : Login fail, username true, password null', function(done) {
+                request(route)
+                    .post('/users/login')
+                    .send({
+                        username: 'thach',
+                        password: null
+                    })
+                    .end(function(err, res) {
+                        assert.equal(res.body.userid, null);
+                        return done();
+                    });
+            });
+        });
+
+        describe('', function() {
+            return it('Test case 6 : Login fail, username false, password null', function(done) {
+                request(route)
+                    .post('/users/login')
+                    .send({
+                        username: 'thach2',
+                        password: null
+                    })
+                    .end(function(err, res) {
+                        assert.equal(res.body.userid, null);
+                        return done();
+                    });
+            });
+        });
+
+        describe('', function() {
+            return it('Test case 7 : Login fail, username null, password false', function(done) {
+                request(route)
+                    .post('/users/login')
+                    .send({
+                        username: null,
+                        password: '123'
+                    })
+                    .end(function(err, res) {
+                        assert.equal(res.body.userid, null);
+                        return done();
+                    });
+            });
+        });
+
+    });
 });
-
 //-----------------------------------------------------------------------
 
 
