@@ -2,10 +2,10 @@ var express = require('express');
 var router = express.Router();
 var passport = require('passport');
 var LdapStrategy = require('passport-ldapauth').Strategy;
-var acl = require('acl');
-var mongodb = require('mongodb');
+var Acl = require('acl');
+var AclSeq    = require('acl-sequelize');
+var Sequelize = require('sequelize');
 var ldap = require('ldapjs');
-var User = require('../models/user');
 var models  = require('../models');
 
 var server = null;
@@ -29,12 +29,23 @@ var opts = {
 var log = require('simple-node-logger').createLogManager(opts).createLogger();
 
 // Or Using the mongodb backend
-mongodb.connect('mongodb://localhost/loginapp', function(error, db) {
-    var mongoBackend = new acl.mongodbBackend(db, 'acl_');
-    acl = new acl(mongoBackend);
-    setRoles();
-});
+// mongodb.connect('mongodb://localhost/loginapp', function(error, db) {
+//     var mongoBackend = new acl.mongodbBackend(db, 'acl_');
+//     acl = new acl(mongoBackend);
+//     setRoles();
+// });
+var db = new Sequelize('nodejs', 'root', 'dekvn@123321', {
+  host: '192.168.122.51',
+  dialect: 'mysql',
 
+  pool: {
+    max: 5,
+    min: 0,
+    idle: 10000
+  },
+  port: 3306
+});
+var acl       = new Acl(new AclSeq(db, { prefix: 'acl_' }));
 router.get('/trainerdashboard', function(req, res) {
     res.render('trainerdashboard');
 });
@@ -72,15 +83,7 @@ router.get('/trainer', function(req, res) {
 
 // dashboard route is only for admin
 router.get('/dashboard', ensureAuthenticated, function(req, res) {
-    User.getUserById(req.session.passport.user, function(err, user) {
-        acl.isAllowed(user.username, (req.url).split('/')[1], 'view', function(err, isAllowed) {
-            if (isAllowed) {
-                res.render('dashboard');
-            } else {
-                res.render('accessdenied');
-            }
-        });
-    });
+    res.send('hihi');
 });
 
 
