@@ -32,15 +32,6 @@ var log = require('simple-node-logger').createLogManager(opts).createLogger();
 var db = new Sequelize('nodejs', 'root', 'dekvn@123321', {
     host: '192.168.122.51',
     dialect: 'mysql',
-
-<<<<<<< HEAD
-    pool: {
-        max: 5,
-        min: 0,
-        idle: 10000
-    },
-    port: 3306
-=======
   pool: {
     max: 5,
     min: 0,
@@ -51,14 +42,7 @@ var db = new Sequelize('nodejs', 'root', 'dekvn@123321', {
 });
 var acl       = new Acl(new AclSeq(db, { prefix: 'acl_' }));
 
-router.get('/trainerdashboard', function(req, res) {
-    res.render('trainerdashboard');
-});
 
-router.get('/userprofile', function(req, res) {
-  res.render('userprofile');
->>>>>>> 402b7e880046df0f378dcaf3e8222c40abd5ff44
-});
 var acl = new Acl(new AclSeq(db, {
     prefix: 'acl_'
 }));

@@ -37,3 +37,12 @@
 10:56:10.918 INFO  User login failed. 
 10:56:10.931 INFO  User login failed. 
 10:56:10.942 INFO  User login failed. 
+11:29:02.627 INFO  Server started on port 3210 
+11:29:02.887 INFO  /route/course: GET /course 
+11:29:02.952 INFO  /route/course: GET /course/coursesoverview 
+11:29:02.965 INFO  /route/course: GET /course/trainerdashboard 
+11:29:02.971 INFO  /routes/users: GET /users/userprofile 
+11:29:03.049 INFO  User login failed. 
+11:29:03.087 INFO  User login: qwe@gmail.com 
+11:29:03.134 INFO  User login: qwe@gmail.com 
+11:29:03.150 INFO  User login failed. 
