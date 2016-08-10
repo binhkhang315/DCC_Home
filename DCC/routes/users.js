@@ -28,6 +28,17 @@ var opts = {
 };
 var log = require('simple-node-logger').createLogManager(opts).createLogger();
 
+// Upload file setting
+var multer	=	require('multer');
+var storage	=	multer.diskStorage({
+  destination: function (req, file, callback) {
+    callback(null, './public/img');
+  },
+  filename: function (req, file, callback) {
+    callback(null, file.fieldname + '-' + Date.now() + file.originalname);
+  }
+});
+var upload = multer({ storage : storage}).single('userPhoto');
 
 var db = new Sequelize('nodejs', 'root', 'dekvn@123321', {
     host: '192.168.122.51',
@@ -42,9 +53,7 @@ var db = new Sequelize('nodejs', 'root', 'dekvn@123321', {
 });
 var acl       = new Acl(new AclSeq(db, { prefix: 'acl_' }));
 
-models.User.sync({
-    force: false
-});
+models.User.sync();
 
 router.get('/userprofile', function(req, res) {
     log.info('/routes/users: GET /users/userprofile');
@@ -54,28 +63,66 @@ router.get('/userprofile', function(req, res) {
 router.get('/userprofileController', function(req, res) {
     log.info('/routes/users: GET /users/userprofileController');
     models.User
-        .findOrCreate({
-            where: {
-                username: 'admin'
-            },
-            defaults: {
-                status: 'I am admin',
-                dob: '20/10/1995',
-                phone: '0123456789',
-                location: 'DEK Technologies',
-                email: 'dek@dek.vn'
-            }
-        })
-        .then(function(user) {
-            res.send({
-                pStatus: user[0].dataValues.status,
-                pName: user[0].dataValues.username,
-                pDoB: user[0].dataValues.dob,
-                pPhone: user[0].dataValues.phone,
-                pLocation: user[0].dataValues.location,
-                pEmail: user[0].dataValues.email
-            });
+      .findOrCreate({
+        where: {username: 'admin'},
+        defaults: {
+          status: 'Im admin',
+          dob: '20/10/1995',
+          phone: '0123456789',
+          location: 'DEK Technologies',
+          email: 'dek@dek.vn',
+          avatar: '/img/profile.jpg'
+        }})
+      .then(function(user) {
+        res.send({
+           pStatus: user[0].dataValues.status,
+           pName: user[0].dataValues.username,
+           pDoB: user[0].dataValues.dob,
+           pPhone: user[0].dataValues.phone,
+           pLocation: user[0].dataValues.location,
+           pEmail: user[0].dataValues.email,
+           pAvatar: user[0].dataValues.avatar
         });
+    });
+});
+
+router.get('/edituserprofile', function(req, res) {
+  log.info('/routes/users: GET /users/edituserprofile');
+  res.render('edituserprofile');
+});
+
+router.post('/userprofileReturnValue', function(req, res) {
+  log.info('/routes/users: Save edit userprofile');
+  models.User.update(
+  {
+    status: req.body.status,
+    dob: req.body.dob,
+    phone: req.body.phone,
+    location: req.body.location
+  },
+  {
+    where: { username : 'admin' }
+  })
+  .then(function (result) {
+    res.send({
+      msg: "Success"
+    });
+  });
+});
+
+
+router.post('/photo',function(req,res){
+  log.info('/routes/users: Upload avatar');
+	upload(req,res,function(err) {
+    models.User.update(
+    {
+      avatar: '/img/' + req.file.filename
+    },
+    {
+      where: { username : 'admin' }
+    })
+    res.render('userprofile');
+	});
 });
 
 router.get('/trainer', function(req, res) {

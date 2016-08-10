@@ -33,23 +33,27 @@ module.exports = function(sequelize, DataTypes) {
     email: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    avatar: {
+      type: DataTypes.STRING,
+      allowNull: false
     }
   }, {
     classMethods: {
       getUserByID: function(id,cb){
-        log.info('/models/usersdata: getUserByID() : ' + id);
+        log.info('/models/userdata: getUserByID() : ' + id);
         var query = {
           where: {id: id}
         };
         User.findOne(query).then(cb);
       },
       getUserByName: function(username,cb){
-        log.info('/models/usersdata: getCourseByName() : ' + username);
+        log.info('/models/userdata: getUserByName() : ' + username);
         var query = {
           where: {username: username}
         };
         User.findOne(query).then(cb);
-      }
+      },
     },
     tableName: 'User'
   });

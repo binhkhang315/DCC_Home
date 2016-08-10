@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+  <head>
+    <title>DEK Technologies Vietnam Talentnet - Landing Page</title>
+  </head>
+<body>
+    <!-- Navigation -->
+    <div class="">
+          <nav class="navbar navbar-dcc navbar-fixed-top topnav" role="navigation">
+              <div class="container">
+          				<div class="navbar-menu">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="javascript:history.go(-1)">Back</a></li>
+                    </ul>
+          				</div>
+          				<div class="navbar-header">
+          					<a class="navbar-logo" href="/">
+          						<img class="img-responsive" src="/img/DCC-ver4.png" alt="" width="100">
+          					</a>
+          				</div>
+          				<div>
+          					<a class="navbar-name" href="/">DEK</br>Competence Center</a>
+          				</div>
+          				<div class="collapse navbar-rowmenu">
+          					  <ul class="nav navbar-nav navbar-right">
+                          <li><a href="javascript:history.go(-1)">Back</a></li>
+          					  </ul>
+          				</div>
+  			     </div>
+  		    </nav>
+      </div>
+    <!--  List of courses -->
+    <div class="container"  ng-controller = "setProfile">
+      <div  class="col-xs-12 col-sm-12 " style="padding-top:100px">
+        <div class="panel panel-info">
+          <div class="panel-heading">
+            <h3 class="panel-title">{[{ pName }]}</h3>
+          </div>
+          <div class="panel-body">
+            <div class="row">
+              <div class="col-md-3 col-lg-3 ">
+                <img alt="User Pic" src= "{[{ pAvatar }]}" class="img-responsive">
+
+              </div>
+              <div class=" col-md-9 col-lg-9 ">
+                <table class="table table-user-information">
+                          <tbody>
+                            <tr>
+                              <td>Status</td>
+                              <td><input id="statusUser" type="text" ng-model="pStatus"></td>
+                            </tr>
+                            <tr>
+                              <td>Date of Birth</td>
+                              <td><input id="dob" type="text" ng-model="pDoB"></td>
+                            </tr>
+                            <tr>
+                              <td>Phone</td>
+                              <td><input id="phone" type="text" ng-model="pPhone"></td>
+                            </tr>
+                              <tr>
+                              <td>Location</td>
+                              <td><input id="loc" type="text" ng-model="pLocation"></td>
+                            </tr>
+                            <tr>
+                              <td>Email</td>
+                              <td><a href="{[{ pEmail }]}">{[{ pEmail }]}</a></td>
+                            </tr>
+                          </tbody>
+                    </table>
+                    <button ng-click = "edit()" class="pull-right">Done</button>
+                  </div>
+                </div>
+              </div>
+        </div>
+      </div>
+    </div>
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <ul class="list-inline">
+              <li>
+                <a href="#">Home</a>
+              </li>
+              <li class="footer-menu-divider">&sdot;</li>
+              <li>
+                <a href="#about">About</a>
+              </li>
+              <li class="footer-menu-divider">&sdot;</li>
+              <li>
+                <a href="#courses">Courses</a>
+              </li>
+              <li class="footer-menu-divider">&sdot;</li>
+              <li>
+                <a href="#contact">Contact</a>
+              </li>
+            </ul>
+            <p class="copyright text-muted small">Copyright &copy; DEK Technologies Vietnam 2016. All Rights Reserved</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </body>
+</html>

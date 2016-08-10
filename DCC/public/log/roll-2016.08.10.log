@@ -64,3 +64,53 @@
 10:41:06.739 INFO  User login: qwe@gmail.com 
 10:41:06.830 INFO  User login: qwe@gmail.com 
 10:41:06.892 INFO  User login failed. 
+10:55:54.956 INFO  Server started on port 3210 
+10:55:55.355 INFO  /route/course: GET /course 
+10:55:55.377 INFO  /route/course: GET /course/coursesoverview 
+10:55:55.391 INFO  /route/course: GET /course/trainerdashboard 
+10:55:55.419 INFO  /routes/users: GET /users/userprofile 
+10:55:55.572 INFO  User login failed. 
+10:55:55.614 INFO  User login: qwe@gmail.com 
+10:55:55.662 INFO  User login: qwe@gmail.com 
+10:55:55.698 INFO  User login failed. 
+10:56:09.750 INFO  Server started on port 3210 
+10:56:17.279 INFO  /routes/users: GET /users/userprofile 
+10:56:17.579 INFO  /routes/users: GET /users/userprofileController 
+10:56:24.839 INFO  /routes/users: GET /users/edituserprofile 
+10:56:25.080 INFO  /routes/users: GET /users/userprofileController 
+10:56:31.475 INFO  /routes/users: Save edit userprofile 
+10:56:31.505 INFO  /routes/users: GET /users/userprofile 
+10:56:31.671 INFO  /routes/users: GET /users/userprofileController 
+10:56:43.057 INFO  /routes/users: Upload avatar 
+10:57:54.263 INFO  Server started on port 3210 
+10:58:02.848 INFO  /routes/users: GET /users/userprofile 
+10:58:03.016 INFO  /routes/users: GET /users/userprofileController 
+10:58:06.327 INFO  /routes/users: GET /users/edituserprofile 
+10:58:06.484 INFO  /routes/users: GET /users/userprofileController 
+10:58:12.080 INFO  /routes/users: Save edit userprofile 
+10:58:12.108 INFO  /routes/users: GET /users/userprofile 
+10:58:12.264 INFO  /routes/users: GET /users/userprofileController 
+10:58:15.240 INFO  /routes/users: GET /users/edituserprofile 
+10:58:15.390 INFO  /routes/users: GET /users/userprofileController 
+10:58:17.869 INFO  /routes/users: Save edit userprofile 
+10:58:17.958 INFO  /routes/users: GET /users/userprofile 
+10:58:18.080 INFO  /routes/users: GET /users/userprofileController 
+10:58:45.718 INFO  Server started on port 3210 
+10:58:56.191 INFO  /routes/users: GET /users/userprofile 
+10:58:56.299 INFO  /routes/users: GET /users/userprofileController 
+10:58:57.471 INFO  /routes/users: GET /users/edituserprofile 
+10:58:57.664 INFO  /routes/users: GET /users/userprofileController 
+10:59:02.624 INFO  /routes/users: Save edit userprofile 
+10:59:02.708 INFO  /routes/users: GET /users/userprofile 
+10:59:02.861 INFO  /routes/users: GET /users/userprofileController 
+10:59:08.370 INFO  /routes/users: Upload avatar 
+10:59:08.556 INFO  /routes/users: GET /users/userprofileController 
+10:59:20.723 INFO  /routes/users: Upload avatar 
+10:59:20.894 INFO  /routes/users: GET /users/userprofileController 
+11:00:35.526 INFO  Server started on port 3210 
+11:00:47.309 INFO  /routes/users: GET /users/userprofile 
+11:00:47.502 INFO  /routes/users: GET /users/userprofileController 
+11:00:51.783 INFO  /routes/users: Upload avatar 
+11:00:51.982 INFO  /routes/users: GET /users/userprofileController 
+11:01:00.506 INFO  /routes/users: Upload avatar 
+11:01:00.676 INFO  /routes/users: GET /users/userprofileController 

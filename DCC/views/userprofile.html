@@ -39,8 +39,15 @@
           <div class="panel-body">
             <div class="row">
               <div class="col-md-3 col-lg-3 ">
-                <img alt="User Pic" src="/img/profile.jpg" class="img-responsive">
-
+                <img alt="User Pic" src= "{[{ pAvatar }]}" class="img-responsive">
+                  <form id="uploadForm"
+                      enctype="multipart/form-data"
+                      action="/users/photo"
+                      method="post">
+                  <input type="file" name="userPhoto" />
+                  <input type="submit" value="Upload Image" name="submit">
+                  <span id = "status"></span>
+                </form>
               </div>
               <div class=" col-md-9 col-lg-9 ">
                 <table class="table table-user-information">
@@ -67,7 +74,7 @@
                             </tr>
                           </tbody>
                     </table>
-                    <button class="pull-right">Edit</button>
+                    <button class="pull-right"><a href="/users/edituserprofile">Edit</a></button>
                   </div>
                 </div>
               </div>

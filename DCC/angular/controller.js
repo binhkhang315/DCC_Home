@@ -77,7 +77,7 @@ myApp.controller('setFeature', function($scope, $http) {
     });
 });
 
-myApp.controller('setProfile', function($scope, $http) {
+myApp.controller('setProfile', function($scope, $http, $window) {
     $http.get('/users/userprofileController').then(function(result) {
         $scope.pStatus = result.data.pStatus;
         $scope.pName = result.data.pName;
@@ -85,7 +85,21 @@ myApp.controller('setProfile', function($scope, $http) {
         $scope.pPhone = result.data.pPhone;
         $scope.pLocation = result.data.pLocation;
         $scope.pEmail = result.data.pEmail;
+        $scope.pAvatar = result.data.pAvatar;
     });
+
+    $scope.edit = function() {
+        var user = {
+          status: $scope.pStatus,
+          dob: $scope.pDoB,
+          phone: $scope.pPhone,
+          location: $scope.pLocation,
+          avatar: $scope.pAvatar
+        }
+        $http.post('/users/userprofileReturnValue', user).then(function(result) {
+          $window.location.href = '/users/userprofile';
+        });
+    }
 });
 
 // add course controller
