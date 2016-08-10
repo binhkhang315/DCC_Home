@@ -114,3 +114,14 @@
 11:00:51.982 INFO  /routes/users: GET /users/userprofileController 
 11:01:00.506 INFO  /routes/users: Upload avatar 
 11:01:00.676 INFO  /routes/users: GET /users/userprofileController 
+11:17:07.675 INFO  Server started on port 3210 
+11:17:20.568 INFO  /route/course: GET /course 
+11:17:20.975 INFO  /route/course: get course list data 
+11:17:23.230 INFO  /routes/users: GET /users/userprofile 
+11:17:23.548 INFO  /routes/users: GET /users/userprofileController 
+11:17:38.860 INFO  User login: qwe@gmail.com 
+11:17:42.030 INFO  /routes/users: GET /users/userprofile 
+11:17:42.349 INFO  /routes/users: GET /users/userprofileController 
+11:17:44.340 INFO  /route/course: GET /course 
+11:17:44.690 INFO  /route/course: get course list data 
+11:17:46.878 INFO  /routes/users: GET /users/dashboard 

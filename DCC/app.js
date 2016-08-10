@@ -2,7 +2,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var exphbs = require('express-handlebars');
+var expressLayouts = require('express-ejs-layouts');
 var session = require('express-session');
 var passport = require('passport');
 
@@ -22,16 +22,10 @@ var course = require('./routes/course');
 var feedback = require('./routes/feedback');
 
 // Init App
-var app = express(),
-    handlebars;
-
-// View Engine
-handlebars = exphbs.create({
-    defaultLayout: 'layout',
-    extname: '.html', //set extension to .html so handlebars knows what to look for
-});
-app.set('views', path.join(__dirname, 'views'));
-app.engine('html', handlebars.engine);
+var app = express();
+// set view engine
+app.use(expressLayouts);
+app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 
 // BodyParser Middleware
