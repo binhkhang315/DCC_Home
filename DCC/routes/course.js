@@ -16,7 +16,7 @@ var log = require('simple-node-logger').createLogManager(opts).createLogger();
 // add course detail to database
 
 models.course.sync({
-        force: false
+        force: true
     })
     .then(function() {
         return models.course.create({
