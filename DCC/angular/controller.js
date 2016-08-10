@@ -203,27 +203,30 @@ myApp.controller('FeedbackCtrl',function($scope, $http, $window){
   path = path.split('/');
   var courseID = path.pop();
   $scope.addFeedback = function() {
-    console.log($scope.comment);
       $http.post('/course/coursesoverview/comment', {
           comment : $scope.comment,
           courseID : parseInt(courseID),
-      }).success(function(data, status, headers, config) {
-          $scope.feedbacks.push({
-            comment : $scope.comment,
-            courseID : parseInt(courseID)
-          });
-          $scope.comment = '';
-      });
+      })
+      // .success(function(data, status, headers, config) {
+      //     $scope.feedbacks.push({
+      //       comment : $scope.comment,
+      //       courseID : parseInt(courseID)
+      //     });
+      //     $scope.comment = '';
+      // })
+      ;
   }
   $scope.addRating = function(){
     $http.post('/course/coursesoverview/rating', {
         rating : $scope.rating,
         courseID : parseInt(courseID),
-    }).success(function(data, status, headers, config) {
-        $scope.feedbacks.push({
-          rating : $scope.rating,
-          courseID : parseInt(courseID),
-        });
-    });
+    })
+    // .success(function(data, status, headers, config) {
+    //     $scope.feedbacks.push({
+    //       rating : $scope.rating,
+    //       courseID : parseInt(courseID),
+    //     });
+    // })
+    ;
   }
 });
