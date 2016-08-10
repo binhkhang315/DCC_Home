@@ -33,43 +33,40 @@
     </div>
 
     <!--  List of courses -->
-    <div class="container" style="padding-top: 200px">
-        <div>
-            <div class="panel panel-info">
-                <div class="panel-heading">
-                    <h3 class="panel-title">List of courses</h3>
-                    <div class="btn btn-default" data-toggle="modal" href="#addCourseModal">Add Course</div>
-                </div>
-                <div class="panel-body">
-                    <div class="row">
-                        <div style="overflow-x:auto;" class="col-md-12 col-lg-12 ">
-                            <table class="table table-user-information" ng-controller="getList">
-                                <thead>
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Category</th>
-                                        <th>Trainer Name</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr ng-repeat="course in coursesList">
-                                        <td><a href="/course/coursesoverview/{{course.id}} ">{{ course.name }}</td>
-                                          <td>{{ course.category }}</td>
-                                          <td>{{ course.trainerID }}</td>
-
-                                          <td>
-                                              <a class="a-inside edit" data-toggle="modal" href="#editCourseModal" ng-click="editCourse(course)">Edit&nbsp</a>
-                                            <a class="a-inside delete" data-toggle="modal" href="#deleteCourseModal" ng-click="deleteCourse(course)">Delete</a>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="container" style="padding-top: 120px">
+      <div class="list"> LIST OF COURSES</div>
+      <div class="panel panel-info">
+          <div class="panel-heading">
+              <div class="btn btn-default" data-toggle="modal" href="#addCourseModal">Add Course</div>
+          </div>
+          <div class="panel-body">
+              <div class="row">
+                  <div style="overflow-x:auto;" class="col-md-12 col-lg-12 ">
+                      <table class="table table-user-information" ng-controller="getList">
+                          <thead>
+                              <tr>
+                                  <th>Name</th>
+                                  <th>Category</th>
+                                  <th>Trainer Name</th>
+                                  <th>Action</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <tr ng-repeat="course in coursesList">
+                                  <td><a href="/course/coursesoverview/{{course.id}} ">{{ course.name }}</td>
+                                    <td>{{ course.category }}</td>
+                                    <td>{{ course.trainerID }}</td>
+                                    <td>
+                                      <a class="a-inside edit" data-toggle="modal" href="#editCourseModal" ng-click="editCourse(course)">Edit&nbsp</a>
+                                      <a class="a-inside delete" data-toggle="modal" href="#deleteCourseModal" ng-click="deleteCourse(course)">Delete</a>
+                                  </td>
+                              </tr>
+                          </tbody>
+                      </table>
+                  </div>
+              </div>
+          </div>
+      </div>
     </div>
 
     <!-- Add Course Form -->
@@ -81,9 +78,8 @@
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                     <h4 class="modal-title">Add Course</h4>
                 </div>
-                <div class="modal-body">
-                    <form name="addCourseForm" ng-controller="addCourse" role="form" class="form-horizontal" novalidate>
-
+                <form name="addCourseForm" ng-controller="addCourse" role="form" class="form-horizontal" novalidate>
+                  <div class="modal-body">
                         <!-- Course Name -->
                         <div class="form-group" ng-class="{ 'has-error' : addCourseForm.courseName.$invalid && !addCourseForm.courseName.$pristine }">
                             <label class="col-sm-4 control-label">Course name</label>
@@ -95,16 +91,23 @@
 
                         <!-- Course Description -->
                         <div class="form-group" ng-class="{ 'has-error' : addCourseForm.courseDescription.$invalid && !addCourseForm.courseDescription.$pristine }">
-                            <label class="col-sm-4 control-label">Course description</label>
+                            <label class="col-sm-4 control-label">Description</label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" name="courseDescription" ng-model="courseslist.courseDescription" placeholder="Course description" required>
-                                <p ng-show="addCourseForm.courseDescription.$invalid && !addCourseForm.courseDescription.$pristine" class="help-block">Course description is required.</p>
+                              <select class="form-control" name="courseDescription" ng-model="courseslist.courseDescription">
+                                <option>General Orientation</option>
+                                <option>Linux Programming</option>
+                                <option>AXE Overview</option>
+                                <option>CBA Overview</option>
+                                <option>IMS Overview</option>
+                                <option>AXE Overview</option>
+                                <option>On Demand</option>
+                              </select>
                             </div>
                         </div>
 
                         <!-- Course Category -->
                         <div class="form-group" ng-class="{ 'has-error' : addCourseForm.courseCategory.$invalid && !addCourseForm.courseCategory.$pristine }">
-                            <label class="col-sm-4 control-label">Course category</label>
+                            <label class="col-sm-4 control-label">Category</label>
                             <div class="col-sm-8">
                                 <input type="text" class="form-control" name="courseCategory" ng-model="courseslist.courseCategory" placeholder="Course category" required>
                                 <p ng-show="addCourseForm.courseCategory.$invalid && !addCourseForm.courseCategory.$pristine" class="help-block">Course category is required.</p>
@@ -113,7 +116,7 @@
 
                         <!-- Course Document -->
                         <div class="form-group" ng-class="{ 'has-error' : addCourseForm.courseDocuments.$invalid && !addCourseForm.courseDocuments.$pristine }">
-                            <label class="col-sm-4 control-label">Course documents</label>
+                            <label class="col-sm-4 control-label">Documents</label>
                             <div class="col-sm-8">
                                 <input type="text" class="form-control" name="courseDocuments" ng-model="courseslist.courseDocuments" placeholder="Course documents" required>
                                 <p ng-show="addCourseForm.courseDocuments.$invalid && !addCourseForm.courseDocuments.$pristine" class="help-block">Course documents is required.</p>
@@ -122,7 +125,7 @@
 
                         <!-- Course Test -->
                         <div class="form-group" ng-class="{ 'has-error' : addCourseForm.courseTest.$invalid && !addCourseForm.courseTest.$pristine }">
-                            <label class="col-sm-4 control-label">Course test</label>
+                            <label class="col-sm-4 control-label">Test</label>
                             <div class="col-sm-8">
                                 <input type="text" class="form-control" name="courseTest" ng-model="courseslist.courseTest" placeholder="Course test" required>
                                 <p ng-show="addCourseForm.courseTest.$invalid && !addCourseForm.courseTest.$pristine" class="help-block">Course test is required.</p>
@@ -131,21 +134,17 @@
 
                         <!-- Course TrainerID -->
                         <div class="form-group" ng-class="{ 'has-error' : addCourseForm.courseTrainerID.$invalid && !addCourseForm.courseTrainerID.$pristine }">
-                            <label class="col-sm-4 control-label">Course trainerID</label>
+                            <label class="col-sm-4 control-label">TrainerID</label>
                             <div class="col-sm-8">
                                 <input type="text" class="form-control" name="courseTrainerID" ng-model="courseslist.courseTrainerID" placeholder="Course trainerID" required>
                                 <p ng-show="addCourseForm.courseTrainerID.$invalid && !addCourseForm.courseTrainerID.$pristine" class="help-block">Course trainerID is required.</p>
                             </div>
                         </div>
-
-                        <div class="row">
-                            <div class="col-xs-3 col-xs-push-9">
-                                <button type="submit" class="btn btn-default" ng-click="addCourse()" data-dismiss="modal" ng-disabled="addCourseForm.$invalid">Add Course
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="submit" class="btn btn-default" ng-click="addCourse()" data-dismiss="modal" ng-disabled="addCourseForm.$invalid">Add</button>
+                  </div>
+              </form>
             </div>
         </div>
     </div>
@@ -159,8 +158,9 @@
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                     <h4 class="modal-title">Edit Course</h4>
                 </div>
-                <div class="modal-body">
-                    <form name="editCourseForm" role="form" class="form-horizontal" novalidate>
+                <form name="editCourseForm" role="form" class="form-horizontal" novalidate>
+                  <div class="modal-body">
+
 
                         <!-- Course Name -->
                         <div class="form-group" ng-class="{ 'has-error' : editCourseForm.courseNameEdit.$invalid && !editCourseForm.courseNameEdit.$pristine }">
@@ -173,7 +173,7 @@
 
                         <!-- Course Description -->
                         <div class="form-group" ng-class="{ 'has-error' : editCourseForm.courseDescriptionEdit.$invalid && !editCourseForm.courseDescriptionEdit.$pristine }">
-                            <label class="col-sm-4 control-label">Course description</label>
+                            <label class="col-sm-4 control-label">Description</label>
                             <div class="col-sm-8">
                                 <input type="text" class="form-control" name="courseDescriptionEdit" ng-model="courseslistEdit.courseDescriptionEdit" required>
                                 <p ng-show="editCourseForm.courseDescriptionEdit.$invalid && !editCourseForm.courseDescriptionEdit.$pristine" class="help-block">Course description is required.</p>
@@ -182,16 +182,23 @@
 
                         <!-- Course Category -->
                         <div class="form-group" ng-class="{ 'has-error' : editCourseForm.courseCategoryEdit.$invalid && !editCourseForm.courseCategoryEdit.$pristine }">
-                            <label class="col-sm-4 control-label">Course category</label>
+                            <label class="col-sm-4 control-label">Category</label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" name="courseCategoryEdit" ng-model="courseslistEdit.courseCategoryEdit" required>
-                                <p ng-show="editCourseForm.courseCategoryEdit.$invalid && !editCourseForm.courseCategoryEdit.$pristine" class="help-block">Course category is required.</p>
+                                <select class="form-control" name="courseDescription" ng-model="courseslistEdit.courseCategoryEdit">
+                                  <option>General Orientation</option>
+                                  <option>Linux Programming</option>
+                                  <option>AXE Overview</option>
+                                  <option>CBA Overview</option>
+                                  <option>IMS Overview</option>
+                                  <option>AXE Overview</option>
+                                  <option>On Demand</option>
+                                </select>
                             </div>
                         </div>
 
                         <!-- Course Document -->
                         <div class="form-group" ng-class="{ 'has-error' : editCourseForm.courseDocumentsEdit.$invalid && !editCourseForm.courseDocumentsEdit.$pristine }">
-                            <label class="col-sm-4 control-label">Course documents</label>
+                            <label class="col-sm-4 control-label">Documents</label>
                             <div class="col-sm-8">
                                 <input type="text" class="form-control" name="courseDocumentsEdit" ng-model="courseslistEdit.courseDocumentsEdit" required>
                                 <p ng-show="editCourseForm.courseDocumentsEdit.$invalid && !editCourseForm.courseDocumentsEdit.$pristine" class="help-block">Course documents is required.</p>
@@ -200,7 +207,7 @@
 
                         <!-- Course Test -->
                         <div class="form-group" ng-class="{ 'has-error' : editCourseForm.courseTestEdit.$invalid && !editCourseForm.courseTestEdit.$pristine }">
-                            <label class="col-sm-4 control-label">Course test</label>
+                            <label class="col-sm-4 control-label">Test</label>
                             <div class="col-sm-8">
                                 <input type="text" class="form-control" name="courseTestEdit" ng-model="courseslistEdit.courseTestEdit" required>
                                 <p ng-show="editCourseForm.courseTestEdit.$invalid && !editCourseForm.courseTestEdit.$pristine" class="help-block">Course test is required.</p>
@@ -209,23 +216,21 @@
 
                         <!-- Course TrainerID -->
                         <div class="form-group" ng-class="{ 'has-error' : editCourseForm.courseTrainerIDEdit.$invalid && !editCourseForm.courseTrainerIDEdit.$pristine }">
-                            <label class="col-sm-4 control-label">Course trainerID</label>
+                            <label class="col-sm-4 control-label">TrainerID</label>
                             <div class="col-sm-8">
                                 <input type="text" class="form-control" name="courseTrainerIDEdit" ng-model="courseslistEdit.courseTrainerIDEdit" required>
                                 <p ng-show="editCourseForm.courseTrainerIDEdit.$invalid && !editCourseForm.courseTrainerIDEdit.$pristine" class="help-block">Course trainerID is required.</p>
                             </div>
                         </div>
 
-                        <div class="row">
-                            <div class="col-xs-3 col-xs-push-8">
-                                <button type="submit" class="btn btn-default" ng-click="updateCourse()" data-dismiss="modal" ng-disabled="editCourseForm.$invalid">Update</button>
-                            </div>
-                            <div class="col-xs-3 col-xs-push-7">
-                                <button type="submit" class="btn btn-default" ng-click="cancelEdit()" data-dismiss="modal">Cancel</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+
+
+                  </div>
+                  <div class="modal-footer">
+                        <button type="submit" class="btn btn-default" ng-click="updateCourse()" data-dismiss="modal" ng-disabled="editCourseForm.$invalid">Update</button>
+                        <button type="submit" class="btn btn-default" ng-click="cancelEdit()" data-dismiss="modal">Cancel</button>
+                  </div>
+              </form>
             </div>
         </div>
     </div>
