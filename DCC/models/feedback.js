@@ -6,11 +6,16 @@ module.exports = function(sequelize, DataTypes) {
     comment: {
       type: DataTypes.STRING,
       allowNull: true
-    }
-    // rating: {
-    //   type: DataTypes.FLOAT,
-    //   allowNull: true
-    // },
+    },
+    rating: {
+      type: DataTypes.INTEGER,
+      allowNull: true
+    },
+    userID:{
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      primaryKey:true
+    },
   });
   return Feedback;
 };

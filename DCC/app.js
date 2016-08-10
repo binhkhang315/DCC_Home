@@ -62,7 +62,8 @@ app.use(passport.session());
 app.use('/', routes);
 app.use('/users', users);
 app.use('/course', course);
-app.post('/course/coursesoverview/feedback', feedback.savefeedback);
+app.post('/course/coursesoverview/comment',feedback.saveFeedback);
+app.post('/course/coursesoverview/rating',feedback.saveRating);
 
 // Set Port
 app.set('port', (process.env.PORT || 3210));

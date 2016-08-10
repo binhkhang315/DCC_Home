@@ -1,23 +1,45 @@
 var models = require("../models");
 
-exports.savefeedback = function(req, res) {
-    models.Feedback.create({
-        comment: req.body.comment
-            // rating: req.body.rating
-    }).then(function(feedbacks) {
+exports.saveFeedback = function(req, res) {
+    models.Feedback.findOne({where:{userID:1}}).then(function(feedback) {
+      if(feedback===null){
+      models.Feedback.create({
+        userID: '1',
+        comment: req.body.comment,
+    }).then(function(feedbacks){
         res.json(feedbacks.dataValues);
-    }).catch(function(error) {
-        res.status(500).json({
-            error: 'error'
-        });
     });
+  }else{
+    models.Feedback.update({
+      comment: req.body.comment
+    },{
+      where:{
+        userID: '1'
+      }
+    })
+  }})
+};
+//
+exports.saveRating = function(req, res) {
+    models.Feedback.findOne({where:{userID:1}}).then(function(feedback){
+    if(feedback === null){
+    models.Feedback.create({
+        userID: '1',
+        rating: req.body.rating,
+    }).then(function(feedbacks){
+        res.json(feedbacks.dataValues);
+    });
+  }else{
+    models.Feedback.update({
+      rating: req.body.rating
+    },{
+      where:{
+        userID: '1'
+      }
+    })
+  }})
 };
 
 models.Feedback.sync({
-        force: false
-    })
-    .then(function() {
-        return models.Feedback.create({
-            comment: 'this is feed'
-        });
-    });
+  force:true
+});
