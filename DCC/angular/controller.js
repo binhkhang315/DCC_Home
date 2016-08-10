@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp', ['ngCookies']);
+var myApp = angular.module('myApp', ['ngCookies','ngTagsInput']);
 // creat angular controller
 myApp.controller('LoginCtrl', function($scope, $http, $cookies, $rootScope, $window) {
     // function to submit the form after all validation has occurred
@@ -52,12 +52,22 @@ myApp.controller('setCourse', function($scope, $http,$window) {
         $scope.courseDescription = result.data.courseDescription;
         $scope.courseCategory = result.data.courseCategory;
         $scope.courseDocuments = result.data.courseDocuments;
+        console.log($scope.courseTrainer);
     });
 });
 
 myApp.controller('getList', function($scope,$rootScope, $http) {
     $http.get('/course/list').then(function(result) {
       $rootScope.coursesList = result.data.course;
+      for(i=0;i<$rootScope.coursesList.length;i++){
+        $rootScope.coursesList[i].trainerID = JSON.parse($rootScope.coursesList[i].trainerID);
+        $rootScope.coursesList[i].trainerIDJSON = $rootScope.coursesList[i].trainerID;
+        var trainers =$rootScope.coursesList[i].trainerID[0].text;
+        for (j=1;j<$rootScope.coursesList[i].trainerID.length;j++){
+          trainers = trainers + ' / '+ $rootScope.coursesList[i].trainerID[j].text;
+        }
+        $rootScope.coursesList[i].trainerID = trainers;
+      }
     });
 
     // edit course
@@ -65,12 +75,13 @@ myApp.controller('getList', function($scope,$rootScope, $http) {
         $rootScope.courseslistEdit = {
             courseIDEdit: course.id,
             courseNameEdit: course.name,
-            courseDescriptionEdit: course.courseDescription,
+            courseDescriptionEdit: course.description,
             courseCategoryEdit: course.category,
             courseTestEdit: course.test,
             courseDocumentsEdit: course.documents,
-            courseTrainerIDEdit: course.trainerID
+            courseTrainerIDEdit: course.trainerIDJSON
         }
+        console.log($rootScope.courseslistEdit);
     }
 
     // delete course
@@ -78,7 +89,7 @@ myApp.controller('getList', function($scope,$rootScope, $http) {
         $rootScope.courseslistDelete = {
             courseIDDelete: course.id,
             courseNameDelete: course.name,
-            courseDescriptionDelete: course.courseDescription,
+            courseDescriptionDelete: course.description,
             courseCategoryDelete: course.category,
             courseTestDelete: course.test,
             courseDocumentsDelete: course.documents,
@@ -124,7 +135,7 @@ myApp.controller('setProfile', function($scope, $http, $window) {
 });
 
 // add course controller
-myApp.controller('addCourse', function($scope,$rootScope, $http) {
+myApp.controller('addCourse', function($scope,$rootScope,$window,$http) {
         $scope.courseslist = {
             courseName: '',
             courseDescription: '',
@@ -134,6 +145,7 @@ myApp.controller('addCourse', function($scope,$rootScope, $http) {
             courseTrainerID: ''
         };
         $scope.addCourse = function() {
+          console.log($scope.courseslist);
             $http.post('/course/addCourse', $scope.courseslist).then(function(result) {
                 $http.get('/course/list').then(function(result) {
                   $rootScope.coursesList = result.data.course;

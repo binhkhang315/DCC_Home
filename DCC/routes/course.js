@@ -26,9 +26,12 @@ router.post('/getCourse', function(req, res) {
             id: parseInt(req.body.courseID)
         }
     }).then(function(course) {
+        var tID = JSON.parse(course.trainerID);
+        console.log('-------------------------');
+        console.log(tID);
         res.send({
             courseName: course.name,
-            courseTrainer: course.trainerID,
+            courseTrainer: tID,
             courseTrainerPage: '/course/trainerdashboard',
             courseDescription: course.description,
             courseDocuments: course.documents,
@@ -40,6 +43,7 @@ router.post('/getCourse', function(req, res) {
 // add course to database
 router.post('/addCourse', function(req, res) {
     log.info('/route/course: Add course :' + req.body);
+    var tID = JSON.stringify(req.body.courseTrainerID);
     models.course.sync({
         force: false
     }).then(function() {
@@ -49,7 +53,7 @@ router.post('/addCourse', function(req, res) {
             category: req.body.courseCategory,
             test: req.body.courseTest,
             documents: req.body.courseDocuments,
-            trainerID: req.body.courseTrainerID
+            trainerID: tID
         }).then(function(data) {
             if (data.dataValues) {
                 res.send({
@@ -69,13 +73,14 @@ router.post('/updateCourse', function(req, res) {
     log.info('Get Course Information');
     console.log('----------------------------------------------');
     console.log(req.body.courseNameEdit);
+    var tID = JSON.stringify(req.body.courseTrainerIDEdit);
     models.course.update({
             name: req.body.courseNameEdit,
             description: req.body.courseDescriptionEdit,
             category: req.body.courseCategoryEdit,
             test: req.body.courseTestEdit,
             documents: req.body.courseDocumentsEdit,
-            trainerID: req.body.courseTrainerIDEdit
+            trainerID: tID
         }, {
             where: {
                 id: req.body.courseIDEdit
@@ -115,11 +120,10 @@ router.post('/isDeletedCourse', function(req, res) {
 router.get('/list', function(req, res) {
     log.info('/route/course: get course list data');
     models.course.getCourseList(function(course){
-        console.log(course);
-        var data = JSON.stringify(course);
-        data = JSON.parse(data);
+        // var data = JSON.stringify(course);
+        // data = JSON.parse(data);
         var datasend = {
-            course: data
+            course: course
         }
         res.send(datasend);
     });
