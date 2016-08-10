@@ -65,7 +65,7 @@ myApp.controller('getList', function($scope,$rootScope, $http) {
         $rootScope.courseslistEdit = {
             courseIDEdit: course.id,
             courseNameEdit: course.name,
-            courseDescriptionEdit: course.trainerID,
+            courseDescriptionEdit: course.courseDescription,
             courseCategoryEdit: course.category,
             courseTestEdit: course.test,
             courseDocumentsEdit: course.documents,
@@ -78,7 +78,7 @@ myApp.controller('getList', function($scope,$rootScope, $http) {
         $rootScope.courseslistDelete = {
             courseIDDelete: course.id,
             courseNameDelete: course.name,
-            courseDescriptionDelete: course.trainerID,
+            courseDescriptionDelete: course.courseDescription,
             courseCategoryDelete: course.category,
             courseTestDelete: course.test,
             courseDocumentsDelete: course.documents,
