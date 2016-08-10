@@ -270,7 +270,42 @@ describe('<Unit test for User model', function() {
         });
     });
 });
-//-----------------------------------------------------------------------
 
+describe('<Unit test for userProfile function>', function() {
+
+    describe('Send data to font-end', function() {
+        return it('Get /users/userprofileController ', function(done) {
+            request(route)
+                .get('/users/userprofileController')
+                .end(function(err, res) {
+                    assert.equal(res.body.pName, 'admin');
+                    return done();
+                });
+        });
+    });
+
+    describe('Route for editUserProfile page', function() {
+        return it('Get /users/edituserprofile ', function(done) {
+            request(route)
+                .get('/users/edituserprofile')
+                .expect(200, done)
+        });
+    });
+
+    describe('Edit data method', function() {
+        return it('Post /users/userprofileReturnValue ', function(done) {
+            request(route)
+                .post('/users/userprofileReturnValue')
+                .send({
+                    status: 'vhlam',
+                    dob: '20/10/1995'
+                })
+                .end(function(err, res) {
+                    assert.equal(res.text, 'Success');
+                    return done();
+                });
+        });
+    });
+});
 
 //-----------------------------------------------------------------------
