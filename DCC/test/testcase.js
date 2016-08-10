@@ -208,15 +208,15 @@ describe('<Unit test for Course model', function() {
             })
         });
     });
-    describe('', function() {
-        return it('Test case 5: getCourseByCategory with category existed in database - return course[] list object ', function(done) {
-            models.course.getCourseByCategory('CBA Overview', function(course) {
-                assert.equal(course[0].category, 'CBA Overview');
-                assert.equal(course[2].category, 'CBA Overview');
-                return done();
-            })
-        });
-    });
+    // describe('', function() {
+    //     return it('Test case 5: getCourseByCategory with category existed in database - return course[] list object ', function(done) {
+    //         models.course.getCourseByCategory('CBA Overview', function(course) {
+    //             assert.equal(course[0].category, 'CBA Overview');
+    //             assert.equal(course[2].category, 'CBA Overview');
+    //             return done();
+    //         })
+    //     });
+    // });
     describe('', function() {
         return it('Test case 6: getCourseByCategory with category not found in database - return course[] null ', function(done) {
             models.course.getCourseByCategory('not found', function(course) {
