@@ -242,25 +242,25 @@ describe('<Unit test for Course model', function() {
     });
 });
 
-describe('<Unit test for User model', function() {
-    describe('Method User', function() {
-        return it('Test case 1: getUserByID', function(done) {
-            models.User.getUserByID('1', function(user) {
-                assert.equal(user.username, 'admin');
-                return done();
-            })
-        });
-    });
+// describe('<Unit test for User model', function() {
+//     describe('Method User', function() {
+//         return it('Test case 1: getUserByID', function(done) {
+//             models.User.getUserByID('1', function(user) {
+//                 assert.equal(user.username, 'admin');
+//                 return done();
+//             })
+//         });
+//     });
 
-    describe('', function() {
-        return it('Test case 2: getUserByName', function(done) {
-            models.User.getUserByName('admin', function(user) {
-                assert.equal(user.id, '1');
-                return done();
-            })
-        });
-    });
-});
+//     describe('', function() {
+//         return it('Test case 2: getUserByName', function(done) {
+//             models.User.getUserByName('admin', function(user) {
+//                 assert.equal(user.id, '1');
+//                 return done();
+//             })
+//         });
+//     });
+// });
 //-----------------------------------------------------------------------
 
 
