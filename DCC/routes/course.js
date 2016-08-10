@@ -17,47 +17,48 @@ var log = require('simple-node-logger').createLogManager(opts).createLogger();
 
 models.course.sync({
         force: false
+    })
+    .then(function() {
+        return models.course.create({
+            name: 'CBA Overview',
+            description: 'This is CBA Overview description',
+            category: 'Technical',
+            test: 'This is CBA Overview test',
+            documents: 'This is CBA Overview document',
+            trainerID: 'Khai Doan'
+        });
+    })
+    .then(function() {
+        return models.course.create({
+            name: 'CoreMW Overview',
+            description: 'This is CoreMW Overview description',
+            category: 'Technical',
+            test: 'This is CoreMW Overview test',
+            documents: 'This is CoreMW Overview document',
+            trainerID: 'Tai Dinh'
+        });
+    })
+    .then(function() {
+        return models.course.create({
+            name: 'LDE',
+            description: 'This is LDE description',
+            category: 'Technical',
+            test: 'This is LDE test',
+            documents: 'This is LDE document',
+            trainerID: 'King Nguyen'
+        });
+    })
+    .then(function() {
+        return models.course.create({
+            name: 'GIT & GERRIT',
+            description: 'This is GIT & GERRIT description',
+            category: 'Technical',
+            test: 'This is GIT & GERRIT test',
+            documents: 'This is GIT & GERRIT document',
+            trainerID: 'Bao Nguyen'
+        });
     });
-    // .then(function() {
-    //     return models.course.create({
-    //         name: 'CBA Overview',
-    //         description: 'This is CBA Overview description',
-    //         category: 'Technical',
-    //         test: 'This is CBA Overview test',
-    //         documents: 'This is CBA Overview document',
-    //         trainerID: 'Khai Doan'
-    //     });
-    // })
-    // .then(function() {
-    //     return models.course.create({
-    //         name: 'CoreMW Overview',
-    //         description: 'This is CoreMW Overview description',
-    //         category: 'Technical',
-    //         test: 'This is CoreMW Overview test',
-    //         documents: 'This is CoreMW Overview document',
-    //         trainerID: 'Tai Dinh'
-    //     });
-    // })
-    // .then(function() {
-    //     return models.course.create({
-    //         name: 'LDE',
-    //         description: 'This is LDE description',
-    //         category: 'Technical',
-    //         test: 'This is LDE test',
-    //         documents: 'This is LDE document',
-    //         trainerID: 'King Nguyen'
-    //     });
-    // })
-    // .then(function() {
-    //     return models.course.create({
-    //         name: 'GIT & GERRIT',
-    //         description: 'This is GIT & GERRIT description',
-    //         category: 'Technical',
-    //         test: 'This is GIT & GERRIT test',
-    //         documents: 'This is GIT & GERRIT document',
-    //         trainerID: 'Bao Nguyen'
-    //     });
-    // });
+
 router.post('/getCourse', function(req, res) {
     log.info('/route/course: Get Course Information');
     models.course.findOne({
@@ -74,8 +75,6 @@ router.post('/getCourse', function(req, res) {
             courseCategory: course.category
         });
     });
-
-
 });
 
 // add course to database
@@ -105,9 +104,37 @@ router.post('/addCourse', function(req, res) {
     });
 })
 
-router.get('/deleteCourse', function() {
-    log.info('/route/course: Delete course');;
-})
+// update course in database
+router.post('/updateCourse', function(req, res) {
+    log.info('Get Course Information');
+    console.log('----------------------------------------------');
+    console.log(req.body.courseNameEdit);
+    models.course.update({
+            name: req.body.courseNameEdit,
+            description: req.body.courseDescriptionEdit,
+            category: req.body.courseCategoryEdit,
+            test: req.body.courseTestEdit,
+            documents: req.body.courseDocumentsEdit,
+            trainerID: req.body.courseTrainerIDEdit
+        }, {
+            where: {
+                id: req.body.courseIDEdit
+            }
+        })
+});
+
+// mark course as deleted (isDeleted = true)
+router.post('/isDeletedCourse', function(req, res) {
+    log.info('Get Delete Command');
+    models.course.update({
+            isDeleted: true
+        }, {
+            where: {
+                id: req.body.courseIDDelete
+            }
+        })
+});
+
 // router.get('/features', function(req, res) {
 //     log.info('/route/course: get feature data');
 //     models.course.findOne({
@@ -124,10 +151,11 @@ router.get('/deleteCourse', function() {
 //     });
 // });
 
-// findAll
+// findAll(): get the list of all courses in database
 router.get('/list', function(req, res) {
     log.info('/route/course: get course list data');
-    models.course.findAll().then(function(course) {
+    models.course.getCourseList(function(course){
+        console.log(course);
         var data = JSON.stringify(course);
         data = JSON.parse(data);
         var datasend = {

@@ -40,6 +40,7 @@ myApp.controller('LoginCtrl', function($scope, $http, $cookies, $rootScope, $win
 
     }
 });
+
 myApp.controller('setCourse', function($scope, $http,$window) {
     var path = $window.location.pathname;
     path = path.split('/');
@@ -58,6 +59,33 @@ myApp.controller('getList', function($scope,$rootScope, $http) {
     $http.get('/course/list').then(function(result) {
       $rootScope.coursesList = result.data.course;
     });
+
+    // edit course
+    $scope.editCourse = function(course) {
+        $rootScope.courseslistEdit = {
+            courseIDEdit: course.id,
+            courseNameEdit: course.name,
+            courseDescriptionEdit: course.trainerID,
+            courseCategoryEdit: course.category,
+            courseTestEdit: course.test,
+            courseDocumentsEdit: course.documents,
+            courseTrainerIDEdit: course.trainerID
+        }
+    }
+
+    // delete course
+    $scope.deleteCourse = function(course) {
+        $rootScope.courseslistDelete = {
+            courseIDDelete: course.id,
+            courseNameDelete: course.name,
+            courseDescriptionDelete: course.trainerID,
+            courseCategoryDelete: course.category,
+            courseTestDelete: course.test,
+            courseDocumentsDelete: course.documents,
+            courseTrainerIDDelete: course.trainerID,
+            courseIsDeletedDelete: course.isDeleted
+        }
+    }
 });
 
 myApp.controller('setFeature', function($scope, $http) {
@@ -111,20 +139,51 @@ myApp.controller('addCourse', function($scope,$rootScope, $http) {
                   $rootScope.coursesList = result.data.course;
                 });
             });
+            $window.location.reload();
         }
 
 });
 
+// updateCourse: edit course controller
+myApp.controller('updateCourse', function($scope, $window, $rootScope, $http) {
 
+    $scope.cancelEdit = function() {
 
-myApp.controller('deleteCourse', function($scope, $http) {
-    $http.get('/course/deleteCourse').then(function() {
+        $window.location.reload();
+    }
 
-    });
+    $scope.updateCourse = function() {
+        console.log($rootScope.courseslistEdit);
+        $http.post('/course/updateCourse', $rootScope.courseslistEdit).then(function(result) {
+            console.log(result.data.msg);
+            $http.get('/course/list').then(function(result) {
+              console.log(result.data);
+              $rootScope.courseslistEdit = result.data.course;
+            });
+        });
+        $window.location.reload();
+    }
 });
 
-//myApp.controller('')
+// isDeletedCourse: delete course controller
+myApp.controller('isDeletedCourse', function($scope, $window, $rootScope, $http) {
 
+    $scope.cancelDelete = function() {
+        $window.location.reload();
+    }
+
+    $scope.isDeletedCourse = function() {
+        // console.log($rootScope.courseslistDelete);
+        $http.post('/course/isDeletedCourse', $rootScope.courseslistDelete).then(function(result) {
+            // console.log(result.data.msg);
+            $http.get('/course/list').then(function(result) {
+            //   console.log(result.data);
+              $rootScope.courseslistDelete = result.data.course;
+            });
+        });
+        $window.location.reload();
+    }
+});
 
 //controller for Feedback
 myApp.controller('FeedbackCtrl',function($scope, $http){
@@ -149,4 +208,3 @@ myApp.controller('FeedbackCtrl',function($scope, $http){
   };
 
 });
-//myApp.controller('')

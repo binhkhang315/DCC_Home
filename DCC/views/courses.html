@@ -1,36 +1,39 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="myApp">
-  <head>
+
+<head>
     <title>DEK Technologies Vietnam Talentnet - Landing Page</title>
-  </head>
+</head>
+
 <body>
     <!-- Navigation -->
     <div class="">
-          <nav class="navbar navbar-dcc navbar-fixed-top topnav" role="navigation">
-              <div class="container">
-          				<div class="navbar-menu">
+        <nav class="navbar navbar-dcc navbar-fixed-top topnav" role="navigation">
+            <div class="container">
+                <div class="navbar-menu">
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="javascript:history.go(-1)">Back</a></li>
                     </ul>
-          				</div>
-          				<div class="navbar-header">
-          					<a class="navbar-logo" href="/">
-          						<img class="img-responsive" src="/img/DCC-ver4.png" alt="" width="100" height="40">
-          					</a>
-          				</div>
-          				<div>
-          					<a class="navbar-name" href="/">DEK</br>Competence Center</a>
-          				</div>
-          				<div class="collapse navbar-rowmenu">
-          					  <ul class="nav navbar-nav navbar-right">
-                          <li><a href="javascript:history.go(-1)">Back</a></li>
-          					  </ul>
-          				</div>
-  			     </div>
-  		    </nav>
-      </div>
+                </div>
+                <div class="navbar-header">
+                    <a class="navbar-logo" href="/">
+                        <img class="img-responsive" src="/img/DCC-ver4.png" alt="" width="100" height="40">
+                    </a>
+                </div>
+                <div>
+                    <a class="navbar-name" href="/">DEK</br>Competence Center</a>
+                </div>
+                <div class="collapse navbar-rowmenu">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="javascript:history.go(-1)">Back</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+
     <!--  List of courses -->
-    <div class="container" style="padding-top: 100px">
+    <div class="container" style="padding-top: 200px">
         <div>
             <div class="panel panel-info">
                 <div class="panel-heading">
@@ -39,10 +42,10 @@
                 </div>
                 <div class="panel-body">
                     <div class="row">
-                        <div class=" col-md-12 col-lg-12 ">
+                        <div style="overflow-x:auto;" class="col-md-12 col-lg-12 ">
                             <table class="table table-user-information" ng-controller="getList">
                                 <thead>
-                                    <tr >
+                                    <tr>
                                         <th>Name</th>
                                         <th>Category</th>
                                         <th>Trainer Name</th>
@@ -51,14 +54,13 @@
                                 </thead>
                                 <tbody>
                                     <tr ng-repeat="course in coursesList">
-                                        <!-- <td>{{ courseid }}</td> -->
-                                        <td><a href="/course/coursesoverview/{{course.id}} ">{{ course.name }}</td>
-                                        <td>{{ course.category }}</td>
-                                        <td>{{ course.trainerID }}</td>
+                                        <td><a href="/course/coursesoverview/{[{course.id}]} ">{{ course.name }}</td>
+                                          <td>{{ course.category }}</td>
+                                          <td>{{ course.trainerID }}</td>
 
-                                        <td>
-                                            <a class="a-inside edit" href=" ">Edit&nbsp</a>
-                                            <a class="a-inside delete" href="">Delete</a>
+                                          <td>
+                                              <a class="a-inside edit" data-toggle="modal" href="#editCourseModal" ng-click="editCourse(course)">Edit&nbsp</a>
+                                            <a class="a-inside delete" data-toggle="modal" href="#deleteCourseModal" ng-click="deleteCourse(course)">Delete</a>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -148,32 +150,148 @@
         </div>
     </div>
 
+    <!-- Edit Course Form -->
+    <div class="modal fade" id="editCourseModal" role="dialog" ng-controller="updateCourse">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Edit Course</h4>
+                </div>
+                <div class="modal-body">
+                    <form name="editCourseForm" role="form" class="form-horizontal" novalidate>
+
+                        <!-- Course Name -->
+                        <div class="form-group" ng-class="{ 'has-error' : editCourseForm.courseNameEdit.$invalid && !editCourseForm.courseNameEdit.$pristine }">
+                            <label class="col-sm-4 control-label">Course name</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="courseNameEdit" ng-model="courseslistEdit.courseNameEdit" required>
+                                <p ng-show="editCourseForm.courseNameEdit.$invalid && !editCourseForm.courseNameEdit.$pristine" class="help-block">Course name is required.</p>
+                            </div>
+                        </div>
+
+                        <!-- Course Description -->
+                        <div class="form-group" ng-class="{ 'has-error' : editCourseForm.courseDescriptionEdit.$invalid && !editCourseForm.courseDescriptionEdit.$pristine }">
+                            <label class="col-sm-4 control-label">Course description</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="courseDescriptionEdit" ng-model="courseslistEdit.courseDescriptionEdit" required>
+                                <p ng-show="editCourseForm.courseDescriptionEdit.$invalid && !editCourseForm.courseDescriptionEdit.$pristine" class="help-block">Course description is required.</p>
+                            </div>
+                        </div>
+
+                        <!-- Course Category -->
+                        <div class="form-group" ng-class="{ 'has-error' : editCourseForm.courseCategoryEdit.$invalid && !editCourseForm.courseCategoryEdit.$pristine }">
+                            <label class="col-sm-4 control-label">Course category</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="courseCategoryEdit" ng-model="courseslistEdit.courseCategoryEdit" required>
+                                <p ng-show="editCourseForm.courseCategoryEdit.$invalid && !editCourseForm.courseCategoryEdit.$pristine" class="help-block">Course category is required.</p>
+                            </div>
+                        </div>
+
+                        <!-- Course Document -->
+                        <div class="form-group" ng-class="{ 'has-error' : editCourseForm.courseDocumentsEdit.$invalid && !editCourseForm.courseDocumentsEdit.$pristine }">
+                            <label class="col-sm-4 control-label">Course documents</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="courseDocumentsEdit" ng-model="courseslistEdit.courseDocumentsEdit" required>
+                                <p ng-show="editCourseForm.courseDocumentsEdit.$invalid && !editCourseForm.courseDocumentsEdit.$pristine" class="help-block">Course documents is required.</p>
+                            </div>
+                        </div>
+
+                        <!-- Course Test -->
+                        <div class="form-group" ng-class="{ 'has-error' : editCourseForm.courseTestEdit.$invalid && !editCourseForm.courseTestEdit.$pristine }">
+                            <label class="col-sm-4 control-label">Course test</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="courseTestEdit" ng-model="courseslistEdit.courseTestEdit" required>
+                                <p ng-show="editCourseForm.courseTestEdit.$invalid && !editCourseForm.courseTestEdit.$pristine" class="help-block">Course test is required.</p>
+                            </div>
+                        </div>
+
+                        <!-- Course TrainerID -->
+                        <div class="form-group" ng-class="{ 'has-error' : editCourseForm.courseTrainerIDEdit.$invalid && !editCourseForm.courseTrainerIDEdit.$pristine }">
+                            <label class="col-sm-4 control-label">Course trainerID</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="courseTrainerIDEdit" ng-model="courseslistEdit.courseTrainerIDEdit" required>
+                                <p ng-show="editCourseForm.courseTrainerIDEdit.$invalid && !editCourseForm.courseTrainerIDEdit.$pristine" class="help-block">Course trainerID is required.</p>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-3 col-xs-push-8">
+                                <button type="submit" class="btn btn-default" ng-click="updateCourse()" data-dismiss="modal" ng-disabled="editCourseForm.$invalid">Update</button>
+                            </div>
+                            <div class="col-xs-3 col-xs-push-7">
+                                <button type="submit" class="btn btn-default" ng-click="cancelEdit()" data-dismiss="modal">Cancel</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Course Form -->
+    <div class="modal fade" id="deleteCourseModal" role="dialog" ng-controller="isDeletedCourse">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Delete Course</h4>
+                </div>
+                <div class="modal-body">
+                    <form name="editCourseForm" role="form" class="form-horizontal" novalidate>
+
+                        <div>
+                            <p name="courseNameDelete" ng-model="courseslistDelete.courseNameDelete">
+                                Are you sure to delete
+                                <span ng-bind="courseslistDelete.courseNameDelete">
+                                </span> course?
+                            </p>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-3 col-xs-push-8">
+                                <button type="submit" class="btn btn-default" ng-click="isDeletedCourse()" data-dismiss="modal" ng-disabled="editCourseForm.$invalid">Yes</button>
+                            </div>
+                            <div class="col-xs-3 col-xs-push-7">
+                                <button type="submit" class="btn btn-default" ng-click="cancelDelete()" data-dismiss="modal">No</button>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer>
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12">
-            <ul class="list-inline">
-              <li>
-                <a href="#">Home</a>
-              </li>
-              <li class="footer-menu-divider">&sdot;</li>
-              <li>
-                <a href="#about">About</a>
-              </li>
-              <li class="footer-menu-divider">&sdot;</li>
-              <li>
-                <a href="#courses">Courses</a>
-              </li>
-              <li class="footer-menu-divider">&sdot;</li>
-              <li>
-                <a href="#contact">Contact</a>
-              </li>
-            </ul>
-            <p class="copyright text-muted small">Copyright &copy; DEK Technologies Vietnam 2016. All Rights Reserved</p>
-          </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul class="list-inline">
+                        <li>
+                            <a href="#">Home</a>
+                        </li>
+                        <li class="footer-menu-divider">&sdot;</li>
+                        <li>
+                            <a href="#about">About</a>
+                        </li>
+                        <li class="footer-menu-divider">&sdot;</li>
+                        <li>
+                            <a href="#courses">Courses</a>
+                        </li>
+                        <li class="footer-menu-divider">&sdot;</li>
+                        <li>
+                            <a href="#contact">Contact</a>
+                        </li>
+                    </ul>
+                    <p class="copyright text-muted small">Copyright &copy; DEK Technologies Vietnam 2016. All Rights Reserved</p>
+                </div>
+            </div>
         </div>
-      </div>
     </footer>
-  </body>
+</body>
+
 </html>

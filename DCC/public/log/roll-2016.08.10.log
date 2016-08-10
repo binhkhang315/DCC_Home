@@ -146,3 +146,22 @@
 13:13:02.165 INFO  /routes/users: GET /users/userprofile 
 13:13:02.323 INFO  /routes/users: GET /users/userprofileController 
 13:13:33.723 INFO  /routes/users: Upload avatar 
+13:31:22.411 INFO  Server started on port 3210 
+13:31:32.044 INFO  /route/course: GET /course 
+13:31:32.509 INFO  /route/course: get course list data 
+13:31:32.509 INFO  /models/course: getCourseList() :  
+13:32:44.128 INFO  Server started on port 3210 
+13:33:10.132 INFO  /route/course: GET /course 
+13:33:10.445 INFO  /route/course: get course list data 
+13:33:10.445 INFO  /models/course: getCourseList() :  
+13:33:21.122 INFO  /route/course: Add course :[object Object] 
+13:33:21.192 INFO  /route/course: get course list data 
+13:33:21.192 INFO  /models/course: getCourseList() :  
+13:33:29.972 INFO  Get Course Information 
+13:33:30.011 INFO  /route/course: GET /course 
+13:33:30.456 INFO  /route/course: get course list data 
+13:33:30.456 INFO  /models/course: getCourseList() :  
+13:33:35.827 INFO  Get Delete Command 
+13:33:35.846 INFO  /route/course: GET /course 
+13:33:36.170 INFO  /route/course: get course list data 
+13:33:36.170 INFO  /models/course: getCourseList() :  
