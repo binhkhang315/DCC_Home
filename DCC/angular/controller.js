@@ -1,11 +1,4 @@
 var myApp = angular.module('myApp', ['ngCookies']);
-//change angular symbol from '{{' and '}}' to '{[{' and'}]}' to avoid conflicting with handlebars's synstax
-myApp.config(
-    function($interpolateProvider) {
-        $interpolateProvider.startSymbol('{[{').endSymbol('}]}');
-    }
-);
-
 // creat angular controller
 myApp.controller('LoginCtrl', function($scope, $http, $cookies, $rootScope, $window) {
     // function to submit the form after all validation has occurred

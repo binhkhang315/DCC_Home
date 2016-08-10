@@ -133,3 +133,16 @@
 11:46:33.999 INFO  /route/course: Delete course 
 11:48:33.828 INFO  /route/course: Delete course 
 11:48:34.016 INFO  /route/course: Delete course 
+13:12:25.411 INFO  Server started on port 3210 
+13:12:44.614 INFO  User login: qwe@gmail.com 
+13:12:46.886 INFO  /routes/users: GET /users/userprofile 
+13:12:47.142 INFO  /routes/users: GET /users/userprofileController 
+13:12:49.004 INFO  /route/course: GET /course 
+13:12:49.194 INFO  /route/course: get course list data 
+13:12:50.926 INFO  /routes/users: GET /users/userprofile 
+13:12:51.090 INFO  /routes/users: GET /users/userprofileController 
+13:12:52.448 INFO  /routes/users: GET /users/dashboard 
+13:12:57.933 INFO  /routes/users: GET /logout 
+13:13:02.165 INFO  /routes/users: GET /users/userprofile 
+13:13:02.323 INFO  /routes/users: GET /users/userprofileController 
+13:13:33.723 INFO  /routes/users: Upload avatar 
