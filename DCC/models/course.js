@@ -53,7 +53,8 @@ module.exports = function(sequelize, DataTypes) {
                 log.info('/models/course: getCourseByID() : ' + id);
                 var query = {
                     where: {
-                        id: id
+                        id: id,
+                        isDeleted: false
                     }
                 };
                 Course.findOne(query).then(cb);
@@ -62,7 +63,8 @@ module.exports = function(sequelize, DataTypes) {
                 log.info('/models/course: getCourseByName() : ' + name);
                 var query = {
                     where: {
-                        name: name
+                        name: name,
+                        isDeleted: false
                     }
                 };
                 Course.findOne(query).then(cb);
@@ -71,7 +73,8 @@ module.exports = function(sequelize, DataTypes) {
                 log.info('/models/course: getCourseByCategory() : ' + category);
                 var query = {
                     where: {
-                        category: category
+                        category: category,
+                        isDeleted: false
                     }
                 };
                 Course.findAll(query).then(cb);
@@ -80,10 +83,11 @@ module.exports = function(sequelize, DataTypes) {
                 log.info('/models/course: getCourseByTrainerID() : ' + trainerID);
                 var query = {
                     where: {
-                        trainerID: trainerID
+                        trainerID: trainerID,
+                        isDeleted: false
                     }
                 };
-                Course.findOne(query).then(cb);
+                Course.findAll(query).then(cb);
             },
         },
         tableName: 'course'

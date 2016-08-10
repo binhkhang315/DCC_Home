@@ -175,42 +175,43 @@ describe('<Unit test for Login>', function() {
 
     });
 });
-// describe('<Unit test for Course model', function() {
-//     describe('Method Course', function() {
-//         return it('Test case 1: getCourseByID', function(done) {
-//             models.course.getCourseByID('1', function(course) {
-//                 assert.equal(course.name, 'CBA Overview');
-//                 return done();
-//             })
-//         });
-//     });
-//
-//     describe('', function() {
-//         return it('Test case 2: getCourseByName', function(done) {
-//             models.course.getCourseByName('CBA Overview', function(course) {
-//                 assert.equal(course.id, '1');
-//                 return done();
-//             })
-//         });
-//     });
-//     describe('', function() {
-//         return it('Test case 3: getCourseByCategory', function(done) {
-//             models.course.getCourseByCategory('Technical', function(course) {
-//                 assert.equal(course[2].id, '3');
-//                 return done();
-//             })
-//         });
-//     });
-//
-//     describe('', function() {
-//         return it('Test case 4: getCourseByTrainerID', function(done) {
-//             models.course.getCourseByTrainerID('King Nguyen', function(course) {
-//                 assert.equal(course.name, 'LDE');
-//                 return done();
-//             })
-//         });
-//     });
-// });
+describe('<Unit test for Course model', function() {
+    describe('Method Course', function() {
+        return it('Test case 1: getCourseByID', function(done) {
+            models.course.getCourseByID('1', function(course) {
+                assert.equal(course.id, 1);
+                return done();
+            })
+        });
+    });
+
+    describe('', function() {
+        return it('Test case 2: getCourseByName', function(done) {
+            models.course.getCourseByName('CBA Overview', function(course) {
+                assert.equal(course.name, 'CBA Overview');
+                return done();
+            })
+        });
+    });
+    describe('', function() {
+        return it('Test case 3: getCourseByCategory', function(done) {
+            models.course.getCourseByCategory('CBA Overview', function(course) {
+                assert.equal(course[0].category, 'CBA Overview');
+                assert.equal(course[2].category, 'CBA Overview');
+                return done();
+            })
+        });
+    });
+
+    describe('', function() {
+        return it('Test case 4: getCourseByTrainerID', function(done) {
+            models.course.getCourseByTrainerID('King Nguyen', function(course) {
+                assert.equal(course[0].trainerID, 'King Nguyen');
+                return done();
+            })
+        });
+    });
+});
 
 // describe('<Unit test for User model', function() {
 //     describe('Method User', function() {
