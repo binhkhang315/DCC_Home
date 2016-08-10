@@ -186,25 +186,32 @@ myApp.controller('isDeletedCourse', function($scope, $window, $rootScope, $http)
 });
 
 //controller for Feedback
-myApp.controller('FeedbackCtrl',function($scope, $http){
+myApp.controller('FeedbackCtrl',function($scope, $http, $window){
+  var path = $window.location.pathname;
+  path = path.split('/');
+  var courseID = path.pop();
   $scope.addFeedback = function() {
+    console.log($scope.comment);
       $http.post('/course/coursesoverview/comment', {
           comment : $scope.comment,
+          courseID : parseInt(courseID),
       }).success(function(data, status, headers, config) {
           $scope.feedbacks.push({
             comment : $scope.comment,
+            courseID : parseInt(courseID)
           });
           $scope.comment = '';
       });
-  };
+  }
   $scope.addRating = function(){
     $http.post('/course/coursesoverview/rating', {
         rating : $scope.rating,
+        courseID : parseInt(courseID),
     }).success(function(data, status, headers, config) {
         $scope.feedbacks.push({
           rating : $scope.rating,
+          courseID : parseInt(courseID),
         });
     });
-  };
-
+  }
 });

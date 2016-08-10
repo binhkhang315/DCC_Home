@@ -1,5 +1,11 @@
 
 "use strict";
+var opts = {
+    logDirectory: './public/log',
+    fileNamePattern: 'roll-<DATE>.log',
+    dateFormat: 'YYYY.MM.DD'
+};
+var log = require('simple-node-logger').createLogManager(opts).createLogger();
 
 module.exports = function(sequelize, DataTypes) {
   var Feedback = sequelize.define('Feedback', {
@@ -16,6 +22,11 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       primaryKey:true
     },
+    courseID:{
+      type:DataTypes.INTEGER,
+      allowNull:false,
+      primaryKey:true
+    }
   });
   return Feedback;
 };
