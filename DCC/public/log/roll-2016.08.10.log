@@ -165,3 +165,16 @@
 13:33:35.846 INFO  /route/course: GET /course 
 13:33:36.170 INFO  /route/course: get course list data 
 13:33:36.170 INFO  /models/course: getCourseList() :  
+13:39:16.787 INFO  Server started on port 3210 
+13:41:29.740 INFO  Server started on port 3210 
+13:42:24.078 INFO  /route/course: GET /course 
+13:42:24.345 INFO  /route/course: get course list data 
+13:42:24.345 INFO  /models/course: getCourseList() :  
+13:42:55.788 INFO  Get Delete Command 
+13:42:55.804 INFO  /route/course: GET /course 
+13:42:56.163 INFO  /route/course: get course list data 
+13:42:56.163 INFO  /models/course: getCourseList() :  
+13:42:59.958 INFO  Get Delete Command 
+13:42:59.984 INFO  /route/course: GET /course 
+13:43:00.265 INFO  /route/course: get course list data 
+13:43:00.265 INFO  /models/course: getCourseList() :  

@@ -5,8 +5,8 @@ var fs        = require("fs");
 var path      = require("path");
 var Sequelize = require("sequelize");
 var env       = process.env.NODE_ENV || "development";
-var sequelize = module.exports = new Sequelize('dccdb', 'root', '', {
-    host: 'localhost',
+var sequelize = module.exports = new Sequelize('DCC', 'root', 'dekvn@123321', {
+    host: '192.168.122.51',
     dialect: 'mysql',
     pool: {
         max: 5,
