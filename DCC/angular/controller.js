@@ -47,9 +47,11 @@ myApp.controller('LoginCtrl', function($scope, $http, $cookies, $rootScope, $win
 
     }
 });
-myApp.controller('setCourse', function($scope, $http, $location) {
-
-    $http.get('/course/getCourse').then(function(result) {
+myApp.controller('setCourse', function($scope, $http,$window) {
+    var path = $window.location.pathname;
+    path = path.split('/');
+    var courseID = path.pop();
+    $http.post('/course/getCourse',{courseID:courseID}).then(function(result) {
         $scope.courseName = result.data.courseName;
         $scope.courseTrainer = result.data.courseTrainer;
         $scope.courseTrainerPage = result.data.courseTrainerPage;

@@ -43,3 +43,15 @@
 10:06:15.344 INFO  /route/course: get feature data 
 10:06:15.350 INFO  /route/course: Delete course 
 10:08:15.358 INFO  /route/course: Delete course 
+10:37:37.828 INFO  Server started on port 3210 
+10:37:45.872 INFO  /route/course: GET /course 
+10:37:46.325 INFO  /route/course: get course list data 
+10:37:53.923 INFO  /route/course: GET /course/coursesoverview/:id 
+10:37:54.356 INFO  /route/course: Get Course Information 
+10:37:54.370 INFO  /route/course: Delete course 
+10:37:57.060 INFO  /route/course: GET /course/coursesoverview/:id 
+10:37:57.357 INFO  /route/course: Get Course Information 
+10:37:57.364 INFO  /route/course: Delete course 
+10:37:59.802 INFO  /route/course: GET /course/coursesoverview/:id 
+10:38:00.093 INFO  /route/course: Get Course Information 
+10:38:00.101 INFO  /route/course: Delete course 

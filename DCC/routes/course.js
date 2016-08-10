@@ -14,7 +14,7 @@ var opts = {
 
 var log = require('simple-node-logger').createLogManager(opts).createLogger();
 // add course detail to database
-var cid;
+
 models.course.sync({
         force: false
     });
@@ -58,11 +58,11 @@ models.course.sync({
     //         trainerID: 'Bao Nguyen'
     //     });
     // });
-router.get('/getCourse', function(req, res) {
+router.post('/getCourse', function(req, res) {
     log.info('/route/course: Get Course Information');
     models.course.findOne({
         where: {
-            id: cid
+            id: parseInt(req.body.courseID)
         }
     }).then(function(course) {
         res.send({
@@ -108,21 +108,21 @@ router.post('/addCourse', function(req, res) {
 router.get('/deleteCourse', function() {
     log.info('/route/course: Delete course');;
 })
-router.get('/features', function(req, res) {
-    log.info('/route/course: get feature data');
-    models.course.findOne({
-        where: {
-            id: cid
-        }
-    }).then(function(course) {
-        res.send({
-            courseDocs: course.documents,
-            courseTest: course.test,
-            courseFeedback: 'This is my Feedback',
-            courseRating: 5
-        });
-    });
-});
+// router.get('/features', function(req, res) {
+//     log.info('/route/course: get feature data');
+//     models.course.findOne({
+//         where: {
+//             id: cid
+//         }
+//     }).then(function(course) {
+//         res.send({
+//             courseDocs: course.documents,
+//             courseTest: course.test,
+//             courseFeedback: 'This is my Feedback',
+//             courseRating: 5
+//         });
+//     });
+// });
 
 // findAll
 router.get('/list', function(req, res) {
@@ -147,7 +147,6 @@ router.get('/coursesoverview/', function(req, res) {
 });
 
 router.get('/coursesoverview/:id', function(req, res) {
-    cid = req.params.id;
     res.render('coursesoverview');
     log.info('/route/course: GET /course/coursesoverview/:id');
 });
