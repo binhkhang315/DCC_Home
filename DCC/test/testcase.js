@@ -225,22 +225,22 @@ describe('<Unit test for Course model', function() {
             })
         });
     });
-    // describe('', function() {
-    //     return it('Test case 7: getCourseByTrainerID with trainerID existed in database - return course[] list object', function(done) {
-    //         models.course.getCourseByTrainerID('King Nguyen', function(course) {
-    //             assert.equal(course[0].trainerID, 'King Nguyen');
-    //             return done();
-    //         })
-    //     });
-    // });
-    // describe('', function() {
-    //     return it('Test case 8: getCourseByTrainerID with TrainerID not found in database - return course[] null' , function(done) {
-    //         models.course.getCourseByTrainerID('not found', function(course) {
-    //             assert.equal(course[0], null);
-    //             return done();
-    //         })
-    //     });
-    // });
+    describe('', function() {
+        return it('Test case 7: getCourseByTrainerID with trainerID existed in database - return course[] list object', function(done) {
+            models.course.getCourseByTrainerID('King Nguyen', function(course) {
+                assert.equal(course[0].trainerID, 'King Nguyen');
+                return done();
+            })
+        });
+    });
+    describe('', function() {
+        return it('Test case 8: getCourseByTrainerID with TrainerID not found in database - return course[] null' , function(done) {
+            models.course.getCourseByTrainerID('not found', function(course) {
+                assert.equal(course[0], null);
+                return done();
+            })
+        });
+    });
     describe('', function() {
         return it('Test case 9: getCourseList in database - return course[] list object' , function(done) {
             models.course.getCourseList( function(course) {
