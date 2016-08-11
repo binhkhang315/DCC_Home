@@ -37,11 +37,14 @@
         <div class="col-sm-8" ng-controller="setCourse">
           <div>
             <h1>  {{ courseName }} </h1>
-            <h3>
+            <h4>
             <!-- Article course page -->
-            <a href= "{{ courseTrainerPage }}" > {{ courseTrainer }} </a>
-            </h3>
-
+            <ul ng-repeat="trainer in courseTrainer" style="float: left">
+              <li class="list-inline"><a href= "{{ courseTrainerPage }}" > {{ trainer }} </a></li>
+            </ul>
+            <!-- <a href= "{{ courseTrainerPage }}" > {{ courseTrainer }} </a> -->
+          </h4>
+          <br>
       			<p class="text">{{ courseDescription }}</p>
           </div>
         </div>

@@ -46,8 +46,13 @@ myApp.controller('setCourse', function($scope, $http,$window) {
     path = path.split('/');
     var courseID = path.pop();
     $http.post('/course/getCourse',{courseID:courseID}).then(function(result) {
+        var trainerJSON = result.data.courseTrainer;
+        var trainers = [];
+        for (i=0;i<trainerJSON.length;i++){
+          trainers.push(trainerJSON[i].text);
+        }
         $scope.courseName = result.data.courseName;
-        $scope.courseTrainer = result.data.courseTrainer;
+        $scope.courseTrainer = trainers;
         $scope.courseTrainerPage = result.data.courseTrainerPage;
         $scope.courseDescription = result.data.courseDescription;
         $scope.courseCategory = result.data.courseCategory;
