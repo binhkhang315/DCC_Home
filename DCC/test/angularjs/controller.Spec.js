@@ -289,55 +289,55 @@ describe("UpdateCourseCtrl Unit testing #4", function() {
 });
 
 //----------------------------------------------------------------------------
-
-describe("isDeletedCourse Unit testing #4", function() {
-    var controller, $controller, $scope, $rootScope, createController;
-    beforeEach(angular.mock.module("myApp"));
-    beforeEach(inject(function($injector) {
-        $rootScope = $injector.get('$rootScope');
-        $controller = $injector.get('$controller');
-        $httpBackend = $injector.get('$httpBackend');
-        createController = {
-            isDeletedCourse: function() {
-                return $controller('isDeletedCourse', {
-                    $scope: $rootScope
-                });
-            }
-        }
-
-    }));
-
-    it('Test 1: isDeletedCourse Be Defined', inject(function($controller) {
-        controller = createController.isDeletedCourse();
-        expect(controller).toBeDefined();
-    }));
-
-    it('Test 2: isDeletedCourse() test', inject(function($controller) {
-        controller = createController.isDeletedCourse();
-        var postData = {
-            msg: 'Delete success!'
-        };
-        var course = {
-            courseName: 'agile training',
-            courseDescription: 'abc xyz',
-            courseCategory: 'agile training',
-            courseTest: 'test131',
-            courseDocuments: 'agile131.pdf',
-            courseTrainerID: '123321'
-        };
-        var getData = {
-          course: course,
-          msg:'send list success'
-        };
-        $rootScope.courseslistDelete = course;
-        $rootScope.isDeletedCourse();
-        $httpBackend.whenPOST('/course/isDeletedCourse', $rootScope.courseslistDelete).respond(postData)
-        $httpBackend.whenGET('/course/list').respond(getData);
-        $httpBackend.flush();
-        expect($rootScope.postMsg).toBe(postData.msg);
-        expect($rootScope.getMsg).toBe(getData.msg);
-    }));
-});
+//
+// describe("isDeletedCourse Unit testing #4", function() {
+//     var controller, $controller, $scope, $rootScope, createController;
+//     beforeEach(angular.mock.module("myApp"));
+//     beforeEach(inject(function($injector) {
+//         $rootScope = $injector.get('$rootScope');
+//         $controller = $injector.get('$controller');
+//         $httpBackend = $injector.get('$httpBackend');
+//         createController = {
+//             isDeletedCourse: function() {
+//                 return $controller('isDeletedCourse', {
+//                     $scope: $rootScope
+//                 });
+//             }
+//         }
+//
+//     }));
+//
+//     it('Test 1: isDeletedCourse Be Defined', inject(function($controller) {
+//         controller = createController.isDeletedCourse();
+//         expect(controller).toBeDefined();
+//     }));
+//
+//     it('Test 2: isDeletedCourse() test', inject(function($controller) {
+//         controller = createController.isDeletedCourse();
+//         var postData = {
+//             msg: 'Delete success!'
+//         };
+//         var course = {
+//             courseName: 'agile training',
+//             courseDescription: 'abc xyz',
+//             courseCategory: 'agile training',
+//             courseTest: 'test131',
+//             courseDocuments: 'agile131.pdf',
+//             courseTrainerID: '123321'
+//         };
+//         var getData = {
+//           course: course,
+//           msg:'send list success'
+//         };
+//         $rootScope.courseslistDelete = course;
+//         $rootScope.isDeletedCourse();
+//         $httpBackend.whenPOST('/course/isDeletedCourse', $rootScope.courseslistDelete).respond(postData)
+//         $httpBackend.whenGET('/course/list').respond(getData);
+//         $httpBackend.flush();
+//         expect($rootScope.postMsg).toBe(postData.msg);
+//         expect($rootScope.getMsg).toBe(getData.msg);
+//     }));
+// });
 
 //---------------------------------------------------------------------------------
 
