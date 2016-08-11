@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp', ['ngCookies','ngTagsInput']);
+var myApp = angular.module('myApp', ['ngCookies', 'ngTagsInput']);
 // creat angular controller
 myApp.controller('LoginCtrl', function($scope, $http, $cookies, $rootScope, $window) {
     // function to submit the form after all validation has occurred
@@ -35,21 +35,23 @@ myApp.controller('LoginCtrl', function($scope, $http, $cookies, $rootScope, $win
     // logout function
     $rootScope.logout = function() {
 
-            $cookies.remove('userid');
-            $window.location.reload();
+        $cookies.remove('userid');
+        $window.location.reload();
 
     }
 });
 
-myApp.controller('setCourse', function($scope, $http,$window) {
+myApp.controller('setCourse', function($scope, $http, $window) {
     var path = $window.location.pathname;
     path = path.split('/');
     var courseID = path.pop();
-    $http.post('/course/getCourse',{courseID:courseID}).then(function(result) {
+    $http.post('/course/getCourse', {
+        courseID: courseID
+    }).then(function(result) {
         var trainerJSON = result.data.courseTrainer;
         var trainers = [];
-        for (var i=0;i<trainerJSON.length;i++){
-          trainers.push(trainerJSON[i].text);
+        for (var i = 0; i < trainerJSON.length; i++) {
+            trainers.push(trainerJSON[i].text);
         }
         $scope.courseName = result.data.courseName;
         $scope.courseTrainer = trainers;
@@ -60,18 +62,18 @@ myApp.controller('setCourse', function($scope, $http,$window) {
     });
 });
 
-myApp.controller('getList', function($scope,$rootScope, $http) {
+myApp.controller('getList', function($scope, $rootScope, $http) {
     $http.get('/course/list').then(function(result) {
-      $rootScope.coursesList = result.data.course;
-      for(var i=0; i<$rootScope.coursesList.length; i++){
-        $rootScope.coursesList[i].trainerID = JSON.parse($rootScope.coursesList[i].trainerID);
-        $rootScope.coursesList[i].trainerIDJSON = $rootScope.coursesList[i].trainerID;
-        var trainers =$rootScope.coursesList[i].trainerID[0].text;
-        for (var j=1; j<$rootScope.coursesList[i].trainerID.length;j++){
-          trainers = trainers + ' / '+ $rootScope.coursesList[i].trainerID[j].text;
+        $rootScope.coursesList = result.data.course;
+        for (var i = 0; i < $rootScope.coursesList.length; i++) {
+            $rootScope.coursesList[i].trainerID = JSON.parse($rootScope.coursesList[i].trainerID);
+            $rootScope.coursesList[i].trainerIDJSON = $rootScope.coursesList[i].trainerID;
+            var trainers = $rootScope.coursesList[i].trainerID[0].text;
+            for (var j = 1; j < $rootScope.coursesList[i].trainerID.length; j++) {
+                trainers = trainers + ' / ' + $rootScope.coursesList[i].trainerID[j].text;
+            }
+            $rootScope.coursesList[i].trainerID = trainers;
         }
-        $rootScope.coursesList[i].trainerID = trainers;
-      }
     });
 
     // edit course
@@ -136,34 +138,34 @@ myApp.controller('setProfile', function($scope, $rootScope, $http, $window) {
     $scope.msg = '';
     $rootScope.edit = function() {
         $http.post('/users/userprofileReturnValue', $scope.user).then(function(result) {
-          $scope.msg = result.data.msg;
-          $window.location.href = '/users/userprofile';
+            $scope.msg = result.data.msg;
+            $window.location.href = '/users/userprofile';
         });
     }
 });
 
 // add course controller
-myApp.controller('addCourse', function($scope,$rootScope,$window,$http) {
-        $scope.courseslist = {
-            courseName: '',
-            courseDescription: '',
-            courseCategory: '',
-            courseTest: '',
-            courseDocuments: '',
-            courseTrainerID: ''
-        };
-        $scope.postMsg = '';
-        $scope.getMsg = '';
-        $scope.addCourse = function() {
-            $http.post('/course/addCourse', $scope.courseslist).then(function(result) {
-              $scope.postMsg = result.data.msg;
-                $http.get('/course/list').then(function(result) {
-                  $scope.getMsg = result.data.msg;
-                  $rootScope.coursesList = result.data.course;
-                });
+myApp.controller('addCourse', function($scope, $rootScope, $window, $http) {
+    $scope.courseslist = {
+        courseName: '',
+        courseDescription: '',
+        courseCategory: '',
+        courseTest: '',
+        courseDocuments: '',
+        courseTrainerID: ''
+    };
+    $scope.postMsg = '';
+    $scope.getMsg = '';
+    $scope.addCourse = function() {
+        $http.post('/course/addCourse', $scope.courseslist).then(function(result) {
+            $scope.postMsg = result.data.msg;
+            $http.get('/course/list').then(function(result) {
+                $scope.getMsg = result.data.msg;
+                $rootScope.coursesList = result.data.course;
             });
-            $window.location.reload();
-        }
+        });
+        $window.location.reload();
+    }
 
 });
 
@@ -175,8 +177,8 @@ myApp.controller('updateCourse', function($scope, $window, $rootScope, $http) {
         $http.post('/course/updateCourse', $rootScope.courseslistEdit).then(function(result) {
             $scope.postMsg = result.data.msg;
             $http.get('/course/list').then(function(result) {
-              $scope.getMsg = result.data.msg;
-              $rootScope.courseslistEdit = result.data.course;
+                $scope.getMsg = result.data.msg;
+                $rootScope.courseslistEdit = result.data.course;
             });
         });
 
@@ -186,10 +188,14 @@ myApp.controller('updateCourse', function($scope, $window, $rootScope, $http) {
 
 // isDeletedCourse: delete course controller
 myApp.controller('isDeletedCourse', function($scope, $window, $rootScope, $http) {
+    $scope.postMsg = '';
+    $scope.getMsg = '';
     $scope.isDeletedCourse = function() {
         $http.post('/course/isDeletedCourse', $rootScope.courseslistDelete).then(function(result) {
+            $scope.postMsg = result.data.msg;
             $http.get('/course/list').then(function(result) {
-              $rootScope.courseslistDelete = result.data.course;
+                $scope.getMsg = result.data.msg;
+                $rootScope.courseslistDelete = result.data.course;
             });
         });
         $window.location.reload();
@@ -197,20 +203,20 @@ myApp.controller('isDeletedCourse', function($scope, $window, $rootScope, $http)
 });
 
 //controller for Feedback
-myApp.controller('FeedbackCtrl',function($scope, $http, $window){
-  var path = $window.location.pathname;
-  path = path.split('/');
-  var courseID = path.pop();
-  $scope.addFeedback = function() {
-      $http.post('/course/coursesoverview/comment', {
-          comment : $scope.comment,
-          courseID : parseInt(courseID),
-      });
-  }
-  $scope.addRating = function(){
-    $http.post('/course/coursesoverview/rating', {
-        rating : $scope.rating,
-        courseID : parseInt(courseID),
-    });
-  }
+myApp.controller('FeedbackCtrl', function($scope, $http, $window) {
+    var path = $window.location.pathname;
+    path = path.split('/');
+    var courseID = path.pop();
+    $scope.addFeedback = function() {
+        $http.post('/course/coursesoverview/comment', {
+            comment: $scope.comment,
+            courseID: parseInt(courseID),
+        });
+    }
+    $scope.addRating = function() {
+        $http.post('/course/coursesoverview/rating', {
+            rating: $scope.rating,
+            courseID: parseInt(courseID),
+        });
+    }
 });
