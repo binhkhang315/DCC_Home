@@ -58,6 +58,8 @@ app.use('/users', users);
 app.use('/course', course);
 app.post('/course/coursesoverview/comment',feedback.saveFeedback);
 app.post('/course/coursesoverview/rating',feedback.saveRating);
+app.post('/course/coursesoverview/showFeedback',feedback.showFeedback);
+
 
 // Set Port
 app.set('port', (process.env.PORT || 3210));
