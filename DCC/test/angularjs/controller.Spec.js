@@ -225,7 +225,7 @@ describe("AddCourseCtrl Unit testing #3", function() {
         };
         var getData = {
           course: course,
-          msg: 'get success'
+          msg: 'send list success'
         };
         $rootScope.courseslist = course;
         $rootScope.addCourse();
@@ -264,7 +264,7 @@ describe("UpdateCourseCtrl Unit testing #4", function() {
     it('Test 2: updateCourse() test', inject(function($controller) {
         controller = createController.updateCourse();
         var postData = {
-            msg : 'update success'
+            msg : 'Edit course success!'
         };
         var course = {
             courseName: 'agile training',
@@ -276,7 +276,7 @@ describe("UpdateCourseCtrl Unit testing #4", function() {
         };
         var getData = {
           course: course,
-          msg: 'get success'
+          msg: 'send list success'
         };
         $rootScope.courseslist = course;
         $rootScope.updateCourse();
