@@ -121,3 +121,70 @@ describe("LoginCtrl Unit testing #1", function() {
     });
 
 });
+
+describe("SetProfileCtrl Unit testing #1", function() {
+
+    var controller, $controller, $scope, $rootScope, createController;
+    beforeEach(angular.mock.module("myApp"));
+    beforeEach(inject(function($injector) {
+        $rootScope = $injector.get('$rootScope');
+        $controller = $injector.get('$controller');
+        $httpBackend = $injector.get('$httpBackend');
+        createController = {
+            setProfile: function() {
+                return $controller('setProfile', {
+                    $scope: $rootScope
+                });
+            }
+        }
+    }));
+
+    it('Test 1: setProfile Be Defined', inject(function($controller) {
+        controller = createController.setProfile();
+        expect(controller).toBeDefined();
+    }));
+
+    it('Test 2: get /users/userprofileController', inject(function($controller) {
+        controller = createController.setProfile();
+        var data = {
+          pStatus: 'abc',
+          pName: 'lam',
+          pDoB: '10/11/95',
+          pPhone: '123456689',
+          pLocation: 'DEK',
+          pEmail: 'lamz@gmail.com',
+          pAvatar: 'acb'
+        };
+        $httpBackend.whenGET('/users/userprofileController').respond(data);
+        $httpBackend.flush();
+        expect($rootScope.user.pStatus).toBe(data.pStatus);
+        expect($rootScope.user.pName).toBe(data.pName);
+        expect($rootScope.user.pDoB).toBe(data.pDoB);
+        expect($rootScope.user.pPhone).toBe(data.pPhone);
+        expect($rootScope.user.pLocation).toBe(data.pLocation);
+        expect($rootScope.user.pEmail).toBe(data.pEmail);
+        expect($rootScope.user.pAvatar).toBe(data.pAvatar);
+    }));
+
+    it('Test 3: Edit userProfile', inject(function($controller) {
+        controller = createController.setProfile();
+        var user = {
+          pStatus: 'dfas',
+          pName: 'asdf',
+          pDoB: 'sdf',
+          pPhone: 'asdf',
+          pLocation: 'asdf',
+          pEmail: 'asdf',
+          pAvatar: 'sdf'
+        };
+        var data = {
+          msg : 'Success'
+        };
+        $rootScope.user = user;
+        $rootScope.edit();
+        $httpBackend.whenGET('/users/userprofileController').respond(user);
+        $httpBackend.whenPOST('/users/userprofileReturnValue', user).respond(data);
+        $httpBackend.flush();
+        expect($rootScope.msg).toBe(data.msg);
+    }));
+});

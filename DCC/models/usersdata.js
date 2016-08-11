@@ -20,7 +20,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     dob: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: true
     },
     phone: {
       type: DataTypes.STRING,
