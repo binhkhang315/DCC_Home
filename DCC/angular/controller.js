@@ -57,7 +57,6 @@ myApp.controller('setCourse', function($scope, $http,$window) {
         $scope.courseDescription = result.data.courseDescription;
         $scope.courseCategory = result.data.courseCategory;
         $scope.courseDocuments = result.data.courseDocuments;
-        console.log($scope.courseTrainer);
     });
 });
 
@@ -86,7 +85,6 @@ myApp.controller('getList', function($scope,$rootScope, $http) {
             courseDocumentsEdit: course.documents,
             courseTrainerIDEdit: course.trainerIDJSON
         }
-        console.log($rootScope.courseslistEdit);
     }
 
     // delete course
@@ -145,59 +143,52 @@ myApp.controller('setProfile', function($scope, $rootScope, $http, $window) {
 });
 
 // add course controller
-myApp.controller('addCourse', function($scope, $rootScope, $http, $window) {
-    $scope.courseslist = {
-        courseName: '',
-        courseDescription: '',
-        courseCategory: '',
-        courseTest: '',
-        courseDocuments: '',
-        courseTrainerID: ''
-    };
-    $scope.msg = '';
+myApp.controller('addCourse', function($scope,$rootScope,$window,$http) {
+        $scope.courseslist = {
+            courseName: '',
+            courseDescription: '',
+            courseCategory: '',
+            courseTest: '',
+            courseDocuments: '',
+            courseTrainerID: ''
+        };
+        $scope.postMsg = '';
+        $scope.getMsg = '';
+        $scope.addCourse = function() {
+            $http.post('/course/addCourse', $scope.courseslist).then(function(result) {
+              $scope.postMsg = result.data.msg;
+                $http.get('/course/list').then(function(result) {
+                  $scope.getMsg = result.data.msg;
+                  $rootScope.coursesList = result.data.course;
+                });
+            });
+            $window.location.reload();
+        }
 
-    $scope.addCourse = function() {
-        $http.post('/course/addCourse', $scope.courseslist).then(function(result) {
-            $scope.msg = result.data.msg;
-        });
-        $window.location.reload();
-    }
 });
 
 // updateCourse: edit course controller
 myApp.controller('updateCourse', function($scope, $window, $rootScope, $http) {
-
-    $scope.cancelEdit = function() {
-
-        $window.location.reload();
-    }
-
+    $scope.postMsg = '';
+    $scope.getMsg = '';
     $scope.updateCourse = function() {
-        console.log($rootScope.courseslistEdit);
         $http.post('/course/updateCourse', $rootScope.courseslistEdit).then(function(result) {
-            console.log(result.data.msg);
+            $scope.postMsg = result.data.msg;
             $http.get('/course/list').then(function(result) {
-              console.log(result.data);
+              $scope.getMsg = result.data.msg;
               $rootScope.courseslistEdit = result.data.course;
             });
         });
+
         $window.location.reload();
     }
 });
 
 // isDeletedCourse: delete course controller
 myApp.controller('isDeletedCourse', function($scope, $window, $rootScope, $http) {
-
-    $scope.cancelDelete = function() {
-        $window.location.reload();
-    }
-
     $scope.isDeletedCourse = function() {
-        // console.log($rootScope.courseslistDelete);
         $http.post('/course/isDeletedCourse', $rootScope.courseslistDelete).then(function(result) {
-            // console.log(result.data.msg);
             $http.get('/course/list').then(function(result) {
-            //   console.log(result.data);
               $rootScope.courseslistDelete = result.data.course;
             });
         });

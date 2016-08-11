@@ -72,8 +72,6 @@ router.post('/addCourse', function(req, res) {
 // update course in database
 router.post('/updateCourse', function(req, res) {
     log.info('Get Course Information');
-    console.log('----------------------------------------------');
-    console.log(req.body.courseNameEdit);
     var tID = JSON.stringify(req.body.courseTrainerIDEdit);
     models.course.update({
             name: req.body.courseNameEdit,
@@ -86,7 +84,11 @@ router.post('/updateCourse', function(req, res) {
             where: {
                 id: req.body.courseIDEdit
             }
-        })
+        }).then(function(data){
+          res.send({
+            msg: 'update success'
+          });
+        });
 });
 
 // mark course as deleted (isDeleted = true)
@@ -98,7 +100,11 @@ router.post('/isDeletedCourse', function(req, res) {
             where: {
                 id: req.body.courseIDDelete
             }
-        })
+        }).then(function(){
+          res.send({
+            msg: 'Delete success!'
+          });
+        });
 });
 
 // router.get('/features', function(req, res) {

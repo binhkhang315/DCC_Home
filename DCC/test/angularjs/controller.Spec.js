@@ -188,3 +188,102 @@ describe("SetProfileCtrl Unit testing #1", function() {
         expect($rootScope.msg).toBe(data.msg);
     }));
 });
+
+describe("AddCourseCtrl Unit testing #3", function() {
+    var controller, $controller, $scope, $rootScope, createController;
+    beforeEach(angular.mock.module("myApp"));
+    beforeEach(inject(function($injector) {
+        $rootScope = $injector.get('$rootScope');
+        $controller = $injector.get('$controller');
+        $httpBackend = $injector.get('$httpBackend');
+        createController = {
+            addCourse: function() {
+                return $controller('addCourse', {
+                    $scope: $rootScope
+                });
+            }
+        }
+    }));
+
+    it('Test 1: addCourse Be Defined', inject(function($controller) {
+        controller = createController.addCourse();
+        expect(controller).toBeDefined();
+    }));
+
+    it('Test 2: addCourse() test', inject(function($controller) {
+        controller = createController.addCourse();
+        var postData = {
+            msg : 'Add course success!'
+        };
+        var course = {
+            courseName: 'agile training',
+            courseDescription: 'abc xyz',
+            courseCategory: 'agile training',
+            courseTest: 'test131',
+            courseDocuments: 'agile131.pdf',
+            courseTrainerID: '123321'
+        };
+        var getData = {
+          course: course,
+          msg: 'get success'
+        };
+        $rootScope.courseslist = course;
+        $rootScope.addCourse();
+        $httpBackend.whenPOST('/course/addCourse', $rootScope.courseslist).respond(postData)
+        $httpBackend.whenGET('/course/list').respond(getData);
+        $httpBackend.flush();
+        //console.log($rootScope.postMsg);
+        expect($rootScope.postMsg).toBe(postData.msg);
+        expect($rootScope.getMsg).toBe(getData.msg);
+    }));
+
+});
+
+describe("UpdateCourseCtrl Unit testing #4", function() {
+    var controller, $controller, $scope, $rootScope, createController;
+    beforeEach(angular.mock.module("myApp"));
+    beforeEach(inject(function($injector) {
+        $rootScope = $injector.get('$rootScope');
+        $controller = $injector.get('$controller');
+        $httpBackend = $injector.get('$httpBackend');
+        createController = {
+            updateCourse: function() {
+                return $controller('updateCourse', {
+                    $scope: $rootScope
+                });
+            }
+        }
+
+    }));
+
+    it('Test 1: updateCourse Be Defined', inject(function($controller) {
+        controller = createController.updateCourse();
+        expect(controller).toBeDefined();
+    }));
+
+    it('Test 2: updateCourse() test', inject(function($controller) {
+        controller = createController.updateCourse();
+        var postData = {
+            msg : 'update success'
+        };
+        var course = {
+            courseName: 'agile training',
+            courseDescription: 'abc xyz',
+            courseCategory: 'agile training',
+            courseTest: 'test131',
+            courseDocuments: 'agile131.pdf',
+            courseTrainerID: '123321'
+        };
+        var getData = {
+          course: course,
+          msg: 'get success'
+        };
+        $rootScope.courseslist = course;
+        $rootScope.updateCourse();
+        $httpBackend.whenPOST('/course/updateCourse', $rootScope.courseslist).respond(postData)
+        $httpBackend.whenGET('/course/list').respond(getData);
+        $httpBackend.flush();
+        expect($rootScope.postMsg).toBe(postData.msg);
+        expect($rootScope.getMsg).toBe(getData.msg);
+    }));
+});
