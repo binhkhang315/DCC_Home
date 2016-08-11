@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<testsuite name="Chrome 52.0.2743 (Windows 10 0.0.0)" package="" timestamp="2016-08-11T04:54:07" id="0" hostname="VN-LAP-117-VNPC" tests="6" errors="0" failures="0" time="0.121">
+  <properties>
+    <property name="browser.fullName" value="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36"/>
+  </properties>
+  <testcase name="LoginCtrl Unit testing #1 Test 1: LoginCtrl Be Defined" time="0.063" classname="Chrome_52_0_2743_(Windows_10_0_0_0).LoginCtrl Unit testing #1"/>
+  <testcase name="LoginCtrl Unit testing #1 Test 2: Check Login Success " time="0.022" classname="Chrome_52_0_2743_(Windows_10_0_0_0).LoginCtrl Unit testing #1"/>
+  <testcase name="LoginCtrl Unit testing #1 Test 3: Check Login Fail: username true, password false " time="0.013" classname="Chrome_52_0_2743_(Windows_10_0_0_0).LoginCtrl Unit testing #1"/>
+  <testcase name="LoginCtrl Unit testing #1 Test 4: Check Login Fail: username false, password true " time="0.007" classname="Chrome_52_0_2743_(Windows_10_0_0_0).LoginCtrl Unit testing #1"/>
+  <testcase name="LoginCtrl Unit testing #1 Test 5: Check Login Fail: username null" time="0.009" classname="Chrome_52_0_2743_(Windows_10_0_0_0).LoginCtrl Unit testing #1"/>
+  <testcase name="LoginCtrl Unit testing #1 Test 6: Check Login Fail: password null " time="0.007" classname="Chrome_52_0_2743_(Windows_10_0_0_0).LoginCtrl Unit testing #1"/>
+  <system-out>
+    <![CDATA[
+]]>
+  </system-out>
+  <system-err/>
+</testsuite>
