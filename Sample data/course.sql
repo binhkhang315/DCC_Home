@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 192.168.122.51:3306
--- Generation Time: Aug 10, 2016 at 09:24 AM
+-- Generation Time: Aug 11, 2016 at 04:49 AM
 -- Server version: 5.6.30-0ubuntu0.14.04.1
 -- PHP Version: 5.5.37
 
@@ -44,19 +44,19 @@ CREATE TABLE `course` (
 --
 
 INSERT INTO `course` (`id`, `name`, `description`, `category`, `documents`, `trainerID`, `test`, `isDeleted`, `createdAt`, `updatedAt`) VALUES
-(1, 'CBA Overview', 'Khai Doan', 'CBA Overview', 'This is CBA Overview document', 'Khai Doan', 'This is CBA Overview test', 0, '2016-08-10 07:10:18', '2016-08-10 07:17:06'),
-(2, 'CoreMW Overview', 'Tai Dinh', 'CBA Overview', 'This is CoreMW Overview document', 'Tai Dinh', 'This is CoreMW Overview test', 0, '2016-08-10 07:10:18', '2016-08-10 07:17:11'),
-(3, 'LDE', 'King Nguyen', 'CBA Overview', 'This is LDE document', 'King Nguyen', 'This is LDE test', 0, '2016-08-10 07:10:18', '2016-08-10 07:17:20'),
-(4, 'GIT & GERRIT', 'Bao Nguyen', 'CBA Overview', 'This is GIT & GERRIT document', 'Bao Nguyen', 'This is GIT & GERRIT test', 0, '2016-08-10 07:10:18', '2016-08-10 07:17:24'),
-(5, 'Training Overview', 'Brief overview for all training courses', 'General Orientation', 'n/a', 'Quy / Quang', 'n/a', 0, '2016-08-10 07:18:37', '2016-08-10 07:18:37'),
-(6, 'DEK Organization and Culture', '1. Who is D.E.K ? 2. DEK Offices 3. Site Organisation Chart 4. Operation Organisation Chart 5. DEK Vn Structure 6. DEK Vn Team Leaders 7. DEK Vn Trade Union 8. DEK Culture 9. DEK Vision and Mission 10. DEK Vn Objective', 'General Orientation', 'n/a', 'Daniel', 'n/a', 0, '2016-08-10 07:19:14', '2016-08-10 07:19:14'),
-(7, 'Corporate Policy', '1. How is D.E.K? DEK Culture 2. Respect aspects 3. Ethics 4. Working hours 5. Time reports 6. Salary 7. Working/training onsite 8. Performance review 9. Rules', 'General Orientation', 'n/a', 'Loan', 'n/a', 0, '2016-08-10 07:19:41', '2016-08-10 07:19:41'),
-(8, 'Trade Union', '''- TU Introduction - Organization - Responsibility and benefit of TU member', 'General Orientation', 'n/a', 'Phong Thai', 'n/a', 0, '2016-08-10 07:20:15', '2016-08-10 07:20:15'),
-(9, 'Linux Overview For Users', '''1. Introduction 2. Root file system 3. Basic commands', 'Linux Programming', 'n/a', 'Bao V Nguyen / Bao DT Ng / Toan Pham', 'n/a', 0, '2016-08-10 07:20:52', '2016-08-10 07:20:52'),
-(10, 'Linux Overview For Programers', '1. Linux kernel Architecture    What is Kernel ? 2. Kernel Architecture Overview      User Space      Kernel Space 3. Kernel Functional Overview     File System     Process Management     Device Driver     Memory Management     Networking', 'Linux Programming', 'n/a', 'Bao Viet Ng /  Thang Ba Ng', 'n/a', 0, '2016-08-10 07:21:27', '2016-08-10 07:21:27'),
-(11, 'Linux Programming - Shell script', '''<tbd by the trainer>', 'Linux Programming', 'n/a', 'Tuan Dang / Phat Ngo', 'n/a', 0, '2016-08-10 07:22:38', '2016-08-10 07:22:38'),
-(12, 'AXE&APZ Overview', 'Co', 'AXE Overview', 'n/a', 'Co', 'n/a', 0, '2016-08-10 07:23:34', '2016-08-10 07:24:07'),
-(13, 'APZ-CP Overview', '1. Main characteristics 2. The History 3. Architecture     - Overview     - APZ CP SW architectur     - HW architecture 4. Program execution (PLEX + ASA) 5. Fault tolerance 7. Introduce Subsystems (CPHW, PES, CQS, DBS, CPS) 8. Introduce latest systems (212 40, 50, 55, 60, 70, Blade Cluster)', 'AXE Overview', 'n/a', 'Co', 'n/a', 0, '2016-08-10 07:23:57', '2016-08-10 07:23:57');
+(1, 'CBA Overview', '''1. Overview\r\n2. CoreMW\r\n3. OAM (COM, ECIM)\r\n4. Linux (LOTC)\r\n5. Application Environment (Optional)\r\n', 'CBA Overview', 'This is CBA Overview document', '[{"text":"Khai Doan"}]', 'This is CBA Overview test', 0, '2016-08-10 07:10:18', '2016-08-11 02:46:18'),
+(2, 'CoreMW Overview', '1. Overview\r\n2. Availability Services\r\n3. Manageability Services\r\n4. OpenSAF Infrastructure Services', 'CBA Overview', 'This is CoreMW Overview document', '[{"text":"Tai Dinh"}]', 'This is CoreMW Overview test', 0, '2016-08-10 07:10:18', '2016-08-11 02:46:28'),
+(3, 'LDE', '1. Cluster introduction\r\n2. LOTC version\r\n3. Maintenance mode\r\n4. Install LOTC', 'CBA Overview', 'This is LDE document', '[{"text":"King Nguyen"}]', 'This is LDE test', 0, '2016-08-10 07:10:18', '2016-08-11 02:46:42'),
+(4, 'GIT & GERRIT', '1. Represent about GIT\r\n- What is GIT?\r\n- Checkout/Checkin/push\r\n- Branch\r\n- Merge\r\n- Rebase\r\n- Cherry-pick\r\n- Submodule\r\n- Practices\r\n2. Represent about GERRIT\r\n- What is GERRIT?\r\n- Change vs patch set\r\n- How to do code review\r\n- Practices', 'CBA Overview', 'This is GIT & GERRIT document', '[{"text":"Bao Nguyen"}]', 'This is GIT & GERRIT test', 0, '2016-08-10 07:10:18', '2016-08-11 02:46:50'),
+(5, 'Training Overview', 'Brief overview for all training courses', 'General Orientation', 'n/a', '[{"text":"Quy"},{"text":"Quang"}]', 'n/a', 0, '2016-08-10 07:18:37', '2016-08-11 02:46:58'),
+(6, 'DEK Organization and Culture', '1. Who is D.E.K ? 2. DEK Offices 3. Site Organisation Chart 4. Operation Organisation Chart 5. DEK Vn Structure 6. DEK Vn Team Leaders 7. DEK Vn Trade Union 8. DEK Culture 9. DEK Vision and Mission 10. DEK Vn Objective', 'General Orientation', 'n/a', '[{"text":"Daniel"}]', 'n/a', 0, '2016-08-10 07:19:14', '2016-08-11 02:47:06'),
+(7, 'Corporate Policy', '1. How is D.E.K? DEK Culture 2. Respect aspects 3. Ethics 4. Working hours 5. Time reports 6. Salary 7. Working/training onsite 8. Performance review 9. Rules', 'General Orientation', 'n/a', '[{"text":"Loan"}]', 'n/a', 0, '2016-08-10 07:19:41', '2016-08-11 02:47:12'),
+(8, 'Trade Union', '''- TU Introduction - Organization - Responsibility and benefit of TU member', 'General Orientation', 'n/a', '[{"text":"Phong Thai"}]', 'n/a', 0, '2016-08-10 07:20:15', '2016-08-11 02:47:21'),
+(9, 'Linux Overview For Users', '''1. Introduction 2. Root file system 3. Basic commands', 'Linux Programming', 'n/a', '[{"text":"Bao V Nguyen"},{"text":"Bao DT Ng"},{"text":"Toan Pham"}]', 'n/a', 0, '2016-08-10 07:20:52', '2016-08-11 02:47:48'),
+(10, 'Linux Overview For Programers', '1. Linux kernel Architecture    What is Kernel ? 2. Kernel Architecture Overview      User Space      Kernel Space 3. Kernel Functional Overview     File System     Process Management     Device Driver     Memory Management     Networking', 'Linux Programming', 'n/a', '[{"text":"Bao Viet Ng"},{"text":"Thang Ba Ng"}]', 'n/a', 0, '2016-08-10 07:21:27', '2016-08-11 02:48:08'),
+(11, 'Linux Programming - Shell script', '''<tbd by the trainer>', 'Linux Programming', 'n/a', '[{"text":"Tuan Dang"},{"text":"Phat Ngo"}]', 'n/a', 0, '2016-08-10 07:22:38', '2016-08-11 02:48:26'),
+(12, 'AXE&APZ Overview', 'Co', 'AXE Overview', 'n/a', '[{"text":"Coo"}]', 'n/a', 0, '2016-08-10 07:23:34', '2016-08-11 02:48:32'),
+(13, 'APZ-CP Overview', '1. Main characteristics 2. The History 3. Architecture     - Overview     - APZ CP SW architectur     - HW architecture 4. Program execution (PLEX + ASA) 5. Fault tolerance 7. Introduce Subsystems (CPHW, PES, CQS, DBS, CPS) 8. Introduce latest systems (212 40, 50, 55, 60, 70, Blade Cluster)', 'AXE Overview', 'n/a', '[{"text":"Coo"}]', 'n/a', 0, '2016-08-10 07:23:57', '2016-08-11 02:48:39');
 
 --
 -- Indexes for dumped tables
