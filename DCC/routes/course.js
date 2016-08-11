@@ -59,7 +59,7 @@ router.post('/addCourse', function(req, res) {
                     test: req.body.courseTest,
                     documents: req.body.courseDocuments,
                     trainerID: tID
-                }).then(function(data) {
+                }).then(function() {
                     res.send({
                         msg: 'Add course success!'
                     });
@@ -73,7 +73,6 @@ router.post('/addCourse', function(req, res) {
 router.post('/updateCourse', function(req, res) {
     log.info('Get Course Information');
     var tID = JSON.stringify(req.body.courseTrainerIDEdit);
-    console.log(req.body.courseIDEdit);
     models.course.sync({
         force: false
     }).then(function() {

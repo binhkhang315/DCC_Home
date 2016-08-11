@@ -10,17 +10,14 @@ var log = require('simple-node-logger').createLogManager(opts).createLogger();
 router.get('/', function(req, res) {
     res.render('index');
 });
-router.get('/isLogged', ensureAuthenticated, function(req, res) {
-    //res.render('index');
+router.get('/isLogged', ensureAuthenticated, function() {
 });
 
 function ensureAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
-      console.log('hihi');
         res.send(req.session.passport.user);
         return next();
     } else {
-      console.log('hehe');
         res.send(null);
         return next();
     }
