@@ -102,7 +102,7 @@ router.post('/updateCourse', function(req, res) {
             }
         });
 });
-
+});
 // mark course as deleted (isDeleted = true)
 router.post('/isDeletedCourse', function(req, res) {
     log.info('Get Delete Command');
