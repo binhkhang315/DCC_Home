@@ -229,13 +229,13 @@ describe('<Unit test for Course controller', function() {
                     assert.equal(res.body.msg, 'Add course success!');
                     return done();
                 });
-            // afterEach(function() {
-            //     models.course.destroy({
-            //         where: {
-            //             name: 'testing'
-            //         }
-            //     });
-            // });
+            afterEach(function() {
+                models.course.destroy({
+                    where: {
+                        name: 'testing'
+                    }
+                });
+            });
         });
     });
     // describe('', function() {
