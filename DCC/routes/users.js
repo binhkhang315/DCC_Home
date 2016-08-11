@@ -103,7 +103,7 @@ router.post('/userprofileReturnValue', function(req, res) {
   {
     where: { username : 'admin' }
   })
-  .then(function (result) {
+  .then(function () {
     res.send({
       msg: "Success"
     });
@@ -113,7 +113,7 @@ router.post('/userprofileReturnValue', function(req, res) {
 
 router.post('/photo',function(req,res){
   log.info('/routes/users: Upload avatar');
-	upload(req,res,function(err) {
+	upload(req,res,function() {
     models.User.update(
     {
       avatar: '/img/' + req.file.filename

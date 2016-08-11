@@ -64,7 +64,6 @@ exports.saveRating = function(req, res) {
 };
 
 exports.showFeedback = function(req, res) {
-  console.log('showFeedback');
   models.Feedback.findAll({
     where:{
       courseID : req.body.courseID
