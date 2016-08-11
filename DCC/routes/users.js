@@ -64,7 +64,7 @@ router.get('/userprofileController', function(req, res) {
     log.info('/routes/users: GET /users/userprofileController');
     models.User
       .findOrCreate({
-        where: {username: 'admin'},
+        where: {username: req.user.mail},
         defaults: {
           status: 'Im admin',
           dob: '20/10/1995',
@@ -101,7 +101,7 @@ router.post('/userprofileReturnValue', function(req, res) {
     location: req.body.pLocation
   },
   {
-    where: { username : 'admin' }
+    where: { username: req.user.mail }
   })
   .then(function () {
     res.send({
@@ -119,7 +119,7 @@ router.post('/photo',function(req,res){
       avatar: '/img/' + req.file.filename
     },
     {
-      where: { username : 'admin' }
+      where: { username: req.user.mail }
     })
     res.render('userprofile');
 	});
@@ -130,11 +130,11 @@ router.get('/trainer', function(req, res) {
     res.render('trainer');
 });
 
-// dashboard route is only for admin
-router.get('/dashboard', ensureAuthenticated, function(req, res) {
-    log.info('/routes/users: GET /users/dashboard');
-    res.send('hihi');
-});
+// // dashboard route is only for admin
+// router.get('/dashboard', ensureAuthenticated, function(req, res) {
+//     log.info('/routes/users: GET /users/dashboard');
+//     res.send('hihi');
+// });
 
 
 // ensure authenticated

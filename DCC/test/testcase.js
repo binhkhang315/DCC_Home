@@ -3,6 +3,9 @@ var assert = require('chai').assert;
 var expect = require('chai').expect;
 var route = require('../app.js');
 var models = require('../models');
+
+var globalCookies;
+
 models.course.sync({
     force: false
 });
@@ -59,17 +62,6 @@ describe('<Unit Test for Routing>', function() {
                 .expect(200, done)
         });
     });
-
-    describe('', function() {
-        return it('Test case 7 : get /users/dashboard ', function(done) {
-            request(route)
-                .get('/users/dashboard')
-                .end(function(err, res) {
-                    assert.equal(res.headers.location, '/')
-                    return done();
-                });
-        });
-    });
 });
 
 //---------------------------------------------------------------------------------------
@@ -122,6 +114,7 @@ describe('<Unit test for Login>', function() {
                 })
                 .end(function(err, res) {
                     assert.equal(res.body.userid, 'qwe@gmail.com');
+                    globalCookies = res.headers['set-cookie'].pop().split(';')[0];
                     return done();
                 });
         });
@@ -472,15 +465,17 @@ describe('<Unit test for User model', function() {
 });
 
 describe('<Unit test for userProfile function>', function() {
-
     describe('Send data to font-end', function() {
         return it('Get /users/userprofileController ', function(done) {
-            request(route)
-                .get('/users/userprofileController')
-                .end(function(err, res) {
-                    assert.equal(res.body.pName, 'admin');
-                    return done();
-                });
+            var req = request(route).get('/users/userprofileController');
+            req.cookies = globalCookies;
+            req
+            .set('Accept','application/json')
+            .end(function(err, res) {
+                assert.equal(res.body.pName, 'qwe@gmail.com');
+                assert.equal(res.body.pEmail, 'dek@dek.vn');
+                return done();
+            });
         });
     });
 
@@ -494,16 +489,18 @@ describe('<Unit test for userProfile function>', function() {
 
     describe('Edit data method', function() {
         return it('Post /users/userprofileReturnValue ', function(done) {
-            request(route)
-                .post('/users/userprofileReturnValue')
-                .send({
-                    status: 'vhlam',
-                    dob: '20/10/1995'
-                })
-                .end(function(err, res) {
-                    assert.equal(res.status, '200');
-                    return done();
-                });
+            var req = request(route).post('/users/userprofileReturnValue');
+            req.cookies = globalCookies;
+            req
+            .set('Accept','application/json')
+            .send({
+                status: 'vhlam',
+                dob: '20/10/1995'
+            })
+            .end(function(err, res) {
+                assert.equal(res.body.msg, 'Success');
+                return done();
+            });
         });
     });
 });
