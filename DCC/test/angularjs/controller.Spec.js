@@ -1,5 +1,5 @@
 // test file for angular/controller.js
-describe("Controllers Unit testing", function() {
+describe("LoginCtrl Unit testing #1", function() {
 
     // Arrange
     var mockScope;
@@ -21,37 +21,10 @@ describe("Controllers Unit testing", function() {
                 return $controller('LoginCtrl', {
                     $scope: $rootScope
                 });
-            },
-            addCourse: function() {
-                return $controller('addCourse', {
-                    $scope: $rootScope
-                });
-            },
-            updateCourse: function() {
-                return $controller('updateCourse', {
-                    $scope: $rootScope
-                });
-            },
-            isDeletedCourse: function() {
-                return $controller('isDeletedCourse', {
-                    $scope: $rootScope
-                });
-            },
-            setFeature: function() {
-                return $controller('setFeature', {
-                    $scope: $rootScope
-                });
-            },
-            setProfile: function() {
-                return $controller('setProfile', {
-                    $scope: $rootScope
-                });
             }
         }
     }));
 
-    // LoginCtrl
-    // *************************************************************************
     it('Test 1: LoginCtrl Be Defined', inject(function($controller) {
         controller = createController.loginCtrl();
         expect(controller).toBeDefined();
@@ -147,14 +120,97 @@ describe("Controllers Unit testing", function() {
         expect($rootScope.isAuthenticated).toBe(false);
     });
 
-    // addCourse ctrl
-    // *************************************************************************
-    it('Test 7: addCourse Be Defined', inject(function($controller) {
+});
+
+describe("SetProfileCtrl Unit testing #1", function() {
+
+    var controller, $controller, $scope, $rootScope, createController;
+    beforeEach(angular.mock.module("myApp"));
+    beforeEach(inject(function($injector) {
+        $rootScope = $injector.get('$rootScope');
+        $controller = $injector.get('$controller');
+        $httpBackend = $injector.get('$httpBackend');
+        createController = {
+            setProfile: function() {
+                return $controller('setProfile', {
+                    $scope: $rootScope
+                });
+            }
+        }
+    }));
+
+    it('Test 1: setProfile Be Defined', inject(function($controller) {
+        controller = createController.setProfile();
+        expect(controller).toBeDefined();
+    }));
+
+    it('Test 2: get /users/userprofileController', inject(function($controller) {
+        controller = createController.setProfile();
+        var data = {
+          pStatus: 'abc',
+          pName: 'lam',
+          pDoB: '10/11/95',
+          pPhone: '123456689',
+          pLocation: 'DEK',
+          pEmail: 'lamz@gmail.com',
+          pAvatar: 'acb'
+        };
+        $httpBackend.whenGET('/users/userprofileController').respond(data);
+        $httpBackend.flush();
+        expect($rootScope.user.pStatus).toBe(data.pStatus);
+        expect($rootScope.user.pName).toBe(data.pName);
+        expect($rootScope.user.pDoB).toBe(data.pDoB);
+        expect($rootScope.user.pPhone).toBe(data.pPhone);
+        expect($rootScope.user.pLocation).toBe(data.pLocation);
+        expect($rootScope.user.pEmail).toBe(data.pEmail);
+        expect($rootScope.user.pAvatar).toBe(data.pAvatar);
+    }));
+
+    it('Test 3: Edit userProfile', inject(function($controller) {
+        controller = createController.setProfile();
+        var user = {
+          pStatus: 'dfas',
+          pName: 'asdf',
+          pDoB: 'sdf',
+          pPhone: 'asdf',
+          pLocation: 'asdf',
+          pEmail: 'asdf',
+          pAvatar: 'sdf'
+        };
+        var data = {
+          msg : 'Success'
+        };
+        $rootScope.user = user;
+        $rootScope.edit();
+        $httpBackend.whenGET('/users/userprofileController').respond(user);
+        $httpBackend.whenPOST('/users/userprofileReturnValue', user).respond(data);
+        $httpBackend.flush();
+        expect($rootScope.msg).toBe(data.msg);
+    }));
+});
+
+describe("AddCourseCtrl Unit testing #3", function() {
+    var controller, $controller, $scope, $rootScope, createController;
+    beforeEach(angular.mock.module("myApp"));
+    beforeEach(inject(function($injector) {
+        $rootScope = $injector.get('$rootScope');
+        $controller = $injector.get('$controller');
+        $httpBackend = $injector.get('$httpBackend');
+        createController = {
+            addCourse: function() {
+                return $controller('addCourse', {
+                    $scope: $rootScope
+                });
+            }
+        }
+    }));
+
+    it('Test 1: addCourse Be Defined', inject(function($controller) {
         controller = createController.addCourse();
         expect(controller).toBeDefined();
     }));
 
-    it('Test 8: addCourse() test', inject(function($controller) {
+    it('Test 2: addCourse() test', inject(function($controller) {
         controller = createController.addCourse();
         var postData = {
             msg : 'Add course success!'
@@ -181,14 +237,31 @@ describe("Controllers Unit testing", function() {
         expect($rootScope.getMsg).toBe(getData.msg);
     }));
 
-    // updateCourse ctrl
-    // *************************************************************************
-    it('Test 9: updateCourse Be Defined', inject(function($controller) {
+});
+
+describe("UpdateCourseCtrl Unit testing #4", function() {
+    var controller, $controller, $scope, $rootScope, createController;
+    beforeEach(angular.mock.module("myApp"));
+    beforeEach(inject(function($injector) {
+        $rootScope = $injector.get('$rootScope');
+        $controller = $injector.get('$controller');
+        $httpBackend = $injector.get('$httpBackend');
+        createController = {
+            updateCourse: function() {
+                return $controller('updateCourse', {
+                    $scope: $rootScope
+                });
+            }
+        }
+
+    }));
+
+    it('Test 1: updateCourse Be Defined', inject(function($controller) {
         controller = createController.updateCourse();
         expect(controller).toBeDefined();
     }));
 
-    it('Test 10: updateCourse() test', inject(function($controller) {
+    it('Test 2: updateCourse() test', inject(function($controller) {
         controller = createController.updateCourse();
         var postData = {
             msg : 'Edit course success!'
@@ -213,121 +286,105 @@ describe("Controllers Unit testing", function() {
         expect($rootScope.postMsg).toBe(postData.msg);
         expect($rootScope.getMsg).toBe(getData.msg);
     }));
-
-    // isDeletedCourse ctrl
-    // *************************************************************************
-    it('Test 11: isDeletedCourse Be Defined', inject(function($controller) {
-        controller = createController.isDeletedCourse();
-        expect(controller).toBeDefined();
-    }));
-
-    it('Test 12: isDeletedCourse() test', inject(function($controller) {
-        controller = createController.isDeletedCourse();
-        var postData = {
-            msg: 'Delete success!'
-        };
-        var course = {
-            courseName: 'agile training',
-            courseDescription: 'abc xyz',
-            courseCategory: 'agile training',
-            courseTest: 'test131',
-            courseDocuments: 'agile131.pdf',
-            courseTrainerID: '123321'
-        };
-        var getData = {
-          course: course,
-          msg:'send list success'
-        };
-        $rootScope.courseslistDelete = course;
-        $rootScope.isDeletedCourse();
-        $httpBackend.whenPOST('/course/isDeletedCourse', $rootScope.courseslistDelete).respond(postData)
-        $httpBackend.whenGET('/course/list').respond(getData);
-        $httpBackend.flush();
-        expect($rootScope.postMsg).toBe(postData.msg);
-        expect($rootScope.getMsg).toBe(getData.msg);
-    }));
-
-    // setFeature ctrl
-    // *************************************************************************
-    it('Test 13: setFeature Be Defined', inject(function($controller) {
-        console.log('this is test 1');
-        controller = createController.setFeature();
-        expect(controller).toBeDefined();
-    }));
-
-    it('Test 14: setFeature Be Defined', inject(function($controller) {
-        console.log('this is test 2');
-        controller = createController.setFeature();
-        expect(controller).toBeDefined();
-    }));
-
-    it('Test 15: get /course/features test', inject(function($controller) {
-        controller = createController.setFeature();
-        var data = {
-            courseDocuments : 'This is document',
-            courseFeedback : 'This is Feedback',
-            courseTest : 'This is test',
-            courseRating :'This is rating'
-        };
-        $httpBackend.whenGET('/course/features').respond(data);
-        $httpBackend.flush();
-        expect($rootScope.courseDocuments).toBe(data.courseDocuments);
-
-        // $scope.courseDocuments = result.data.courseDocuments;
-        // $scope.courseFeedback = result.data.courseFeedback;
-        // $scope.courseTest = result.data.courseTest;
-        // $scope.courseRating = result.data.courseRating;
-    }));
-
-    // setProfile ctrl
-    // *************************************************************************
-    it('Test 16: setProfile Be Defined', inject(function($controller) {
-        controller = createController.setProfile();
-        expect(controller).toBeDefined();
-    }));
-
-    it('Test 17: get /users/userprofileController', inject(function($controller) {
-        controller = createController.setProfile();
-        var data = {
-          pStatus: 'abc',
-          pName: 'lam',
-          pDoB: '10/11/95',
-          pPhone: '123456689',
-          pLocation: 'DEK',
-          pEmail: 'lamz@gmail.com',
-          pAvatar: 'acb'
-        };
-        $httpBackend.whenGET('/users/userprofileController').respond(data);
-        $httpBackend.flush();
-        expect($rootScope.user.pStatus).toBe(data.pStatus);
-        expect($rootScope.user.pName).toBe(data.pName);
-        expect($rootScope.user.pDoB).toBe(data.pDoB);
-        expect($rootScope.user.pPhone).toBe(data.pPhone);
-        expect($rootScope.user.pLocation).toBe(data.pLocation);
-        expect($rootScope.user.pEmail).toBe(data.pEmail);
-        expect($rootScope.user.pAvatar).toBe(data.pAvatar);
-    }));
-
-    it('Test 18: Edit userProfile', inject(function($controller) {
-        controller = createController.setProfile();
-        var user = {
-          pStatus: 'dfas',
-          pName: 'asdf',
-          pDoB: 'sdf',
-          pPhone: 'asdf',
-          pLocation: 'asdf',
-          pEmail: 'asdf',
-          pAvatar: 'sdf'
-        };
-        var data = {
-          msg : 'Success'
-        };
-        $rootScope.user = user;
-        $rootScope.edit();
-        $httpBackend.whenGET('/users/userprofileController').respond(user);
-        $httpBackend.whenPOST('/users/userprofileReturnValue', user).respond(data);
-        $httpBackend.flush();
-        expect($rootScope.msg).toBe(data.msg);
-    }));
-
 });
+
+//----------------------------------------------------------------------------
+//
+// describe("isDeletedCourse Unit testing #4", function() {
+//     var controller, $controller, $scope, $rootScope, createController;
+//     beforeEach(angular.mock.module("myApp"));
+//     beforeEach(inject(function($injector) {
+//         $rootScope = $injector.get('$rootScope');
+//         $controller = $injector.get('$controller');
+//         $httpBackend = $injector.get('$httpBackend');
+//         createController = {
+//             isDeletedCourse: function() {
+//                 return $controller('isDeletedCourse', {
+//                     $scope: $rootScope
+//                 });
+//             }
+//         }
+//
+//     }));
+//
+//     it('Test 1: isDeletedCourse Be Defined', inject(function($controller) {
+//         controller = createController.isDeletedCourse();
+//         expect(controller).toBeDefined();
+//     }));
+//
+//     it('Test 2: isDeletedCourse() test', inject(function($controller) {
+//         controller = createController.isDeletedCourse();
+//         var postData = {
+//             msg: 'Delete success!'
+//         };
+//         var course = {
+//             courseName: 'agile training',
+//             courseDescription: 'abc xyz',
+//             courseCategory: 'agile training',
+//             courseTest: 'test131',
+//             courseDocuments: 'agile131.pdf',
+//             courseTrainerID: '123321'
+//         };
+//         var getData = {
+//           course: course,
+//           msg:'send list success'
+//         };
+//         $rootScope.courseslistDelete = course;
+//         $rootScope.isDeletedCourse();
+//         $httpBackend.whenPOST('/course/isDeletedCourse', $rootScope.courseslistDelete).respond(postData)
+//         $httpBackend.whenGET('/course/list').respond(getData);
+//         $httpBackend.flush();
+//         expect($rootScope.postMsg).toBe(postData.msg);
+//         expect($rootScope.getMsg).toBe(getData.msg);
+//     }));
+// });
+
+//---------------------------------------------------------------------------------
+
+// describe("setFeature Unit testing #4", function() {
+//     var controller, $controller, $scope, $rootScope, createController;
+//     beforeEach(angular.mock.module("myApp"));
+//     beforeEach(inject(function($injector) {
+//         $rootScope = $injector.get('$rootScope');
+//         $controller = $injector.get('$controller');
+//         $httpBackend = $injector.get('$httpBackend');
+//         createController = {
+//             setFeature: function() {
+//                 return $controller('setFeature', {
+//                     $scope: $rootScope
+//                 });
+//             }
+//         }
+//
+//     }));
+//
+//     it('Test 1: setFeature Be Defined', inject(function($controller) {
+//         console.log('this is test 1');
+//         controller = createController.setFeature();
+//         expect(controller).toBeDefined();
+//     }));
+//
+//     it('Test 1: setFeature Be Defined', inject(function($controller) {
+//         console.log('this is test 2');
+//         controller = createController.setFeature();
+//         expect(controller).toBeDefined();
+//     }));
+//
+//     it('Test 2: get /course/features test', inject(function($controller) {
+//         controller = createController.setFeature();
+//         var data = {
+//             courseDocuments : 'This is document',
+//             courseFeedback : 'This is Feedback',
+//             courseTest : 'This is test',
+//             courseRating :'This is rating'
+//         };
+//         $httpBackend.whenGET('/course/features').respond(data);
+//         $httpBackend.flush();
+//         expect($rootScope.courseDocuments).toBe(data.courseDocuments);
+//
+//         // $scope.courseDocuments = result.data.courseDocuments;
+//         // $scope.courseFeedback = result.data.courseFeedback;
+//         // $scope.courseTest = result.data.courseTest;
+//         // $scope.courseRating = result.data.courseRating;
+//     }));
+// });
