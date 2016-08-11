@@ -16,8 +16,8 @@ var log = require('simple-node-logger').createLogManager(opts).createLogger();
 // add course detail to database
 
 models.course.sync({
-        force: false
-    });
+    force: false
+});
 
 router.post('/getCourse', function(req, res) {
     log.info('/route/course: Get Course Information');
@@ -72,55 +72,59 @@ router.post('/addCourse', function(req, res) {
 // update course in database
 router.post('/updateCourse', function(req, res) {
     log.info('Get Course Information');
-    console.log('----------------------------------------------');
-    console.log(req.body.courseNameEdit);
+    console.log('---------------------Done-------------------------');
+console.log(req.body.courseIDEdit);
     var tID = JSON.stringify(req.body.courseTrainerIDEdit);
-    models.course.update({
-            name: req.body.courseNameEdit,
-            description: req.body.courseDescriptionEdit,
-            category: req.body.courseCategoryEdit,
-            test: req.body.courseTestEdit,
-            documents: req.body.courseDocumentsEdit,
-            trainerID: tID
-        }, {
-            where: {
-                id: req.body.courseIDEdit
+    models.course.sync({
+        force: false
+    }).then(function() {
+        models.course.getCourseByID(req.body.courseIDEdit, function(result) {
+console.log('---------------------Done-------------------------');
+            if (result) {
+                console.log('okay');
+                models.course.update({
+                    name: req.body.courseNameEdit,
+                    description: req.body.courseDescriptionEdit,
+                    category: req.body.courseCategoryEdit,
+                    test: req.body.courseTestEdit,
+                    documents: req.body.courseDocumentsEdit,
+                    trainerID: tID
+                }, {
+                    where: {
+                        id: tID
+                    }
+                }).then(function() {
+
+                    res.send({
+                        msg: 'Edit course success!'
+                    });
+                });
+            } else {
+              console.log('----------------------FAIL------------------------');
+              console.log(req.body.courseNameEdit);
+                res.send({
+                    msg: 'Course not found in database'
+                });
             }
-        })
+        });
+    });
 });
 
 // mark course as deleted (isDeleted = true)
 router.post('/isDeletedCourse', function(req, res) {
     log.info('Get Delete Command');
     models.course.update({
-            isDeleted: true
-        }, {
-            where: {
-                id: req.body.courseIDDelete
-            }
-        })
+        isDeleted: true
+    }, {
+        where: {
+            id: req.body.courseIDDelete
+        }
+    })
 });
 
-// router.get('/features', function(req, res) {
-//     log.info('/route/course: get feature data');
-//     models.course.findOne({
-//         where: {
-//             id: cid
-//         }
-//     }).then(function(course) {
-//         res.send({
-//             courseDocs: course.documents,
-//             courseTest: course.test,
-//             courseFeedback: 'This is my Feedback',
-//             courseRating: 5
-//         });
-//     });
-// });
-
-// findAll(): get the list of all courses in database
 router.get('/list', function(req, res) {
     log.info('/route/course: get course list data');
-    models.course.getCourseList(function(course){
+    models.course.getCourseList(function(course) {
         // var data = JSON.stringify(course);
         // data = JSON.parse(data);
         var datasend = {
