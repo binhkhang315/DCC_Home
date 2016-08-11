@@ -48,7 +48,7 @@ myApp.controller('setCourse', function($scope, $http,$window) {
     $http.post('/course/getCourse',{courseID:courseID}).then(function(result) {
         var trainerJSON = result.data.courseTrainer;
         var trainers = [];
-        for (i=0;i<trainerJSON.length;i++){
+        for (var i=0;i<trainerJSON.length;i++){
           trainers.push(trainerJSON[i].text);
         }
         $scope.courseName = result.data.courseName;
@@ -63,11 +63,11 @@ myApp.controller('setCourse', function($scope, $http,$window) {
 myApp.controller('getList', function($scope,$rootScope, $http) {
     $http.get('/course/list').then(function(result) {
       $rootScope.coursesList = result.data.course;
-      for(i=0;i<$rootScope.coursesList.length;i++){
+      for(var i=0; i<$rootScope.coursesList.length; i++){
         $rootScope.coursesList[i].trainerID = JSON.parse($rootScope.coursesList[i].trainerID);
         $rootScope.coursesList[i].trainerIDJSON = $rootScope.coursesList[i].trainerID;
         var trainers =$rootScope.coursesList[i].trainerID[0].text;
-        for (j=1;j<$rootScope.coursesList[i].trainerID.length;j++){
+        for (var j=1; j<$rootScope.coursesList[i].trainerID.length;j++){
           trainers = trainers + ' / '+ $rootScope.coursesList[i].trainerID[j].text;
         }
         $rootScope.coursesList[i].trainerID = trainers;
@@ -205,27 +205,12 @@ myApp.controller('FeedbackCtrl',function($scope, $http, $window){
       $http.post('/course/coursesoverview/comment', {
           comment : $scope.comment,
           courseID : parseInt(courseID),
-      })
-      // .success(function(data, status, headers, config) {
-      //     $scope.feedbacks.push({
-      //       comment : $scope.comment,
-      //       courseID : parseInt(courseID)
-      //     });
-      //     $scope.comment = '';
-      // })
-      ;
+      });
   }
   $scope.addRating = function(){
     $http.post('/course/coursesoverview/rating', {
         rating : $scope.rating,
         courseID : parseInt(courseID),
-    })
-    // .success(function(data, status, headers, config) {
-    //     $scope.feedbacks.push({
-    //       rating : $scope.rating,
-    //       courseID : parseInt(courseID),
-    //     });
-    // })
-    ;
+    });
   }
 });
