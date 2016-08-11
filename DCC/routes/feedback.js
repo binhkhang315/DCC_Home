@@ -8,7 +8,7 @@ var opts = {
 var log = require('simple-node-logger').createLogManager(opts).createLogger();
 
 models.Feedback.sync({
-  force:true
+  force:false
 });
 
 exports.saveFeedback = function(req, res) {
@@ -23,11 +23,7 @@ exports.saveFeedback = function(req, res) {
         userID: '1',
         comment: req.body.comment,
         courseID:req.body.courseID,
-    })
-    // .then(function(feedbacks){
-    //     res.json(feedbacks.dataValues);
-    // })
-    ;
+    });
   }else{
     models.Feedback.update({
       comment: req.body.comment,
@@ -53,11 +49,7 @@ exports.saveRating = function(req, res) {
         userID: '1',
         rating: req.body.rating,
         courseID:req.body.courseID,
-    })
-    // .then(function(feedbacks){
-    //     res.json(feedbacks.dataValues);
-    // })
-    ;
+    });
   }else{
     models.Feedback.update({
       rating: req.body.rating,
@@ -69,4 +61,15 @@ exports.saveRating = function(req, res) {
       }
     })
   }})
+};
+
+exports.showFeedback = function(req, res) {
+  console.log('showFeedback');
+  models.Feedback.findAll({
+    where:{
+      courseID : req.body.courseID
+    }
+  }).then(function(feedback){
+    res.send(feedback);
+  })
 };
