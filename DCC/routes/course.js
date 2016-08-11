@@ -27,8 +27,6 @@ router.post('/getCourse', function(req, res) {
         }
     }).then(function(course) {
         var tID = JSON.parse(course.trainerID);
-        console.log('-------------------------');
-        console.log(tID);
         res.send({
             courseName: course.name,
             courseTrainer: tID,
@@ -43,6 +41,7 @@ router.post('/getCourse', function(req, res) {
 // add course to database
 router.post('/addCourse', function(req, res) {
     log.info('/route/course: Add course :' + req.body);
+    var tID = JSON.stringify(req.body.courseTrainerID);
     models.course.sync({
         force: false
     }).then(function() {
@@ -53,13 +52,13 @@ router.post('/addCourse', function(req, res) {
                     msg: 'Name already existed. Add fail!'
                 });
             } else {
-                return models.course.create({
+                models.course.create({
                     name: req.body.courseName,
                     description: req.body.courseDescription,
                     category: req.body.courseCategory,
                     test: req.body.courseTest,
                     documents: req.body.courseDocuments,
-                    trainerID: req.body.courseTrainerID
+                    trainerID: tID
                 }).then(function(data) {
                     res.send({
                         msg: 'Add course success!'
