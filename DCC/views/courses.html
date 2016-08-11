@@ -5,6 +5,7 @@
     <title>DEK Technologies Vietnam Talentnet - Landing Page</title>
 </head>
 
+
 <body>
     <!-- Navigation -->
     <div class="">
@@ -92,7 +93,7 @@
                         <div class="form-group" ng-class="{ 'has-error' : addCourseForm.courseDescription.$invalid && !addCourseForm.courseDescription.$pristine }">
                             <label class="col-sm-4 control-label">Course description</label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" name="courseDescription" ng-model="courseslist.courseDescription" placeholder="Course description" required>
+                                <textarea type="text" class="form-control" name="courseDescription" ng-model="courseslist.courseDescription" placeholder="Course description" required></textarea>
                                 <p ng-show="addCourseForm.courseDescription.$invalid && !addCourseForm.courseDescription.$pristine" class="help-block">Course description is required.</p>
                             </div>
                         </div>
@@ -134,7 +135,7 @@
                         <div class="form-group" ng-class="{ 'has-error' : addCourseForm.courseTrainerID.$invalid && !addCourseForm.courseTrainerID.$pristine }">
                             <label class="col-sm-4 control-label">TrainerID</label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" name="courseTrainerID" ng-model="courseslist.courseTrainerID" placeholder="Course trainerID" required>
+                                <tags-input name="courseTrainerID" replace-spaces-with-dashes="false" ng-model="courseslist.courseTrainerID" required></tags-input>
                                 <p ng-show="addCourseForm.courseTrainerID.$invalid && !addCourseForm.courseTrainerID.$pristine" class="help-block">Course trainerID is required.</p>
                             </div>
                         </div>
@@ -173,7 +174,7 @@
                         <div class="form-group" ng-class="{ 'has-error' : editCourseForm.courseDescriptionEdit.$invalid && !editCourseForm.courseDescriptionEdit.$pristine }">
                             <label class="col-sm-4 control-label">Course description</label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" name="courseDescriptionEdit" ng-model="courseslistEdit.courseDescriptionEdit" required>
+                                <textarea type="text" class="form-control" name="courseDescriptionEdit" ng-model="courseslistEdit.courseDescriptionEdit" required></textarea>
                                 <p ng-show="editCourseForm.courseDescriptionEdit.$invalid && !editCourseForm.courseDescriptionEdit.$pristine" class="help-block">Course description is required.</p>
                             </div>
                         </div>
@@ -217,13 +218,10 @@
                         <div class="form-group" ng-class="{ 'has-error' : editCourseForm.courseTrainerIDEdit.$invalid && !editCourseForm.courseTrainerIDEdit.$pristine }">
                             <label class="col-sm-4 control-label">TrainerID</label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" name="courseTrainerIDEdit" ng-model="courseslistEdit.courseTrainerIDEdit" required>
+                                <tags-input name="courseTrainerIDEdit" replace-spaces-with-dashes="false" ng-model="courseslistEdit.courseTrainerIDEdit" required></tags-input>
                                 <p ng-show="editCourseForm.courseTrainerIDEdit.$invalid && !editCourseForm.courseTrainerIDEdit.$pristine" class="help-block">Course trainerID is required.</p>
                             </div>
                         </div>
-
-
-
                   </div>
                   <div class="modal-footer">
                         <button type="submit" class="btn btn-default" ng-click="updateCourse()" data-dismiss="modal" ng-disabled="editCourseForm.$invalid">Update</button>
@@ -243,28 +241,23 @@
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                     <h4 class="modal-title">Delete Course</h4>
                 </div>
-                <div class="modal-body">
-                    <form name="editCourseForm" role="form" class="form-horizontal" novalidate>
+                <form name="editCourseForm" role="form" class="form-horizontal" novalidate>
+                  <div class="modal-body">
 
-                        <div>
-                            <p name="courseNameDelete" ng-model="courseslistDelete.courseNameDelete">
-                                Are you sure to delete
-                                <span ng-bind="courseslistDelete.courseNameDelete">
-                                </span> course?
-                            </p>
-                        </div>
+                          <div>
+                              <p name="courseNameDelete" ng-model="courseslistDelete.courseNameDelete">
+                                  Are you sure to delete
+                                  <span ng-bind="courseslistDelete.courseNameDelete">
+                                  </span> course?
+                              </p>
+                          </div>
 
-                        <div class="row">
-                            <div class="col-xs-3 col-xs-push-8">
-                                <button type="submit" class="btn btn-default" ng-click="isDeletedCourse()" data-dismiss="modal" ng-disabled="editCourseForm.$invalid">Yes</button>
-                            </div>
-                            <div class="col-xs-3 col-xs-push-7">
-                                <button type="submit" class="btn btn-default" ng-click="cancelDelete()" data-dismiss="modal">No</button>
-                            </div>
-                        </div>
-
-                    </form>
-                </div>
+                  </div>
+                  <div class="modal-footer">
+                        <button type="submit" class="btn btn-default" ng-click="isDeletedCourse()" data-dismiss="modal" ng-disabled="editCourseForm.$invalid">Yes</button>
+                        <button type="submit" class="btn btn-default" ng-click="cancelDelete()" data-dismiss="modal">No</button>
+                  </div>
+                </form>
             </div>
         </div>
     </div>

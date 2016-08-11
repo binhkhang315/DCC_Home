@@ -208,15 +208,15 @@ describe('<Unit test for Course model', function() {
             })
         });
     });
-    // describe('', function() {
-    //     return it('Test case 5: getCourseByCategory with category existed in database - return course[] list object ', function(done) {
-    //         models.course.getCourseByCategory('CBA Overview', function(course) {
-    //             assert.equal(course[0].category, 'CBA Overview');
-    //             assert.equal(course[2].category, 'CBA Overview');
-    //             return done();
-    //         })
-    //     });
-    // });
+    describe('', function() {
+        return it('Test case 5: getCourseByCategory with category existed in database - return course[] list object ', function(done) {
+            models.course.getCourseByCategory('CBA Overview', function(course) {
+                assert.equal(course[0].category, 'CBA Overview');
+                assert.equal(course[2].category, 'CBA Overview');
+                return done();
+            })
+        });
+    });
     describe('', function() {
         return it('Test case 6: getCourseByCategory with category not found in database - return course[] null ', function(done) {
             models.course.getCourseByCategory('not found', function(course) {
@@ -225,22 +225,22 @@ describe('<Unit test for Course model', function() {
             })
         });
     });
-    describe('', function() {
-        return it('Test case 7: getCourseByTrainerID with trainerID existed in database - return course[] list object', function(done) {
-            models.course.getCourseByTrainerID('King Nguyen', function(course) {
-                assert.equal(course[0].trainerID, 'King Nguyen');
-                return done();
-            })
-        });
-    });
-    describe('', function() {
-        return it('Test case 8: getCourseByTrainerID with TrainerID not found in database - return course[] null' , function(done) {
-            models.course.getCourseByTrainerID('not found', function(course) {
-                assert.equal(course[0], null);
-                return done();
-            })
-        });
-    });
+    // describe('', function() {
+    //     return it('Test case 7: getCourseByTrainerID with trainerID existed in database - return course[] list object', function(done) {
+    //         models.course.getCourseByTrainerID('King Nguyen', function(course) {
+    //             assert.equal(course[0].trainerID, 'King Nguyen');
+    //             return done();
+    //         })
+    //     });
+    // });
+    // describe('', function() {
+    //     return it('Test case 8: getCourseByTrainerID with TrainerID not found in database - return course[] null' , function(done) {
+    //         models.course.getCourseByTrainerID('not found', function(course) {
+    //             assert.equal(course[0], null);
+    //             return done();
+    //         })
+    //     });
+    // });
     describe('', function() {
         return it('Test case 9: getCourseList in database - return course[] list object' , function(done) {
             models.course.getCourseList( function(course) {
@@ -270,7 +270,42 @@ describe('<Unit test for User model', function() {
         });
     });
 });
-//-----------------------------------------------------------------------
 
+describe('<Unit test for userProfile function>', function() {
+
+    describe('Send data to font-end', function() {
+        return it('Get /users/userprofileController ', function(done) {
+            request(route)
+                .get('/users/userprofileController')
+                .end(function(err, res) {
+                    assert.equal(res.body.pName, 'admin');
+                    return done();
+                });
+        });
+    });
+
+    describe('Route for editUserProfile page', function() {
+        return it('Get /users/edituserprofile ', function(done) {
+            request(route)
+                .get('/users/edituserprofile')
+                .expect(200, done)
+        });
+    });
+
+    describe('Edit data method', function() {
+        return it('Post /users/userprofileReturnValue ', function(done) {
+            request(route)
+                .post('/users/userprofileReturnValue')
+                .send({
+                    status: 'vhlam',
+                    dob: '20/10/1995'
+                })
+                .end(function(err, res) {
+                    assert.equal(res.text, 'Success');
+                    return done();
+                });
+        });
+    });
+});
 
 //-----------------------------------------------------------------------

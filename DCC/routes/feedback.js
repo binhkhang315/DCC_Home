@@ -12,8 +12,6 @@ models.Feedback.sync({
 });
 
 exports.saveFeedback = function(req, res) {
-  console.log('save fêed');
-  console.log(req.body.courseID);
     models.Feedback.findOne({
       where:{
         userID:1,
@@ -25,9 +23,11 @@ exports.saveFeedback = function(req, res) {
         userID: '1',
         comment: req.body.comment,
         courseID:req.body.courseID,
-    }).then(function(feedbacks){
-        res.json(feedbacks.dataValues);
-    });
+    })
+    // .then(function(feedbacks){
+    //     res.json(feedbacks.dataValues);
+    // })
+    ;
   }else{
     models.Feedback.update({
       comment: req.body.comment,
@@ -53,9 +53,11 @@ exports.saveRating = function(req, res) {
         userID: '1',
         rating: req.body.rating,
         courseID:req.body.courseID,
-    }).then(function(feedbacks){
-        res.json(feedbacks.dataValues);
-    });
+    })
+    // .then(function(feedbacks){
+    //     res.json(feedbacks.dataValues);
+    // })
+    ;
   }else{
     models.Feedback.update({
       rating: req.body.rating,
@@ -68,7 +70,3 @@ exports.saveRating = function(req, res) {
     })
   }})
 };
-
-// models.Feedback.sync({
-//   force:true
-// });
