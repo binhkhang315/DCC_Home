@@ -104,7 +104,9 @@ router.post('/userprofileReturnValue', function(req, res) {
     where: { username : 'admin' }
   })
   .then(function (result) {
-    res.send("Success");
+    res.send({
+      msg: "Success"
+    });
   });
 });
 
