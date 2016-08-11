@@ -43,28 +43,30 @@ router.post('/getCourse', function(req, res) {
 // add course to database
 router.post('/addCourse', function(req, res) {
     log.info('/route/course: Add course :' + req.body);
-    var tID = JSON.stringify(req.body.courseTrainerID);
     models.course.sync({
         force: false
     }).then(function() {
-        return models.course.create({
-            name: req.body.courseName,
-            description: req.body.courseDescription,
-            category: req.body.courseCategory,
-            test: req.body.courseTest,
-            documents: req.body.courseDocuments,
-            trainerID: tID
-        }).then(function(data) {
-            if (data.dataValues) {
+        // this function check if the courseName is already existed
+        models.course.getCourseByName(req.body.courseName, function(result) {
+            if (result) {
                 res.send({
-                    msg: 'Add course success!'
+                    msg: 'Name already existed. Add fail!'
                 });
             } else {
-                res.send({
-                    msg: 'Add course fail!'
-                });
+                return models.course.create({
+                    name: req.body.courseName,
+                    description: req.body.courseDescription,
+                    category: req.body.courseCategory,
+                    test: req.body.courseTest,
+                    documents: req.body.courseDocuments,
+                    trainerID: req.body.courseTrainerID
+                }).then(function(data) {
+                    res.send({
+                        msg: 'Add course success!'
+                    });
+                })
             }
-        })
+        });
     });
 })
 

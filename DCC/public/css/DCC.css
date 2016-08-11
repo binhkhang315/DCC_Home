@@ -37,10 +37,12 @@
 .show {display:block;}
 
 /******course detail*******/
+
 .text{
   border-top: 2px solid #E8E8E8;
   border-bottom: 2px solid #E8E8E8;
   padding: 10px 30px;
+  font-size: 25px;
 }
 .name {
     font-size: 50px;
@@ -48,7 +50,7 @@
     font-weight: bold;
 }
 .trname{
-    font-size: 35px;
+    font-size: 30px;
     text-align: center;
 }
 /***********slider text****************/

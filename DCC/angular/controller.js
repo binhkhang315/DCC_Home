@@ -140,25 +140,23 @@ myApp.controller('setProfile', function($scope, $http, $window) {
 });
 
 // add course controller
-myApp.controller('addCourse', function($scope,$rootScope,$window,$http) {
-        $scope.courseslist = {
-            courseName: '',
-            courseDescription: '',
-            courseCategory: '',
-            courseTest: '',
-            courseDocuments: '',
-            courseTrainerID: ''
-        };
-        $scope.addCourse = function() {
-          console.log($scope.courseslist);
-            $http.post('/course/addCourse', $scope.courseslist).then(function(result) {
-                $http.get('/course/list').then(function(result) {
-                  $rootScope.coursesList = result.data.course;
-                });
-            });
-            $window.location.reload();
-        }
+myApp.controller('addCourse', function($scope, $rootScope, $http, $window) {
+    $scope.courseslist = {
+        courseName: '',
+        courseDescription: '',
+        courseCategory: '',
+        courseTest: '',
+        courseDocuments: '',
+        courseTrainerID: ''
+    };
+    $scope.msg = '';
 
+    $scope.addCourse = function() {
+        $http.post('/course/addCourse', $scope.courseslist).then(function(result) {
+            $scope.msg = result.data.msg;
+        });
+        $window.location.reload();
+    }
 });
 
 // updateCourse: edit course controller
