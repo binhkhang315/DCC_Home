@@ -248,28 +248,28 @@ describe('<Unit test for Course controller', function() {
             });
         });
     });
-    // describe('', function() {
-    //     return it('Test case 4 : POST /course/updateCourse success', function(done) {
-    //         var datasend = {
-    //             courseIDEdit: '999',
-    //             courseNameEdit: 'testing3',
-    //             courseDescriptionEdit: 'This is testing Des3',
-    //             courseCategoryEdit: 'testing cat3',
-    //             courseTestEdit: 'testing testing3',
-    //             courseDocumentsEdit: 'testing doc3',
-    //             courseTrainerIDEdit: [{
-    //                 "text": "testing3"
-    //             }]
-    //         };
-    //         request(route)
-    //             .post('/course/updateCourse')
-    //             .send(datasend)
-    //             .end(function(err, res) {
-    //                 assert.equal(res.body.msg, 'Edit course success!');
-    //                 return done();
-    //             });
-    //     });
-    // });
+    describe('', function() {
+        return it('Test case 4 : POST /course/updateCourse success', function(done) {
+            var datasend = {
+                courseIDEdit: 999,
+                courseNameEdit: 'testing3',
+                courseDescriptionEdit: 'This is testing Des3',
+                courseCategoryEdit: 'testing cat3',
+                courseTestEdit: 'testing testing3',
+                courseDocumentsEdit: 'testing doc3',
+                courseTrainerIDEdit: [{
+                    "text": "testing3"
+                }]
+            };
+            request(route)
+                .post('/course/updateCourse')
+                .send(datasend)
+                .end(function(err, res) {
+                    assert.equal(res.body.msg, 'Edit course success!');
+                    return done();
+                });
+        });
+    });
     describe('', function() {
         return it('Test case 5 : POST /course/updateCourse : Course not found', function(done) {
             var datasend = {
@@ -298,6 +298,39 @@ describe('<Unit test for Course controller', function() {
                 .get('/course/list')
                 .end(function(err, res) {
                     assert.equal(res.body.msg, 'send list success');
+                    return done();
+                });
+        });
+    });
+    describe('', function() {
+        return it('Test case 7 : POST /course/isDeletedCourse delete success', function(done) {
+            request(route)
+                .post('/course/isDeletedCourse')
+                .send({
+                    courseIDDelete: 999
+                })
+                .end(function(err, res) {
+                    assert.equal(res.body.msg, 'Delete success');
+                    return done();
+                });
+        });
+    });
+    describe('', function() {
+        return it('Test case 8 : POST /course/isDeletedCourse delete course already deleted', function(done) {
+            request(route)
+                .post('/course/isDeletedCourse')
+                .send({
+                    courseIDDelete: 999
+                })
+                .end(function(err, res) {
+                    models.course.update({
+                        isDeleted: false
+                    }, {
+                        where: {
+                            id: 999
+                        }
+                    });
+                    assert.equal(res.body.msg, 'Delete failure');
                     return done();
                 });
         });
