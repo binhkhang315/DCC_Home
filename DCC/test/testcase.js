@@ -76,6 +76,43 @@ describe('<Unit Test for Routing>', function() {
 describe('<Unit test for Login>', function() {
 
     describe('', function() {
+        var Cookies;
+        beforeEach(function(done) {
+            request(route)
+                .post('/users/login')
+                .set('Accept', 'application/json')
+                .send({
+                    username: 'qwe@gmail.com',
+                    password: 'qwe'
+                })
+                .end(function(err, res) {
+                    Cookies = res.headers['set-cookie'].pop().split(';')[0];
+                    return done();
+                });
+        });
+        return it('Test case 0 : Check authenticated: Logged in', function(done) {
+            var req = request(route).get('/isLogged');
+            req.cookies = Cookies;
+            req.set('Accept', 'application/json')
+                .end(function(err, res) {
+                    assert.equal(res.text, 'qwe@gmail.com');
+                    return done();
+                });
+        });
+    });
+    describe('', function() {
+        var Cookies;
+        return it('Test case 0.1 : Check authenticated: Not Logged in', function(done) {
+            var req = request(route).get('/isLogged');
+            req.cookies = Cookies;
+            req.set('Accept', 'application/json')
+                .end(function(err, res) {
+                    assert.equal(res.text, '');
+                    return done();
+                });
+        });
+    });
+    describe('', function() {
         return it('Test case 1 : Login success', function(done) {
             request(route)
                 .post('/users/login')
