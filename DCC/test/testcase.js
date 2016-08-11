@@ -37,9 +37,15 @@ describe('<Unit Test for Routing>', function() {
                 .expect(200, done)
         });
     });
-
     describe('', function() {
-        return it('Test case 4 : get /course/trainerdashboard ', function(done) {
+        return it('Test case 4 : get /course/coursesoverview/:id ', function(done) {
+            request(route)
+                .get('/course/coursesoverview/1')
+                .expect(200, done)
+        });
+    });
+    describe('', function() {
+        return it('Test case 5 : get /course/trainerdashboard ', function(done) {
             request(route)
                 .get('/course/trainerdashboard')
                 .expect(200, done)
@@ -47,7 +53,7 @@ describe('<Unit Test for Routing>', function() {
     });
 
     describe('', function() {
-        return it('Test case 5 : get /users/userprofile ', function(done) {
+        return it('Test case 6 : get /users/userprofile ', function(done) {
             request(route)
                 .get('/users/userprofile')
                 .expect(200, done)
@@ -55,7 +61,7 @@ describe('<Unit Test for Routing>', function() {
     });
 
     describe('', function() {
-        return it('Test case 6 : get /users/dashboard ', function(done) {
+        return it('Test case 7 : get /users/dashboard ', function(done) {
             request(route)
                 .get('/users/dashboard')
                 .end(function(err, res) {
@@ -175,6 +181,10 @@ describe('<Unit test for Login>', function() {
 
     });
 });
+//------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 describe('<Unit test for Course controller', function() {
     describe('', function() {
         return it('Test case 1 : POST /course/getCourse', function(done) {
@@ -239,7 +249,7 @@ describe('<Unit test for Course controller', function() {
         });
     });
     describe('', function() {
-        return it('Test case 3 : POST /course/updateCourse', function(done) {
+        return it('Test case 4 : POST /course/updateCourse success', function(done) {
             var datasend = {
                 courseIDEdit: 999,
                 courseNameEdit: 'testing3',
@@ -255,36 +265,45 @@ describe('<Unit test for Course controller', function() {
                 .post('/course/updateCourse')
                 .send(datasend)
                 .end(function(err, res) {
-                    console.log('------------------------------- done -------------------');
                     assert.equal(res.body.msg, 'Edit course success!');
                     return done();
                 });
         });
     });
-});
-describe('', function() {
-    return it('Test case 3 : POST /course/updateCourse', function(done) {
-        var datasend = {
-            courseIDEdit: 992,
-            courseNameEdit: 'testing3',
-            courseDescriptionEdit: 'This is testing Des3',
-            courseCategoryEdit: 'testing cat3',
-            courseTestEdit: 'testing testing3',
-            courseDocumentsEdit: 'testing doc3',
-            courseTrainerIDEdit: [{
-                "text": "testing3"
-            }]
-        };
-        request(route)
-            .post('/course/updateCourse')
-            .send(datasend)
-            .end(function(err, res) {
-                console.log('------------------------------- done -------------------');
-                assert.equal(res.body.msg, 'Course not found in database');
-                return done();
-            });
+    describe('', function() {
+        return it('Test case 5 : POST /course/updateCourse : Course not found', function(done) {
+            var datasend = {
+                courseIDEdit: 992,
+                courseNameEdit: 'testing3',
+                courseDescriptionEdit: 'This is testing Des3',
+                courseCategoryEdit: 'testing cat3',
+                courseTestEdit: 'testing testing3',
+                courseDocumentsEdit: 'testing doc3',
+                courseTrainerIDEdit: [{
+                    "text": "testing3"
+                }]
+            };
+            request(route)
+                .post('/course/updateCourse')
+                .send(datasend)
+                .end(function(err, res) {
+                    assert.equal(res.body.msg, 'Course not found in database');
+                    return done();
+                });
+        });
+    });
+    describe('', function() {
+        return it('Test case 6 : POST /course/list return courselist', function(done) {
+            request(route)
+                .get('/course/list')
+                .end(function(err, res) {
+                    assert.equal(res.body.msg, 'send list success');
+                    return done();
+                });
+        });
     });
 });
+
 
 describe('<Unit test for Course model', function() {
     describe('Method Course', function() {

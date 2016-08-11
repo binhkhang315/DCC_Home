@@ -72,16 +72,12 @@ router.post('/addCourse', function(req, res) {
 // update course in database
 router.post('/updateCourse', function(req, res) {
     log.info('Get Course Information');
-    console.log('---------------------Done-------------------------');
-console.log(req.body.courseIDEdit);
     var tID = JSON.stringify(req.body.courseTrainerIDEdit);
     models.course.sync({
         force: false
     }).then(function() {
         models.course.getCourseByID(req.body.courseIDEdit, function(result) {
-console.log('---------------------Done-------------------------');
             if (result) {
-                console.log('okay');
                 models.course.update({
                     name: req.body.courseNameEdit,
                     description: req.body.courseDescriptionEdit,
@@ -100,8 +96,6 @@ console.log('---------------------Done-------------------------');
                     });
                 });
             } else {
-              console.log('----------------------FAIL------------------------');
-              console.log(req.body.courseNameEdit);
                 res.send({
                     msg: 'Course not found in database'
                 });
@@ -125,10 +119,9 @@ router.post('/isDeletedCourse', function(req, res) {
 router.get('/list', function(req, res) {
     log.info('/route/course: get course list data');
     models.course.getCourseList(function(course) {
-        // var data = JSON.stringify(course);
-        // data = JSON.parse(data);
         var datasend = {
-            course: course
+            course: course,
+            msg:'send list success'
         }
         res.send(datasend);
     });
