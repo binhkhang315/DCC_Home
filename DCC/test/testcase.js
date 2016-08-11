@@ -402,7 +402,7 @@ describe('<Unit test for userProfile function>', function() {
                     dob: '20/10/1995'
                 })
                 .end(function(err, res) {
-                    assert.equal(res.text, 'Success');
+                    assert.equal(res.status, '200');
                     return done();
                 });
         });

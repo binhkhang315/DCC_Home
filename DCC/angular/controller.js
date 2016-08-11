@@ -114,26 +114,31 @@ myApp.controller('setFeature', function($scope, $http) {
     });
 });
 
-myApp.controller('setProfile', function($scope, $http, $window) {
+myApp.controller('setProfile', function($scope, $rootScope, $http, $window) {
+    $scope.user = {
+        pStatus: '',
+        pName: '',
+        pDoB: '',
+        pPhone: '',
+        pLocation: '',
+        pEmail: '',
+        pAvatar: ''
+    };
+
     $http.get('/users/userprofileController').then(function(result) {
-        $scope.pStatus = result.data.pStatus;
-        $scope.pName = result.data.pName;
-        $scope.pDoB = result.data.pDoB;
-        $scope.pPhone = result.data.pPhone;
-        $scope.pLocation = result.data.pLocation;
-        $scope.pEmail = result.data.pEmail;
-        $scope.pAvatar = result.data.pAvatar;
+        $scope.user.pStatus = result.data.pStatus;
+        $scope.user.pName = result.data.pName;
+        $scope.user.pDoB = result.data.pDoB;
+        $scope.user.pPhone = result.data.pPhone;
+        $scope.user.pLocation = result.data.pLocation;
+        $scope.user.pEmail = result.data.pEmail;
+        $scope.user.pAvatar = result.data.pAvatar;
     });
 
-    $scope.edit = function() {
-        var user = {
-          status: $scope.pStatus,
-          dob: $scope.pDoB,
-          phone: $scope.pPhone,
-          location: $scope.pLocation,
-          avatar: $scope.pAvatar
-        }
-        $http.post('/users/userprofileReturnValue', user).then(function(result) {
+    $scope.msg = '';
+    $rootScope.edit = function() {
+        $http.post('/users/userprofileReturnValue', $scope.user).then(function(result) {
+          $scope.msg = result.data.msg;
           $window.location.href = '/users/userprofile';
         });
     }

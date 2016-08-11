@@ -95,16 +95,18 @@ router.post('/userprofileReturnValue', function(req, res) {
   log.info('/routes/users: Save edit userprofile');
   models.User.update(
   {
-    status: req.body.status,
-    dob: req.body.dob,
-    phone: req.body.phone,
-    location: req.body.location
+    status: req.body.pStatus,
+    dob: req.body.pDoB,
+    phone: req.body.pPhone,
+    location: req.body.pLocation
   },
   {
     where: { username : 'admin' }
   })
   .then(function (result) {
-    res.send("Success");
+    res.send({
+      msg: "Success"
+    });
   });
 });
 

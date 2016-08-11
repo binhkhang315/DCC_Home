@@ -34,12 +34,12 @@
       <div  class="col-xs-12 col-sm-12 " style="padding-top:100px">
         <div class="panel panel-info">
           <div class="panel-heading">
-            <h3 class="panel-title">{{ pName }}</h3>
+            <h3 class="panel-title">{{ user.pName }}</h3>
           </div>
           <div class="panel-body">
             <div class="row">
               <div class="col-md-3 col-lg-3 ">
-                <img alt="User Pic" src= "{{ pAvatar }}" class="img-responsive">
+                <img alt="User Pic" src= "{{ user.pAvatar }}" class="img-responsive">
 
               </div>
               <div class=" col-md-9 col-lg-9 ">
@@ -47,23 +47,23 @@
                           <tbody>
                             <tr>
                               <td>Status</td>
-                              <td><input id="statusUser" type="text" ng-model="pStatus"></td>
+                              <td><input id="statusUser" type="text" ng-model="user.pStatus"></td>
                             </tr>
                             <tr>
                               <td>Date of Birth</td>
-                              <td><input id="dob" type="text" ng-model="pDoB"></td>
+                              <td><input id="dob" type="text" ng-model="user.pDoB"></td>
                             </tr>
                             <tr>
                               <td>Phone</td>
-                              <td><input id="phone" type="text" ng-model="pPhone"></td>
+                              <td><input id="phone" type="text" ng-model="user.pPhone"></td>
                             </tr>
                               <tr>
                               <td>Location</td>
-                              <td><input id="loc" type="text" ng-model="pLocation"></td>
+                              <td><input id="loc" type="text" ng-model="user.pLocation"></td>
                             </tr>
                             <tr>
                               <td>Email</td>
-                              <td><a href="{{ pEmail }}">{{ pEmail }}</a></td>
+                              <td><a href="{{ user.pEmail }}">{{ user.pEmail }}</a></td>
                             </tr>
                           </tbody>
                     </table>
