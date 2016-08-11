@@ -87,7 +87,7 @@ router.post('/updateCourse', function(req, res) {
                     trainerID: tID
                 }, {
                     where: {
-                        id: tID
+                        id: req.body.courseIDEdit
                     }
                 }).then(function() {
 
