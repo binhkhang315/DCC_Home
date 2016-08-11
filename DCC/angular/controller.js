@@ -213,4 +213,11 @@ myApp.controller('FeedbackCtrl',function($scope, $http, $window){
         courseID : parseInt(courseID),
     });
   }
+  $scope.showFeedback = function(){
+  $scope.feedbackList = [];
+  $http.post('/course/coursesoverview/showFeedback',{courseID:courseID}).then(function(result){
+    $scope.feedbackList = result.data;
+    console.log($scope.feedbackList[0]);
+  });
+}
 });
