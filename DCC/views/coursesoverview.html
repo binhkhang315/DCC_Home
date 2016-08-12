@@ -121,11 +121,11 @@
   </div>
 
   <!-- Show feedbacks -->
-<div class="col-md-12" style="padding-left:5%;" >
+<div class="col-md-12" style="padding-left:15%;" >
     <div ng-controller="FeedbackCtrl">
       <button class="btn btn-primary" ng-click="showFeedback()">Show feedbacks</button>
         <ul ng-repeat="feedback in feedbackList">
-          <li> {{feedback.comment}}</li>
+          <li> {{feedback.comment}} : RATING {{feedback.rating}}</li>
         </ul>
     </div>
   </div>

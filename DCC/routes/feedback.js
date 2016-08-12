@@ -4,6 +4,7 @@ var opts = {
     fileNamePattern: 'roll-<DATE>.log',
     dateFormat: 'YYYY.MM.DD'
 };
+var curUserID = 1;
 
 var log = require('simple-node-logger').createLogManager(opts).createLogger();
 
@@ -14,13 +15,13 @@ models.Feedback.sync({
 exports.saveFeedback = function(req, res) {
     models.Feedback.findOne({
       where:{
-        userID:1,
+        userID:curUserID,
         courseID:req.body.courseID
     }
   }).then(function(feedback) {
       if(feedback===null){
       models.Feedback.create({
-        userID: '1',
+        userID: curUserID,
         comment: req.body.comment,
         courseID:req.body.courseID,
     });
@@ -30,7 +31,7 @@ exports.saveFeedback = function(req, res) {
       courseID:req.body.courseID,
     },{
       where:{
-        userID: '1',
+        userID: curUserID,
         courseID: req.body.courseID,
       }
     })
@@ -40,13 +41,13 @@ exports.saveFeedback = function(req, res) {
 exports.saveRating = function(req, res) {
     models.Feedback.findOne({
       where:{
-        userID:1,
+        userID:curUserID,
         courseID:req.body.courseID
       }
     }).then(function(feedback){
     if(feedback === null){
     models.Feedback.create({
-        userID: '1',
+        userID: curUserID,
         rating: req.body.rating,
         courseID:req.body.courseID,
     });
@@ -56,7 +57,7 @@ exports.saveRating = function(req, res) {
       courseID:req.body.courseID,
     },{
       where:{
-        userID: '1',
+        userID: curUserID,
         courseID: req.body.courseID,
       }
     })
