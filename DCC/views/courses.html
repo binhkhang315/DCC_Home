@@ -4,8 +4,12 @@
 <head>
     <title>DEK Technologies Vietnam Talentnet - Landing Page</title>
 </head>
-
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $('[data-toggle="popover"]').popover();
+});
+</script>
 <body>
     <!-- Navigation -->
     <div class="">
@@ -35,39 +39,37 @@
 
     <!--  List of courses -->
     <div class="container" style="padding-top: 120px">
-      <div class="list"> LIST OF COURSES</div>
-      <div class="panel panel-info">
-          <div class="panel-heading">
-              <div class="btn btn-default" data-toggle="modal" href="#addCourseModal">Add Course</div>
-          </div>
-          <div class="panel-body">
-              <div class="row">
-                  <div style="overflow-x:auto;" class="col-md-12 col-lg-12 ">
-                      <table class="table table-user-information" ng-controller="getList">
-                          <thead>
-                              <tr class="tableheader">
-                                  <th>Name</th>
-                                  <th>Category</th>
-                                  <th>Trainer Name</th>
-                                  <th>Action</th>
-                              </tr>
-                          </thead>
-                          <tbody>
-                              <tr ng-repeat="course in coursesList">
-                                  <td><a href="/course/coursesoverview/{{course.id}} ">{{ course.name }}</td>
+        <div class="list"> LIST OF COURSES</div>
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <div class="btn btn-default" data-toggle="modal" href="#addCourseModal">Add Course</div>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div style="overflow-x:auto;" class="col-md-12 col-lg-12 ">
+                        <table class="table table-user-information" ng-controller="getList">
+                            <thead>
+                                <tr class="tableheader">
+                                    <th>Name</th>
+                                    <th>Category</th>
+                                    <th>Trainer Name</th>
+                                    <th>Action</th>
+                                </tr>
+                                <tr ng-repeat="course in coursesList">
+                                    <td><a href="/course/coursesoverview/{{course.id}}"title="{{course.description}}" data-toggle="popover" data-trigger="hover" data-content="Some content">{{ course.name }}</td>
                                     <td>{{ course.category }}</td>
                                     <td>{{ course.trainerID }}</td>
                                     <td>
-                                      <a class="a-inside edit" data-toggle="modal" href="#editCourseModal" ng-click="editCourse(course)">Edit&nbsp</a>
-                                      <a class="a-inside delete" data-toggle="modal" href="#deleteCourseModal" ng-click="deleteCourse(course)">Delete</a>
-                                  </td>
-                              </tr>
-                          </tbody>
-                      </table>
-                  </div>
-              </div>
-          </div>
-      </div>
+                                        <a class="a-inside edit" data-toggle="modal" href="#editCourseModal" ng-click="editCourse(course)"><span class="glyphicon glyphicon-pencil"></span>&nbsp&nbsp&nbsp&nbsp&nbsp</a>
+                                        <a class="a-inside delete" data-toggle="modal" href="#deleteCourseModal" ng-click="deleteCourse(course)"><span class="glyphicon glyphicon-trash"></span></a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Add Course Form -->
@@ -80,7 +82,7 @@
                     <h4 class="modal-title">Add Course</h4>
                 </div>
                 <form name="addCourseForm" ng-controller="addCourse" role="form" class="form-horizontal" novalidate>
-                  <div class="modal-body">
+                    <div class="modal-body">
                         <!-- Course Name -->
                         <div class="form-group" ng-class="{ 'has-error' : addCourseForm.courseName.$invalid && !addCourseForm.courseName.$pristine }">
                             <label class="col-sm-4 control-label">Course name</label>
@@ -101,15 +103,15 @@
                         <div class="form-group" ng-class="{ 'has-error' : addCourseForm.courseCategory.$invalid && !addCourseForm.courseCategory.$pristine }">
                             <label class="col-sm-4 control-label">Category</label>
                             <div class="col-sm-8">
-                              <select class="form-control" name="courseCategory" ng-model="courseslist.courseCategory">
-                                <option>General Orientation</option>
-                                <option>Linux Programming</option>
-                                <option>AXE Overview</option>
-                                <option>CBA Overview</option>
-                                <option>IMS Overview</option>
-                                <option>AXE Overview</option>
-                                <option>On Demand</option>
-                              </select>
+                                <select class="form-control" name="courseCategory" ng-model="courseslist.courseCategory">
+                                    <option>General Orientation</option>
+                                    <option>Linux Programming</option>
+                                    <option>AXE Overview</option>
+                                    <option>CBA Overview</option>
+                                    <option>IMS Overview</option>
+                                    <option>AXE Overview</option>
+                                    <option>On Demand</option>
+                                </select>
                             </div>
                         </div>
 
@@ -139,11 +141,11 @@
                                 <p ng-show="addCourseForm.courseTrainerID.$invalid && !addCourseForm.courseTrainerID.$pristine" class="help-block">Course trainerID is required.</p>
                             </div>
                         </div>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="submit" class="btn btn-default" ng-click="addCourse()" data-dismiss="modal" ng-disabled="addCourseForm.$invalid">Add</button>
-                  </div>
-              </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-default" ng-click="addCourse()" data-dismiss="modal" ng-disabled="addCourseForm.$invalid">Add</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -158,7 +160,7 @@
                     <h4 class="modal-title">Edit Course</h4>
                 </div>
                 <form name="editCourseForm" role="form" class="form-horizontal" novalidate>
-                  <div class="modal-body">
+                    <div class="modal-body">
 
 
                         <!-- Course Name -->
@@ -185,13 +187,13 @@
                             <label class="col-sm-4 control-label">Category</label>
                             <div class="col-sm-8">
                                 <select class="form-control" name="courseCategoryEdit" ng-model="courseslistEdit.courseCategoryEdit" required>
-                                  <option>General Orientation</option>
-                                  <option>Linux Programming</option>
-                                  <option>AXE Overview</option>
-                                  <option>CBA Overview</option>
-                                  <option>IMS Overview</option>
-                                  <option>AXE Overview</option>
-                                  <option>On Demand</option>
+                                    <option>General Orientation</option>
+                                    <option>Linux Programming</option>
+                                    <option>AXE Overview</option>
+                                    <option>CBA Overview</option>
+                                    <option>IMS Overview</option>
+                                    <option>AXE Overview</option>
+                                    <option>On Demand</option>
                                 </select>
                             </div>
                         </div>
@@ -222,12 +224,12 @@
                                 <p ng-show="editCourseForm.courseTrainerIDEdit.$invalid && !editCourseForm.courseTrainerIDEdit.$pristine" class="help-block">Course trainerID is required.</p>
                             </div>
                         </div>
-                  </div>
-                  <div class="modal-footer">
+                    </div>
+                    <div class="modal-footer">
                         <button type="submit" class="btn btn-default" ng-click="updateCourse()" data-dismiss="modal" ng-disabled="editCourseForm.$invalid">Update</button>
                         <button type="submit" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                  </div>
-              </form>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -242,21 +244,21 @@
                     <h4 class="modal-title">Delete Course</h4>
                 </div>
                 <form name="editCourseForm" role="form" class="form-horizontal" novalidate>
-                  <div class="modal-body">
+                    <div class="modal-body">
 
-                          <div>
-                              <p name="courseNameDelete" ng-model="courseslistDelete.courseNameDelete">
-                                  Are you sure to delete
-                                  <span ng-bind="courseslistDelete.courseNameDelete">
+                        <div>
+                            <p name="courseNameDelete" ng-model="courseslistDelete.courseNameDelete">
+                                Are you sure to delete
+                                <span ng-bind="courseslistDelete.courseNameDelete">
                                   </span> course?
-                              </p>
-                          </div>
+                            </p>
+                        </div>
 
-                  </div>
-                  <div class="modal-footer">
+                    </div>
+                    <div class="modal-footer">
                         <button type="submit" class="btn btn-default" ng-click="isDeletedCourse()" data-dismiss="modal" ng-disabled="editCourseForm.$invalid">Yes</button>
                         <button type="submit" class="btn btn-default" data-dismiss="modal">No</button>
-                  </div>
+                    </div>
                 </form>
             </div>
         </div>
