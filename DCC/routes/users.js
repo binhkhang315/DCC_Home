@@ -130,11 +130,11 @@ router.get('/trainer', function(req, res) {
     res.render('trainer');
 });
 
-// // dashboard route is only for admin
-// router.get('/dashboard', ensureAuthenticated, function(req, res) {
-//     log.info('/routes/users: GET /users/dashboard');
-//     res.send('hihi');
-// });
+// dashboard route is only for admin
+router.get('/dashboard', ensureAuthenticated, function(req, res) {
+    log.info('/routes/users: GET /users/dashboard');
+    res.send('hihi');
+});
 
 
 // ensure authenticated

@@ -6,6 +6,17 @@ var models = require('../models');
 
 var globalCookies;
 
+request(route)
+    .post('/users/login')
+    .send({
+        username: 'qwe@gmail.com',
+        password: 'qwe'
+    })
+    .end(function(err, res) {
+        globalCookies = res.headers['set-cookie'].pop().split(';')[0];
+        return done();
+    });
+
 models.course.sync({
     force: false
 });
@@ -63,9 +74,36 @@ describe('<Unit Test for Routing>', function() {
         });
     });
 
+
     describe('', function() {
-        return it('Test case 6 : get /users/logout ', function(done) {
+        return it('Test case 7 : get /users/dashboard success because user is logged ', function(done) {
+            var req = request(route).get('/users/dashboard');
+            req.cookies = globalCookies;
+            req
+            .set('Accept','application/json')
+            .end(function(err, res) {
+                assert.equal(res.status, '200');
+                return done();
+            });
+        });
+    });
+
+    describe('', function() {
+        return it('Test case 8 : get /users/logout ', function(done) {
             var req = request(route).get('/users/logout');
+            req.cookies = globalCookies;
+            req
+            .set('Accept','application/json')
+            .end(function(err, res) {
+                assert.equal(res.status, '302');
+                return done();
+            });
+        });
+    });
+
+    describe('', function() {
+        return it('Test case 9 : get /users/dashboard fail because user is already log-out ', function(done) {
+            var req = request(route).get('/users/dashboard');
             req.cookies = globalCookies;
             req
             .set('Accept','application/json')
@@ -222,7 +260,6 @@ describe('<Unit test for Login>', function() {
                     });
             });
         });
-
     });
 });
 //------------------------------------------------------------------------------
@@ -518,5 +555,6 @@ describe('<Unit test for userProfile function>', function() {
         });
     });
 });
+
 
 //-----------------------------------------------------------------------
