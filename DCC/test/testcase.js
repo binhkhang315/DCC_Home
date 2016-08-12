@@ -62,6 +62,20 @@ describe('<Unit Test for Routing>', function() {
                 .expect(200, done)
         });
     });
+
+    describe('', function() {
+        return it('Test case 6 : get /users/logout ', function(done) {
+            var req = request(route).get('/users/logout');
+            req.cookies = globalCookies;
+            req
+            .set('Accept','application/json')
+            .end(function(err, res) {
+                assert.equal(res.status, '302');
+                return done();
+            });
+        });
+    });
+
 });
 
 //---------------------------------------------------------------------------------------
