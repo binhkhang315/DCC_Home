@@ -41,7 +41,7 @@ myApp.controller('LoginCtrl', function($scope, $http, $cookies, $rootScope, $win
     }
 });
 
-myApp.controller('setCourse', function($scope, $http, $window) {
+myApp.controller('SetCourseCtrl', function($scope, $http, $window) {
     var path = $window.location.pathname;
     path = path.split('/');
     var courseID = path.pop();
@@ -62,7 +62,7 @@ myApp.controller('setCourse', function($scope, $http, $window) {
     });
 });
 
-myApp.controller('getList', function($scope, $rootScope, $http) {
+myApp.controller('GetListCtrl', function($scope, $rootScope, $http) {
     $http.get('/course/list').then(function(result) {
         $rootScope.coursesList = result.data.course;
         for (var i = 0; i < $rootScope.coursesList.length; i++) {
@@ -94,17 +94,17 @@ myApp.controller('getList', function($scope, $rootScope, $http) {
         $rootScope.courseslistDelete = {
             courseIDDelete: course.id,
             courseNameDelete: course.name,
-            courseDescriptionDelete: course.description,
-            courseCategoryDelete: course.category,
-            courseTestDelete: course.test,
-            courseDocumentsDelete: course.documents,
-            courseTrainerIDDelete: course.trainerID,
+            // courseDescriptionDelete: course.description,
+            // courseCategoryDelete: course.category,
+            // courseTestDelete: course.test,
+            // courseDocumentsDelete: course.documents,
+            // courseTrainerIDDelete: course.trainerID,
             courseIsDeletedDelete: course.isDeleted
         }
     }
 });
 
-myApp.controller('setFeature', function($scope, $http) {
+myApp.controller('SetFeatureCtrl', function($scope, $http) {
     $http.get('/course/features').then(function(result) {
         $scope.courseDocuments = result.data.courseDocuments;
         $scope.courseFeedback = result.data.courseFeedback;
@@ -114,7 +114,7 @@ myApp.controller('setFeature', function($scope, $http) {
     });
 });
 
-myApp.controller('setProfile', function($scope, $rootScope, $http, $window) {
+myApp.controller('SetProfileCtrl', function($scope, $rootScope, $http, $window) {
     $scope.user = {
         pStatus: '',
         pName: '',
@@ -144,8 +144,8 @@ myApp.controller('setProfile', function($scope, $rootScope, $http, $window) {
     }
 });
 
-// add course controller
-myApp.controller('addCourse', function($scope, $rootScope, $window, $http) {
+// AddCourseCtrl: add course controller
+myApp.controller('AddCourseCtrl', function($scope, $rootScope, $window, $http) {
     $scope.courseslist = {
         courseName: '',
         courseDescription: '',
@@ -156,8 +156,8 @@ myApp.controller('addCourse', function($scope, $rootScope, $window, $http) {
     };
     $scope.postMsg = '';
     $scope.getMsg = '';
-    $scope.addCourse = function() {
-        $http.post('/course/addCourse', $scope.courseslist).then(function(result) {
+    $scope.AddCourseCtrl = function() {
+        $http.post('/course/AddCourseCtrl', $scope.courseslist).then(function(result) {
             $scope.postMsg = result.data.msg;
             $http.get('/course/list').then(function(result) {
                 $scope.getMsg = result.data.msg;
@@ -169,12 +169,12 @@ myApp.controller('addCourse', function($scope, $rootScope, $window, $http) {
 
 });
 
-// updateCourse: edit course controller
-myApp.controller('updateCourse', function($scope, $window, $rootScope, $http) {
+// UpdateCourseCtrl: edit course controller
+myApp.controller('UpdateCourseCtrl', function($scope, $window, $rootScope, $http) {
     $scope.postMsg = '';
     $scope.getMsg = '';
-    $scope.updateCourse = function() {
-        $http.post('/course/updateCourse', $rootScope.courseslistEdit).then(function(result) {
+    $scope.UpdateCourseCtrl = function() {
+        $http.post('/course/UpdateCourseCtrl', $rootScope.courseslistEdit).then(function(result) {
             $scope.postMsg = result.data.msg;
             $http.get('/course/list').then(function(result) {
                 $scope.getMsg = result.data.msg;
@@ -186,12 +186,12 @@ myApp.controller('updateCourse', function($scope, $window, $rootScope, $http) {
     }
 });
 
-// isDeletedCourse: delete course controller
-myApp.controller('isDeletedCourse', function($scope, $window, $rootScope, $http) {
+// IsDeletedCourseCtrl: delete course controller
+myApp.controller('IsDeletedCourseCtrl', function($scope, $window, $rootScope, $http) {
     $scope.postMsg = '';
     $scope.getMsg = '';
-    $scope.isDeletedCourse = function() {
-        $http.post('/course/isDeletedCourse', $rootScope.courseslistDelete).then(function(result) {
+    $scope.IsDeletedCourseCtrl = function() {
+        $http.post('/course/IsDeletedCourseCtrl', $rootScope.courseslistDelete).then(function(result) {
             $scope.postMsg = result.data.msg;
             $http.get('/course/list').then(function(result) {
                 $scope.getMsg = result.data.msg;

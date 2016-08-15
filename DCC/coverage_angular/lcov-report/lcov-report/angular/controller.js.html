@@ -546,7 +546,7 @@ myApp.controller('LoginCtrl', function($scope, $http, $cookies, $rootScope, $win
     }
 });
 &nbsp;
-myApp.controller('setCourse', <span class="fstat-no" title="function not covered" >function($scope, $http, $window) {</span>
+myApp.controller('SetCourseCtrl', <span class="fstat-no" title="function not covered" >function($scope, $http, $window) {</span>
 <span class="cstat-no" title="statement not covered" >    var path = $window.location.pathname;</span>
 <span class="cstat-no" title="statement not covered" >    path = path.split('/');</span>
 <span class="cstat-no" title="statement not covered" >    var courseID = path.pop();</span>
@@ -567,7 +567,7 @@ myApp.controller('setCourse', <span class="fstat-no" title="function not covered
     });
 });
 &nbsp;
-myApp.controller('getList', <span class="fstat-no" title="function not covered" >function($scope, $rootScope, $http) {</span>
+myApp.controller('GetListCtrl', <span class="fstat-no" title="function not covered" >function($scope, $rootScope, $http) {</span>
 <span class="cstat-no" title="statement not covered" >    $http.get('/course/list').then(<span class="fstat-no" title="function not covered" >function(result) {</span></span>
 <span class="cstat-no" title="statement not covered" >        $rootScope.coursesList = result.data.course;</span>
 <span class="cstat-no" title="statement not covered" >        for (var i = 0; i &lt; $rootScope.coursesList.length; i++) {</span>
@@ -599,17 +599,17 @@ myApp.controller('getList', <span class="fstat-no" title="function not covered" 
 <span class="cstat-no" title="statement not covered" >        $rootScope.courseslistDelete = {</span>
             courseIDDelete: course.id,
             courseNameDelete: course.name,
-            courseDescriptionDelete: course.description,
-            courseCategoryDelete: course.category,
-            courseTestDelete: course.test,
-            courseDocumentsDelete: course.documents,
-            courseTrainerIDDelete: course.trainerID,
+            // courseDescriptionDelete: course.description,
+            // courseCategoryDelete: course.category,
+            // courseTestDelete: course.test,
+            // courseDocumentsDelete: course.documents,
+            // courseTrainerIDDelete: course.trainerID,
             courseIsDeletedDelete: course.isDeleted
         }
     }
 });
 &nbsp;
-myApp.controller('setFeature', function($scope, $http) {
+myApp.controller('SetFeatureCtrl', function($scope, $http) {
     $http.get('/course/features').then(function(result) {
         $scope.courseDocuments = result.data.courseDocuments;
         $scope.courseFeedback = result.data.courseFeedback;
@@ -619,7 +619,7 @@ myApp.controller('setFeature', function($scope, $http) {
     });
 });
 &nbsp;
-myApp.controller('setProfile', <span class="fstat-no" title="function not covered" >function($scope, $rootScope, $http, $window) {</span>
+myApp.controller('SetProfileCtrl', <span class="fstat-no" title="function not covered" >function($scope, $rootScope, $http, $window) {</span>
 <span class="cstat-no" title="statement not covered" >    $scope.user = {</span>
         pStatus: '',
         pName: '',
@@ -649,8 +649,8 @@ myApp.controller('setProfile', <span class="fstat-no" title="function not covere
     }
 });
 &nbsp;
-// add course controller
-myApp.controller('addCourse', function($scope, $rootScope, $window, $http) {
+// AddCourseCtrl: add course controller
+myApp.controller('AddCourseCtrl', function($scope, $rootScope, $window, $http) {
     $scope.courseslist = {
         courseName: '',
         courseDescription: '',
@@ -661,8 +661,8 @@ myApp.controller('addCourse', function($scope, $rootScope, $window, $http) {
     };
     $scope.postMsg = '';
     $scope.getMsg = '';
-    $scope.addCourse = function() {
-        $http.post('/course/addCourse', $scope.courseslist).then(function(result) {
+    $scope.AddCourseCtrl = function() {
+        $http.post('/course/AddCourseCtrl', $scope.courseslist).then(function(result) {
             $scope.postMsg = result.data.msg;
             $http.get('/course/list').then(function(result) {
                 $scope.getMsg = result.data.msg;
@@ -674,12 +674,12 @@ myApp.controller('addCourse', function($scope, $rootScope, $window, $http) {
 &nbsp;
 });
 &nbsp;
-// updateCourse: edit course controller
-myApp.controller('updateCourse', function($scope, $window, $rootScope, $http) {
+// UpdateCourseCtrl: edit course controller
+myApp.controller('UpdateCourseCtrl', function($scope, $window, $rootScope, $http) {
     $scope.postMsg = '';
     $scope.getMsg = '';
-    $scope.updateCourse = function() {
-        $http.post('/course/updateCourse', $rootScope.courseslistEdit).then(function(result) {
+    $scope.UpdateCourseCtrl = function() {
+        $http.post('/course/UpdateCourseCtrl', $rootScope.courseslistEdit).then(function(result) {
             $scope.postMsg = result.data.msg;
             $http.get('/course/list').then(function(result) {
                 $scope.getMsg = result.data.msg;
@@ -691,12 +691,12 @@ myApp.controller('updateCourse', function($scope, $window, $rootScope, $http) {
     }
 });
 &nbsp;
-// isDeletedCourse: delete course controller
-myApp.controller('isDeletedCourse', function($scope, $window, $rootScope, $http) {
+// IsDeletedCourseCtrl: delete course controller
+myApp.controller('IsDeletedCourseCtrl', function($scope, $window, $rootScope, $http) {
     $scope.postMsg = '';
     $scope.getMsg = '';
-    $scope.isDeletedCourse = function() {
-        $http.post('/course/isDeletedCourse', $rootScope.courseslistDelete).then(function(result) {
+    $scope.IsDeletedCourseCtrl = function() {
+        $http.post('/course/IsDeletedCourseCtrl', $rootScope.courseslistDelete).then(function(result) {
             $scope.postMsg = result.data.msg;
             $http.get('/course/list').then(function(result) {
                 $scope.getMsg = result.data.msg;
@@ -739,7 +739,7 @@ myApp.controller('FeedbackCtrl', <span class="fstat-no" title="function not cove
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Aug 11 2016 17:09:53 GMT+0700 (SE Asia Standard Time)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Aug 15 2016 17:15:35 GMT+0700 (SE Asia Standard Time)
 </div>
 </div>
 <script src="../prettify.js"></script>
