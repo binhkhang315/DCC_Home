@@ -445,7 +445,7 @@ describe('<Unit test for Course model', function() {
     });
 });
 
-describe('<Unit test for User model', function() {
+describe('<Unit test for User model>', function() {
     describe('Method User', function() {
         return it('Test case 1: getUserByID', function(done) {
             models.User.getUserByID('1', function(user) {
@@ -523,7 +523,7 @@ describe('<Unit test for userProfile function>', function() {
 
 });
 
-describe('< Logout Function >', function() {
+describe('<Logout Function>', function() {
     return it('Test for get /users/logout ', function(done) {
         var req = request(route).get('/users/logout');
         req.cookies = globalCookies;

@@ -58,7 +58,7 @@ models.User
   .findOrCreate({
     where: {username: 'admin'},
     defaults: {
-      status: 'Im admin',
+      status: 'I\'m admin',
       dob: '20/10/1995',
       phone: '0123456789',
       location: 'DEK Technologies',

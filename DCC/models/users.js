@@ -55,7 +55,7 @@ module.exports = function(sequelize, DataTypes) {
         User.findOne(query).then(cb);
       },
     },
-    tableName: 'User'
+    tableName: 'user'
   });
   return User;
 };
