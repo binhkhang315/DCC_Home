@@ -173,7 +173,7 @@ describe("Controllers Unit testing", function() {
         };
         $rootScope.courseslist = course;
         $rootScope.AddCourseCtrl();
-        $httpBackend.whenPOST('/course/AddCourseCtrl', $rootScope.courseslist).respond(postData)
+        $httpBackend.whenPOST('/course/addCourse', $rootScope.courseslist).respond(postData)
         $httpBackend.whenGET('/course/list').respond(getData);
         $httpBackend.flush();
         //console.log($rootScope.postMsg);
@@ -207,7 +207,7 @@ describe("Controllers Unit testing", function() {
         };
         $rootScope.courseslist = course;
         $rootScope.UpdateCourseCtrl();
-        $httpBackend.whenPOST('/course/UpdateCourseCtrl', $rootScope.courseslist).respond(postData)
+        $httpBackend.whenPOST('/course/updateCourse', $rootScope.courseslist).respond(postData)
         $httpBackend.whenGET('/course/list').respond(getData);
         $httpBackend.flush();
         expect($rootScope.postMsg).toBe(postData.msg);
@@ -240,7 +240,7 @@ describe("Controllers Unit testing", function() {
         };
         $rootScope.courseslistDelete = course;
         $rootScope.IsDeletedCourseCtrl();
-        $httpBackend.whenPOST('/course/IsDeletedCourseCtrl', $rootScope.courseslistDelete).respond(postData)
+        $httpBackend.whenPOST('/course/isDeletedCourse', $rootScope.courseslistDelete).respond(postData)
         $httpBackend.whenGET('/course/list').respond(getData);
         $httpBackend.flush();
         expect($rootScope.postMsg).toBe(postData.msg);

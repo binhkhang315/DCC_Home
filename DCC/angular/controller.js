@@ -157,7 +157,7 @@ myApp.controller('AddCourseCtrl', function($scope, $rootScope, $window, $http) {
     $scope.postMsg = '';
     $scope.getMsg = '';
     $scope.AddCourseCtrl = function() {
-        $http.post('/course/AddCourseCtrl', $scope.courseslist).then(function(result) {
+        $http.post('/course/addCourse', $scope.courseslist).then(function(result) {
             $scope.postMsg = result.data.msg;
             $http.get('/course/list').then(function(result) {
                 $scope.getMsg = result.data.msg;
@@ -174,7 +174,7 @@ myApp.controller('UpdateCourseCtrl', function($scope, $window, $rootScope, $http
     $scope.postMsg = '';
     $scope.getMsg = '';
     $scope.UpdateCourseCtrl = function() {
-        $http.post('/course/UpdateCourseCtrl', $rootScope.courseslistEdit).then(function(result) {
+        $http.post('/course/updateCourse', $rootScope.courseslistEdit).then(function(result) {
             $scope.postMsg = result.data.msg;
             $http.get('/course/list').then(function(result) {
                 $scope.getMsg = result.data.msg;
@@ -191,7 +191,7 @@ myApp.controller('IsDeletedCourseCtrl', function($scope, $window, $rootScope, $h
     $scope.postMsg = '';
     $scope.getMsg = '';
     $scope.IsDeletedCourseCtrl = function() {
-        $http.post('/course/IsDeletedCourseCtrl', $rootScope.courseslistDelete).then(function(result) {
+        $http.post('/course/isDeletedCourse', $rootScope.courseslistDelete).then(function(result) {
             $scope.postMsg = result.data.msg;
             $http.get('/course/list').then(function(result) {
                 $scope.getMsg = result.data.msg;

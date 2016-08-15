@@ -38,8 +38,8 @@ router.post('/getCourse', function(req, res) {
     });
 });
 
-// AddCourseCtrl: add course to database
-router.post('/AddCourseCtrl', function(req, res) {
+// add course to database
+router.post('/addCourse', function(req, res) {
     log.info('/route/course: Add course :' + req.body);
     var tID = JSON.stringify(req.body.courseTrainerID);
     models.course.sync({
@@ -69,8 +69,8 @@ router.post('/AddCourseCtrl', function(req, res) {
     });
 })
 
-// UpdateCourseCtrl: update course in database
-router.post('/UpdateCourseCtrl', function(req, res) {
+// update course in database
+router.post('/updateCourse', function(req, res) {
     log.info('Get Course Information');
     var tID = JSON.stringify(req.body.courseTrainerIDEdit);
     models.course.sync({
@@ -102,9 +102,8 @@ router.post('/UpdateCourseCtrl', function(req, res) {
         });
 });
 });
-
-// IsDeletedCourseCtrl: mark course as deleted (isDeleted = true)
-router.post('/IsDeletedCourseCtrl', function(req, res) {
+// mark course as deleted (isDeleted = true)
+router.post('/isDeletedCourse', function(req, res) {
     log.info('Get Delete Command');
     models.course.getCourseByID(req.body.courseIDDelete, function(result) {
         if (result) {
@@ -141,7 +140,6 @@ router.get('/', function(req, res) {
     res.render('courses');
     log.info('/route/course: GET /course');
 });
-
 router.get('/coursesoverview/', function(req, res) {
     res.render('coursesoverview');
     log.info('/route/course: GET /course/coursesoverview');
@@ -151,7 +149,6 @@ router.get('/coursesoverview/:id', function(req, res) {
     res.render('coursesoverview');
     log.info('/route/course: GET /course/coursesoverview/:id');
 });
-
 router.get('/trainerdashboard', function(req, res) {
     log.info('/route/course: GET /course/trainerdashboard');
     res.render('trainerdashboard');
