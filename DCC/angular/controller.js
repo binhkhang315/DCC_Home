@@ -208,20 +208,20 @@ myApp.controller('FeedbackCtrl', function($scope, $http, $window) {
     path = path.split('/');
     var courseID = path.pop();
     $scope.addFeedback = function() {
-        $http.post('/course/coursesoverview/comment', {
+        $http.post('/feedback/comment', {
             comment: $scope.comment,
             courseID: parseInt(courseID),
         });
     }
     $scope.addRating = function() {
-        $http.post('/course/coursesoverview/rating', {
+        $http.post('/feedback/rating', {
             rating: $scope.rating,
             courseID: parseInt(courseID),
         });
     }
     $scope.showFeedback = function() {
         $scope.feedbackList = [];
-        $http.post('/course/coursesoverview/showFeedback', {
+        $http.post('/feedback/showFeedback', {
             courseID: courseID
         }).then(function(result) {
             $scope.feedbackList = result.data;

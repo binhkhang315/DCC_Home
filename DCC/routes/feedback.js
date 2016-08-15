@@ -1,4 +1,8 @@
 var models = require("../models");
+var express = require('express');
+var router = express.Router();
+
+
 var opts = {
     logDirectory: './public/log',
     fileNamePattern: 'roll-<DATE>.log',
@@ -12,20 +16,28 @@ models.Feedback.sync({
   force:false
 });
 
-exports.saveFeedback = function(req, res) {
-    models.Feedback.findOne({
+router.post('/comment',function(req,res){
+  log.info('/route/feedback : comment for course');
+  models.Feedback.findOne({
       where:{
-        userID:curUserID,
-        courseID:req.body.courseID
+        userID : curUserID,
+        courseID : req.body.courseID
     }
   }).then(function(feedback) {
+    console.log("thennnnn");
+    console.log(req.body.comment);
       if(feedback===null){
       models.Feedback.create({
         userID: curUserID,
         comment: req.body.comment,
         courseID:req.body.courseID,
-    });
-  }else{
+      });
+      }
+      else{
+        console.log("aaa");
+        console.log(req.body.courseID);
+        console.log("___________________________");
+        console.log(curUserID);
     models.Feedback.update({
       comment: req.body.comment,
       courseID:req.body.courseID,
@@ -36,10 +48,11 @@ exports.saveFeedback = function(req, res) {
       }
     })
   }})
-};
-//
-exports.saveRating = function(req, res) {
-    models.Feedback.findOne({
+});
+
+router.post('/rating',function(req,res){
+  log.info('/route/feedback : rating for course');
+  models.Feedback.findOne({
       where:{
         userID:curUserID,
         courseID:req.body.courseID
@@ -62,9 +75,10 @@ exports.saveRating = function(req, res) {
       }
     })
   }})
-};
+});
 
-exports.showFeedback = function(req, res) {
+router.post('/showFeedback',function(req,res){
+  log.info('/route/feedback : show feedback for course');
   models.Feedback.findAll({
     where:{
       courseID : req.body.courseID
@@ -72,4 +86,6 @@ exports.showFeedback = function(req, res) {
   }).then(function(feedback){
     res.send(feedback);
   })
-};
+});
+
+module.exports = router;

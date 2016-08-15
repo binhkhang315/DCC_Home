@@ -4,6 +4,7 @@ var expect = require('chai').expect;
 var route = require('../app.js');
 var models = require('../models');
 
+var courseCookies;
 var globalCookies;
 
 models.course.sync({
@@ -519,9 +520,47 @@ describe('<Unit test for userProfile function>', function() {
             });
         });
     });
-
-
 });
+
+
+
+describe('<Unit test for feedback function>', function() {
+
+    // describe('', function() {
+    //     return it('Post /users/comment ', function(done) {
+    //         var req = request(route).post('/feedback/comment');
+    //         req.cookies = courseCookies;
+    //         req
+    //         .end(function(err, res) {
+    //             assert.equal(res.status, '200');
+    //             return done();
+    //         });
+    //     });
+    // });
+
+    describe('', function() {
+        return it('Test case 1 : Login success', function(done) {
+            request(route)
+                .post('/feedback/comment')
+                .send({
+                    courseID: 1,
+                    comment: 'testcase for feedback'
+                })
+                .expect(200)
+                .end(done())
+        });
+    });
+
+    //
+    // describe('Route for editUserProfile page', function() {
+    //     return it('Get /users/edituserprofile ', function(done) {
+    //         request(route)
+    //             .get('/users/edituserprofile')
+    //             .expect(200, done)
+    //     });
+    // });
+});
+
 
 describe('<Logout Function>', function() {
     return it('Test for get /users/logout ', function(done) {
