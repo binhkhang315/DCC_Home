@@ -505,14 +505,16 @@ describe('<Unit test for userProfile function>', function() {
         });
     });
 
-    describe('', function() {
-        return it('Test for get /users/logout ', function(done) {
-            var req = request(route).get('/users/logout');
+    describe('Upload avatar method', function() {
+        return it('Post /users/photo ', function(done) {
+            var req = request(route).post('/users/photo');
             req.cookies = globalCookies;
             req
             .set('Accept','application/json')
+            .field('filename', 'test file')
+        		.attach('userPhoto', 'test/test.jpg')
             .end(function(err, res) {
-                assert.equal(res.status, '302');
+                assert.equal(res.status, '200');
                 return done();
             });
         });
@@ -521,5 +523,16 @@ describe('<Unit test for userProfile function>', function() {
 
 });
 
-
+describe('< Logout Function >', function() {
+    return it('Test for get /users/logout ', function(done) {
+        var req = request(route).get('/users/logout');
+        req.cookies = globalCookies;
+        req
+        .set('Accept','application/json')
+        .end(function(err, res) {
+            assert.equal(res.status, '302');
+            return done();
+        });
+    });
+});
 //-----------------------------------------------------------------------
