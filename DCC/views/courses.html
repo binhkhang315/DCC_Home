@@ -6,20 +6,17 @@
 </head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script>
-$(document).ready(function(){
-    $('[data-toggle="popover"]').popover();
-});
+    $(document).ready(function() {
+        $('[data-toggle="popover"]').popover();
+    });
 </script>
+<script src="/ckeditor/ckeditor.js"></script>
+
 <body>
     <!-- Navigation -->
     <div class="">
         <nav class="navbar navbar-dcc navbar-fixed-top topnav" role="navigation">
             <div class="container">
-                <div class="navbar-menu">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="javascript:history.go(-1)">Back</a></li>
-                    </ul>
-                </div>
                 <div class="navbar-header">
                     <a class="navbar-logo" href="/">
                         <img class="img-responsive" src="/img/DCC-ver4.png" alt="" width="100" height="40">
@@ -27,11 +24,6 @@ $(document).ready(function(){
                 </div>
                 <div>
                     <a class="navbar-name" href="/">DEK</br>Competence Center</a>
-                </div>
-                <div class="collapse navbar-rowmenu">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="javascript:history.go(-1)">Back</a></li>
-                    </ul>
                 </div>
             </div>
         </nav>
@@ -53,10 +45,10 @@ $(document).ready(function(){
                                     <th>Name</th>
                                     <th>Category</th>
                                     <th>Trainer Name</th>
-                                    <th>Action</th>
+                                    <th></th>
                                 </tr>
                                 <tr ng-repeat="course in coursesList">
-                                    <td><a href="/course/coursesoverview/{{course.id}}"title="{{course.description}}" data-toggle="popover" data-trigger="hover" data-content="Some content">{{ course.name }}</td>
+                                    <td><a href="/course/coursesoverview/{{course.id}}" title="{{course.description}}" data-toggle="popover" data-trigger="hover" data-content="Some content">{{ course.name }}</td>
                                     <td>{{ course.category }}</td>
                                     <td>{{ course.trainerID }}</td>
                                     <td>
@@ -64,7 +56,7 @@ $(document).ready(function(){
                                         <a class="a-inside delete" data-toggle="modal" href="#deleteCourseModal" ng-click="deleteCourse(course)"><span class="glyphicon glyphicon-trash"></span></a>
                                     </td>
                                 </tr>
-                            </tbody>
+                            </thead>
                         </table>
                     </div>
                 </div>
@@ -95,7 +87,8 @@ $(document).ready(function(){
                         <div class="form-group" ng-class="{ 'has-error' : addCourseForm.courseDescription.$invalid && !addCourseForm.courseDescription.$pristine }">
                             <label class="col-sm-4 control-label">Course description</label>
                             <div class="col-sm-8">
-                                <textarea type="text" class="form-control" name="courseDescription" ng-model="courseslist.courseDescription" placeholder="Course description" required></textarea>
+                                <textarea type="text" class="form-control" name="courseDescription" id="courseDescription" ng-model="courseslist.courseDescription" placeholder="Course description" required></textarea>
+                                
                                 <p ng-show="addCourseForm.courseDescription.$invalid && !addCourseForm.courseDescription.$pristine" class="help-block">Course description is required.</p>
                             </div>
                         </div>
