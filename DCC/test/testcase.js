@@ -449,7 +449,7 @@ describe('<Unit test for User model>', function() {
     describe('Method User', function() {
         return it('Test case 1: getUserByID', function(done) {
             models.User.getUserByID('1', function(user) {
-                assert.equal(user.username, 'qwe@gmail.com');
+                assert.equal(user.username, 'trainee2');
                 return done();
             })
         });
@@ -458,7 +458,7 @@ describe('<Unit test for User model>', function() {
     describe('', function() {
         return it('Test case 2: getUserByName', function(done) {
             models.User.getUserByName('qwe@gmail.com', function(user) {
-                assert.equal(user.id, '1');
+                assert.equal(user.id, '8');
                 return done();
             })
         });
