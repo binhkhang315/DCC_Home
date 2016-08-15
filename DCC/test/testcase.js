@@ -519,9 +519,39 @@ describe('<Unit test for userProfile function>', function() {
             });
         });
     });
-
-
 });
+
+
+
+describe('<Unit test for feedback function>', function() {
+
+    describe('', function() {
+        return it('Test case 1 : a comment can be updated when another one already exists', function(done) {
+            request(route)
+                .post('/feedback/comment')
+                .send({
+                    courseID: 1,
+                    comment: 'testcase for feedback'
+                })
+                .expect(200)
+                .end(done())
+        });
+    });
+
+    describe('', function() {
+        return it('Test case 2 : create new row of feedback in db', function(done) {
+            request(route)
+                .post('/feedback/comment')
+                .send({
+                    courseID: 10,
+                    comment: 'testcase for feedback'
+                })
+                .expect(200)
+                .end(done())
+        });
+    });
+});
+
 
 describe('<Logout Function>', function() {
     return it('Test for get /users/logout ', function(done) {
