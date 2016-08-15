@@ -24,8 +24,6 @@ router.post('/comment',function(req,res){
         courseID : req.body.courseID
     }
   }).then(function(feedback) {
-    console.log("thennnnn");
-    console.log(req.body.comment);
       if(feedback===null){
       models.Feedback.create({
         userID: curUserID,
@@ -34,10 +32,6 @@ router.post('/comment',function(req,res){
       });
       }
       else{
-        console.log("aaa");
-        console.log(req.body.courseID);
-        console.log("___________________________");
-        console.log(curUserID);
     models.Feedback.update({
       comment: req.body.comment,
       courseID:req.body.courseID,

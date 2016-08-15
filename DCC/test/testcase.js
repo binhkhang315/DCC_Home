@@ -4,7 +4,6 @@ var expect = require('chai').expect;
 var route = require('../app.js');
 var models = require('../models');
 
-var courseCookies;
 var globalCookies;
 
 models.course.sync({
@@ -526,20 +525,8 @@ describe('<Unit test for userProfile function>', function() {
 
 describe('<Unit test for feedback function>', function() {
 
-    // describe('', function() {
-    //     return it('Post /users/comment ', function(done) {
-    //         var req = request(route).post('/feedback/comment');
-    //         req.cookies = courseCookies;
-    //         req
-    //         .end(function(err, res) {
-    //             assert.equal(res.status, '200');
-    //             return done();
-    //         });
-    //     });
-    // });
-
     describe('', function() {
-        return it('Test case 1 : Login success', function(done) {
+        return it('Test case 1 : a comment can be updated when another one already exists', function(done) {
             request(route)
                 .post('/feedback/comment')
                 .send({
@@ -551,14 +538,18 @@ describe('<Unit test for feedback function>', function() {
         });
     });
 
-    //
-    // describe('Route for editUserProfile page', function() {
-    //     return it('Get /users/edituserprofile ', function(done) {
-    //         request(route)
-    //             .get('/users/edituserprofile')
-    //             .expect(200, done)
-    //     });
-    // });
+    describe('', function() {
+        return it('Test case 2 : create new row of feedback in db', function(done) {
+            request(route)
+                .post('/feedback/comment')
+                .send({
+                    courseID: 10,
+                    comment: 'testcase for feedback'
+                })
+                .expect(200)
+                .end(done())
+        });
+    });
 });
 
 
