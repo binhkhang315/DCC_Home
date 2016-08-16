@@ -43,7 +43,7 @@ router.post('/comment',function(req,res){
         courseID: req.body.courseID,
       }
     }).then(function(){
-      res.send({msg:'create successfully'});
+      res.send({msg:'update successfully'});
     });
   }})
 });
