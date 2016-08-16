@@ -102,13 +102,6 @@
                                 <p ng-show="addCourseForm.courseName.$invalid && !addCourseForm.courseName.$pristine" class="help-block">Course name is required.</p>
                             </div>
                         </div>
-                        <!-- Course Description -->
-                        <div class="form-group" ng-class="{ 'has-error' : addCourseForm.courseDescription.$invalid && !addCourseForm.courseDescription.$pristine }">
-                            <label class="col-sm-4 control-label">Course description</label>
-                            <div class="col-sm-8">
-                                <text-angular ng-model="courseslist.courseDescription"></text-angular>
-                              </div>
-                        </div>
                         <!-- Course Category -->
                         <div class="form-group" ng-class="{ 'has-error' : addCourseForm.courseCategory.$invalid && !addCourseForm.courseCategory.$pristine }">
                             <label class="col-sm-4 control-label">Category</label>
@@ -150,6 +143,13 @@
                                 <tags-input name="courseTrainerID" min-length="1" replace-spaces-with-dashes="false" ng-model="courseslist.courseTrainerID" placeholder="Trainer name" required></tags-input>
                                 <p ng-show="addCourseForm.courseTrainerID.$invalid && !addCourseForm.courseTrainerID.$pristine" class="help-block">Course trainerID is required.</p>
                             </div>
+                        </div>
+                        <!-- Course Description -->
+                        <div style="text-align:center" class="form-group" ng-class="{ 'has-error' : addCourseForm.courseDescription.$invalid && !addCourseForm.courseDescription.$pristine }">
+                          <label class=" control-label">Course description</label>
+                          </br>
+                          </br>
+                          <text-angular ng-model="courseslist.courseDescription" style="height: 50px;" ></text-angular>
                         </div>
                     </div>
                     <div class="modal-footer">

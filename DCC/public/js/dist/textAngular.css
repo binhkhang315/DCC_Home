@@ -21,8 +21,8 @@
 }
 
 .ta-editor.ta-html, .ta-scroll-window.form-control {
-	min-height: 300px;
-	height: auto;
+	min-height: 150px;
+	height: 150px;
 	overflow: auto;
 	font-family: inherit;
 	font-size: 100%;

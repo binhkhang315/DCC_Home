@@ -1,4 +1,9 @@
 
+.desc{
+  padding: 20px 20px;
+  margin: 20px 20px;
+}
+
 /***********login dropdown****************/
 .dropbtn {
     padding: 16px;
