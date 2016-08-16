@@ -8,7 +8,7 @@ var opts = {
     fileNamePattern: 'roll-<DATE>.log',
     dateFormat: 'YYYY.MM.DD'
 };
-var curUserID = 1;
+var curUserID = 2;
 
 var log = require('simple-node-logger').createLogManager(opts).createLogger();
 
@@ -16,7 +16,7 @@ models.Feedback.sync({
   force:false
 });
 
-router.post('/comment',function(req){
+router.post('/comment',function(req,res){
   log.info('/route/feedback : comment for course that its id is '+ req.body.courseID);
   models.Feedback.findOne({
       where:{
@@ -29,6 +29,8 @@ router.post('/comment',function(req){
         userID: curUserID,
         comment: req.body.comment,
         courseID:req.body.courseID,
+      }).then(function(){
+        res.send({msg:'create successfully'});
       });
       }
       else{
@@ -40,11 +42,13 @@ router.post('/comment',function(req){
         userID: curUserID,
         courseID: req.body.courseID,
       }
-    })
+    }).then(function(){
+      res.send({msg:'create successfully'});
+    });
   }})
 });
 
-router.post('/rating',function(req){
+router.post('/rating',function(req,res){
   log.info('/route/feedback : rating for course that its id is ' + req.body.courseID);
   models.Feedback.findOne({
       where:{
@@ -57,6 +61,8 @@ router.post('/rating',function(req){
         userID: curUserID,
         rating: req.body.rating,
         courseID:req.body.courseID,
+    }).then(function(){
+      res.send({msg:'create successfully'});
     });
   }else{
     models.Feedback.update({
@@ -67,7 +73,9 @@ router.post('/rating',function(req){
         userID: curUserID,
         courseID: req.body.courseID,
       }
-    })
+    }).then(function(){
+      res.send({msg:'update successfully'});
+    });
   }})
 });
 

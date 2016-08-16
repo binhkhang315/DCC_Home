@@ -525,71 +525,86 @@ describe('<Unit test for userProfile function>', function() {
 
 describe('<Unit test for feedback function>', function() {
 
-    describe('', function() {
-        return it('Test case 1 : Update comment for course having comment already', function(done) {
-            request(route)
-                .post('/feedback/comment')
-                .send({
-                    courseID: 1,
-                    comment: 'test for feedback'
-                })
-                .expect(200)
-                .end(done())
-        });
+  describe('', function() {
+      return it('Test case 1 : Create a comment for course that doesnt have comment ', function(done) {
+          request(route)
+              .post('/feedback/comment')
+              .send({
+                  courseID: 101,
+                  comment: 'feedback'
+              })
+              .expect(200)
+              .end(done())
     });
+  });
 
     describe('', function() {
-        return it('Test case 2 : Create a comment for course that doesnt have comment ', function(done) {
+        return it('Test case 2 : Update comment for course having comment already', function(done) {
             request(route)
                 .post('/feedback/comment')
                 .send({
-                    courseID: 100,
-                    comment: 'test for feedback'
+                    courseID: 101,
+                    comment: 'test string'
                 })
                 .expect(200)
                 .end(done());
-        //         afterEach(function() {
-        //             models.Feedback.destroy({
-        //                 where: {
-        //                     courseID: 100
-        //             }
-        //         });
-        // });
-      });
+        });
     });
 
     describe('', function() {
         return it('Test case 3 : Create a rating for course that doesnt have rating', function(done) {
             request(route)
-                .post('/feedback/comment')
+                .post('/feedback/rating')
                 .send({
-                    courseID: 100,
+                    courseID: 99,
                     rating: 3
                 })
                 .expect(200)
-                .end(done());
-                afterEach(function() {
-                    models.Feedback.destroy({
-                        where: {
-                            courseID: 100
-                          }
-                    });
-                });
+                .end(done())
               });
     });
 
     describe('', function() {
         return it('Test case 4 : Update rating for course having rating already', function(done) {
             request(route)
-                .post('/feedback/comment')
+                .post('/feedback/rating')
                 .send({
-                    courseID: 1,
-                    rating: 3
+                    courseID: 99,
+                    rating: 4
                 })
                 .expect(200)
-                .end(done())
+                .end(done());
+                afterEach(function() {
+                    models.Feedback.destroy({
+                        where: {
+                            courseID: 99
+                          }
+                    });
+                });
             });
       });
+
+      describe('', function() {
+          return it('Test case 5 : show feedback', function(done) {
+              request(route)
+                  .post('/feedback/showFeedback')
+                  .send({
+                      courseID: 101,
+                  })
+                  .end(function(err, res) {
+                      assert.equal(res.body[0].comment, 'test string');
+                      return done()
+                  });
+                  afterEach(function() {
+                      models.Feedback.destroy({
+                          where: {
+                              courseID: 101
+                            }
+                      });
+                  });
+              });
+        });
+
   });
 
 
