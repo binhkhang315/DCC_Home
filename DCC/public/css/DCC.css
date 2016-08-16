@@ -1,3 +1,4 @@
+
 /***********login dropdown****************/
 .dropbtn {
     padding: 16px;
@@ -66,6 +67,10 @@
 .tableheader{
   font-size: 25px;
   font-weight: bold;
+  border: 5px solid grey
+}
+table {
+    border: 5px solid grey;
 }
 /***********navbar dcc****************/
 .navbar-dcc {
