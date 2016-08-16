@@ -20,7 +20,8 @@ module.exports = function(config) {
       'public/js/angular-cookies.js',
       'public/js/ng-tags-input.js',
       'angular/*.js',
-      'test/angularjs/*.js'
+      'test/angularjs/*.js',
+      'public/js/dist/*.js'
     ],
 
     plugins: [
