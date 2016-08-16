@@ -137,9 +137,8 @@
 }
 @media all and (max-width: 768px) {
   .navbar-logo{
-    width:120px;
     float:left;
-    padding-top:5px;
+    padding-top:15px;
     padding-bottom: 15px;
     padding-left: 50px;
     padding-right: 1px;

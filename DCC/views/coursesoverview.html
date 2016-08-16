@@ -7,23 +7,45 @@
     <script src='/js/dist/textAngular-rangy.min.js'></script>
     <script src='/js/dist/textAngular-sanitize.min.js'></script>
     <script src='/js/dist/textAngular.min.js'></script>
+
+    <script>
+        $(function() {
+            $('#dl-menu').dlmenu();
+        });
+    </script>
+
 </head>
 <body>
     <!-- Navigation -->
     <div class="">
-          <nav class="navbar navbar-dcc navbar-fixed-top topnav" role="navigation">
-              <div class="container">
-          				<div class="navbar-header">
-          					<a class="navbar-logo" href="/">
-          						<img class="img-responsive" src="/img/DCC-ver4.png" alt="" width="100" height="40">
-          					</a>
-          				</div>
-          				<div>
-          					<a class="navbar-name" href="/">DEK</br>Competence Center</a>
-          				</div>
-  			     </div>
-  		    </nav>
-      </div>
+        <nav class="navbar navbar-dcc navbar-fixed-top topnav" role="navigation">
+            <div class="container">
+                <div class="navbar-menu">
+                    <div id="dl-menu" class="dl-menuwrapper">
+                        <button class="dl-trigger">MENU</button>
+                        <ul class="dl-menu">
+                            <li><a href="/course">Courses</a></li>
+                            <li><a href="/users/userprofile">Profile</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="navbar-header">
+                    <a class="navbar-logo" href="/">
+                        <img class="img-responsive" src="/img/DCC-ver4.png" alt="" width="100">
+                    </a>
+                </div>
+                <div>
+                    <a class="navbar-name" href="/">DEK</br>Competence Center</a>
+                </div>
+                <div class="collapse navbar-rowmenu">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="/course">Courses</a></li>
+                        <li><a href="/users/userprofile">Profile</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
 
     <!-- main course page -->
     <div class="container2" style="padding-top: 130px">
