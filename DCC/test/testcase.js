@@ -526,12 +526,12 @@ describe('<Unit test for userProfile function>', function() {
 describe('<Unit test for feedback function>', function() {
 
     describe('', function() {
-        return it('Test case 1 : a comment can be updated when another one already exists', function(done) {
+        return it('Test case 1 : Update comment for course having comment already', function(done) {
             request(route)
                 .post('/feedback/comment')
                 .send({
                     courseID: 1,
-                    comment: 'testcase for feedback'
+                    comment: 'test for feedback'
                 })
                 .expect(200)
                 .end(done())
@@ -539,18 +539,58 @@ describe('<Unit test for feedback function>', function() {
     });
 
     describe('', function() {
-        return it('Test case 2 : create new row of feedback in db', function(done) {
+        return it('Test case 2 : Create a comment for course that doesnt have comment ', function(done) {
             request(route)
                 .post('/feedback/comment')
                 .send({
-                    courseID: 10,
-                    comment: 'testcase for feedback'
+                    courseID: 100,
+                    comment: 'test for feedback'
+                })
+                .expect(200)
+                .end(done());
+                afterEach(function() {
+                    models.Feedback.destroy({
+                        where: {
+                            courseID: 100
+                    }
+                });
+        });
+      });
+    });
+
+    describe('', function() {
+        return it('Test case 3 : Create a rating for course that doesnt have rating', function(done) {
+            request(route)
+                .post('/feedback/comment')
+                .send({
+                    courseID: 100,
+                    rating: 3
+                })
+                .expect(200)
+                .end(done());
+                afterEach(function() {
+                    models.Feedback.destroy({
+                        where: {
+                            courseID: 100
+                          }
+                    });
+                });
+              });
+    });
+
+    describe('', function() {
+        return it('Test case 4 : Update rating for course having rating already', function(done) {
+            request(route)
+                .post('/feedback/comment')
+                .send({
+                    courseID: 1,
+                    rating: 3
                 })
                 .expect(200)
                 .end(done())
-        });
-    });
-});
+            });
+      });
+  });
 
 
 describe('<Logout Function>', function() {
