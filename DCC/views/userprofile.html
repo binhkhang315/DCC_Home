@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="myApp">
   <head>
-    <title>DEK Technologies Vietnam Talentnet - Landing Page</title>
     <link rel='stylesheet' href='/js/dist/textAngular.css'>
     <script src='/js/dist/textAngular-rangy.min.js'></script>
     <script src='/js/dist/textAngular-sanitize.min.js'></script>
     <script src='/js/dist/textAngular.min.js'></script>
+    <title>DEK Technologies Vietnam Talentnet - Landing Page</title>
   </head>
   <script>
       $(function() {
@@ -43,10 +43,9 @@
             </div>
         </nav>
     </div>
-
     <!--  List of courses -->
     <div class="container"  ng-controller = "SetProfileCtrl">
-      <div  class="col-xs-12 col-sm-12 " style="padding-top:120px">
+      <div  class="col-xs-12 col-sm-12 " style="padding-top:100px">
         <div class="panel panel-info">
           <div class="panel-heading">
             <h3 class="panel-title">{{ user.pName }}</h3>
@@ -62,32 +61,32 @@
                   <input type="file" name="userPhoto" />
                   <input type="submit" value="Upload Image" name="submit">
                   <span id = "status"></span>
-                </form>
+                  </form>
               </div>
               <div class=" col-md-9 col-lg-9 ">
                 <table class="table table-user-information">
-                          <tbody>
-                            <tr>
-                              <td>Status</td>
-                              <td>{{ user.pStatus }}</td>
-                            </tr>
-                            <tr>
-                              <td>Date of Birth</td>
-                              <td>{{ user.pDoB }}</td>
-                            </tr>
-                            <tr>
-                              <td>Phone</td>
-                              <td>{{ user.pPhone }}</td>
-                            </tr>
-                              <tr>
-                              <td>Location</td>
-                              <td>{{ user.pLocation }}</td>
-                            </tr>
-                            <tr>
-                              <td>Email</td>
-                              <td><a href="{{ user.pEmail }}">{{ user.pEmail }}</a></td>
-                            </tr>
-                          </tbody>
+                      <tbody>
+                        <tr>
+                          <td>Status</td>
+                          <td>{{ user.pStatus }}</td>
+                        </tr>
+                        <tr>
+                          <td>Date of Birth</td>
+                          <td>{{ user.pDoB }}</td>
+                        </tr>
+                        <tr>
+                          <td>Phone</td>
+                          <td>{{ user.pPhone }}</td>
+                        </tr>
+                          <tr>
+                          <td>Location</td>
+                          <td>{{ user.pLocation }}</td>
+                        </tr>
+                        <tr>
+                          <td>Email</td>
+                          <td><a href="{{ user.pEmail }}">{{ user.pEmail }}</a></td>
+                        </tr>
+                      </tbody>
                     </table>
                     <button class="pull-right"><a href="/users/edituserprofile">Edit</a></button>
                   </div>
