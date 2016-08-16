@@ -4,10 +4,10 @@
 <head>
     <title>DEK Technologies Vietnam Talentnet - Landing Page</title>
 
-<link rel='stylesheet' href='/js/dist/textAngular.css'>
-<script src='/js/dist/textAngular-rangy.min.js'></script>
-<script src='/js/dist/textAngular-sanitize.min.js'></script>
-<script src='/js/dist/textAngular.min.js'></script>
+    <link rel='stylesheet' href='/js/dist/textAngular.css'>
+    <script src='/js/dist/textAngular-rangy.min.js'></script>
+    <script src='/js/dist/textAngular-sanitize.min.js'></script>
+    <script src='/js/dist/textAngular.min.js'></script>
 </head>
 <script>
     $(document).ready(function() {
@@ -19,6 +19,7 @@
         $('#dl-menu').dlmenu();
     });
 </script>
+
 <body>
     <!-- Navigation -->
     <div class="">
@@ -53,35 +54,35 @@
 
     <!--  List of courses -->
     <div class="container" style="padding-top: 120px">
-          <div class="list"> LIST OF COURSES</div>
-          <div class="row">
-              <div style="overflow-x:auto;" class="col-md-12 col-lg-12 ">
-                  <table class="table table-user-information" ng-controller="GetListCtrl">
-                      <thead>
-                          <tr class="tableheader" style="background-color: #CDC5BF">
-                              <th>Name</th>
-                              <th>Category</th>
-                              <th>Trainer</th>
-                              <th style="text-align:center">
-                                  <div class="btn btn-default" data-toggle="modal" href="#addCourseModal">Add Course</div>
-                              </th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr ng-repeat="course in coursesList">
-                              <td><a href="/course/coursesoverview/{{course.id}}" title="{{course.description}}" data-toggle="popover" data-trigger="hover" data-content="Some content">{{ course.name }}</td>
+        <div class="list"> LIST OF COURSES</div>
+        <div class="row">
+            <div style="overflow-x:auto;" class="col-md-12 col-lg-12 ">
+                <table class="table table-user-information" ng-controller="GetListCtrl">
+                    <thead>
+                        <tr class="tableheader" style="background-color: #CDC5BF">
+                            <th>Name</th>
+                            <th>Category</th>
+                            <th>Trainer</th>
+                            <th style="text-align:center">
+                                <div class="btn btn-default" data-toggle="modal" href="#addCourseModal">Add Course</div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="course in coursesList">
+                            <td><a href="/course/coursesoverview/{{course.id}}" title="{{course.description}}" data-toggle="popover" data-trigger="hover" data-content="Some content">{{ course.name }}</td>
                               <td>{{ course.category }}</td>
                               <td>{{ course.trainerID }}</td>
                               <td style="text-align:center">
                                   <a class="a-inside edit" data-toggle="modal" href="#editCourseModal" ng-click="editCourse(course)"><span class="glyphicon glyphicon-pencil"></span>&nbsp&nbsp&nbsp&nbsp&nbsp</a>
-                                  <a class="a-inside delete" data-toggle="modal" href="#deleteCourseModal" ng-click="deleteCourse(course)"><span class="glyphicon glyphicon-trash"></span></a>
-                              </td>
-                          </tr>
-                        </tbody>
-                  </table>
-              </div>
-          </div>
-      </div>
+                                <a class="a-inside delete" data-toggle="modal" href="#deleteCourseModal" ng-click="deleteCourse(course)"><span class="glyphicon glyphicon-trash"></span></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 
     <!-- Add Course Form -->
     <div class="modal fade" id="addCourseModal" role="dialog">
@@ -146,10 +147,10 @@
                         </div>
                         <!-- Course Description -->
                         <div style="text-align:center" class="form-group" ng-class="{ 'has-error' : addCourseForm.courseDescription.$invalid && !addCourseForm.courseDescription.$pristine }">
-                          <label class=" control-label">Course description</label>
-                          </br>
-                          </br>
-                          <text-angular ng-model="courseslist.courseDescription" style="height: 50px;" ></text-angular>
+                            <label class=" control-label">Course description</label>
+                            </br>
+                            </br>
+                            <text-angular ng-model="courseslist.courseDescription" style="height: 50px;"></text-angular>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -181,17 +182,6 @@
                                 <p ng-show="editCourseForm.courseNameEdit.$invalid && !editCourseForm.courseNameEdit.$pristine" class="help-block">Course name is required.</p>
                             </div>
                         </div>
-
-                        <!-- Course Description -->
-                        <div class="form-group" ng-class="{ 'has-error' : editCourseForm.courseDescriptionEdit.$invalid && !editCourseForm.courseDescriptionEdit.$pristine }">
-                            <label class="col-sm-4 control-label">Course description</label>
-                            <div class="col-sm-8">
-                                <textarea type="text" class="form-control" name="courseDescriptionEdit" ng-model="courseslistEdit.courseDescriptionEdit" required></textarea>
-                                <p ng-show="editCourseForm.courseDescriptionEdit.$invalid && !editCourseForm.courseDescriptionEdit.$pristine" class="help-block">Course description is required.</p>
-                            </div>
-                        </div>
-
-
                         <!-- Course Category -->
                         <div class="form-group" ng-class="{ 'has-error' : editCourseForm.courseCategoryEdit.$invalid && !editCourseForm.courseCategoryEdit.$pristine }">
                             <label class="col-sm-4 control-label">Category</label>
@@ -233,6 +223,13 @@
                                 <tags-input name="courseTrainerIDEdit" min-length="1" replace-spaces-with-dashes="false" ng-model="courseslistEdit.courseTrainerIDEdit" placeholder="Trainer name" required></tags-input>
                                 <p ng-show="editCourseForm.courseTrainerIDEdit.$invalid && !editCourseForm.courseTrainerIDEdit.$pristine" class="help-block">Course trainerID is required.</p>
                             </div>
+                        </div>
+                        <!-- Course Description -->
+                        <div class="form-group" style="text-align:center" >
+                            <label class="control-label">Course description</label>
+                            </br>
+                            </br>
+                            <text-angular ng-model="courseslistEdit.courseDescriptionEdit" style="height: 50px;"></text-angular>
                         </div>
                     </div>
                     <div class="modal-footer">
