@@ -111,7 +111,6 @@ myApp.controller('SetProfileCtrl', function($scope, $rootScope, $http, $window) 
         pEmail: '',
         pAvatar: ''
     };
-
     $http.get('/users/userprofileController').then(function(result) {
         $scope.user.pStatus = result.data.pStatus;
         $scope.user.pName = result.data.pName;

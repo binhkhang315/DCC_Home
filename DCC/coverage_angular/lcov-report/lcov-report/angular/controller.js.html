@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">74.26% </span>
+        <span class="strong">88.12% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>75/101</span>
+        <span class='fraction'>89/101</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -30,18 +30,18 @@
         <span class='fraction'>4/4</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">70.59% </span>
+        <span class="strong">82.35% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>24/34</span>
+        <span class='fraction'>28/34</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">74.26% </span>
+        <span class="strong">88.12% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>75/101</span>
+        <span class='fraction'>89/101</span>
       </div>
     </div>
   </div>
-  <div class='status-line medium'></div>
+  <div class='status-line high'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -252,8 +252,7 @@
 207
 208
 209
-210
-211</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
+210</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -357,7 +356,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -366,22 +365,21 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -566,8 +564,8 @@ myApp.controller('SetFeatureCtrl', function($scope, $http) {
     });
 });
 &nbsp;
-myApp.controller('SetProfileCtrl', <span class="fstat-no" title="function not covered" >function($scope, $rootScope, $http, $window) {</span>
-<span class="cstat-no" title="statement not covered" >    $scope.user = {</span>
+myApp.controller('SetProfileCtrl', function($scope, $rootScope, $http, $window) {
+    $scope.user = {
         pStatus: '',
         pName: '',
         pDoB: '',
@@ -576,22 +574,21 @@ myApp.controller('SetProfileCtrl', <span class="fstat-no" title="function not co
         pEmail: '',
         pAvatar: ''
     };
-&nbsp;
-<span class="cstat-no" title="statement not covered" >    $http.get('/users/userprofileController').then(<span class="fstat-no" title="function not covered" >function(result) {</span></span>
-<span class="cstat-no" title="statement not covered" >        $scope.user.pStatus = result.data.pStatus;</span>
-<span class="cstat-no" title="statement not covered" >        $scope.user.pName = result.data.pName;</span>
-<span class="cstat-no" title="statement not covered" >        $scope.user.pDoB = result.data.pDoB;</span>
-<span class="cstat-no" title="statement not covered" >        $scope.user.pPhone = result.data.pPhone;</span>
-<span class="cstat-no" title="statement not covered" >        $scope.user.pLocation = result.data.pLocation;</span>
-<span class="cstat-no" title="statement not covered" >        $scope.user.pEmail = result.data.pEmail;</span>
-<span class="cstat-no" title="statement not covered" >        $scope.user.pAvatar = result.data.pAvatar;</span>
+    $http.get('/users/userprofileController').then(function(result) {
+        $scope.user.pStatus = result.data.pStatus;
+        $scope.user.pName = result.data.pName;
+        $scope.user.pDoB = result.data.pDoB;
+        $scope.user.pPhone = result.data.pPhone;
+        $scope.user.pLocation = result.data.pLocation;
+        $scope.user.pEmail = result.data.pEmail;
+        $scope.user.pAvatar = result.data.pAvatar;
     });
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    $scope.msg = '';</span>
-<span class="cstat-no" title="statement not covered" >    $rootScope.edit = <span class="fstat-no" title="function not covered" >function() {</span></span>
-<span class="cstat-no" title="statement not covered" >        $http.post('/users/userprofileReturnValue', $scope.user).then(<span class="fstat-no" title="function not covered" >function(result) {</span></span>
-<span class="cstat-no" title="statement not covered" >            $scope.msg = result.data.msg;</span>
-<span class="cstat-no" title="statement not covered" >            $window.location.href = '/users/userprofile';</span>
+    $scope.msg = '';
+    $rootScope.edit = function() {
+        $http.post('/users/userprofileReturnValue', $scope.user).then(function(result) {
+            $scope.msg = result.data.msg;
+            $window.location.href = '/users/userprofile';
         });
     }
 });
@@ -679,7 +676,7 @@ myApp.controller('FeedbackCtrl', <span class="fstat-no" title="function not cove
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Aug 16 2016 17:26:26 GMT+0700 (SE Asia Standard Time)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Aug 16 2016 17:42:26 GMT+0700 (SE Asia Standard Time)
 </div>
 </div>
 <script src="../prettify.js"></script>
