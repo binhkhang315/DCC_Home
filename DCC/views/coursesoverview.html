@@ -3,6 +3,10 @@
   <head>
     <title>DEK Technologies Vietnam Talentnet - Landing Page</title>
     <script> </script>
+    <link rel='stylesheet' href='/js/dist/textAngular.css'>
+    <script src='/js/dist/textAngular-rangy.min.js'></script>
+    <script src='/js/dist/textAngular-sanitize.min.js'></script>
+    <script src='/js/dist/textAngular.min.js'></script>
 </head>
 <body>
     <!-- Navigation -->
@@ -32,7 +36,7 @@
             <!-- <a href= "{{ courseTrainerPage }}" > {{ courseTrainer }} </a> -->
           </div>
           </br>
-      		<p class="text">{{ courseDescription }}</p>
+      		<div ng-bind-html="courseDescription"></p>
         </div>
         <!-- CALENDAR -->
         <!-- TODO: modify Features section -->
