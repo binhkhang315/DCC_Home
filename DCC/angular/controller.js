@@ -1,6 +1,6 @@
-var myApp = angular.module('myApp', ['ngCookies', 'ngTagsInput']);
+var myApp = angular.module('myApp', ['ngCookies', 'ngTagsInput','course']);
 // creat angular controller
-myApp.controller('LoginCtrl', function($scope, $http, $cookies, $rootScope, $window) {
+myApp.controller('LoginCtrl', function($scope, $http, $cookies, $rootScope) {
     // function to submit the form after all validation has occurred
     $http.get('/isLogged')
         .then(function(res) {
@@ -25,7 +25,6 @@ myApp.controller('LoginCtrl', function($scope, $http, $cookies, $rootScope, $win
                 $cookies.put('userid', result.data.userid);
                 $rootScope.userid = result.data.userid;
                 $scope.message = result.data.msg;
-                $window.location.reload();
             } else {
                 $scope.isAuthenticated = false;
                 $scope.message = result.data.msg;
@@ -34,10 +33,7 @@ myApp.controller('LoginCtrl', function($scope, $http, $cookies, $rootScope, $win
     };
     // logout function
     $rootScope.logout = function() {
-
         $cookies.remove('userid');
-        $window.location.reload();
-
     }
 });
 
@@ -145,7 +141,7 @@ myApp.controller('SetProfileCtrl', function($scope, $rootScope, $http, $window) 
 });
 
 // AddCourseCtrl: add course controller
-myApp.controller('AddCourseCtrl', function($scope, $rootScope, $window, $http) {
+myApp.controller('AddCourseCtrl', function($scope, $rootScope, $http,CourseList) {
     $scope.courseslist = {
         courseName: '',
         courseDescription: '',
@@ -159,46 +155,40 @@ myApp.controller('AddCourseCtrl', function($scope, $rootScope, $window, $http) {
     $scope.AddCourseCtrl = function() {
         $http.post('/course/addCourse', $scope.courseslist).then(function(result) {
             $scope.postMsg = result.data.msg;
-            $http.get('/course/list').then(function(result) {
-                $scope.getMsg = result.data.msg;
-                $rootScope.coursesList = result.data.course;
+            CourseList.getCourseList().then(function(result){
+              console.log(result);
+              $rootScope.coursesList = result;
             });
         });
-        $window.location.reload();
     }
 
 });
 
 // UpdateCourseCtrl: edit course controller
-myApp.controller('UpdateCourseCtrl', function($scope, $window, $rootScope, $http) {
+myApp.controller('UpdateCourseCtrl', function($scope, $rootScope, $http,CourseList) {
     $scope.postMsg = '';
     $scope.getMsg = '';
     $scope.UpdateCourseCtrl = function() {
         $http.post('/course/updateCourse', $rootScope.courseslistEdit).then(function(result) {
             $scope.postMsg = result.data.msg;
-            $http.get('/course/list').then(function(result) {
-                $scope.getMsg = result.data.msg;
-                $rootScope.courseslistEdit = result.data.course;
+            CourseList.getCourseList().then(function(result){
+              $rootScope.coursesList = result;
             });
         });
-
-        $window.location.reload();
     }
 });
 
 // IsDeletedCourseCtrl: delete course controller
-myApp.controller('IsDeletedCourseCtrl', function($scope, $window, $rootScope, $http) {
+myApp.controller('IsDeletedCourseCtrl', function($scope, $rootScope, $http,CourseList) {
     $scope.postMsg = '';
     $scope.getMsg = '';
     $scope.IsDeletedCourseCtrl = function() {
         $http.post('/course/isDeletedCourse', $rootScope.courseslistDelete).then(function(result) {
             $scope.postMsg = result.data.msg;
-            $http.get('/course/list').then(function(result) {
-                $scope.getMsg = result.data.msg;
-                $rootScope.courseslistDelete = result.data.course;
+            CourseList.getCourseList().then(function(result){
+              $rootScope.coursesList = result;
             });
         });
-        $window.location.reload();
     }
 });
 

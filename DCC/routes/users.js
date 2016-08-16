@@ -228,20 +228,20 @@ router.get('/trainer', function(req, res) {
 });
 
 // dashboard route is only for admin
-router.get('/dashboard', ensureAuthenticated, function(req, res) {
-    log.info('/routes/users: GET /users/dashboard');
-    res.send('hihi');
-});
+// router.get('/dashboard', ensureAuthenticated, function(req, res) {
+//     log.info('/routes/users: GET /users/dashboard');
+//     res.send('hihi');
+// });
 
 
 // ensure authenticated
-function ensureAuthenticated(req, res, next) {
-    if (req.isAuthenticated()) {
-        return next();
-    } else {
-        res.redirect('/');
-    }
-}
+// function ensureAuthenticated(req, res, next) {
+//     if (req.isAuthenticated()) {
+//         return next();
+//     } else {
+//         res.redirect('/');
+//     }
+// }
 // This creates a set of roles which have permissions on
 //  different resources.
 

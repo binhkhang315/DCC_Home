@@ -64,7 +64,7 @@
                                 <a href="#">Admin&nbsp<span class="glyphicon glyphicon-hand-right"></span></a>
                                 <ul class="dl-submenu">
                                     <li role="presentation" ng-hide="!userid" ng-lick="logout()"><a href="/users/logout">Logout</a></li>
-                                    <li role="presentation" ng-hide="!userid"><a href="/users/dashboard">Dashboard</a></li>
+                                    <!-- <li role="presentation" ng-hide="!userid"><a href="/users/dashboard">Dashboard</a></li> -->
                                     <li><a href="/users/userprofile">Profile</a></li>
                                 </ul>
                             </li>
@@ -91,7 +91,7 @@
                         <li role="presentation" ng-hide="!userid" class="dropdown">
                             <a onclick="myFunction()" class="dropbtn">{{userid}}&nbsp<span class="glyphicon glyphicon-hand-down"></span></a>
                             <ul id="myDropdown" class="dropdown-content">
-                                <li role="presentation" ng-hide="!userid"><a href="/users/dashboard">Dashboard</a></li>
+                                <!-- <li role="presentation" ng-hide="!userid"><a href="/users/dashboard">Dashboard</a></li> -->
                                 <li role="presentation" ng-hide="!userid"><a href="/users/userprofile">Profile</a></li>
                                 <li role="presentation" ng-hide="!userid" ng-click="logout()"><a href="/users/logout">Logout</a></li>
                             </ul>
