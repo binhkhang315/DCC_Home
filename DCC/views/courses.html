@@ -4,10 +4,14 @@
 <head>
     <title>DEK Technologies Vietnam Talentnet - Landing Page</title>
 </head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script>
     $(document).ready(function() {
         $('[data-toggle="popover"]').popover();
+    });
+</script>
+<script>
+    $(function() {
+        $('#dl-menu').dlmenu();
     });
 </script>
 <body>
@@ -15,13 +19,28 @@
     <div class="">
         <nav class="navbar navbar-dcc navbar-fixed-top topnav" role="navigation">
             <div class="container">
+                <div class="navbar-menu">
+                    <div id="dl-menu" class="dl-menuwrapper">
+                        <button class="dl-trigger">MENU</button>
+                        <ul class="dl-menu">
+                            <li><a href="/course">Courses</a></li>
+                            <li><a href="/users/userprofile">Profile</a></li>
+                        </ul>
+                    </div>
+                </div>
                 <div class="navbar-header">
                     <a class="navbar-logo" href="/">
-                        <img class="img-responsive" src="/img/DCC-ver4.png" alt="" width="100" height="40">
+                        <img class="img-responsive" src="/img/DCC-ver4.png" alt="" width="100">
                     </a>
                 </div>
                 <div>
                     <a class="navbar-name" href="/">DEK</br>Competence Center</a>
+                </div>
+                <div class="collapse navbar-rowmenu">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="/course">Courses</a></li>
+                        <li><a href="/users/userprofile">Profile</a></li>
+                    </ul>
                 </div>
             </div>
         </nav>
