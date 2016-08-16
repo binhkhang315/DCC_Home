@@ -16,7 +16,7 @@ models.Feedback.sync({
   force:false
 });
 
-router.post('/comment',function(req,res){
+router.post('/comment',function(req){
   log.info('/route/feedback : comment for course that its id is '+ req.body.courseID);
   models.Feedback.findOne({
       where:{
@@ -25,7 +25,6 @@ router.post('/comment',function(req,res){
     }
   }).then(function(feedback) {
       if(feedback===null){
-        // log.info('create new row of feedback for courses');
         models.Feedback.create({
         userID: curUserID,
         comment: req.body.comment,
@@ -34,7 +33,6 @@ router.post('/comment',function(req,res){
       }
       else{
     models.Feedback.update({
-      // log.info('update comment for course');
       comment: req.body.comment,
       courseID:req.body.courseID,
     },{
@@ -46,7 +44,7 @@ router.post('/comment',function(req,res){
   }})
 });
 
-router.post('/rating',function(req,res){
+router.post('/rating',function(req){
   log.info('/route/feedback : rating for course that its id is ' + req.body.courseID);
   models.Feedback.findOne({
       where:{
