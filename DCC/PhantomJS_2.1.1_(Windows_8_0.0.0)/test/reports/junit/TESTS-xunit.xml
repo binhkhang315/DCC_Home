@@ -1,27 +1,32 @@
 <?xml version="1.0"?>
-<testsuite name="PhantomJS 2.1.1 (Windows 8 0.0.0)" package="" timestamp="2016-08-15T10:40:35" id="0" hostname="VN-LAP-77-VNPC" tests="15" errors="0" failures="0" time="0.144">
+<testsuite name="PhantomJS 2.1.1 (Windows 8 0.0.0)" package="" timestamp="2016-08-16T06:57:14" id="0" hostname="VN-LAP-108-VNPC" tests="22" errors="0" failures="0" time="0.175">
   <properties>
     <property name="browser.fullName" value="Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/538.1 (KHTML, like Gecko) PhantomJS/2.1.1 Safari/538.1"/>
   </properties>
-  <testcase name="Controllers Unit testing Test 1: LoginCtrl Be Defined" time="0.036" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).Controllers Unit testing"/>
-  <testcase name="Controllers Unit testing Test 2: Check Login Success " time="0.023" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).Controllers Unit testing"/>
-  <testcase name="Controllers Unit testing Test 3: Check Login Fail: username true, password false " time="0.009" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).Controllers Unit testing"/>
-  <testcase name="Controllers Unit testing Test 4: Check Login Fail: username false, password true " time="0.007" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).Controllers Unit testing"/>
-  <testcase name="Controllers Unit testing Test 5: Check Login Fail: username null" time="0.006" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).Controllers Unit testing"/>
-  <testcase name="Controllers Unit testing Test 6: Check Login Fail: password null " time="0.005" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).Controllers Unit testing"/>
-  <testcase name="Controllers Unit testing Test 7: AddCourseCtrl Be Defined" time="0.009" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).Controllers Unit testing"/>
-  <testcase name="Controllers Unit testing Test 8: AddCourseCtrl() test" time="0.008" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).Controllers Unit testing"/>
-  <testcase name="Controllers Unit testing Test 9: UpdateCourseCtrl Be Defined" time="0.006" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).Controllers Unit testing"/>
-  <testcase name="Controllers Unit testing Test 10: UpdateCourseCtrl() test" time="0.007" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).Controllers Unit testing"/>
-  <testcase name="Controllers Unit testing Test 11: IsDeletedCourseCtrl Be Defined" time="0.004" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).Controllers Unit testing"/>
-  <testcase name="Controllers Unit testing Test 12: IsDeletedCourseCtrl() test" time="0.006" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).Controllers Unit testing"/>
-  <testcase name="Controllers Unit testing Test 13: SetFeatureCtrl Be Defined" time="0.006" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).Controllers Unit testing"/>
-  <testcase name="Controllers Unit testing Test 14: SetFeatureCtrl Be Defined" time="0.005" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).Controllers Unit testing"/>
-  <testcase name="Controllers Unit testing Test 15: get /course/features test" time="0.007" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).Controllers Unit testing"/>
+  <testcase name="GetListCtrl Unit testing #1 Test 1. CourseList service, true result" time="0.035" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).GetListCtrl Unit testing #1"/>
+  <testcase name="GetListCtrl Unit testing #1 Test 2. CourseList service, true result" time="0.005" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).GetListCtrl Unit testing #1"/>
+  <testcase name="GetListCtrl Unit testing #1 Test 3. CourseList service, false result" time="0.005" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).GetListCtrl Unit testing #1"/>
+  <testcase name="GetListCtrl Unit testing #1 Test 4. CourseList service, false result" time="0.005" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).GetListCtrl Unit testing #1"/>
+  <testcase name="GetListCtrl Unit testing #1 Test 5: editCourse() test" time="0.005" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).GetListCtrl Unit testing #1"/>
+  <testcase name="GetListCtrl Unit testing #1 Test 6: editCourse() test" time="0.004" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).GetListCtrl Unit testing #1"/>
+  <testcase name="GetListCtrl Unit testing #1 Test 7: deleteCourse() test" time="0.005" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).GetListCtrl Unit testing #1"/>
+  <testcase name="GetListCtrl Unit testing #1 Test 8: deleteCourse() test" time="0.005" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).GetListCtrl Unit testing #1"/>
+  <testcase name="LoginCtrl Unit testing #2 Test 1: LoginCtrl Be Defined" time="0.007" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).LoginCtrl Unit testing #2"/>
+  <testcase name="LoginCtrl Unit testing #2 Test 2: Check Login Success " time="0.013" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).LoginCtrl Unit testing #2"/>
+  <testcase name="LoginCtrl Unit testing #2 Test 3: Check Login Fail: username true, password false " time="0.005" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).LoginCtrl Unit testing #2"/>
+  <testcase name="LoginCtrl Unit testing #2 Test 4: Check Login Fail: username false, password true " time="0.005" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).LoginCtrl Unit testing #2"/>
+  <testcase name="LoginCtrl Unit testing #2 Test 5: Check Login Fail: username null" time="0.006" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).LoginCtrl Unit testing #2"/>
+  <testcase name="LoginCtrl Unit testing #2 Test 6: Check Login Fail: password null " time="0.005" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).LoginCtrl Unit testing #2"/>
+  <testcase name="AddCourseCtrl Unit testing #3 Test 1: AddCourseCtrl Be Defined" time="0.004" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).AddCourseCtrl Unit testing #3"/>
+  <testcase name="AddCourseCtrl Unit testing #3 Test 2: addCourse() test" time="0.006" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).AddCourseCtrl Unit testing #3"/>
+  <testcase name="UpdateCourseCtrl Unit testing #4 Test 1: UpdateCourseCtrl Be Defined" time="0.03" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).UpdateCourseCtrl Unit testing #4"/>
+  <testcase name="UpdateCourseCtrl Unit testing #4 Test 2: updateCourse() test" time="0.006" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).UpdateCourseCtrl Unit testing #4"/>
+  <testcase name="IsDeletedCourseCtrl Unit testing #6 Test 1: IsDeletedCourseCtrl Be Defined" time="0.004" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).IsDeletedCourseCtrl Unit testing #6"/>
+  <testcase name="IsDeletedCourseCtrl Unit testing #6 Test 2: isDeletedCourse() test" time="0.006" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).IsDeletedCourseCtrl Unit testing #6"/>
+  <testcase name="SetFeatureCtrl Unit testing #7 Test 1: SetFeatureCtrl Be Defined" time="0.004" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).SetFeatureCtrl Unit testing #7"/>
+  <testcase name="SetFeatureCtrl Unit testing #7 Test 2: get /course/features test" time="0.005" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).SetFeatureCtrl Unit testing #7"/>
   <system-out>
-    <![CDATA[PhantomJS 2.1.1 (Windows 8 0.0.0) LOG: 'this is test 1'
-,PhantomJS 2.1.1 (Windows 8 0.0.0) LOG: 'this is test 2'
-
+    <![CDATA[
 ]]>
   </system-out>
   <system-err/>
