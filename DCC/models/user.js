@@ -41,14 +41,14 @@ module.exports = function(sequelize, DataTypes) {
   }, {
     classMethods: {
       getUserByID: function(id,cb){
-        log.info('/models/userdata: getUserByID() : ' + id);
+        log.info('/models/user: getUserByID() : ' + id);
         var query = {
           where: {id: id}
         };
         User.findOne(query).then(cb);
       },
       getUserByName: function(username,cb){
-        log.info('/models/userdata: getUserByName() : ' + username);
+        log.info('/models/user: getUserByName() : ' + username);
         var query = {
           where: {username: username}
         };

@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp', ['ngCookies', 'ngTagsInput','course']);
+var myApp = angular.module('myApp', ['ngCookies', 'ngTagsInput', 'textAngular','course']);
 // creat angular controller
 myApp.controller('LoginCtrl', function($scope, $http, $cookies, $rootScope) {
     // function to submit the form after all validation has occurred
@@ -37,7 +37,7 @@ myApp.controller('LoginCtrl', function($scope, $http, $cookies, $rootScope) {
     }
 });
 
-myApp.controller('SetCourseCtrl', function($scope, $http, $window) {
+myApp.controller('SetCourseCtrl', function($scope, $http, $window,$sce) {
     var path = $window.location.pathname;
     path = path.split('/');
     var courseID = path.pop();
@@ -52,7 +52,7 @@ myApp.controller('SetCourseCtrl', function($scope, $http, $window) {
         $scope.courseName = result.data.courseName;
         $scope.courseTrainer = trainers;
         $scope.courseTrainerPage = result.data.courseTrainerPage;
-        $scope.courseDescription = result.data.courseDescription;
+        $scope.courseDescription = $sce.trustAsHtml(result.data.courseDescription);
         $scope.courseCategory = result.data.courseCategory;
         $scope.courseDocuments = result.data.courseDocuments;
     });
@@ -153,15 +153,14 @@ myApp.controller('AddCourseCtrl', function($scope, $rootScope, $http,CourseList)
     $scope.postMsg = '';
     $scope.getMsg = '';
     $scope.AddCourseCtrl = function() {
+
         $http.post('/course/addCourse', $scope.courseslist).then(function(result) {
             $scope.postMsg = result.data.msg;
             CourseList.getCourseList().then(function(result){
-              console.log(result);
               $rootScope.coursesList = result;
             });
         });
     }
-
 });
 
 // UpdateCourseCtrl: edit course controller

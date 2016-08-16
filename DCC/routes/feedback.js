@@ -16,8 +16,8 @@ models.Feedback.sync({
   force:false
 });
 
-router.post('/comment',function(req,res){
-  log.info('/route/feedback : comment for course');
+router.post('/comment',function(req){
+  log.info('/route/feedback : comment for course that its id is '+ req.body.courseID);
   models.Feedback.findOne({
       where:{
         userID : curUserID,
@@ -25,7 +25,7 @@ router.post('/comment',function(req,res){
     }
   }).then(function(feedback) {
       if(feedback===null){
-      models.Feedback.create({
+        models.Feedback.create({
         userID: curUserID,
         comment: req.body.comment,
         courseID:req.body.courseID,
@@ -44,8 +44,8 @@ router.post('/comment',function(req,res){
   }})
 });
 
-router.post('/rating',function(req,res){
-  log.info('/route/feedback : rating for course');
+router.post('/rating',function(req){
+  log.info('/route/feedback : rating for course that its id is ' + req.body.courseID);
   models.Feedback.findOne({
       where:{
         userID:curUserID,
@@ -72,7 +72,7 @@ router.post('/rating',function(req,res){
 });
 
 router.post('/showFeedback',function(req,res){
-  log.info('/route/feedback : show feedback for course');
+  log.info('/route/feedback : show feedback for course that its id is ' + req.body.courseID);
   models.Feedback.findAll({
     where:{
       courseID : req.body.courseID

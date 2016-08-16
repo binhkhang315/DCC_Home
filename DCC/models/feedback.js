@@ -1,5 +1,4 @@
 
-"use strict";
 var opts = {
     logDirectory: './public/log',
     fileNamePattern: 'roll-<DATE>.log',
@@ -27,6 +26,8 @@ module.exports = function(sequelize, DataTypes) {
       allowNull:false,
       primaryKey:true
     }
+  },{
+    tableName: 'feedback'
   });
   return Feedback;
 };

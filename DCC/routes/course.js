@@ -52,6 +52,7 @@ router.post('/addCourse', function(req, res) {
                     msg: 'Name already existed. Add fail!'
                 });
             } else {
+             
                 models.course.create({
                     name: req.body.courseName,
                     description: req.body.courseDescription,

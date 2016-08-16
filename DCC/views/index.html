@@ -4,6 +4,10 @@
 <head>
 
     <!-- dropdown menu when  -->
+    <link rel='stylesheet' href='/js/dist/textAngular.css'>
+    <script src='/js/dist/textAngular-rangy.min.js'></script>
+    <script src='/js/dist/textAngular-sanitize.min.js'></script>
+    <script src='/js/dist/textAngular.min.js'></script>
     <script>
         $(function() {
             $('#dl-menu').dlmenu();
@@ -58,14 +62,13 @@
                         <ul class="dl-menu">
                             <li><a href="#about">About us</a></li>
                             <li><a href="#contact">Contact</a></li>
-                            <li><a href="/course">Courses</a></li>
                             <li ng-hide="userid"><a id="login">Login</a></li>
                             <li role="presentation" ng-hide="!userid">
                                 <a href="#">Admin&nbsp<span class="glyphicon glyphicon-hand-right"></span></a>
                                 <ul class="dl-submenu">
-                                    <li role="presentation" ng-hide="!userid" ng-lick="logout()"><a href="/users/logout">Logout</a></li>
-                                    <!-- <li role="presentation" ng-hide="!userid"><a href="/users/dashboard">Dashboard</a></li> -->
+                                    <li role="presentation" ng-hide="!userid"><a href="/course">Courses</a></li>
                                     <li><a href="/users/userprofile">Profile</a></li>
+                                    <li role="presentation" ng-hide="!userid" ng-click="logout()"><a href="/users/logout">Logout</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -86,12 +89,11 @@
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="#about">About us</a></li>
                         <li><a href="#contact">Contact</a></li>
-                        <li><a href="/course">Courses</a></li>
                         <li role="presentation" ng-hide="userid"><a data-toggle="modal" href="#loginModal">Login</a></li>
                         <li role="presentation" ng-hide="!userid" class="dropdown">
-                            <a onclick="myFunction()" class="dropbtn">{{userid}}&nbsp<span class="glyphicon glyphicon-hand-down"></span></a>
+                            <a onclick="myFunction()" class="dropbtn">Admin&nbsp<span class="glyphicon glyphicon-hand-down"></span></a>
                             <ul id="myDropdown" class="dropdown-content">
-                                <!-- <li role="presentation" ng-hide="!userid"><a href="/users/dashboard">Dashboard</a></li> -->
+                                <li role="presentation" ng-hide="!userid"><a href="/course">Courses</a></li>
                                 <li role="presentation" ng-hide="!userid"><a href="/users/userprofile">Profile</a></li>
                                 <li role="presentation" ng-hide="!userid" ng-click="logout()"><a href="/users/logout">Logout</a></li>
                             </ul>
@@ -200,17 +202,7 @@
 
     <!-- About -->
     <div class="" id="about" style="background: url(../img/about.jpg)">
-        <div class="about">
-            <p>
-                <h3>About DEK Competence center</h3>
-                </br>
-                <h1>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In id urna consequat, tincidunt turpis non, laoreet lacus. Vivamus varius elit non diam mattis tincidunt. Phasellus at maximus nisi. Suspendisse fermentum ipsum et turpis dignissim, id imperdiet justo volutpat. Donec imperdiet sollicitudin dolor sed porta.</h1>
-                </br>
-                <h1>Phasellus molestie ligula arcu, ac molestie justo pulvinar congue. Aenean semper metus neque, eget ultricies diam semper eget. Donec magna nisl, placerat a auctor varius, lacinia a mauris. Suspendisse commodo in augue eget sagittis. Morbi at volutpat augue, at aliquam diam.</h1>
-                </br>
-                <h1>Aenean volutpat ex risus, sit amet pulvinar libero molestie sed. Maecenas nulla leo, eleifend et cursus eget, scelerisque sed risus. Mauris eu scelerisque sapien, quis rhoncus dui. Curabitur at vestibulum turpis, in tristique sem.</h1>
-            </p>
-        </div>
+        <iframe src="https://calendar.google.com/calendar/embed?src=training.dek%40gmail.com&ctz=Asia/Saigon" style="border: 0" width="100%" height="600" background-color:"#000000"></iframe>
     </div>
 
 
