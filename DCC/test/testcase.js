@@ -584,26 +584,26 @@ describe('<Unit test for feedback function>', function() {
             });
       });
 
-      describe('', function() {
-          return it('Test case 5 : show feedback', function(done) {
-              request(route)
-                  .post('/feedback/showFeedback')
-                  .send({
-                      courseID: 101,
-                  })
-                  .end(function(err, res) {
-                      assert.equal(res.body[0].comment, 'test string');
-                      return done()
-                  });
-                  afterEach(function() {
-                      models.Feedback.destroy({
-                          where: {
-                              courseID: 101
-                            }
-                      });
-                  });
-              });
-        });
+      // describe('', function() {
+      //     return it('Test case 5 : show feedback', function(done) {
+      //         request(route)
+      //             .post('/feedback/showFeedback')
+      //             .send({
+      //                 courseID: 101,
+      //             })
+      //             .end(function(err, res) {
+      //                 assert.equal(res.body[0].comment, 'test string');
+      //                 return done()
+      //             });
+      //             afterEach(function() {
+      //                 models.Feedback.destroy({
+      //                     where: {
+      //                         courseID: 101
+      //                       }
+      //                 });
+      //             });
+      //         });
+      //   });
 
   });
 
