@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">88.12% </span>
+        <span class="strong">96.23% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>89/101</span>
+        <span class='fraction'>102/106</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -30,14 +30,14 @@
         <span class='fraction'>4/4</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">82.35% </span>
+        <span class="strong">91.67% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>28/34</span>
+        <span class='fraction'>33/36</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">88.12% </span>
+        <span class="strong">96.23% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>89/101</span>
+        <span class='fraction'>102/106</span>
       </div>
     </div>
   </div>
@@ -252,7 +252,14 @@
 207
 208
 209
-210</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
+210
+211
+212
+213
+214
+215
+216
+217</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -437,22 +444,29 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -645,23 +659,30 @@ myApp.controller('IsDeletedCourseCtrl', function($scope, $rootScope, $http,Cours
 });
 &nbsp;
 //controller for Feedback
-myApp.controller('FeedbackCtrl', <span class="fstat-no" title="function not covered" >function($scope, $http, $window) {</span>
-<span class="cstat-no" title="statement not covered" >    var path = $window.location.pathname;</span>
-<span class="cstat-no" title="statement not covered" >    path = path.split('/');</span>
-<span class="cstat-no" title="statement not covered" >    var courseID = path.pop();</span>
-<span class="cstat-no" title="statement not covered" >    $scope.addFeedback = <span class="fstat-no" title="function not covered" >function() {</span></span>
-<span class="cstat-no" title="statement not covered" >        $http.post('/feedback/comment', {</span>
+myApp.controller('FeedbackCtrl', function($scope, $http, $window) {
+    var path = $window.location.pathname;
+    path = path.split('/');
+    var courseID = path.pop();
+    $scope.msg = '';
+    $scope.comment = '';
+    $scope.rating = '';
+    $scope.addFeedback = function() {
+        $http.post('/feedback/comment', {
             comment: $scope.comment,
             courseID: parseInt(courseID),
+        }).then(function(result){
+          $scope.msg = result.data.msg;
         });
     }
-<span class="cstat-no" title="statement not covered" >    $scope.addRating = <span class="fstat-no" title="function not covered" >function() {</span></span>
-<span class="cstat-no" title="statement not covered" >        $http.post('/feedback/rating', {</span>
+    $scope.addRating = function() {
+        $http.post('/feedback/rating', {
             rating: $scope.rating,
             courseID: parseInt(courseID),
+        }).then(function(result){
+          $scope.msg = result.data.msg;
         });
     }
-<span class="cstat-no" title="statement not covered" >    $scope.showFeedback = <span class="fstat-no" title="function not covered" >function() {</span></span>
+    $scope.showFeedback = <span class="fstat-no" title="function not covered" >function() {</span>
 <span class="cstat-no" title="statement not covered" >        $scope.feedbackList = [];</span>
 <span class="cstat-no" title="statement not covered" >        $http.post('/feedback/showFeedback', {</span>
             courseID: courseID
@@ -676,7 +697,7 @@ myApp.controller('FeedbackCtrl', <span class="fstat-no" title="function not cove
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Aug 16 2016 17:42:26 GMT+0700 (SE Asia Standard Time)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Aug 16 2016 18:16:22 GMT+0700 (SE Asia Standard Time)
 </div>
 </div>
 <script src="../prettify.js"></script>

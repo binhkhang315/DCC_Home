@@ -578,70 +578,62 @@ describe("SetProfileCtrl Unit testing #8", function() {
 });
 
 // TODO: this controller must be done more
-// describe("FeedbackCtrl Unit testing #9", function() {
-//     var controller, $controller, $scope, $rootScope, createController;
-//     beforeEach(angular.mock.module("myApp"));
-//     beforeEach(inject(function($injector) {
-//         $rootScope = $injector.get('$rootScope');
-//         $controller = $injector.get('$controller');
-//         $httpBackend = $injector.get('$httpBackend');
-//         createController = {
-//             feedback: function() {
-//                 return $controller('FeedbackCtrl', {
-//                     $scope: $rootScope
-//                 });
-//             }
-//         }
-//
-//     }));
-//
-//     it('Test 1: FeedbackCtrl Be Defined', inject(function($controller) {
-//         controller = createController.feedback();
-//         expect(controller).toBeDefined();
-//     }));
-//
-//     it('Test 2: get /users/userprofileController', inject(function($controller) {
-//         controller = createController.feedback();
-//         var data = {
-//           pStatus: 'abc',
-//           pName: 'lam',
-//           pDoB: '10/11/95',
-//           pPhone: '123456689',
-//           pLocation: 'DEK',
-//           pEmail: 'lamz@gmail.com',
-//           pAvatar: 'acb'
-//         };
-//         $httpBackend.whenGET('/users/userprofileController').respond(data);
-//         $httpBackend.flush();
-//         expect($rootScope.user.pStatus).toBe(data.pStatus);
-//         expect($rootScope.user.pName).toBe(data.pName);
-//         expect($rootScope.user.pDoB).toBe(data.pDoB);
-//         expect($rootScope.user.pPhone).toBe(data.pPhone);
-//         expect($rootScope.user.pLocation).toBe(data.pLocation);
-//         expect($rootScope.user.pEmail).toBe(data.pEmail);
-//         expect($rootScope.user.pAvatar).toBe(data.pAvatar);
-//     }));
-//
-//     it('Test 3: Edit userProfile', inject(function($controller) {
-//         controller = createController.feedback();
-//         var user = {
-//           pStatus: 'status',
-//           pName: 'thach',
-//           pDoB: '10/11',
-//           pPhone: '123456789',
-//           pLocation: 'DEK',
-//           pEmail: 'thac@gmail.com',
-//           pAvatar: 'pukachu'
-//         };
-//         var data = {
-//           msg : 'Success'
-//         };
-//         $rootScope.user = user;
-//         $rootScope.edit();
-//         $httpBackend.whenGET('/users/userprofileController').respond(user);
-//         $httpBackend.whenPOST('/users/userprofileReturnValue', user).respond(data);
-//         $httpBackend.flush();
-//         expect($rootScope.msg).toBe(data.msg);
-//     }));
-//
-// });
+describe("FeedbackCtrl Unit testing #9", function() {
+    var controller, $controller, $scope, $rootScope, createController;
+    beforeEach(angular.mock.module('myApp', function($provide){
+            $provide.value('$window', {
+              location:{
+                pathname:'test/1'
+              }
+            });
+        }));
+    beforeEach(inject(function($injector) {
+        $rootScope = $injector.get('$rootScope');
+        $controller = $injector.get('$controller');
+        $httpBackend = $injector.get('$httpBackend');
+        createController = {
+            feedback: function() {
+                return $controller('FeedbackCtrl', {
+                    $scope: $rootScope
+                });
+            }
+        }
+
+    }));
+
+    it('Test 1: FeedbackCtrl Be Defined', inject(function($controller) {
+        controller = createController.feedback();
+        expect(controller).toBeDefined();
+    }));
+
+    it('Test 2: addFeedback() test', inject(function($controller) {
+        controller = createController.feedback();
+        var res = {
+          msg : 'success'
+        }
+        var data = {
+            comment: '',
+            courseID: 1
+        }
+        $rootScope.addFeedback();
+        $httpBackend.whenPOST('/feedback/comment', data).respond(res);
+        $httpBackend.flush();
+        expect($rootScope.msg).toBe(res.msg);
+    }));
+
+    it('Test 3: addRating() test', inject(function($controller) {
+        controller = createController.feedback();
+        var res = {
+          msg : 'success'
+        }
+        var data = {
+            rating: '',
+            courseID: 1
+        }
+        $rootScope.addRating();
+        $httpBackend.whenPOST('/feedback/rating', data).respond(res);
+        $httpBackend.flush();
+        expect($rootScope.msg).toBe(res.msg);
+    }));
+
+});
