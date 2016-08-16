@@ -548,13 +548,13 @@ describe('<Unit test for feedback function>', function() {
                 })
                 .expect(200)
                 .end(done());
-                afterEach(function() {
-                    models.Feedback.destroy({
-                        where: {
-                            courseID: 100
-                    }
-                });
-        });
+        //         afterEach(function() {
+        //             models.Feedback.destroy({
+        //                 where: {
+        //                     courseID: 100
+        //             }
+        //         });
+        // });
       });
     });
 
