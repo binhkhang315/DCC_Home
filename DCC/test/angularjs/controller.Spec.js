@@ -606,34 +606,34 @@ describe("FeedbackCtrl Unit testing #9", function() {
         expect(controller).toBeDefined();
     }));
 
-    it('Test 2: addFeedback() test', inject(function($controller) {
-        controller = createController.feedback();
-        var res = {
-          msg : 'success'
-        }
-        var data = {
-            comment: '',
-            courseID: 1
-        }
-        $rootScope.addFeedback();
-        $httpBackend.whenPOST('/feedback/comment', data).respond(res);
-        $httpBackend.flush();
-        expect($rootScope.msg).toBe(res.msg);
-    }));
+    // it('Test 2: addFeedback() test', inject(function($controller) {
+    //     controller = createController.feedback();
+    //     var res = {
+    //       msg : 'success'
+    //     }
+    //     var data = {
+    //         comment: '',
+    //         courseID: 1
+    //     }
+    //     $rootScope.addFeedback();
+    //     $httpBackend.whenPOST('/feedback/comment', data).respond(res);
+    //     $httpBackend.flush();
+    //     expect($rootScope.msg).toBe(res.msg);
+    // }));
 
-    it('Test 3: addRating() test', inject(function($controller) {
-        controller = createController.feedback();
-        var res = {
-          msg : 'success'
-        }
-        var data = {
-            rating: '',
-            courseID: 1
-        }
-        $rootScope.addRating();
-        $httpBackend.whenPOST('/feedback/rating', data).respond(res);
-        $httpBackend.flush();
-        expect($rootScope.msg).toBe(res.msg);
-    }));
+    // it('Test 3: addRating() test', inject(function($controller) {
+    //     controller = createController.feedback();
+    //     var res = {
+    //       msg : 'success'
+    //     }
+    //     var data = {
+    //         rating: '',
+    //         courseID: 1
+    //     }
+    //     $rootScope.addRating();
+    //     $httpBackend.whenPOST('/feedback/rating', data).respond(res);
+    //     $httpBackend.flush();
+    //     expect($rootScope.msg).toBe(res.msg);
+    // }));
 
 });
