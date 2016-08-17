@@ -2,12 +2,7 @@
 <html lang="en" ng-app="myApp">
 
 <head>
-
     <!-- dropdown menu when  -->
-    <link rel='stylesheet' href='/js/dist/textAngular.css'>
-    <script src='/js/dist/textAngular-rangy.min.js'></script>
-    <script src='/js/dist/textAngular-sanitize.min.js'></script>
-    <script src='/js/dist/textAngular.min.js'></script>
     <script>
         $(function() {
             $('#dl-menu').dlmenu();
@@ -200,11 +195,8 @@
     </div>
 
     <!-- About -->
-    <div class="" id="about" style="background: url(../img/about.jpg)">
-        <iframe src="https://calendar.google.com/calendar/embed?src=training.dek%40gmail.com&ctz=Asia/Saigon" style="border: 0" width="100%" height="600" background-color:"#000000"></iframe>
-    </div>
-
-
+    <calendar-md flex layout layout-fill calendar-direction="direction" on-prev-month="prevMonth" on-next-month="nextMonth" on-day-click="dayClick" title-format="'MMMM y'" ng-model='selectedDate' week-starts-on="firstDayOfWeek" data-start-month="8" data-start-year="2014"
+        tooltips="tooltips" day-format="dayFormat" day-label-format="'EEE'" day-label-tooltip-format="'EEEE'" day-tooltip-format="'fullDate'" day-content="setDayContent" disable-future-selection="false"></calendar-md>
 
     <!-- Contact -->
     <div class="" id="contact">
