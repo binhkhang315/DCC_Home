@@ -111,7 +111,6 @@ myApp.controller('SetProfileCtrl', function($scope, $rootScope, $http, $window) 
         pEmail: '',
         pAvatar: ''
     };
-
     $http.get('/users/userprofileController').then(function(result) {
         $scope.user.pStatus = result.data.pStatus;
         $scope.user.pName = result.data.pName;
@@ -187,16 +186,23 @@ myApp.controller('FeedbackCtrl', function($scope, $http, $window) {
     var path = $window.location.pathname;
     path = path.split('/');
     var courseID = path.pop();
+    $scope.msg = '';
+    $scope.comment = '';
+    $scope.rating = '';
     $scope.addFeedback = function() {
         $http.post('/feedback/comment', {
             comment: $scope.comment,
             courseID: parseInt(courseID),
+        }).then(function(result){
+          $scope.msg = result.data.msg;
         });
     }
     $scope.addRating = function() {
         $http.post('/feedback/rating', {
             rating: $scope.rating,
             courseID: parseInt(courseID),
+        }).then(function(result){
+          $scope.msg = result.data.msg;
         });
     }
     $scope.showFeedback = function() {

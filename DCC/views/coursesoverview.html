@@ -1,20 +1,24 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="myApp">
-  <head>
+
+<head>
     <title>DEK Technologies Vietnam Talentnet - Landing Page</title>
-    <script> </script>
+    <script>
+    </script>
     <link rel='stylesheet' href='/js/dist/textAngular.css'>
     <script src='/js/dist/textAngular-rangy.min.js'></script>
     <script src='/js/dist/textAngular-sanitize.min.js'></script>
     <script src='/js/dist/textAngular.min.js'></script>
-
     <script>
         $(function() {
             $('#dl-menu').dlmenu();
         });
     </script>
 
+    <link rel='stylesheet' href='/css/tab.css'>
+    <script src="/js/prefixfree.min.js"></script>
 </head>
+
 <body>
     <!-- Navigation -->
     <div class="">
@@ -48,151 +52,139 @@
     </div>
 
     <!-- main course page -->
-    <div class="container2" style="padding-top: 130px">
+    <div class="container2 features" style="padding: 130px 0px ">
         <div ng-controller="SetCourseCtrl">
-          <p class="name">  {{ courseName }} </p>
-          <div class="trname" ng-repeat="trainer in courseTrainer">
-            <!-- Article course page -->
-              <a href= "{{ courseTrainerPage }}" > {{ trainer }} </a>
-            </ul>
-            <!-- <a href= "{{ courseTrainerPage }}" > {{ courseTrainer }} </a> -->
-          </div>
-          </br>
-      		<div ng-bind-html="courseDescription"></p>
+            <p class="name"> {{ courseName }} </p>
+            <div class="trname" ng-repeat="trainer in courseTrainer">
+                <!-- Article course page -->
+                <a href="{{ courseTrainerPage }}"> {{ trainer }} </a>
+                </ul>
+                <!-- <a href= "{{ courseTrainerPage }}" > {{ courseTrainer }} </a> -->
+            </div>
+            </br>
+            <input id="tab1" type="radio" name="tabs" checked>
+            <label for="tab1">Description</label>
+            <input id="tab2" type="radio" name="tabs">
+            <label for="tab2">Documents</label>
+            <input id="tab3" type="radio" name="tabs">
+            <label for="tab3">Test</label>
+            <input id="tab4" type="radio" name="tabs">
+            <label for="tab4">Feedback & Rating</label>
+            <section id="content1">
+                <div ng-bind-html="courseDescription"></div>
+            </section>
+
+            <section id="content2">
+              <div class="features-thumb">
+                  <a href="{{ courseDocuments }}">
+                      <img alt="" width="189" height="120" src="/img/doc-1.jpg" class="attachment-related-post size-related-post wp-post-image" />
+                      <div class="overlay">
+                          <em class="icon-expand4"></em>
+                      </div>
+                  </a>
+              </div>
+            </section>
+
+            <section id="content3">
+              <div class="features-thumb">
+                  <a href="{{ courseTest }}">
+                      <img alt="" width="189" height="120" src="/img/onl-test.jpg" class="attachment-related-post size-related-post wp-post-image" />
+                      <div class="overlay">
+                          <em class="icon-expand4"></em>
+                      </div>
+                  </a>
+              </div>
+            </section>
+
+            <section id="content4" class="row">
+              <div class="features-thumb">
+                  <a data-toggle="modal" href="#feedbackModal">
+                      <img alt="" width="189" height="120" src="/img/feed-back.jpg" class="attachment-related-post size-related-post wp-post-image" />
+                      <div class="overlay">
+                          <em class="icon-expand4"></em>
+                      </div>
+                  </a>
+              </div>
+              <div class="features col-md-3" ng-controller="FeedbackCtrl">
+
+                  <h1>Rating for Course</h1>
+                  <fieldset class="rating" >
+                      <input type="radio" id="star5" name="rating" value="5" ng-model="rating" ng-click="addRating()" />
+                      <label class="full" for="star5" title="Awesome - 5 stars"></label>
+                      <input type="radio" id="star4" name="rating" value="4" ng-model="rating" ng-click="addRating()" />
+                      <label class="full" for="star4" title="Pretty good - 4 stars"></label>
+                      <input type="radio" id="star3" name="rating" value="3" ng-model="rating" ng-click="addRating()" />
+                      <label class="full" for="star3" title="Meh - 3 stars"></label>
+                      <input type="radio" id="star2" name="rating" value="2" ng-model="rating" ng-click="addRating()" />
+                      <label class="full" for="star2" title="Kinda bad - 2 stars"></label>
+                      <input type="radio" id="star1" name="rating" value="1" ng-model="rating" ng-click="addRating()" />
+                      <label class="full" for="star1" title="Sucks big time - 1 star"></label>
+                  </fieldset>
+                  <br/>
+                  <div>
+                    <h1>Average Rating {{average}}</h1>
+                  </div>
+              </div>
+              <div class="col-md-12" style="padding-left:15%;">
+                  <div ng-controller="FeedbackCtrl">
+                      <button class="btn btn-primary" ng-click="showFeedback()">Show feedbacks</button>
+                      <ul ng-repeat="feedback in feedbackList">
+                          <li> {{feedback.comment}} : RATING {{feedback.rating}}</li>
+                      </ul>
+                  </div>
+              </div>
+            </section>
         </div>
-        <!-- CALENDAR -->
-        <!-- TODO: modify Features section -->
-      <div class="row">
-        <div class="features">
-          <div class="row" ng-controller="SetFeatureCtrl" >
-            <div class="col-md-12">
-              <h2>
-                FEATURES
-              </h2>
-            </div>
-
-            <div class="features col-md-3">
-              <div class="features-thumb">
-                <a href="{{ courseDocuments }}">
-                  <img alt="" width="189" height="120" src="/img/doc-1.jpg" class="attachment-related-post size-related-post wp-post-image"/>
-                  <div class="overlay">
-                    <em class="icon-expand4">
-                    </em>
-                  </div>
-                </a>
-              </div>
-              <h4>
-                <a href="">DOCUMENTS</a>
-              </h4>
-            </div>
-
-            <div class="features col-md-3">
-              <div class="features-thumb">
-                <a href="{{ courseTest }}">
-                  <img alt="" width="189" height="120" src="/img/onl-test.jpg" class="attachment-related-post size-related-post wp-post-image"/>
-                  <div class="overlay">
-                    <em class="icon-expand4">
-                    </em>
-                  </div>
-                </a>
-              </div>
-              <h4>
-                <a href="https://www.dektech.com.au/">ONLINE TESTING</a>
-              </h4>
-            </div>
-
-            <div class="features col-md-3">
-              <div class="features-thumb">
-                <a data-toggle="modal" href="#feedbackModal">
-                  <img alt="" width="189" height="120" src="/img/feed-back.jpg" class="attachment-related-post size-related-post wp-post-image"/>
-                  <div class="overlay">
-                    <em class="icon-expand4">
-                    </em>
-                  </div>
-                </a>
-              </div>
-              <h4>
-                <a data-toggle="modal" href="#feedbackModal">FEEDBACKS</a>
-              </h4>
-            </div>
-            <div class="features col-md-3" ng-controller="FeedbackCtrl">
-
-                <h1>Rating for Course</h1>
-                <fieldset class="rating" >
-                    <input type="radio" id="star5" name="rating" value="5" ng-model="rating" ng-click="addRating()"/><label class = "full" for="star5" title="Awesome - 5 stars" ></label>
-                    <input type="radio" id="star4" name="rating" value="4" ng-model="rating" ng-click="addRating()"/><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
-                    <input type="radio" id="star3" name="rating" value="3" ng-model="rating" ng-click="addRating()"/><label class = "full" for="star3" title="Meh - 3 stars"></label>
-                    <input type="radio" id="star2" name="rating" value="2" ng-model="rating" ng-click="addRating()"/><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
-                    <input type="radio" id="star1" name="rating" value="1" ng-model="rating" ng-click="addRating()"/><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
-                </fieldset>
-                <br/>
-                <div>
-                  <h1>Average Rating {{average}}</h1>
-                </div>
-            </div>
-          </div>
-        </div>
-      </div>
-  </div>
-  <!-- TODO: modify Feedback section -->
-  <!-- Show feedbacks -->
-<div class="col-md-12" style="padding-left:15%;" >
-    <div ng-controller="FeedbackCtrl">
-      <button class="btn btn-primary" ng-click="showFeedback()">Show feedbacks</button>
-        <ul ng-repeat="feedback in feedbackList">
-          <li> {{feedback.comment}} : RATING {{feedback.rating}}</li>
-        </ul>
     </div>
-  </div>
-</div>
 
     <!---Feedback modal ---->
     <div id="feedbackModal" class="modal fade" role="dialog" ng-controller="FeedbackCtrl">
-      <div class="modal-dialog">
-        <!-- Modal content-->
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Feedback</h4>
-          </div>
-          <div class="modal-body">
-            <textarea style="width:100%;  height:100%" ng-model="comment"></textarea>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" ng-click="addFeedback()" data-dismiss="modal">Send</Button>
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          </div>
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Feedback</h4>
+                </div>
+                <div class="modal-body">
+                    <textarea style="width:100%;  height:100%" ng-model="comment"></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" ng-click="addFeedback()" data-dismiss="modal">Send</Button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
 
     <!-- Footer -->
     <footer>
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12">
-            <ul class="list-inline">
-              <li>
-                <a href="#">Home</a>
-              </li>
-              <li class="footer-menu-divider">&sdot;</li>
-              <li>
-                <a href="#about">About</a>
-              </li>
-              <li class="footer-menu-divider">&sdot;</li>
-              <li>
-                <a href="#courses">Courses</a>
-              </li>
-              <li class="footer-menu-divider">&sdot;</li>
-              <li>
-                <a href="#contact">Contact</a>
-              </li>
-            </ul>
-            <p class="copyright text-muted small">Copyright &copy; DEK Technologies Vietnam 2016. All Rights Reserved</p>
-          </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul class="list-inline">
+                        <li>
+                            <a href="#">Home</a>
+                        </li>
+                        <li class="footer-menu-divider">&sdot;</li>
+                        <li>
+                            <a href="#about">About</a>
+                        </li>
+                        <li class="footer-menu-divider">&sdot;</li>
+                        <li>
+                            <a href="#courses">Courses</a>
+                        </li>
+                        <li class="footer-menu-divider">&sdot;</li>
+                        <li>
+                            <a href="#contact">Contact</a>
+                        </li>
+                    </ul>
+                    <p class="copyright text-muted small">Copyright &copy; DEK Technologies Vietnam 2016. All Rights Reserved</p>
+                </div>
+            </div>
         </div>
-      </div>
     </footer>
 
-  </body>
+</body>
+
 </html>
