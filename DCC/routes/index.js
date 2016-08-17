@@ -5,10 +5,12 @@ var opts = {
     fileNamePattern: 'roll-<DATE>.log',
     dateFormat: 'YYYY.MM.DD'
 };
+var gcal = require('../api/gcal.js');
 var log = require('simple-node-logger').createLogManager(opts).createLogger();
 // get homepage
 router.get('/', function(req, res) {
     res.render('index');
+    console.log(gcal.eventss);
 });
 router.get('/isLogged', ensureAuthenticated, function() {
 });
