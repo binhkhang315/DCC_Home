@@ -207,4 +207,9 @@ myApp.controller('FeedbackCtrl', function($scope, $http, $window) {
             $scope.feedbackList = result.data;
         });
     }
+      $http.post('/feedback/showAverageRating',{
+          courseID: courseID
+      }).then(function(result){
+        $scope.average = result.data.result;
+      });
 });

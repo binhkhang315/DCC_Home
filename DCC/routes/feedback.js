@@ -90,4 +90,20 @@ router.post('/showFeedback',function(req,res){
   })
 });
 
+router.post('/showAverageRating',function(req,res){
+  log.info('/route feedback : show average rating for a course');
+  models.Feedback.findAll({
+    where:{
+      courseID : req.body.courseID
+    }
+  }).then(function(feedback){
+    var sumRating = 0;
+    for(i = 0; i < feedback.length; i++){
+      sumRating = sumRating + feedback[i].dataValues.rating;
+    }
+    var avg = sumRating/feedback.length;
+    res.send({result:avg.toString()});
+  })
+})
+
 module.exports = router;

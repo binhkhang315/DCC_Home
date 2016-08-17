@@ -552,13 +552,6 @@ describe('<Unit test for feedback function>', function() {
                   assert.equal(res.body.msg,'update successfully');
                   return done();
                 })
-                // afterEach(function() {
-                //     models.Feedback.destroy({
-                //         where: {
-                //             courseID: 101
-                //           }
-                //     });
-                // });
         });
     });
 
@@ -588,38 +581,51 @@ describe('<Unit test for feedback function>', function() {
                 .end(function(err,res){
                   assert.equal(res.body.msg,'update successfully');
                   return done();
-                });
-                afterEach(function() {
-                    models.Feedback.destroy({
-                        where: {
-                            courseID: 99
-                          }
-                    });
-                });
+                })
             });
       });
 
       describe('', function() {
-          return it('Test case 5 : show feedback', function(done) {
+          return it('Test case 5 : show average rating', function(done) {
               request(route)
-                  .post('/feedback/showFeedback')
+                  .post('/feedback/showAverageRating')
                   .send({
-                      courseID: 101,
+                      courseID: 99,
                   })
                   .end(function(err, res) {
-                      assert.equal(res.body[0].comment, 'test string');
-                      return done()
+                    assert.equal(res.body.result,4);
+                    return done()
                   });
                   afterEach(function() {
                       models.Feedback.destroy({
                           where: {
-                              courseID: 101
+                              courseID: 99
                             }
                       });
                   });
               });
         });
 
+      describe('', function() {
+          return it('Test case 6 : show feedback', function(done) {
+              request(route)
+                  .post('/feedback/showFeedback')
+                  .send({
+                      courseID: 101,
+                  })
+                  .end(function(err, res) {
+                    assert.equal(res.body[0].comment, 'test string');
+                    return done()
+                  });
+                  afterEach(function() {
+                    models.Feedback.destroy({
+                        where: {
+                          courseID: 101
+                          }
+                      });
+                  });
+              });
+        });
   });
 
 
