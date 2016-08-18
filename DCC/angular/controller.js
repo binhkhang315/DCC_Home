@@ -203,7 +203,6 @@ myApp.controller('FeedbackCtrl', function($scope, $http, $window) {
             courseId: parseInt(courseID),
         }).then(function(result) {
             $scope.msg = result.data.msg;
-            // $window.location.href = '/course/coursesoverview/{{courseId}}';
         });
     }
     $scope.showFeedback = function() {
@@ -237,8 +236,7 @@ myApp.controller('calendarCtrl', function($scope, $filter, $http, $q, MaterialCa
     };
 
     $scope.dayClick = function(date) {
-        var checkdate = MaterialCalendarData.getDayKey(date);
-        var dateData = MaterialCalendarData.data[checkdate];
+      // TODO: add popup
     };
 
     $scope.prevMonth = function(data) {

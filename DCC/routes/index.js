@@ -13,15 +13,13 @@ router.get('/', function(req, res) {
 });
 router.get('/getEvents', function(req, res) {
     var events = null;
-    var datasend = '';
-//console.log(gcal.test);
     gcal.getEvents(function( eventList)
     {
         events = eventList;
     });
     res.send(events)
-    //gcal.passing();
 });
+
 router.get('/isLogged', ensureAuthenticated, function() {
 });
 
