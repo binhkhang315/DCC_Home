@@ -14,14 +14,24 @@ module.exports = function(config) {
 
 
     // list of files / patterns to load in the browser
-    files: [
-      'node_modules/angular/angular.js',
-      'node_modules/angular-mocks/angular-mocks.js',
-      'public/js/angular-cookies.js',
-      'public/js/ng-tags-input.js',
-      'angular/*.js',
-      'test/angularjs/*.js'
-    ],
+        files: [
+            'node_modules/angular/angular.js',
+            'node_modules/angular-mocks/angular-mocks.js',
+            'public/js/angular-cookies.js',
+            'public/js/ng-tags-input.js',
+			'public/js/angular-animate.min.js',
+			'public/js/angular-aria.min.js',
+			'public/js/angular-material.js',
+			'public/js/angular-material.min.js',
+			'public/js/angular-material-calendar.js',
+			'public/js/angular-material-calendar.min.js',
+			'public/js/angular-material-mocks.js',
+            'public/js/dist/textAngular-rangy.min.js',
+            'public/js/dist/textAngular-sanitize.min.js',
+            'public/js/dist/textAngular.min.js',
+            'angular/*.js',
+            'test/angularjs/*.js'
+        ],
 
     plugins: [
       'karma-jasmine',
