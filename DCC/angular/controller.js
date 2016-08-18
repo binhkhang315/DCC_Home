@@ -192,7 +192,7 @@ myApp.controller('FeedbackCtrl', function($scope, $http, $window) {
     $scope.addFeedback = function() {
         $http.post('/feedback/comment', {
             comment: $scope.comment,
-            courseID: parseInt(courseID),
+            courseId: parseInt(courseID),
         }).then(function(result){
           $scope.msg = result.data.msg;
         });
@@ -200,21 +200,22 @@ myApp.controller('FeedbackCtrl', function($scope, $http, $window) {
     $scope.addRating = function() {
         $http.post('/feedback/rating', {
             rating: $scope.rating,
-            courseID: parseInt(courseID),
+            courseId: parseInt(courseID),
         }).then(function(result){
           $scope.msg = result.data.msg;
+          // $window.location.href = '/course/coursesoverview/{{courseId}}';
         });
     }
     $scope.showFeedback = function() {
         $scope.feedbackList = [];
         $http.post('/feedback/showFeedback', {
-            courseID: courseID
+            courseId: courseID
         }).then(function(result) {
             $scope.feedbackList = result.data;
         });
     }
       $http.post('/feedback/showAverageRating',{
-          courseID: courseID
+          courseId: courseID
       }).then(function(result){
         $scope.average = result.data.result;
       });

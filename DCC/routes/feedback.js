@@ -8,91 +8,98 @@ var opts = {
   fileNamePattern: 'roll-<DATE>.log',
   dateFormat: 'YYYY.MM.DD'
 };
-var curUserID = 2;
 
 var log = require('simple-node-logger').createLogManager(opts).createLogger();
 
-models.Feedback.sync({
-  force: false
-});
+// models.Feedback.sync({
+//   force: false
+// });
 
 router.post('/comment', function(req, res) {
-  log.info('/route/feedback : comment for course that its id is ' + req.body.courseID);
-  models.Feedback.findOne({
-    where: {
-      userID: curUserID,
-      courseID: req.body.courseID
-    }
-  }).then(function(feedback) {
-    if (feedback === null) {
-      models.Feedback.create({
-        userID: curUserID,
-        comment: req.body.comment,
-        courseID: req.body.courseID,
-      }).then(function() {
-        res.send({
-          msg: 'create successfully'
+  log.info('/route/feedback : comment for course that its id is ' + req.body.courseId);
+  models.User.findOne({
+    where: {username: req.user.mail}
+  }).then(function(user) {
+    models.Feedback.findOne({
+      where: {
+        UserId: user.id,
+        courseId: req.body.courseId
+      }
+    }).then(function(feedback) {
+      if (feedback === null) {
+        models.Feedback.create({
+          UserId: user.id,
+          comment: req.body.comment,
+          courseId: req.body.courseId,
+        }).then(function() {
+          res.send({
+            msg: 'create successfully'
+          });
         });
-      });
-    } else {
-      models.Feedback.update({
-        comment: req.body.comment,
-        courseID: req.body.courseID,
-      }, {
-        where: {
-          userID: curUserID,
-          courseID: req.body.courseID,
-        }
-      }).then(function() {
-        res.send({
-          msg: 'update successfully'
+      } else {
+        models.Feedback.update({
+          comment: req.body.comment,
+          courseId: req.body.courseId,
+        }, {
+          where: {
+            UserId: user.id,
+            courseId: req.body.courseId,
+          }
+        }).then(function() {
+          res.send({
+            msg: 'update successfully'
+          });
         });
-      });
-    }
+      }
+    })
   })
 });
 
 router.post('/rating', function(req, res) {
-  log.info('/route/feedback : rating for course that its id is ' + req.body.courseID);
-  models.Feedback.findOne({
-    where: {
-      userID: curUserID,
-      courseID: req.body.courseID
-    }
-  }).then(function(feedback) {
-    if (feedback === null) {
-      models.Feedback.create({
-        userID: curUserID,
-        rating: req.body.rating,
-        courseID: req.body.courseID,
-      }).then(function() {
-        res.send({
-          msg: 'create successfully'
+  log.info('/route/feedback : rating for course that its id is ' + req.body.courseId);
+  models.User.findOne({
+    where: {username: req.user.mail}
+  }).then(function(user) {
+    models.Feedback.findOne({
+      where: {
+        UserId: user.id,
+        courseId: req.body.courseId
+      }
+    }).then(function(feedback) {
+      if (feedback === null) {
+        models.Feedback.create({
+          UserId: user.id,
+          rating: req.body.rating,
+          courseId: req.body.courseId,
+        }).then(function() {
+          res.send({
+            msg: 'create successfully'
+          });
         });
-      });
-    } else {
-      models.Feedback.update({
-        rating: req.body.rating,
-        courseID: req.body.courseID,
-      }, {
-        where: {
-          userID: curUserID,
-          courseID: req.body.courseID,
-        }
-      }).then(function() {
-        res.send({
-          msg: 'update successfully'
+      } else {
+        models.Feedback.update({
+          rating: req.body.rating,
+          courseId: req.body.courseId,
+        }, {
+          where: {
+            UserId: user.id,
+            courseId: req.body.courseId,
+          }
+        }).then(function() {
+          res.send({
+            msg: 'update successfully'
+          });
         });
-      });
-    }
-  })
+      }
+    })
+  });
 });
 
 router.post('/showFeedback', function(req, res) {
-  log.info('/route/feedback : show feedback for course that its id is ' + req.body.courseID);
+  log.info('/route/feedback : show feedback for course that its id is ' + req.body.courseId);
   models.Feedback.findAll({
     where: {
-      courseID: req.body.courseID
+      courseId: req.body.courseId
     }
   }).then(function(feedback) {
     res.send(feedback);
@@ -103,7 +110,7 @@ router.post('/showAverageRating',function(req,res){
   log.info('/route feedback : show average rating for a course');
   models.Feedback.findAll({
     where:{
-      courseID : req.body.courseID
+      courseId : req.body.courseId
     }
   }).then(function(feedback){
     var sumRating = 0;

@@ -5,7 +5,7 @@ var bodyParser = require('body-parser');
 var expressLayouts = require('express-ejs-layouts');
 var session = require('express-session');
 var passport = require('passport');
-
+var models = require("./models");
 var serveIndex = require('serve-index');
 
 var opts = {
@@ -57,6 +57,13 @@ app.use('/', routes);
 app.use('/users', users);
 app.use('/course', course);
 app.use('/feedback', feedback);
+
+models.User.belongsToMany(models.course, {through: models.Feedback});
+models.course.belongsToMany(models.User, {through: models.Feedback});
+
+models.Feedback.sync({
+  force: false
+});
 
 // Set Port
 app.set('port', (process.env.PORT || 3210));

@@ -16,16 +16,6 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.INTEGER,
       allowNull: true
     },
-    userID:{
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      primaryKey:true
-    },
-    courseID:{
-      type:DataTypes.INTEGER,
-      allowNull:false,
-      primaryKey:true
-    }
   },{
     tableName: 'feedback'
   });
