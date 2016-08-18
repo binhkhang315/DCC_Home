@@ -87,9 +87,28 @@
 }
 /***********slider text****************/
 .slidertext {
-    padding-top: 180px;
-    font-size: 130px;
+    padding-top: 30px;
+    font-size: 90px;
 }
+@media(max-width:1300px){
+  .slidertext{
+    padding-top: 25px;
+    font-size: 75px;
+  }
+}
+@media(max-width:800px){
+  .slidertext{
+    padding-top: 20px;
+    font-size: 60px;
+  }
+}
+@media(max-width:500px){
+  .slidertext{
+    padding-top: 15px;
+    font-size: 30px;
+  }
+}
+/**********
 /***********name and table header of courses list****************/
 .list {
     font-size: 50px;
