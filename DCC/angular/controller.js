@@ -238,6 +238,7 @@ myApp.controller('calendarCtrl', function($scope, $filter, $http, $q, MaterialCa
     $scope.dayClick = function(date) {
         var checkdate = MaterialCalendarData.getDayKey(date);
         var dateData = MaterialCalendarData.data[checkdate];
+        console.log(dateData);
     };
 
     $scope.prevMonth = function(data) {
@@ -257,7 +258,11 @@ myApp.controller('calendarCtrl', function($scope, $filter, $http, $q, MaterialCa
             var eventDate = new Date(Date.parse(start));
             var checkdate = MaterialCalendarData.getDayKey(eventDate);
             var dateData = MaterialCalendarData.data[checkdate];
-            MaterialCalendarData.setDayContent(eventDate, dateData + '</br>' + event.summary);
+            if (typeof(dateData) === 'undefined') {
+              dateData = '';
+            }
+            MaterialCalendarData.setDayContent(eventDate, dateData + event.summary + '</br>');
         }
     });
+    var defaultTemplate = "<md-content ng-if='weekLayout !== columnWeekLayout' flex layout='column' class='calendar'><div layout='row' class='subheader'><div layout-padding class='subheader-day' flex ng-repeat='day in calendar.weeks[0]'><md-tooltip ng-if='::tooltips()'>{{ day | date:dayLabelTooltipFormat }}</md-tooltip>{{ day | date:dayLabelFormat }}</div></div><div ng-if='week.length' ng-repeat='week in calendar.weeks track by $index' flex layout='row'><div tabindex='{{ sameMonth(day) ? (day | date:dayFormat:timezone) : 0 }}' ng-repeat='day in week track by $index' ng-click='handleDayClick(day)' flex layout layout-padding ng-class='{&quot;disabled&quot; : isDisabled(day), &quot;active&quot;: isActive(day), &quot;md-whiteframe-12dp&quot;: hover || focus }'ng-focus='focus = true;' ng-blur='focus = false;' ng-mouseleave='hover = false' ng-mouseenter='hover = true'><md-tooltip ng-if='::tooltips()'>{{ day | date:dayTooltipFormat } }{{dateData}}fsdfsdfsd</md-tooltip><div>{{ day | date:dayFormat }}</div><div flex compile='dataService.data[dayKey(day)]' id='{{ day | date:dayIdFormat }}'></div></div></div></md-content>";
 });

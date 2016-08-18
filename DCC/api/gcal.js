@@ -105,11 +105,13 @@ function storeToken(token) {
 
 var listEvents = function(auth) {
   var calendar = google.calendar('v3');
+  var timem = new Date();
+  timem.setDate(timem.getDate()-30);
   calendar.events.list({
     auth: auth,
     calendarId: 'primary',
-    timeMin: (new Date()).toISOString(),
-    maxResults: 10,
+    timeMin: timem.toISOString(),
+    maxResults: 100,
     singleEvents: true,
     orderBy: 'startTime'
   }, function(err, response) {
