@@ -474,7 +474,7 @@ describe('<Unit test for userProfile function>', function() {
             .set('Accept','application/json')
             .end(function(err, res) {
                 assert.equal(res.body.pName, 'qwe@gmail.com');
-                assert.equal(res.body.pEmail, 'dek@dek.vn');
+                assert.equal(res.body.pEmail, 'qwe@gmail.com');
                 return done();
             });
         });
