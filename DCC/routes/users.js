@@ -167,7 +167,7 @@ router.get('/userprofileController', function(req, res) {
           dob: '20/10/1995',
           phone: '0123456789',
           location: 'DEK Technologies',
-          email: 'dek@dek.vn',
+          email: req.user.mail,
           avatar: '/img/profile.jpg'
         }})
       .then(function(user) {
