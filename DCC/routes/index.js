@@ -5,22 +5,10 @@ var opts = {
     fileNamePattern: 'roll-<DATE>.log',
     dateFormat: 'YYYY.MM.DD'
 };
-var gcal = require('../api/gcal.js');
 var log = require('simple-node-logger').createLogManager(opts).createLogger();
 // get homepage
 router.get('/', function(req, res) {
     res.render('index');
-});
-router.get('/getEvents', function(req, res) {
-    var events = null;
-    var datasend = '';
-//console.log(gcal.test);
-    gcal.getEvents(function( eventList)
-    {
-        events = eventList;
-    });
-    res.send(events)
-    //gcal.passing();
 });
 router.get('/isLogged', ensureAuthenticated, function() {
 });

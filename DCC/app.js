@@ -7,6 +7,7 @@ var session = require('express-session');
 var passport = require('passport');
 var models = require("./models");
 var serveIndex = require('serve-index');
+
 var opts = {
     logDirectory: './public/log',
     fileNamePattern: 'roll-<DATE>.log',
@@ -70,5 +71,6 @@ log.info('Server started on port ' + app.get('port'));
 var server = app.listen(app.get('port'), function() {
     console.log('Server started on port ' + app.get('port'));
 });
+
 module.exports = server;
 //exports.log = log;
