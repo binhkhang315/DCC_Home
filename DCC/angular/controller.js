@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp', ['ngCookies', 'ngTagsInput', 'textAngular', 'ngMaterial', 'materialCalendar','course']);
+var myApp = angular.module('myApp', ['ngCookies', 'ngTagsInput', 'textAngular', 'ngMaterial', 'materialCalendar', 'course']);
 // creat angular controller
 myApp.controller('LoginCtrl', function($scope, $http, $cookies, $rootScope) {
     // function to submit the form after all validation has occurred
@@ -37,7 +37,7 @@ myApp.controller('LoginCtrl', function($scope, $http, $cookies, $rootScope) {
     }
 });
 
-myApp.controller('SetCourseCtrl', function($scope, $http, $window,$sce) {
+myApp.controller('SetCourseCtrl', function($scope, $http, $window, $sce) {
     var path = $window.location.pathname;
     path = path.split('/');
     var courseID = path.pop();
@@ -58,9 +58,9 @@ myApp.controller('SetCourseCtrl', function($scope, $http, $window,$sce) {
     });
 });
 
-myApp.controller('GetListCtrl', function($scope, $rootScope, $http,CourseList) {
-    CourseList.getCourseList().then(function(result){
-      $rootScope.coursesList = result;
+myApp.controller('GetListCtrl', function($scope, $rootScope, $http, CourseList) {
+    CourseList.getCourseList().then(function(result) {
+        $rootScope.coursesList = result;
     });
 
     // edit course
@@ -131,7 +131,7 @@ myApp.controller('SetProfileCtrl', function($scope, $rootScope, $http, $window) 
 });
 
 // AddCourseCtrl: add course controller
-myApp.controller('AddCourseCtrl', function($scope, $rootScope, $http,CourseList) {
+myApp.controller('AddCourseCtrl', function($scope, $rootScope, $http, CourseList) {
     $scope.courseslist = {
         courseName: '',
         courseDescription: '',
@@ -146,36 +146,36 @@ myApp.controller('AddCourseCtrl', function($scope, $rootScope, $http,CourseList)
 
         $http.post('/course/addCourse', $scope.courseslist).then(function(result) {
             $scope.postMsg = result.data.msg;
-            CourseList.getCourseList().then(function(result){
-              $rootScope.coursesList = result;
+            CourseList.getCourseList().then(function(result) {
+                $rootScope.coursesList = result;
             });
         });
     }
 });
 
 // UpdateCourseCtrl: edit course controller
-myApp.controller('UpdateCourseCtrl', function($scope, $rootScope, $http,CourseList) {
+myApp.controller('UpdateCourseCtrl', function($scope, $rootScope, $http, CourseList) {
     $scope.postMsg = '';
     $scope.getMsg = '';
     $scope.updateCourse = function() {
         $http.post('/course/updateCourse', $rootScope.courseslistEdit).then(function(result) {
             $scope.postMsg = result.data.msg;
-            CourseList.getCourseList().then(function(result){
-              $rootScope.coursesList = result;
+            CourseList.getCourseList().then(function(result) {
+                $rootScope.coursesList = result;
             });
         });
     }
 });
 
 // IsDeletedCourseCtrl: delete course controller
-myApp.controller('IsDeletedCourseCtrl', function($scope, $rootScope, $http,CourseList) {
+myApp.controller('IsDeletedCourseCtrl', function($scope, $rootScope, $http, CourseList) {
     $scope.postMsg = '';
     $scope.getMsg = '';
     $scope.isDeletedCourse = function() {
         $http.post('/course/isDeletedCourse', $rootScope.courseslistDelete).then(function(result) {
             $scope.postMsg = result.data.msg;
-            CourseList.getCourseList().then(function(result){
-              $rootScope.coursesList = result;
+            CourseList.getCourseList().then(function(result) {
+                $rootScope.coursesList = result;
             });
         });
     }
@@ -193,16 +193,16 @@ myApp.controller('FeedbackCtrl', function($scope, $http, $window) {
         $http.post('/feedback/comment', {
             comment: $scope.comment,
             courseID: parseInt(courseID),
-        }).then(function(result){
-          $scope.msg = result.data.msg;
+        }).then(function(result) {
+            $scope.msg = result.data.msg;
         });
     }
     $scope.addRating = function() {
         $http.post('/feedback/rating', {
             rating: $scope.rating,
             courseID: parseInt(courseID),
-        }).then(function(result){
-          $scope.msg = result.data.msg;
+        }).then(function(result) {
+            $scope.msg = result.data.msg;
         });
     }
     $scope.showFeedback = function() {
@@ -213,16 +213,16 @@ myApp.controller('FeedbackCtrl', function($scope, $http, $window) {
             $scope.feedbackList = result.data;
         });
     }
-      $http.post('/feedback/showAverageRating',{
-          courseID: courseID
-      }).then(function(result){
+    $http.post('/feedback/showAverageRating', {
+        courseID: courseID
+    }).then(function(result) {
         $scope.average = result.data.result;
-      });
+    });
 });
 
 myApp.controller('calendarCtrl', function($scope, $filter, $http, $q, MaterialCalendarData) {
     $scope.dayFormat = 'd';
-
+    var events;
     // To select a single date, make sure the ngModel is not an array.
     $scope.selectedDate = null;
 
@@ -231,31 +231,33 @@ myApp.controller('calendarCtrl', function($scope, $filter, $http, $q, MaterialCa
 
     $scope.firstDayOfWeek = 0; // First day of the week, 0 for Sunday, 1 for Monday, etc.
     $scope.setDirection = function(direction) {
-      $scope.direction = direction;
-      $scope.dayFormat = direction === 'vertical' ? 'EEEE, MMMM d' : 'd';
+        $scope.direction = direction;
+        $scope.dayFormat = direction === 'vertical' ? 'EEEE, MMMM d' : 'd';
     };
 
     $scope.dayClick = function(date) {
-      $scope.msg = 'You clicked ' + $filter('date')(date, 'MMM d, y h:mm:ss a Z');
-      console.log($scope.msg);
+        var checkdate = MaterialCalendarData.getDayKey(date);
+        var dateData = MaterialCalendarData.data[checkdate];
     };
 
     $scope.prevMonth = function(data) {
-      $scope.msg = 'You clicked (prev) month ' + data.month + ', ' + data.year;
+        $scope.msg = 'You clicked (prev) month ' + data.month + ', ' + data.year;
     };
 
     $scope.nextMonth = function(data) {
-      $scope.msg = 'You clicked (next) month ' + data.month + ', ' + data.year;
+        $scope.msg = 'You clicked (next) month ' + data.month + ', ' + data.year;
     };
     $scope.tooltips = true;
-// set events
+    // set events
     $http.get('/getEvents').then(function(result) {
-      var events = result.data;
-      for (var i = 0; i < events.length; i++) {
-        var event = events[i];
-        var start = event.start.dateTime || event.start.date;
-        var eventDate = new Date(Date.parse(start));
-        MaterialCalendarData.setDayContent(eventDate, event.summary);
-      }
+        events = result.data;
+        for (var i = 0; i < events.length; i++) {
+            var event = events[i];
+            var start = event.start.dateTime || event.start.date;
+            var eventDate = new Date(Date.parse(start));
+            var checkdate = MaterialCalendarData.getDayKey(eventDate);
+            var dateData = MaterialCalendarData.data[checkdate];
+            MaterialCalendarData.setDayContent(eventDate, dateData + '</br>' + event.summary);
+        }
     });
 });
