@@ -10,7 +10,15 @@ var log = require('simple-node-logger').createLogManager(opts).createLogger();
 // get homepage
 router.get('/', function(req, res) {
     res.render('index');
-    console.log(gcal.eventss);
+    var mHihi = null;
+//console.log(gcal.test);
+    gcal.getHiHi(function( hihi)
+    {
+        mHihi = hihi;
+    });
+    console.log("-----Print HiHi------");
+    console.log(mHihi);
+    //gcal.passing();
 });
 router.get('/isLogged', ensureAuthenticated, function() {
 });

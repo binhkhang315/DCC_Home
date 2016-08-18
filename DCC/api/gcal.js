@@ -1,18 +1,18 @@
-
-module.exports = function(){
-
-}
+"use strict"
 var fs = require('fs');
 var readline = require('readline');
 var google = require('googleapis');
 var googleAuth = require('google-auth-library');
-
+var hihi = 'hihi';
+var test = 'test';
+var event;
+var exports = module.exports = {};
 // If modifying these scopes, delete your previously saved credentials
 // at ~/.credentials/calendar-nodejs-quickstart.json
 var SCOPES = ['https://www.googleapis.com/auth/calendar.readonly'];
 var TOKEN_DIR = './';
 var TOKEN_PATH = TOKEN_DIR + 'calendar-nodejs-quickstart.json';
-
+var eventlist;
 // Load client secrets from a local file.
 fs.readFile('client_secret.json', function processClientSecrets(err, content) {
   if (err) {
@@ -103,8 +103,8 @@ function storeToken(token) {
  *
  * @param {google.auth.OAuth2} auth An authorized OAuth2 client.
  */
- var eventss;
-function listEvents(auth) {
+
+var listEvents = function(auth) {
   var calendar = google.calendar('v3');
   calendar.events.list({
     auth: auth,
@@ -119,7 +119,6 @@ function listEvents(auth) {
       return;
     }
     var events = response.items;
-    this.eventss = events;
     if (events.length == 0) {
       console.log('No upcoming events found.');
     } else {
@@ -129,8 +128,21 @@ function listEvents(auth) {
         var start = event.start.dateTime || event.start.date;
         console.log('%s - %s', start, event.summary);
       }
-    }
-  });
+    };
+      hihi = events;
+      console.log('-----------------------');
+      console.log(hihi);
+  })
 }
 
-module.exports = eventss;
+exports.getHiHi = function(cb){
+  cb( hihi);
+};
+
+//module.exports = myPrint;
+//
+// module.exports = {
+//   test :test,
+//   hihi: hihi,
+//   events : hihi
+// };
