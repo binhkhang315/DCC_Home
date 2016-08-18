@@ -1,7 +1,33 @@
 
-.desc{
-  padding: 20px 20px;
-  margin: 20px 20px;
+/* description pop up*/
+.descpopup {
+    position: relative;
+    display: inline-block;
+}
+.descpopup .descpopuptext {
+    visibility: hidden;
+    width: 200px;
+    background-color: #CFCFCF;
+    color: #0000;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 15px;
+    position: absolute;
+    z-index: 1;
+    top: -5px;
+    left: 110%;
+}
+.descpopup  .descpopuptext::after {
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent black transparent transparent;
+}
+.descpopup:hover .descpopuptext {
+    visibility: visible;
 }
 
 /***********login dropdown****************/

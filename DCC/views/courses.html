@@ -9,11 +9,7 @@
     <script src='/js/dist/textAngular-sanitize.min.js'></script>
     <script src='/js/dist/textAngular.min.js'></script>
 </head>
-<script>
-    $(document).ready(function() {
-        $('[data-toggle="popover"]').popover();
-    });
-</script>
+
 <script>
     $(function() {
         $('#dl-menu').dlmenu();
@@ -70,11 +66,14 @@
                     </thead>
                     <tbody>
                         <tr ng-repeat="course in coursesList">
-                            <td><a href="/course/coursesoverview/{{course.id}}" title="{{course.description}}" data-toggle="popover" data-trigger="hover" data-content="Some content">{{ course.name }}</td>
-                              <td>{{ course.category }}</td>
-                              <td>{{ course.trainerID }}</td>
-                              <td style="text-align:center">
-                                  <a class="a-inside edit" data-toggle="modal" href="#editCourseModal" ng-click="editCourse(course)"><span class="glyphicon glyphicon-pencil"></span>&nbsp&nbsp&nbsp&nbsp&nbsp</a>
+                            <td class="descpopup">
+                              <a href="/course/coursesoverview/{{course.id}}">{{ course.name }}</a>
+                              <div ng-bind-html="course.description" class="descpopuptext"></div>
+                            </td>
+                            <td>{{ course.category }}</td>
+                            <td>{{ course.trainerID }}</td>
+                            <td style="text-align:center">
+                                <a class="a-inside edit" data-toggle="modal" href="#editCourseModal" ng-click="editCourse(course)"><span class="glyphicon glyphicon-pencil"></span>&nbsp&nbsp&nbsp&nbsp&nbsp</a>
                                 <a class="a-inside delete" data-toggle="modal" href="#deleteCourseModal" ng-click="deleteCourse(course)"><span class="glyphicon glyphicon-trash"></span></a>
                             </td>
                         </tr>
