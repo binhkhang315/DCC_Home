@@ -474,7 +474,7 @@ describe('<Unit test for userProfile function>', function() {
             .set('Accept','application/json')
             .end(function(err, res) {
                 assert.equal(res.body.pName, 'qwe@gmail.com');
-                assert.equal(res.body.pEmail, 'dek@dek.vn');
+                assert.equal(res.body.pEmail, 'qwe@gmail.com');
                 return done();
             });
         });
@@ -523,110 +523,117 @@ describe('<Unit test for userProfile function>', function() {
 
 
 
-// describe('<Unit test for feedback function>', function() {
-//
-//   describe('', function() {
-//       return it('Test case 1 : Create a comment for course that doesnt have comment ', function(done) {
-//           request(route)
-//               .post('/feedback/comment')
-//               .send({
-//                   courseId: 101,
-//                   comment: 'feedback'
-//               })
-//               .end(function(err,res){
-//                 assert.equal(res.body.msg,'create successfully');
-//                 return done();
-//               });
-//     });
-//   });
-//
-//     describe('', function() {
-//         return it('Test case 2 : Update comment for course having comment already', function(done) {
-//             request(route)
-//                 .post('/feedback/comment')
-//                 .send({
-//                     courseId: 101,
-//                     comment: 'test string'
-//                 })
-//                 .end(function(err,res){
-//                   assert.equal(res.body.msg,'update successfully');
-//                   return done();
-//                 })
-//         });
-//     });
-//
-//     describe('', function() {
-//         return it('Test case 3 : Create a rating for course that doesnt have rating', function(done) {
-//             request(route)
-//                 .post('/feedback/rating')
-//                 .send({
-//                     courseId: 99,
-//                     rating: 3
-//                 })
-//                 .end(function(err,res){
-//                   assert.equal(res.body.msg,'create successfully');
-//                   return done();
-//                 });
-//               });
-//     });
-//
-//     describe('', function() {
-//         return it('Test case 4 : Update rating for course having rating already', function(done) {
-//             request(route)
-//                 .post('/feedback/rating')
-//                 .send({
-//                     courseId: 99,
-//                     rating: 4
-//                 })
-//                 .end(function(err,res){
-//                   assert.equal(res.body.msg,'update successfully');
-//                   return done();
-//                 })
-//             });
-//       });
-//
-//       describe('', function() {
-//           return it('Test case 5 : show average rating', function(done) {
-//               request(route)
-//                   .post('/feedback/showAverageRating')
-//                   .send({
-//                       courseId: 99,
-//                   })
-//                   .end(function(err, res) {
-//                     assert.equal(res.body.result,4);
-//                     return done()
-//                   });
-//                   afterEach(function() {
-//                       models.Feedback.destroy({
-//                           where: {
-//                               courseID: 99
-//                             }
-//                       });
-//                   });
-//               });
-//         });
-//
-//       describe('', function() {
-//           return it('Test case 6 : show feedback', function(done) {
-//               request(route)
-//                   .post('/feedback/showFeedback')
-//                   .send({
-//                       courseId: 101,
-//                   })
-//                   .end(function(err, res) {
-//                     assert.equal(res.body[0].comment, 'test string');
-//                     return done()
-//                   });
-//                   afterEach(function() {
-//                     models.Feedback.destroy({
-//                         where: {
-//                           courseID: 101
-//                           }
-//                       });
-//                   });
-//               });
-//         });
-//   });
+describe('<Unit test for feedback function>', function() {
+
+  describe('', function() {
+    return it('Test case 1 : Create a comment for course that doesnt have comment ', function(done) {
+      var req = request(route).post('/feedback/comment');
+      req.cookies = globalCookies;
+      req
+      // .set('Accept','application/json')
+      .send({
+        courseId: 9999,
+        comment: 'feedback'
+        })
+      .end(function(err, res) {
+        assert.equal(res.body.msg,'create successfully');
+        return done();
+      });
+      });
+  });
+
+    describe('', function() {
+      return it('Test case 2 : Update comment for course having comment already', function(done) {
+        var req = request(route).post('/feedback/comment');
+        req.cookies = globalCookies;
+        req
+        .send({
+            courseId: 9999,
+            comment: 'update feedback'
+        })
+        .end(function(err,res){
+          assert.equal(res.body.msg,'update successfully');
+          return done();
+        })
+      });
+    });
+
+    describe('', function() {
+      return it('Test case 3 : Create a rating for course that doesnt have rating', function(done) {
+          var req = request(route).post('/feedback/rating');
+          req.cookies = globalCookies;
+          req
+          .send({
+            courseId: 9998,
+            rating: 3
+          })
+          .end(function(err,res){
+            assert.equal(res.body.msg,'create successfully');
+            return done();
+          });
+        });
+    });
+
+    describe('', function() {
+      return it('Test case 4 : Update rating for course having rating already', function(done) {
+          var req = request(route).post('/feedback/rating');
+          req.cookies = globalCookies;
+          req
+          .send({
+            courseId: 9998,
+            rating: 4
+          })
+          .end(function(err,res){
+            assert.equal(res.body.msg,'update successfully');
+            return done();
+          });
+        });
+    });
+
+    describe('', function() {
+      return it('Test case 5 : show average rating', function(done) {
+          var req = request(route).post('/feedback/showAverageRating');
+          req.cookies = globalCookies;
+          req
+          .send({
+            courseId: 9998,
+          })
+          .end(function(err,res){
+            assert.equal(res.body.result,4);
+            return done();
+          });
+          afterEach(function() {
+              models.Feedback.destroy({
+                  where: {
+                      courseID: 9998
+                    }
+              });
+          });
+        });
+    });
+
+      describe('', function() {
+          return it('Test case 6 : show feedback', function(done) {
+            var req = request(route).post('/feedback/showFeedback');
+            req.cookies = globalCookies;
+            req
+            .send({
+                courseId: 9999,
+            })
+            .end(function(err, res) {
+              assert.equal(res.body[0].comment, 'update feedback');
+              return done()
+            });
+            afterEach(function() {
+              models.Feedback.destroy({
+                  where: {
+                    courseID: 9999
+                    }
+                });
+            });
+          });
+      });
+  });
 
 
 describe('<Logout Function>', function() {
