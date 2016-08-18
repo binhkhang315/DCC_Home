@@ -220,9 +220,8 @@ myApp.controller('FeedbackCtrl', function($scope, $http, $window) {
       });
 });
 
-myApp.controller("calendarCtrl", function($scope, $filter, $http, $q) {
-
-    $scope.dayFormat = "d";
+myApp.controller('calendarCtrl', function($scope, $filter, $http, $q, MaterialCalendarData) {
+    $scope.dayFormat = 'd';
 
     // To select a single date, make sure the ngModel is not an array.
     $scope.selectedDate = null;
@@ -233,38 +232,30 @@ myApp.controller("calendarCtrl", function($scope, $filter, $http, $q) {
     $scope.firstDayOfWeek = 0; // First day of the week, 0 for Sunday, 1 for Monday, etc.
     $scope.setDirection = function(direction) {
       $scope.direction = direction;
-      $scope.dayFormat = direction === "vertical" ? "EEEE, MMMM d" : "d";
+      $scope.dayFormat = direction === 'vertical' ? 'EEEE, MMMM d' : 'd';
     };
 
     $scope.dayClick = function(date) {
-      $scope.msg = "You clicked " + $filter("date")(date, "MMM d, y h:mm:ss a Z");
+      $scope.msg = 'You clicked ' + $filter('date')(date, 'MMM d, y h:mm:ss a Z');
+      console.log($scope.msg);
     };
 
     $scope.prevMonth = function(data) {
-      $scope.msg = "You clicked (prev) month " + data.month + ", " + data.year;
+      $scope.msg = 'You clicked (prev) month ' + data.month + ', ' + data.year;
     };
 
     $scope.nextMonth = function(data) {
-      $scope.msg = "You clicked (next) month " + data.month + ", " + data.year;
+      $scope.msg = 'You clicked (next) month ' + data.month + ', ' + data.year;
     };
-
     $scope.tooltips = true;
-    $scope.setDayContent = function(date) {
-
-        // You would inject any HTML you wanted for
-        // that particular date here.
-        return "<p></p>";
-
-        // You could also use an $http function directly.
-        return $http.get("/some/external/api");
-
-        // You could also use a promise.
-        var deferred = $q.defer();
-        $timeout(function() {
-            deferred.resolve("<p></p>");
-        }, 1000);
-        return deferred.promise;
-
-    };
-
+// set events
+    $http.get('/getEvents').then(function(result) {
+      var events = result.data;
+      for (var i = 0; i < events.length; i++) {
+        var event = events[i];
+        var start = event.start.dateTime || event.start.date;
+        var eventDate = new Date(Date.parse(start));
+        MaterialCalendarData.setDayContent(eventDate, event.summary);
+      }
+    });
 });

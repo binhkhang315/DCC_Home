@@ -195,16 +195,29 @@
     </div>
 
     <!-- About -->
-    <calendar-md flex layout layout-fill calendar-direction="direction" on-prev-month="prevMonth" on-next-month="nextMonth" on-day-click="dayClick" title-format="'MMMM y'" ng-model='selectedDate' week-starts-on="firstDayOfWeek" data-start-month="8" data-start-year="2014"
-        tooltips="tooltips" day-format="dayFormat" day-label-format="'EEE'" day-label-tooltip-format="'EEEE'" day-tooltip-format="'fullDate'" day-content="setDayContent" disable-future-selection="false"></calendar-md>
-
+    <div class="" ng-controller="calendarCtrl" style ="height:600px">
+        <calendar-md flex layout layout-fill
+        calendar-direction="direction"
+        on-prev-month="prevMonth"
+        on-next-month="nextMonth"
+        on-day-click="dayClick"
+        title-format="'MMMM y'"
+        ng-model='selectedDate'
+        day-format="'d'"
+        tooltips='true'
+        day-label-format="'EEE'"
+        day-label-tooltip-format="'EEEE'"
+        day-tooltip-format="'fullDate'"
+        week-starts-on="firstDayOfWeek"
+        day-content="setDayContent">
+      </calendar-md>
+    </div>
     <!-- Contact -->
     <div class="" id="contact">
         <div class="banner">
             <div class="row">
                 <div class="col-lg-6">
                     <h2><p>  Developing tomorrow’s technology
-
   				</h2>
                 </div>
                 <div class="col-lg-6">
