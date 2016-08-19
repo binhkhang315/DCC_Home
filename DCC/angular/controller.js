@@ -217,7 +217,7 @@ myApp.controller('FeedbackCtrl', function($scope, $http, $window) {
     });
 });
 
-myApp.controller('calendarCtrl', function($scope, $filter, $http, $q, MaterialCalendarData) {
+myApp.controller('CalendarCtrl', function($scope, $filter, $http, $q, MaterialCalendarData) {
     $scope.dayFormat = 'd';
     var events;
     // To select a single date, make sure the ngModel is not an array.
@@ -229,7 +229,9 @@ myApp.controller('calendarCtrl', function($scope, $filter, $http, $q, MaterialCa
     $scope.firstDayOfWeek = 0; // First day of the week, 0 for Sunday, 1 for Monday, etc.
     $scope.setDirection = function(direction) {
         $scope.direction = direction;
-        $scope.dayFormat = direction === 'vertical' ? 'EEEE, MMMM d' : 'd';
+        $scope.dayFormat = direction === 'vertical'
+                                        ? 'EEEE, MMMM d'
+                                        : 'd';
     };
 
     $scope.dayClick = function(date) {
@@ -245,14 +247,16 @@ myApp.controller('calendarCtrl', function($scope, $filter, $http, $q, MaterialCa
     };
     $scope.tooltips = true;
     // set events
+
     $http.get('/getEvents').then(function(result) {
+      $scope.msg = 'test';
         events = result.data;
         for (var i = 0; i < events.length; i++) {
             var event = events[i];
             var start = event.start.dateTime || event.start.date;
             var eventDate = new Date(Date.parse(start));
-            var checkdate = MaterialCalendarData.getDayKey(eventDate);
-            var dateData = MaterialCalendarData.data[checkdate];
+            var checkDate = MaterialCalendarData.getDayKey(eventDate);
+            var dateData = MaterialCalendarData.data[checkDate];
             if (typeof(dateData) === 'undefined') {
                 dateData = '';
             }

@@ -1,5 +1,4 @@
 
-// this test is ok
 describe('GetListCtrl Unit testing #1', function() {
 
     // Arrange
@@ -121,7 +120,7 @@ describe('GetListCtrl Unit testing #1', function() {
     }));
 
 });
-// this test is ok
+
 describe("LoginCtrl Unit testing #2", function() {
 
     // Arrange
@@ -635,5 +634,85 @@ describe("FeedbackCtrl Unit testing #9", function() {
     //     $httpBackend.flush();
     //     expect($rootScope.msg).toBe(res.msg);
     // }));
+
+});
+
+describe("CalendarCtrl Unit testing #7", function() {
+    var controller, $controller, $scope, $rootScope, createController;
+    beforeEach(angular.mock.module("myApp"));
+    beforeEach(inject(function($injector) {
+        $rootScope = $injector.get('$rootScope');
+        $controller = $injector.get('$controller');
+        $httpBackend = $injector.get('$httpBackend');
+        createController = {
+            calendarCtrl: function() {
+                return $controller('CalendarCtrl', {
+                    $scope: $rootScope
+                });
+            }
+        }
+
+    }));
+
+    it('Test 1: CalendarCtrl Be Defined', inject(function($controller) {
+        controller = createController.calendarCtrl();
+        expect(controller).toBeDefined();
+    }));
+
+    it('Test 2: setDirection(): direction !== vertical,  dayFormat === d ', inject(function($controller) {
+        controller = createController.calendarCtrl();
+        var direction = 'test';
+        $rootScope.setDirection(direction)
+        expect($rootScope.direction).toBe(direction);
+        expect($rootScope.dayFormat).toBe('d');
+    }));
+
+    it('Test 3: setDirection(): direction === vertical,  dayFormat === EEEE, MMMM d ', inject(function($controller) {
+        controller = createController.calendarCtrl();
+        var direction = 'vertical';
+        $rootScope.setDirection(direction)
+        expect($rootScope.direction).toBe(direction);
+        expect($rootScope.dayFormat).toBe('EEEE, MMMM d');
+    }));
+
+    it('Test 4: setDirection(): direction === null,  dayFormat !== EEEE, MMMM d ', inject(function($controller) {
+        controller = createController.calendarCtrl();
+        var direction = null;
+        $rootScope.setDirection(direction)
+        expect($rootScope.direction).toBe(direction);
+        expect($rootScope.dayFormat).not.toBe('EEEE, MMMM d');
+    }));
+//----------------------------------------------------------------------------------------------------
+
+    it('Test 5: prevMonth()', inject(function($controller) {
+        controller = createController.calendarCtrl();
+        var data = {
+          month: 1,
+          year: 2016
+        };
+        $rootScope.prevMonth(data)
+        expect($rootScope.msg).toBe('You clicked (prev) month ' + data.month + ', ' + data.year);
+    }));
+    //----------------------------------------------------------------------------
+    it('Test 6: nextMonth()', inject(function($controller) {
+        controller = createController.calendarCtrl();
+        var data = {
+          month: 1,
+          year: 2016
+        };
+        $rootScope.nextMonth(data)
+        expect($rootScope.msg).toBe('You clicked (next) month ' + data.month + ', ' + data.year);
+    }));
+
+    it('Test 6: nextMonth()', inject(function($controller) {
+        controller = createController.calendarCtrl();
+        var data = {
+          month: 1,
+          year: 2016
+        };
+        $httpBackend.whenGET('/getEvents').respond(data);
+        $httpBackend.flush();
+        expect($rootScope.msg).toBe('test');
+    }));
 
 });

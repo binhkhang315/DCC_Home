@@ -20,28 +20,28 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">74.63% </span>
+        <span class="strong">87.41% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>100/134</span>
+        <span class='fraction'>118/135</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">40% </span>
+        <span class="strong">60% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>4/10</span>
+        <span class='fraction'>6/10</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">67.44% </span>
+        <span class="strong">79.07% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>29/43</span>
+        <span class='fraction'>34/43</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">74.63% </span>
+        <span class="strong">87.41% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>100/134</span>
+        <span class='fraction'>118/135</span>
       </div>
     </div>
   </div>
-  <div class='status-line medium'></div>
+  <div class='status-line high'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -305,7 +305,11 @@
 260
 261
 262
-263</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
+263
+264
+265
+266
+267</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -525,36 +529,40 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-yes">7×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -786,42 +794,46 @@ myApp.controller('FeedbackCtrl', function($scope, $http, $window) {
     });
 });
 &nbsp;
-myApp.controller('calendarCtrl', <span class="fstat-no" title="function not covered" >function($scope, $filter, $http, $q, MaterialCalendarData) {</span>
-<span class="cstat-no" title="statement not covered" >    $scope.dayFormat = 'd';</span>
-<span class="cstat-no" title="statement not covered" >    var events;</span>
+myApp.controller('CalendarCtrl', function($scope, $filter, $http, $q, MaterialCalendarData) {
+    $scope.dayFormat = 'd';
+    var events;
     // To select a single date, make sure the ngModel is not an array.
-<span class="cstat-no" title="statement not covered" >    $scope.selectedDate = null;</span>
+    $scope.selectedDate = null;
 &nbsp;
     // If you want multi-date select, initialize it as an array.
-<span class="cstat-no" title="statement not covered" >    $scope.selectedDate = [];</span>
+    $scope.selectedDate = [];
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    $scope.firstDayOfWeek = 0; </span>// First day of the week, 0 for Sunday, 1 for Monday, etc.
-<span class="cstat-no" title="statement not covered" >    $scope.setDirection = <span class="fstat-no" title="function not covered" >function(direction) {</span></span>
-<span class="cstat-no" title="statement not covered" >        $scope.direction = direction;</span>
-<span class="cstat-no" title="statement not covered" >        $scope.dayFormat = direction === 'vertical' ? 'EEEE, MMMM d' : 'd';</span>
+    $scope.firstDayOfWeek = 0; // First day of the week, 0 for Sunday, 1 for Monday, etc.
+    $scope.setDirection = function(direction) {
+        $scope.direction = direction;
+        $scope.dayFormat = direction === 'vertical'
+                                        ? 'EEEE, MMMM d'
+                                        : 'd';
     };
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    $scope.dayClick = <span class="fstat-no" title="function not covered" >function(date) {</span></span>
+    $scope.dayClick = <span class="fstat-no" title="function not covered" >function(date) {</span>
       // TODO: add popup
     };
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    $scope.prevMonth = <span class="fstat-no" title="function not covered" >function(data) {</span></span>
-<span class="cstat-no" title="statement not covered" >        $scope.msg = 'You clicked (prev) month ' + data.month + ', ' + data.year;</span>
+    $scope.prevMonth = function(data) {
+        $scope.msg = 'You clicked (prev) month ' + data.month + ', ' + data.year;
     };
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    $scope.nextMonth = <span class="fstat-no" title="function not covered" >function(data) {</span></span>
-<span class="cstat-no" title="statement not covered" >        $scope.msg = 'You clicked (next) month ' + data.month + ', ' + data.year;</span>
+    $scope.nextMonth = function(data) {
+        $scope.msg = 'You clicked (next) month ' + data.month + ', ' + data.year;
     };
-<span class="cstat-no" title="statement not covered" >    $scope.tooltips = true;</span>
+    $scope.tooltips = true;
     // set events
-<span class="cstat-no" title="statement not covered" >    $http.get('/getEvents').then(<span class="fstat-no" title="function not covered" >function(result) {</span></span>
-<span class="cstat-no" title="statement not covered" >        events = result.data;</span>
-<span class="cstat-no" title="statement not covered" >        for (var i = 0; i &lt; events.length; i++) {</span>
+&nbsp;
+    $http.get('/getEvents').then(function(result) {
+      $scope.msg = 'test';
+        events = result.data;
+        for (var i = 0; i &lt; events.length; i++) {
 <span class="cstat-no" title="statement not covered" >            var event = events[i];</span>
 <span class="cstat-no" title="statement not covered" >            var start = event.start.dateTime || event.start.date;</span>
 <span class="cstat-no" title="statement not covered" >            var eventDate = new Date(Date.parse(start));</span>
-<span class="cstat-no" title="statement not covered" >            var checkdate = MaterialCalendarData.getDayKey(eventDate);</span>
-<span class="cstat-no" title="statement not covered" >            var dateData = MaterialCalendarData.data[checkdate];</span>
+<span class="cstat-no" title="statement not covered" >            var checkDate = MaterialCalendarData.getDayKey(eventDate);</span>
+<span class="cstat-no" title="statement not covered" >            var dateData = MaterialCalendarData.data[checkDate];</span>
 <span class="cstat-no" title="statement not covered" >            if (typeof(dateData) === 'undefined') {</span>
 <span class="cstat-no" title="statement not covered" >                dateData = '';</span>
             }
@@ -835,7 +847,7 @@ myApp.controller('calendarCtrl', <span class="fstat-no" title="function not cove
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Aug 19 2016 08:53:42 GMT+0700 (SE Asia Standard Time)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Aug 19 2016 10:15:04 GMT+0700 (SE Asia Standard Time)
 </div>
 </div>
 <script src="../prettify.js"></script>
