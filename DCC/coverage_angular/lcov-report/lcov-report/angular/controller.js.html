@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">73.53% </span>
+        <span class="strong">74.63% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>100/136</span>
+        <span class='fraction'>100/134</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">40% </span>
@@ -35,9 +35,9 @@
         <span class='fraction'>29/43</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">73.53% </span>
+        <span class="strong">74.63% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>100/136</span>
+        <span class='fraction'>100/134</span>
       </div>
     </div>
   </div>
@@ -305,12 +305,7 @@
 260
 261
 262
-263
-264
-265
-266
-267
-268</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
+263</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -318,6 +313,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">5×</span>
 <span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">6×</span>
 <span class="cline-any cline-yes">4×</span>
@@ -330,6 +326,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">6×</span>
 <span class="cline-any cline-yes">5×</span>
 <span class="cline-any cline-yes">5×</span>
@@ -398,11 +395,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">2×</span>
 <span class="cline-any cline-yes">1×</span>
@@ -517,7 +509,6 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -549,8 +540,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -579,24 +569,26 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">var myApp = angular.module('myApp', ['ngCookies', 'ngTagsInput', 'textAngular', 'ngMaterial', 'materialCalendar', 'course']);
 // creat angular controller
-myApp.controller('LoginCtrl', function($scope, $http, $cookies, $rootScope) {
-    // function to submit the form after all validation has occurred
+myApp.controller('LoginCtrl', function($scope, $http, $cookies, $rootScope, $window) {
+    // get route '/isLogged' to check user logined or not
     $http.get('/isLogged')
         .then(function(res) {
             $cookies.put('userid', res.data);
             $rootScope.userid = $cookies.get('userid');
         });
+    // get userid in cookies if it exist
     if ($cookies.get('userid')) {
         $rootScope.userid = $cookies.get('userid');
     }
     // login/ logout message: success or fail
     $scope.message = '';
-    // call the login function in service.js
+    // receive value username and password from login page
     $scope.user = {
         username: '',
         password: ''
     };
     $scope.isAuthenticated = false;
+    // login function, post to server user's credentials
     $scope.login = function() {
         $http.post('/users/login', $scope.user).then(function(result) {
             if (result.data.userid) {
@@ -660,11 +652,6 @@ myApp.controller('GetListCtrl', function($scope, $rootScope, $http, CourseList) 
         $rootScope.courseslistDelete = {
             courseIDDelete: course.id,
             courseNameDelete: course.name,
-            // courseDescriptionDelete: course.description,
-            // courseCategoryDelete: course.category,
-            // courseTestDelete: course.test,
-            // courseDocumentsDelete: course.documents,
-            // courseTrainerIDDelete: course.trainerID,
             courseIsDeletedDelete: course.isDeleted
         }
     }
@@ -782,7 +769,6 @@ myApp.controller('FeedbackCtrl', function($scope, $http, $window) {
             courseId: parseInt(courseID),
         }).then(<span class="fstat-no" title="function not covered" >function(result) {</span>
 <span class="cstat-no" title="statement not covered" >            $scope.msg = result.data.msg;</span>
-            // $window.location.href = '/course/coursesoverview/{{courseId}}';
         });
     }
     $scope.showFeedback = <span class="fstat-no" title="function not covered" >function() {</span>
@@ -816,8 +802,7 @@ myApp.controller('calendarCtrl', <span class="fstat-no" title="function not cove
     };
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    $scope.dayClick = <span class="fstat-no" title="function not covered" >function(date) {</span></span>
-<span class="cstat-no" title="statement not covered" >        var checkdate = MaterialCalendarData.getDayKey(date);</span>
-<span class="cstat-no" title="statement not covered" >        var dateData = MaterialCalendarData.data[checkdate];</span>
+      // TODO: add popup
     };
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    $scope.prevMonth = <span class="fstat-no" title="function not covered" >function(data) {</span></span>
@@ -850,7 +835,7 @@ myApp.controller('calendarCtrl', <span class="fstat-no" title="function not cove
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Aug 18 2016 17:45:35 GMT+0700 (SE Asia Standard Time)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Aug 19 2016 08:53:42 GMT+0700 (SE Asia Standard Time)
 </div>
 </div>
 <script src="../prettify.js"></script>

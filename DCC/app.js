@@ -40,6 +40,7 @@ app.use('/log', serveIndex('./public/log'));
 app.use('/angular', express.static(path.join(__dirname, 'angular')));
 
 // Express Session
+// session will save user's credentials in 10 days
 app.use(session({
     secret: 'secret',
     cookie: {

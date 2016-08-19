@@ -20,7 +20,6 @@ var BASE_OPTS = {
         searchFilter: '(mail={{username}})'
     }
 };
-// Email Setting
 var opts = {
     logDirectory: './public/log',
     fileNamePattern: 'roll-<DATE>.log',
@@ -39,7 +38,7 @@ var storage	=	multer.diskStorage({
   }
 });
 var upload = multer({ storage : storage}).single('userPhoto');
-
+// connect to mysql
 var db = new Sequelize('nodejs', 'root', 'dekvn@123321', {
     host: '192.168.122.51',
     dialect: 'mysql',
@@ -52,7 +51,7 @@ var db = new Sequelize('nodejs', 'root', 'dekvn@123321', {
   logging: false
 });
 var acl       = new Acl(new AclSeq(db, { prefix: 'acl_' }));
-
+// generate table to mysql
 models.User.sync();
 models.User
   .findOrCreate({
@@ -152,6 +151,8 @@ models.User
 //   }
 // });
 
+
+//-----------routing-------------
 router.get('/userprofile', function(req, res) {
     log.info('/routes/users: GET /users/userprofile');
     res.render('userprofile');
@@ -210,6 +211,7 @@ router.post('/userprofileReturnValue', function(req, res) {
 
 router.post('/photo',function(req,res){
   log.info('/routes/users: Upload avatar');
+  // upload avatar
 	upload(req,res,function() {
     models.User.update(
     {
@@ -235,6 +237,8 @@ router.get('/trainer', function(req, res) {
 //         res.redirect('/');
 //     }
 // }
+
+
 // This creates a set of roles which have permissions on
 //  different resources.
 
@@ -267,12 +271,15 @@ passport.deserializeUser(function(mail, callback) {
 });
 router.post('/login', function(req, res, next) {
     passport.authenticate('ldapauth', {
+      // using session to save user's credentials
         session: true
     }, function(err, user) {
+      // if err, log err
         if (err) {
             log.error(err);
             return next();
         }
+        // if user does not exist, login fail
         if (!user) {
             log.info('User login failed.');
             res.send({
@@ -280,6 +287,7 @@ router.post('/login', function(req, res, next) {
                 msg: 'You are not authenticated!'
             });
         } else {
+          // else login success
             return req.login(user, function(err) {
                 if (err) {
                     log.error(err);
@@ -294,7 +302,7 @@ router.post('/login', function(req, res, next) {
         }
     })(req, res, next);
 });
-
+// destroy session and redirect to homepage when logout
 router.get('/logout', function(req, res) {
     log.info('/routes/users: GET /logout');
     req.logout();

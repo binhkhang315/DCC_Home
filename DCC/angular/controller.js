@@ -1,23 +1,25 @@
 var myApp = angular.module('myApp', ['ngCookies', 'ngTagsInput', 'textAngular', 'ngMaterial', 'materialCalendar', 'course']);
 // creat angular controller
-myApp.controller('LoginCtrl', function($scope, $http, $cookies, $rootScope) {
-    // function to submit the form after all validation has occurred
+myApp.controller('LoginCtrl', function($scope, $http, $cookies, $rootScope, $window) {
+    // get route '/isLogged' to check user logined or not
     $http.get('/isLogged')
         .then(function(res) {
             $cookies.put('userid', res.data);
             $rootScope.userid = $cookies.get('userid');
         });
+    // get userid in cookies if it exist
     if ($cookies.get('userid')) {
         $rootScope.userid = $cookies.get('userid');
     }
     // login/ logout message: success or fail
     $scope.message = '';
-    // call the login function in service.js
+    // receive value username and password from login page
     $scope.user = {
         username: '',
         password: ''
     };
     $scope.isAuthenticated = false;
+    // login function, post to server user's credentials
     $scope.login = function() {
         $http.post('/users/login', $scope.user).then(function(result) {
             if (result.data.userid) {
@@ -81,11 +83,6 @@ myApp.controller('GetListCtrl', function($scope, $rootScope, $http, CourseList) 
         $rootScope.courseslistDelete = {
             courseIDDelete: course.id,
             courseNameDelete: course.name,
-            // courseDescriptionDelete: course.description,
-            // courseCategoryDelete: course.category,
-            // courseTestDelete: course.test,
-            // courseDocumentsDelete: course.documents,
-            // courseTrainerIDDelete: course.trainerID,
             courseIsDeletedDelete: course.isDeleted
         }
     }

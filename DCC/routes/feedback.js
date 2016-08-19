@@ -114,7 +114,7 @@ router.post('/showAverageRating',function(req,res){
     }
   }).then(function(feedback){
     var sumRating = 0;
-    for(i = 0; i < feedback.length; i++){
+    for( var i = 0; i < feedback.length; i++){
       sumRating = sumRating + feedback[i].dataValues.rating;
     }
     var avg = sumRating/feedback.length;

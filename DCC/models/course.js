@@ -89,9 +89,6 @@ module.exports = function(sequelize, DataTypes) {
                 };
                 Course.findAll(query).then(cb);
             },
-            // associate: function(models){
-            //   Course.belongsToMany(models.User,{through: models.Feedback});
-            // }
         },
         tableName: 'course'
     });
