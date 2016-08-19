@@ -63,7 +63,13 @@ describe('<Unit Test for Routing>', function() {
         });
     });
 
-
+    describe('', function() {
+        return it('Test case 7 : get /getEvents ', function(done) {
+            request(route)
+                .get('/getEvents')
+                .expect(200, done)
+        });
+    });
 
 });
 
