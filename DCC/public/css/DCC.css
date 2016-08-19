@@ -1227,7 +1227,6 @@ h1 { font-size: 1.5em; margin: 0px; }
 .toppad
 {margin-top:20px;
 }
-
 .wrapper {
   text-transform: uppercase;
   background: #ececec;
@@ -1244,7 +1243,7 @@ h1 { font-size: 1.5em; margin: 0px; }
   -webkit-font-smoothing: antialiased; /* webkit text rendering fix */
 }
 
-.wrapper .tooltip {
+.tooltip {
   background: #1496bb;
   bottom: 100%;
   color: #fff;
@@ -1274,7 +1273,7 @@ h1 { font-size: 1.5em; margin: 0px; }
 }
 
 /* This bridges the gap so you can mouse into the tooltip without it disappearing */
-.wrapper .tooltip:before {
+.tooltip:before {
   bottom: -20px;
   content: " ";
   display: block;
@@ -1285,7 +1284,7 @@ h1 { font-size: 1.5em; margin: 0px; }
 }
 
 /* CSS Triangles - see Trevor's post */
-.wrapper .tooltip:after {
+.tooltip:after {
   border-left: solid transparent 10px;
   border-right: solid transparent 10px;
   border-top: solid #1496bb 10px;
