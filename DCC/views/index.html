@@ -54,7 +54,7 @@
                     <div id="dl-menu" class="dl-menuwrapper">
                         <button class="dl-trigger">MENU</button>
                         <ul class="dl-menu">
-                            <li><a href="#about">About us</a></li>
+                            <li><a href="#calendar">Calendar</a></li>
                             <li><a href="#contact">Contact</a></li>
                             <li ng-hide="userid"><a id="login">Login</a></li>
                             <li role="presentation" ng-hide="!userid">
@@ -81,7 +81,7 @@
 
                 <div class="collapse navbar-rowmenu">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#about">About us</a></li>
+                        <li><a href="#calendar">Calendar</a></li>
                         <li><a href="#contact">Contact</a></li>
                         <li role="presentation" ng-hide="userid"><a data-toggle="modal" href="#loginModal">Login</a></li>
                         <li role="presentation" ng-hide="!userid" class="dropdown">
@@ -194,66 +194,41 @@
         </div>
     </div>
 
-    <!-- About -->
-    <div class="" ng-controller="CalendarCtrl" style="height:600px">
+    <!-- calendar -->
+    <div id="calendar" class="" ng-controller="CalendarCtrl" style="height:500px">
+        <div style="text-align:center;font-size:50px;padding-top:30px;">Training Courses Calendar</div>
         <calendar-md flex layout layout-fill calendar-direction="direction" on-prev-month="prevMonth" on-next-month="nextMonth" on-day-click="dayClick" title-format="'MMMM y'" ng-model='selectedDate' day-format="'d'" tooltips='true' day-label-format="'EEE'" day-label-tooltip-format="'EEEE'"
             day-tooltip-format="'fullDate'" week-starts-on="firstDayOfWeek" template="myTemplate" day-content="setDayContent">
         </calendar-md>
     </div>
 
     <!-- Contact -->
-    <div class="" id="contact">
+    <div id="contact">
         <div class="banner">
-            <div class="row">
-                <div class="col-lg-6">
-                    <h2><p>  Developing tomorrow’s technology
-  				</h2>
-                </div>
-                <div class="col-lg-6">
-                    <ul class="list-inline banner-social-buttons">
-                        <li>
-                            <a href="https://www.dektech.com.au/" class="btn btn-default btn-lg"><span class="network-name">Website</span></a>
-                        </li>
-                        <li>
-                            <a href="https://www.facebook.com/DEKTechnologiesGlobal/" class="btn btn-default btn-lg"><em class="fa fa-facebook fa-fw"></em> <span class="network-name">Facebook</span></a>
-                        </li>
-                        <li>
-                            <a href="https://www.linkedin.com/company/dek-technologies" class="btn btn-default btn-lg"><em class="fa fa-linkedin fa-fw"></em> <span class="network-name">Linkedin</span></a>
-                        </li>
-                    </ul>
-                </div>
+            <div style="text-align:right">
+                <h2>Follow us</h2>
             </div>
+            </br>
+            <ul class="list-inline banner-social-buttons">
+                <li>
+                    <a href="https://www.dektech.com.au/" class="btn btn-default btn-lg"><span class="network-name">Website</span></a>
+                </li>
+                <li>
+                    <a href="https://www.facebook.com/DEKTechnologiesGlobal/" class="btn btn-default btn-lg"><em class="fa fa-facebook fa-fw"></em> <span class="network-name">Facebook</span></a>
+                </li>
+                <li>
+                    <a href="https://www.linkedin.com/company/dek-technologies" class="btn btn-default btn-lg"><em class="fa fa-linkedin fa-fw"></em> <span class="network-name">Linkedin</span></a>
+                </li>
+            </ul>
         </div>
+    </div>
     </div>
 
 
 
     <!-- Footer -->
     <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <ul class="list-inline">
-                        <li>
-                            <a href="#">Home</a>
-                        </li>
-                        <li class="footer-menu-divider">&sdot;</li>
-                        <li>
-                            <a href="#about">About</a>
-                        </li>
-                        <li class="footer-menu-divider">&sdot;</li>
-                        <li>
-                            <a href="#courses">Courses</a>
-                        </li>
-                        <li class="footer-menu-divider">&sdot;</li>
-                        <li>
-                            <a href="#contact">Contact</a>
-                        </li>
-                    </ul>
-                    <p class="copyright text-muted small">Copyright &copy; DEK Technologies Vietnam 2016. All Rights Reserved</p>
-                </div>
-            </div>
-        </div>
+        <p class="copyright text-muted small" style="text-align:center">Copyright &copy; DEK Technologies Vietnam 2016. All Rights Reserved</p>
     </footer>
 </body>
 
