@@ -128,11 +128,6 @@ router.post('/photo',function(req,res){
 	});
 });
 
-router.get('/trainer', function(req, res) {
-    log.info('/routes/users: GET /users/trainer');
-    res.render('trainer');
-});
-
 // ensure authenticated
 // function ensureAuthenticated(req, res, next) {
 //     if (req.isAuthenticated()) {
