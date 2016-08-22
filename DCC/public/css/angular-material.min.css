@@ -9227,8 +9227,6 @@ md-toolbar~md-content>md-list md-list-item:last-child md-divider {
 md-tooltip {
     position: absolute;
     z-index: 100;
-    height: 25%;
-    width: 25%;
     text-align: center;
     overflow: hidden;
     pointer-events: none;
@@ -9236,15 +9234,12 @@ md-tooltip {
     font-weight: 500;
     font-size: 15px;
     background-color: grey;
-    padding: 20px 15px;
-
-
+    padding: 5px 5px;
 }
 @media screen and (min-width:600px) {
     md-tooltip {
         font-size: 20px
     }
-
 }
 md-tooltip .md-background {
     position: absolute;
@@ -9314,6 +9309,7 @@ md-tooltip.md-show {
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0)
 }
+
 .md-virtual-repeat-container {
     box-sizing: border-box;
     display: block;

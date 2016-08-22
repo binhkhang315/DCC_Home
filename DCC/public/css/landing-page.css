@@ -138,9 +138,8 @@ h6 {
   background: url(../img/about.jpg)center center;
 }
 .banner {
-    padding: 100px 20px;
+    padding: 50px 20px;
     color: #f8f8f8;
-
     background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(../img/connect.jpg) no-repeat center center;
     background-size: cover;
 }
@@ -184,7 +183,19 @@ h6 {
         margin-bottom: 0;
     }
 }
-
+.contact{
+  padding-top: 150px;
+}
+@media(max-width:800px){
+  .contact{
+    padding-top: 120px;
+  }
+}
+@media(max-width:500px){
+  .contact{
+    padding-top: 90px;
+  }
+}
 footer {
     padding: 50px 0;
     background-color: #f8f8f8;
