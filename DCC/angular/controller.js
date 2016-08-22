@@ -236,7 +236,6 @@ myApp.controller('CalendarCtrl', function($scope, $filter, $http, $q, MaterialCa
     };
 
     $scope.dayClick = function(date) {
-      // TODO: add popup
       var checkDate = MaterialCalendarData.getDayKey(date);
       var dateData = MaterialCalendarData.data[checkDate];
       $scope.popup = dateData;

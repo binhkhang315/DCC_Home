@@ -195,8 +195,8 @@
     </div>
 
     <!-- calendar -->
-    <div id="calendar" class="" ng-controller="CalendarCtrl" style="height:500px">
-        <div style="text-align:center;font-size:50px;padding-top:30px;">Training Courses Calendar</div>
+    <div id="calendar" class="cal" ng-controller="CalendarCtrl">
+        <div class="titlecal">Training Courses Calendar</div>
         <calendar-md flex layout layout-fill calendar-direction="direction" on-prev-month="prevMonth" on-next-month="nextMonth" on-day-click="dayClick" title-format="'MMMM y'" ng-model='selectedDate' day-format="'d'" tooltips='true' day-label-format="'EEE'" day-label-tooltip-format="'EEEE'"
             day-tooltip-format="'fullDate'" week-starts-on="firstDayOfWeek" template="myTemplate" day-content="setDayContent">
         </calendar-md>
@@ -204,24 +204,25 @@
 
     <!-- Contact -->
     <div id="contact">
-        <div class="banner">
-            <div style="text-align:right">
-                <h2>Follow us</h2>
+        <div class="banner container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h2>Follow us</h2>
+                  </br>
+                    <ul class="list-inline banner-social-buttons">
+                        <li>
+                            <a href="https://www.dektech.com.au/" class="btn btn-default btn-lg"><span class="network-name">Website</span></a>
+                        </li>
+                        <li>
+                            <a href="https://www.facebook.com/DEKTechnologiesGlobal/" class="btn btn-default btn-lg"><em class="fa fa-facebook fa-fw"></em> <span class="network-name">Facebook</span></a>
+                        </li>
+                        <li>
+                            <a href="https://www.linkedin.com/company/dek-technologies" class="btn btn-default btn-lg"><em class="fa fa-linkedin fa-fw"></em> <span class="network-name">Linkedin</span></a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-            </br>
-            <ul class="list-inline banner-social-buttons">
-                <li>
-                    <a href="https://www.dektech.com.au/" class="btn btn-default btn-lg"><span class="network-name">Website</span></a>
-                </li>
-                <li>
-                    <a href="https://www.facebook.com/DEKTechnologiesGlobal/" class="btn btn-default btn-lg"><em class="fa fa-facebook fa-fw"></em> <span class="network-name">Facebook</span></a>
-                </li>
-                <li>
-                    <a href="https://www.linkedin.com/company/dek-technologies" class="btn btn-default btn-lg"><em class="fa fa-linkedin fa-fw"></em> <span class="network-name">Linkedin</span></a>
-                </li>
-            </ul>
         </div>
-    </div>
     </div>
 
 
