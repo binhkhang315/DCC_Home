@@ -58,20 +58,20 @@
                 <!-- <a href= "{{ courseTrainerPage }}" > {{ courseTrainer }} </a> -->
             </div>
             </br>
-            <input id="tab1" type="radio" name="tabs" checked>
-            <label for="tab1">Description</label>
-            <input id="tab2" type="radio" name="tabs">
-            <label for="tab2">Documents</label>
-            <input id="tab3" type="radio" name="tabs">
-            <label for="tab3">Test</label>
-            <input id="tab4" type="radio" name="tabs">
-            <label for="tab4">Feedback & Rating</label>
+            <input id="tab6" type="radio" name="tabs" checked>
+            <label for="tab6">Description</label>
+            <input id="tab7" type="radio" name="tabs">
+            <label for="tab7">Documents</label>
+            <input id="tab8" type="radio" name="tabs">
+            <label for="tab8">Test</label>
+            <input id="tab9" type="radio" name="tabs">
+            <label for="tab9">Feedback & Rating</label>
             <section id="content1">
-                <div ng-bind-html="courseDescription"></div>
+                <div ng-bind-html="courseDescription" style="padding-left:2%;"></div>
             </section>
 
             <section id="content2">
-              <div class="features-thumb">
+              <div class="features-thumb" style="padding-left:10%;">
                   <a href="{{ courseDocuments }}">
                       <img alt="" width="18" height="120" src="/img/doc-1.jpg" class="attachment-related-post size-related-post wp-post-image" />
                       <div class="overlay">
@@ -82,7 +82,7 @@
             </section>
 
             <section id="content3">
-              <div class="features-thumb">
+              <div class="features-thumb" style="padding-left:20%;">
                   <a href="{{ courseTest }}">
                       <img alt="" width="189" height="120" src="/img/onl-test.jpg" class="attachment-related-post size-related-post wp-post-image" />
                       <div class="overlay">
@@ -92,7 +92,7 @@
               </div>
             </section>
 
-            <section id="content4" class="row">
+            <section id="content4" class="row" style="padding-left:30%;">
               <div class="features-thumb">
                   <a data-toggle="modal" href="#feedbackModal">
                       <img alt="" width="189" height="120" src="/img/feed-back.jpg" class="attachment-related-post size-related-post wp-post-image" />
@@ -101,8 +101,7 @@
                       </div>
                   </a>
               </div>
-              <div class="features col-md-3" ng-controller="FeedbackCtrl">
-
+              <div class="features" ng-controller="FeedbackCtrl">
                   <h1>Rating for Course</h1>
                   <fieldset class="rating" >
                       <input type="radio" id="star5" name="rating" value="5" ng-model="rating" ng-click="addRating()" />
@@ -116,12 +115,9 @@
                       <input type="radio" id="star1" name="rating" value="1" ng-model="rating" ng-click="addRating()" />
                       <label class="full" for="star1" title="Sucks big time - 1 star"></label>
                   </fieldset>
-                  <br/>
-                  <div>
-                    <h1>Average Rating {{average}}</h1>
-                  </div>
+                  <h1>Average Rating {{average}}</h1>
               </div>
-              <div class="col-md-12" style="padding-left:15%;">
+              <div class="" style="padding-left:15%;">
                   <div ng-controller="FeedbackCtrl">
                       <button class="btn btn-primary" ng-click="showFeedback()">Show feedbacks</button>
                       <ul ng-repeat="feedback in feedbackList">

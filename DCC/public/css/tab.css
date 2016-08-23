@@ -11,7 +11,6 @@ html, body {
 }
 
 body {
-  font: 14px/1 'Open Sans', sans-serif;
   color: #555;
 }
 
@@ -60,19 +59,19 @@ label:before {
   margin-right: 10px;
 }
 
-label[for*='1']:before {
+label[for*='6']:before {
   content: '\f1cb';
 }
 
-label[for*='2']:before {
+label[for*='7']:before {
   content: '\f17d';
 }
 
-label[for*='3']:before {
+label[for*='8']:before {
   content: '\f16b';
 }
 
-label[for*='4']:before {
+label[for*='9']:before {
   content: '\f1a9';
 }
 
@@ -88,10 +87,10 @@ input:checked + label {
   border-bottom: 1px solid #fff;
 }
 
-#tab1:checked ~ #content1,
-#tab2:checked ~ #content2,
-#tab3:checked ~ #content3,
-#tab4:checked ~ #content4 {
+#tab6:checked ~ #content1,
+#tab7:checked ~ #content2,
+#tab8:checked ~ #content3,
+#tab9:checked ~ #content4 {
   display: block;
 }
 
