@@ -1,5 +1,15 @@
 var myApp = angular.module('myApp', ['ngCookies', 'ngTagsInput', 'textAngular', 'ngMaterial', 'materialCalendar', 'course']);
 // creat angular controller
+myApp.controller('ToastCtrl',function($scope,$rootScope,$mdToast){
+  $rootScope.showToast = function(msg){
+    $mdToast.show(
+      $mdToast.simple()
+        .content(msg)
+        .hideDelay(3000)
+    );
+  }
+});
+
 myApp.controller('LoginCtrl', function($scope, $http, $cookies, $rootScope, $window) {
     // get route '/isLogged' to check user logined or not
     $http.get('/isLogged')
@@ -27,9 +37,11 @@ myApp.controller('LoginCtrl', function($scope, $http, $cookies, $rootScope, $win
                 $cookies.put('userid', result.data.userid);
                 $rootScope.userid = result.data.userid;
                 $scope.message = result.data.msg;
+                $rootScope.showToast($scope.message);
             } else {
                 $scope.isAuthenticated = false;
                 $scope.message = result.data.msg;
+                $rootScope.showToast($scope.message);
             }
         });
     };
@@ -63,7 +75,6 @@ myApp.controller('SetCourseCtrl', function($scope, $http, $window, $sce) {
 myApp.controller('GetListCtrl', function($scope, $rootScope, $http, CourseList) {
     CourseList.getCourseList().then(function(result) {
         $rootScope.coursesList = result;
-        console.log($rootScope.coursesList);
     });
 
     // edit course
@@ -146,6 +157,7 @@ myApp.controller('AddCourseCtrl', function($scope, $rootScope, $http, CourseList
             $scope.postMsg = result.data.msg;
             CourseList.getCourseList().then(function(result) {
                 $rootScope.coursesList = result;
+                $rootScope.showToast($scope.postMsg);
             });
         });
     }
@@ -160,6 +172,7 @@ myApp.controller('UpdateCourseCtrl', function($scope, $rootScope, $http, CourseL
             $scope.postMsg = result.data.msg;
             CourseList.getCourseList().then(function(result) {
                 $rootScope.coursesList = result;
+                $rootScope.showToast($scope.postMsg);
             });
         });
     }
@@ -174,6 +187,7 @@ myApp.controller('IsDeletedCourseCtrl', function($scope, $rootScope, $http, Cour
             $scope.postMsg = result.data.msg;
             CourseList.getCourseList().then(function(result) {
                 $rootScope.coursesList = result;
+                $rootScope.showToast($scope.postMsg);
             });
         });
     }

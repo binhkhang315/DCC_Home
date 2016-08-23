@@ -15,7 +15,6 @@ var oauth2Client;
 // Load client secrets from a local file.
 fs.readFile('client_secret.json', function processClientSecrets(err, content) {
   if (err) {
-    console.log('Error loading client secret file: ' + err);
     return;
   }
   // Authorize a client with the loaded credentials, then call the
@@ -63,7 +62,6 @@ var listEvents = function(auth) {
     orderBy: 'startTime'
   }, function(err, response) {
     if (err) {
-      console.log('The API returned an error: ' + err);
       return;
     }
     var events = response.items;
