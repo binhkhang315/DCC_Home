@@ -121,7 +121,6 @@ var listEvents = function(auth) {
     }
     var events = response.items;
       eventList = events;
-      console.log(eventList);
   })
 }
 
