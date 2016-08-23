@@ -10,7 +10,7 @@ myApp.controller('ToastCtrl',function($scope,$rootScope,$mdToast){
   }
 });
 
-myApp.controller('LoginCtrl', function($scope, $http, $cookies, $rootScope, $window) {
+myApp.controller('LoginCtrl', function($scope, $http, $cookies, $rootScope, $window,ToastService) {
     // get route '/isLogged' to check user logined or not
     $http.get('/isLogged')
         .then(function(res) {
@@ -37,11 +37,11 @@ myApp.controller('LoginCtrl', function($scope, $http, $cookies, $rootScope, $win
                 $cookies.put('userid', result.data.userid);
                 $rootScope.userid = result.data.userid;
                 $scope.message = result.data.msg;
-                //$rootScope.showToast($scope.message);
+                ToastService.showToast($scope.message);
             } else {
                 $scope.isAuthenticated = false;
                 $scope.message = result.data.msg;
-                //$rootScope.showToast($scope.message);
+                ToastService.showToast($scope.message);
             }
         });
     };
@@ -140,7 +140,7 @@ myApp.controller('SetProfileCtrl', function($scope, $rootScope, $http, $window) 
 });
 
 // AddCourseCtrl: add course controller
-myApp.controller('AddCourseCtrl', function($scope, $rootScope, $http, CourseList) {
+myApp.controller('AddCourseCtrl', function($scope, $rootScope, $http, CourseList, ToastService) {
     $scope.courseslist = {
         courseName: '',
         courseDescription: '',
@@ -157,14 +157,14 @@ myApp.controller('AddCourseCtrl', function($scope, $rootScope, $http, CourseList
             $scope.postMsg = result.data.msg;
             CourseList.getCourseList().then(function(result) {
                 $rootScope.coursesList = result;
-                //$rootScope.showToast($scope.postMsg);
+                ToastService.showToast($scope.postMsg);
             });
         });
     }
 });
 
 // UpdateCourseCtrl: edit course controller
-myApp.controller('UpdateCourseCtrl', function($scope, $rootScope, $http, CourseList) {
+myApp.controller('UpdateCourseCtrl', function($scope, $rootScope, $http, CourseList, ToastService) {
     $scope.postMsg = '';
     $scope.getMsg = '';
     $scope.updateCourse = function() {
@@ -172,14 +172,14 @@ myApp.controller('UpdateCourseCtrl', function($scope, $rootScope, $http, CourseL
             $scope.postMsg = result.data.msg;
             CourseList.getCourseList().then(function(result) {
                 $rootScope.coursesList = result;
-                //$rootScope.showToast($scope.postMsg);
+                ToastService.showToast($scope.postMsg);
             });
         });
     }
 });
 
 // IsDeletedCourseCtrl: delete course controller
-myApp.controller('IsDeletedCourseCtrl', function($scope, $rootScope, $http, CourseList) {
+myApp.controller('IsDeletedCourseCtrl', function($scope, $rootScope, $http, CourseList, ToastService) {
     $scope.postMsg = '';
     $scope.getMsg = '';
     $scope.isDeletedCourse = function() {
@@ -187,7 +187,7 @@ myApp.controller('IsDeletedCourseCtrl', function($scope, $rootScope, $http, Cour
             $scope.postMsg = result.data.msg;
             CourseList.getCourseList().then(function(result) {
                 $rootScope.coursesList = result;
-                //$rootScope.showToast($scope.postMsg);
+                ToastService.showToast($scope.postMsg);
             });
         });
     }

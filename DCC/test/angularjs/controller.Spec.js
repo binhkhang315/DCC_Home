@@ -126,9 +126,14 @@ describe("LoginCtrl Unit testing #2", function() {
     // Arrange
     var mockScope;
     var controller;
-
+    var ToastService;
     var controller, $controller, $scope, $http, $rootScope, createController;
     beforeEach(angular.mock.module("myApp"));
+    beforeEach(function(){
+      ToastService = {
+        showToast: function(msg){}
+      }
+    });
     beforeEach(inject(function($injector) {
         $rootScope = $injector.get('$rootScope');
         $controller = $injector.get('$controller');
@@ -344,6 +349,11 @@ describe("SetCourseCtrl Unit testing #5", function() {
                 pathname:'thach/1'
               }
             });
+            // $provide.value('$rootScope', {
+            //   showToast: function(msg){
+            //     console.log(msg);
+            //   }
+            // });
         }));
 
     beforeEach(inject(function($injector) {

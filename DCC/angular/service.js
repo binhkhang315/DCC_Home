@@ -18,3 +18,13 @@ courseService.service('CourseList',['$http','$q',function($http,$q){
       });
     }
 }]);
+
+courseService.service('ToastService',['$mdToast',function($mdToast){
+    this.showToast = function(msg){
+      $mdToast.show(
+        $mdToast.simple()
+          .content(msg)
+          .hideDelay(3000)
+      );
+    }
+}]);
