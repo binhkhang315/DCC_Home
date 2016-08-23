@@ -54,7 +54,7 @@
                     <div id="dl-menu" class="dl-menuwrapper">
                         <button class="dl-trigger">MENU</button>
                         <ul class="dl-menu">
-                            <li><a href="#calendar">Calendar</a></li>
+                            <li><a href="#calendar">Training Calendar</a></li>
                             <li><a href="#contact">Contact</a></li>
                             <li ng-hide="userid"><a id="login">Login</a></li>
                             <li role="presentation" ng-hide="!userid">
@@ -81,7 +81,7 @@
 
                 <div class="collapse navbar-rowmenu">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#calendar">Calendar</a></li>
+                        <li><a href="#calendar">Training Calendar</a></li>
                         <li><a href="#contact">Contact</a></li>
                         <li role="presentation" ng-hide="userid"><a data-toggle="modal" href="#loginModal">Login</a></li>
                         <li role="presentation" ng-hide="!userid" class="dropdown">
@@ -161,7 +161,7 @@
                                                               -moz-background-size: cover;
                                                               -o-background-size: cover;
                                                               background-size: cover;">
-                    <p class="slidertext">DEK </br> Competence Center</p>
+                    <p class="slidertext">Developing </br> Tommorrow's Technology</p>
                 </div>
 
                 <div class="item intro-message" style="background:linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ),
@@ -170,7 +170,7 @@
                                                               -moz-background-size: cover;
                                                               -o-background-size: cover;
                                                               background-size: cover;">
-                    <p class="slidertext">DEK </br> Competence Center</p>
+                    <p class="slidertext">DCC</p>
                 </div>
 
                 <div class="item intro-message" style="background:linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ),
@@ -179,7 +179,7 @@
                                                               -moz-background-size: cover;
                                                               -o-background-size: cover;
                                                               background-size: cover;">
-                    <p class="slidertext">DEK </br> Competence Center</p>
+                    <p class="slidertext"> DEK </br> Technologies </p>
                 </div>
             </div>
             <!-- Left and right controls -->
@@ -195,8 +195,10 @@
     </div>
 
     <!-- calendar -->
-    <div id="calendar" class="cal" ng-controller="CalendarCtrl">
-        <div class="titlecal">Training Courses Calendar</div>
+    <div id="calendar" class="cal" ng-controller="CalendarCtrl" style="margin-top:50px">
+        <div class="titlecal">
+            Training Calendar
+        </div>
         <calendar-md flex layout layout-fill calendar-direction="direction" on-prev-month="prevMonth" on-next-month="nextMonth" on-day-click="dayClick" title-format="'MMMM y'" ng-model='selectedDate' day-format="'d'" tooltips='true' day-label-format="'EEE'" day-label-tooltip-format="'EEEE'"
             day-tooltip-format="'fullDate'" week-starts-on="firstDayOfWeek" template="myTemplate" day-content="setDayContent">
         </calendar-md>

@@ -44,8 +44,8 @@
 .descpopup .descpopuptext {
     visibility: hidden;
     width: 200px;
-    background-color: #CFCFCF;
-    color: #0000;
+    background-color: #000000;
+    color: #FFFFFF;
     text-align: center;
     border-radius: 6px;
     padding: 5px 15px;
@@ -172,11 +172,14 @@
 .tableheader {
     font-size: 25px;
     font-weight: bold;
-    border: 5px solid grey
+    border: 5px solid white;
+    color: white;
 }
-table {
-    border: 5px solid grey;
+table,tr {
+  border: 5px solid white;
 }
+tr:nth-child(odd){background-color: #E8E8E8}
+tr:nth-child(even){background-color: #CFCFCF}
 
 /***********navbar dcc****************/
 

@@ -20,50 +20,71 @@
                     <div id="dl-menu" class="dl-menuwrapper">
                         <button class="dl-trigger">MENU</button>
                         <ul class="dl-menu">
-                            <li><a href="/course">Courses</a></li>
-                            <li><a href="/users/userprofile">Profile</a></li>
-                            <li><a href="/users/logout">Logout</a></li>
+                            <li><a href="#calendar">Training Calendar</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                            <li ng-hide="userid"><a id="login">Login</a></li>
+                            <li role="presentation" ng-hide="!userid">
+                                <a href="#">Admin&nbsp<span class="glyphicon glyphicon-hand-right"></span></a>
+                                <ul class="dl-submenu">
+                                    <li role="presentation" ng-hide="!userid"><a href="/course">Courses</a></li>
+                                    <li><a href="/users/userprofile">Profile</a></li>
+                                    <li role="presentation" ng-hide="!userid" ng-click="logout()"><a href="/users/logout">Logout</a></li>
+                                </ul>
+                            </li>
                         </ul>
                     </div>
                 </div>
+
+
                 <div class="navbar-header">
-                    <a class="navbar-logo" href="/">
+                    <a class="navbar-logo" href="#">
                         <img class="img-responsive" src="/img/DCC-ver4.png" alt="" width="100">
                     </a>
                 </div>
                 <div>
-                    <a class="navbar-name" href="/">DEK</br>Competence Center</a>
+                    <a class="navbar-name" href="#">DEK</br>Competence Center</a>
                 </div>
+
                 <div class="collapse navbar-rowmenu">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="/course">Courses</a></li>
-                        <li><a href="/users/userprofile">Profile</a></li>
-                        <li><a href="/users/logout">Logout</a></li>
+                        <li><a href="#calendar">Training Calendar</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li role="presentation" ng-hide="userid"><a data-toggle="modal" href="#loginModal">Login</a></li>
+                        <li role="presentation" ng-hide="!userid" class="dropdown">
+                            <a onclick="myFunction()" class="dropbtn">Admin&nbsp<span class="glyphicon glyphicon-hand-down"></span></a>
+                            <ul id="myDropdown" class="dropdown-content">
+                                <li role="presentation" ng-hide="!userid"><a href="/course">Courses</a></li>
+                                <li role="presentation" ng-hide="!userid"><a href="/users/userprofile">Profile</a></li>
+                                <li role="presentation" ng-hide="!userid" ng-click="logout()"><a href="/users/logout">Logout</a></li>
+                            </ul>
+                        </li>
+
                     </ul>
                 </div>
             </div>
         </nav>
     </div>
 
+
     <!--  List of courses -->
     <div class="container" style="padding-top: 120px">
         <div class="list"> LIST OF COURSES</div>
         <div class="row">
-            <div style="overflow-x:auto;" class="col-md-12 col-lg-12 ">
-                <table class="table table-user-information" ng-controller="GetListCtrl">
+            <div class="col-md-12 col-lg-12">
+                <table class="table table-user-information" ng-controller="GetListCtrl" style="width:100%">
                     <thead>
-                        <tr class="tableheader" style="background-color: #CDC5BF">
+                        <tr class="tableheader" style="background-color: #363636">
                             <th>Name</th>
                             <th>Category</th>
                             <th>Trainer</th>
                             <th style="text-align:center">
-                                <div class="btn btn-default" data-toggle="modal" href="#addCourseModal">Add Course</div>
+                                <div class="btn btn-default" data-toggle="modal" href="#addCourseModal"><span class="glyphicon glyphicon-plus"></span></div>
                             </th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr ng-repeat="course in coursesList">
-                            <td class="descpopup">
+                            <td class="descpopup" style="font-weight:bold">
                               <a href="/course/coursesoverview/{{course.id}}">{{ course.name }}</a>
                               <div ng-bind-html="course.description" class="descpopuptext"></div>
                             </td>
