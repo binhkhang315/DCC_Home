@@ -2,7 +2,7 @@
 <html lang="en" ng-app="myApp">
 
 <head>
-    <!-- dropdown menu when  -->
+    <!-- dropdown menu -->
     <script>
         $(function() {
             $('#dl-menu').dlmenu();
@@ -17,26 +17,8 @@
         });
     </script>
 
-    <!-- dropdown menu button of admin -->
-    <script>
-        function myFunction() {
-            document.getElementById("myDropdown").classList.toggle("show");
-        }
-        // Close the dropdown if the user clicks outside of it
-        window.onclick = function(event) {
-            if (!event.target.matches('.dropbtn')) {
 
-                var dropdowns = document.getElementsByClassName("dropdown-content");
-                var i;
-                for (i = 0; i < dropdowns.length; i++) {
-                    var openDropdown = dropdowns[i];
-                    if (openDropdown.classList.contains('show')) {
-                        openDropdown.classList.remove('show');
-                    }
-                }
-            }
-        }
-    </script>
+
 
     <style>
         a:visited {
@@ -195,8 +177,8 @@
     </div>
 
     <!-- calendar -->
-    <div id="calendar" class="cal" ng-controller="CalendarCtrl" style="margin-top:50px">
-        <div class="titlecal">
+    <div class="cal" ng-controller="CalendarCtrl" id="calendar">
+        <div class="titlecal"  >
             Training Calendar
         </div>
         <calendar-md flex layout layout-fill calendar-direction="direction" on-prev-month="prevMonth" on-next-month="nextMonth" on-day-click="dayClick" title-format="'MMMM y'" ng-model='selectedDate' day-format="'d'" tooltips='true' day-label-format="'EEE'" day-label-tooltip-format="'EEEE'"
