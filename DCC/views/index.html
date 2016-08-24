@@ -177,12 +177,26 @@
     </div>
 
     <!-- calendar -->
-    <div class="cal" ng-controller="CalendarCtrl" id="calendar">
-        <div class="titlecal"  >
+    <div class="cal" ng-controller="CalendarCtrl" id="calendar" style="top: 250px;">
+        <div class="titlecal">
             Training Calendar
         </div>
-        <calendar-md flex layout layout-fill calendar-direction="direction" on-prev-month="prevMonth" on-next-month="nextMonth" on-day-click="dayClick" title-format="'MMMM y'" ng-model='selectedDate' day-format="'d'" tooltips='true' day-label-format="'EEE'" day-label-tooltip-format="'EEEE'"
-            day-tooltip-format="'fullDate'" week-starts-on="firstDayOfWeek" template="myTemplate" day-content="setDayContent">
+        <calendar-md
+            flex layout layout-fill
+            calendar-direction="direction"
+            on-prev-month="prevMonth"
+            on-next-month="nextMonth"
+            on-day-click="dayClick"
+            title-format="'MMMM y'"
+            ng-model='selectedDate'
+            day-format="'d'"
+            tooltips='true'
+            day-label-format="'EEE'"
+            day-label-tooltip-format="'EEEE'"
+            day-tooltip-format="'fullDate'"
+            week-starts-on="firstDayOfWeek"
+            template="myTemplate"
+            day-content="setDayContent">
         </calendar-md>
     </div>
 
@@ -192,7 +206,7 @@
             <div class="row">
                 <div class="col-lg-6">
                     <h2>Follow us</h2>
-                  </br>
+                    </br>
                     <ul class="list-inline banner-social-buttons">
                         <li>
                             <a href="https://www.dektech.com.au/" class="btn btn-default btn-lg"><span class="network-name">Website</span></a>
