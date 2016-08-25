@@ -58,12 +58,58 @@ app.use('/users', users);
 app.use('/course', course);
 app.use('/feedback', feedback);
 
+//association for user vs class as trainee vs class
+models.User.belongsToMany(models.class, {as: 'Trainee', through: models.class_record, foreignKey:'trainee'});
+models.class.belongsToMany(models.User, {as: 'StudyingClass', through: models.class_record, foreignKey:'class'});
+
+//association for feedback
 models.User.belongsToMany(models.course, {through: models.Feedback});
 models.course.belongsToMany(models.User, {through: models.Feedback});
+//association for user vs course as trainer vs class
 
+models.course.belongsToMany(models.User,{as:'Trainer', through: 'trainer_course', foreignKey: 'course', otherKey:'trainer'});
+// models.User.belongsToMany(models.course,{as:'C', through: 'trainer_class', foreignKey: 'trainer'});
+
+// models.class.belongsToMany(models.User,{through: 'trainer_class', foreignKey: 'class'});
+// models.User.belongsToMany(models.class,{as:'TeachingClass', through: 'trainer_class', foreignKey: 'trainer'});
+
+models.class.belongsToMany(models.course,{through: 'course_class'});
+models.course.belongsToMany(models.class,{through: 'course_class'});
+
+
+models.class_record.sync({
+    force: false
+});
 models.Feedback.sync({
   force: false
 });
+models.sequelize.sync({
+  force:false
+});
+//
+//
+// var nguyen = models.User.build({
+//   id:2
+// })
+//
+// models.class.findOne({
+//   where:{
+//     id: 2,
+//   }
+// }).then(function(classInstance){
+//   classInstance.addTrainer(nguyen);
+// })
+// //
+// models.class.findOne({
+//   where:{
+//     id:1
+//   }
+// }).then(function(aClass){
+//   aClass.getTrainer().then(function(res){
+//     console.log(res[1].username);
+//   });
+//   // console.log(aClass);
+// });
 
 // Set Port
 app.set('port', (process.env.PORT || 3210));
