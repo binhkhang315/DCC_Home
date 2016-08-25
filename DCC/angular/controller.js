@@ -10,6 +10,7 @@ myApp.controller('ToastCtrl', function($scope, $rootScope, $mdToast) {
     }
 });
 var events;
+
 myApp.controller('LoginCtrl', function($scope, $http, $cookies, $rootScope, $window, ToastService) {
     // get route '/isLogged' to check user logined or not
     $http.get('/isLogged')
@@ -280,21 +281,26 @@ myApp.controller('CalendarCtrl', function($scope, $filter, $http, $q, MaterialCa
             }
             var arr = event.summary.split(']');
             event.summary = arr[arr.length - 1];
-            MaterialCalendarData.setDayContent(eventDate, dateData + '<a onmouseover="showEvent(' + i + ')" onmouseleave="hideEvent()" >' + event.summary + '</a>' + '</br>');
+            $("#popups").hide();
+            MaterialCalendarData.setDayContent(eventDate, dateData + '<a onclick="show(' +i +');" onmouseover="showEvent(' + i + ')" onmouseleave="hideEvent()" >' + event.summary + '</a>' + '</br>');
         }
     });
 });
-
+function show(i){
+  $("#cName").html('<p class="eventtext">' + events[i].summary + '</p>');
+  $("#cOrg").html('<h3 class="eventtext">Organizer:</h3> ' + events[i].organizer.displayName);
+  $("#cDes").html('<h3 class="eventtext">Description:</h3> ' + events[i].description);
+  $("#id01").modal();
+}
 function showEvent(i) {
     $("#popups").show();
     var pop;
     if (events[i].description == null) {
         events[i].description = '';
     }
-    pop = '<p class="eventtext">Event:' + events[i].summary + '</p><p class="textorg"> Organizer: ' + events[i].organizer.displayName + '</p> Description: ' + events[i].description;
+    pop = '<p class="eventtext">' + events[i].summary + '</p><p class="textorg"> Organizer: ' + events[i].organizer.displayName + '</p>' + events[i].description;
     $("#popups").html(pop);
 };
-
 function hideEvent() {
     $("#popups").hide();
 };

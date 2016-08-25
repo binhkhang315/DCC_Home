@@ -181,7 +181,7 @@
         <div class="titlecal">
             Training Calendar
         </div>
-        <div id="popups" class="event"> </div>​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
+        <div id="popups" class="event clip12"> </div>​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
         <calendar-md
             flex layout layout-fill
             calendar-direction="direction"
@@ -200,7 +200,22 @@
             day-content="setDayContent">
         </calendar-md>
     </div>
-
+    <div class="modal fade" id="id01" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title" style="text-align:center">Course details</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p id = "cName"></p>
+                            <p id = "cOrg"></p>
+                            <p id = "cDes"></p>
+                        </div>
+                </div>
+            </div>
+        </div>
     <!-- Contact -->
     <div id="contact" class="contact">
         <div class="banner">

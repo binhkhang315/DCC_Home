@@ -1,15 +1,20 @@
 /*pop up calendar*/
 div.event {
    position: fixed;
-   top: 35%;
-   left: 35%;
+   top: 20%;
+   left: 80%;
+   right: 5%;
    border: 1px solid #000000 ;
-   z-index: 10;
+   z-index: 20;
    background-color: #FFFFFF ;
    padding: 5px 5px;
+   width: 20%;
+   height: 20%;
+   overflow: hidden;
 }
 .eventtext{
   color: #20B2AA;
+  font-size: 15px;
 }
 .eventorg{
   color: #20B2AA;
