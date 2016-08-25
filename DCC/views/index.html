@@ -2,7 +2,7 @@
 <html lang="en" ng-app="myApp">
 
 <head>
-    <!-- dropdown menu when  -->
+    <!-- dropdown menu -->
     <script>
         $(function() {
             $('#dl-menu').dlmenu();
@@ -17,26 +17,8 @@
         });
     </script>
 
-    <!-- dropdown menu button of admin -->
-    <script>
-        function myFunction() {
-            document.getElementById("myDropdown").classList.toggle("show");
-        }
-        // Close the dropdown if the user clicks outside of it
-        window.onclick = function(event) {
-            if (!event.target.matches('.dropbtn')) {
 
-                var dropdowns = document.getElementsByClassName("dropdown-content");
-                var i;
-                for (i = 0; i < dropdowns.length; i++) {
-                    var openDropdown = dropdowns[i];
-                    if (openDropdown.classList.contains('show')) {
-                        openDropdown.classList.remove('show');
-                    }
-                }
-            }
-        }
-    </script>
+
 
     <style>
         a:visited {
@@ -54,7 +36,7 @@
                     <div id="dl-menu" class="dl-menuwrapper">
                         <button class="dl-trigger">MENU</button>
                         <ul class="dl-menu">
-                            <li><a href="#calendar">Calendar</a></li>
+                            <li><a href="#calendar">Training Calendar</a></li>
                             <li><a href="#contact">Contact</a></li>
                             <li ng-hide="userid"><a id="login">Login</a></li>
                             <li role="presentation" ng-hide="!userid">
@@ -81,7 +63,7 @@
 
                 <div class="collapse navbar-rowmenu">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#calendar">Calendar</a></li>
+                        <li><a href="#calendar">Training Calendar</a></li>
                         <li><a href="#contact">Contact</a></li>
                         <li role="presentation" ng-hide="userid"><a data-toggle="modal" href="#loginModal">Login</a></li>
                         <li role="presentation" ng-hide="!userid" class="dropdown">
@@ -161,7 +143,7 @@
                                                               -moz-background-size: cover;
                                                               -o-background-size: cover;
                                                               background-size: cover;">
-                    <p class="slidertext">DEK </br> Competence Center</p>
+                    <p class="slidertext">Developing </br> Tommorrow's Technology</p>
                 </div>
 
                 <div class="item intro-message" style="background:linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ),
@@ -170,7 +152,7 @@
                                                               -moz-background-size: cover;
                                                               -o-background-size: cover;
                                                               background-size: cover;">
-                    <p class="slidertext">DEK </br> Competence Center</p>
+                    <p class="slidertext">DCC</p>
                 </div>
 
                 <div class="item intro-message" style="background:linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ),
@@ -179,7 +161,7 @@
                                                               -moz-background-size: cover;
                                                               -o-background-size: cover;
                                                               background-size: cover;">
-                    <p class="slidertext">DEK </br> Competence Center</p>
+                    <p class="slidertext"> DEK </br> Technologies </p>
                 </div>
             </div>
             <!-- Left and right controls -->
@@ -195,10 +177,26 @@
     </div>
 
     <!-- calendar -->
-    <div id="calendar" class="cal" ng-controller="CalendarCtrl">
-        <div class="titlecal">Training Courses Calendar</div>
-        <calendar-md flex layout layout-fill calendar-direction="direction" on-prev-month="prevMonth" on-next-month="nextMonth" on-day-click="dayClick" title-format="'MMMM y'" ng-model='selectedDate' day-format="'d'" tooltips='true' day-label-format="'EEE'" day-label-tooltip-format="'EEEE'"
-            day-tooltip-format="'fullDate'" week-starts-on="firstDayOfWeek" template="myTemplate" day-content="setDayContent">
+    <div class="cal" ng-controller="CalendarCtrl" id="calendar" style="top: 250px;">
+        <div class="titlecal">
+            Training Calendar
+        </div>
+        <calendar-md
+            flex layout layout-fill
+            calendar-direction="direction"
+            on-prev-month="prevMonth"
+            on-next-month="nextMonth"
+            on-day-click="dayClick"
+            title-format="'MMMM y'"
+            ng-model='selectedDate'
+            day-format="'d'"
+            tooltips='true'
+            day-label-format="'EEE'"
+            day-label-tooltip-format="'EEEE'"
+            day-tooltip-format="'fullDate'"
+            week-starts-on="firstDayOfWeek"
+            template="myTemplate"
+            day-content="setDayContent">
         </calendar-md>
     </div>
 
@@ -208,7 +206,7 @@
             <div class="row">
                 <div class="col-lg-6">
                     <h2>Follow us</h2>
-                  </br>
+                    </br>
                     <ul class="list-inline banner-social-buttons">
                         <li>
                             <a href="https://www.dektech.com.au/" class="btn btn-default btn-lg"><span class="network-name">Website</span></a>

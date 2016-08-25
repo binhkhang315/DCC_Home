@@ -13,12 +13,10 @@
         "logging": false
     },
     "test": {
-        "username": "root",
-        "password": null,
-        "database": "database_test",
-        "host": "127.0.0.1",
-        "dialect": "mysql"
-    },
+       "dialect": "sqlite",
+       "storage": "./databaseTest/db.test.sqlite",
+       "logging": false
+   },
     "production": {
         "username": "root",
         "password": null,

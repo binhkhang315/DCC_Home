@@ -22,12 +22,21 @@
                     <div id="dl-menu" class="dl-menuwrapper">
                         <button class="dl-trigger">MENU</button>
                         <ul class="dl-menu">
-                            <li><a href="/course">Courses</a></li>
-                            <li><a href="/users/userprofile">Profile</a></li>
-                            <li><a href="/users/logout">Logout</a></li>
+                            <li><a href="/#calendar">Training Calendar</a></li>
+                            <li><a href="/#contact">Contact</a></li>
+                            <li role="presentation">
+                                <a href="#">Admin&nbsp<span class="glyphicon glyphicon-hand-right"></span></a>
+                                <ul class="dl-submenu">
+                                    <li><a href="/course">Courses</a></li>
+                                    <li><a href="/users/userprofile">Profile</a></li>
+                                    <li ng-click="logout()"><a href="/users/logout">Logout</a></li>
+                                </ul>
+                            </li>
                         </ul>
                     </div>
                 </div>
+
+
                 <div class="navbar-header">
                     <a class="navbar-logo" href="/">
                         <img class="img-responsive" src="/img/DCC-ver4.png" alt="" width="100">
@@ -36,11 +45,20 @@
                 <div>
                     <a class="navbar-name" href="/">DEK</br>Competence Center</a>
                 </div>
+
                 <div class="collapse navbar-rowmenu">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="/course">Courses</a></li>
-                        <li><a href="/users/userprofile">Profile</a></li>
-                        <li><a href="/users/logout">Logout</a></li>
+                        <li><a href="/#calendar">Training Calendar</a></li>
+                        <li><a href="/#contact">Contact</a></li>
+                        <li role="presentation" class="dropdown">
+                            <a onclick="myFunction()" class="dropbtn">Admin&nbsp<span class="glyphicon glyphicon-hand-down"></span></a>
+                            <ul id="myDropdown" class="dropdown-content">
+                                <li><a href="/course">Courses</a></li>
+                                <li><a href="/users/userprofile">Profile</a></li>
+                                <li ng-click="logout()"><a href="/users/logout">Logout</a></li>
+                            </ul>
+                        </li>
+
                     </ul>
                 </div>
             </div>

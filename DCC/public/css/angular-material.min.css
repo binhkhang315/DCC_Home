@@ -9241,17 +9241,22 @@ md-tooltip {
     position: absolute;
     z-index: 100;
     text-align: center;
-    overflow: hidden;
+    width: 16%;
     pointer-events: none;
     border-radius: 5px;
     font-weight: 500;
-    font-size: 15px;
+    font-size: 20px;
     background-color: grey;
-    padding: 5px 5px;
+    padding: 5px 0px;
 }
-@media screen and (min-width:600px) {
+@media screen and (max-width:800px) {
     md-tooltip {
-        font-size: 20px
+        font-size: 15px;
+    }
+}
+@media screen and (max-width:500px) {
+    md-tooltip {
+        font-size: 10px;
     }
 }
 md-tooltip .md-background {
@@ -9259,26 +9264,27 @@ md-tooltip .md-background {
     border-radius: 50%;
     -webkit-transform: translate(-50%, -50%) scale(0);
     transform: translate(-50%, -50%) scale(0);
-    opacity: 1
+    opacity: 1;
 }
 md-tooltip .md-background.md-show-add {
     transition: all .4s cubic-bezier(.25, .8, .25, 1);
     -webkit-transform: translate(-50%, -50%) scale(0);
     transform: translate(-50%, -50%) scale(0);
-    opacity: 0
+    opacity: 0;
+
 }
 md-tooltip .md-background.md-show, md-tooltip .md-background.md-show-add-active {
     -webkit-transform: translate(-50%, -50%) scale(1);
     transform: translate(-50%, -50%) scale(1);
-    opacity: 1
+    opacity: 1;
 }
 md-tooltip .md-background.md-show-remove {
-    transition: all .3s cubic-bezier(.55, 0, .55, .2)
+    transition: all .3s cubic-bezier(.55, 0, .55, .2);
 }
 md-tooltip .md-background.md-show-remove.md-show-remove-active {
     -webkit-transform: translate(-50%, -50%) scale(0);
     transform: translate(-50%, -50%) scale(0);
-    opacity: 0
+    opacity: 0;
 }
 md-tooltip .md-content {
     position: relative;
@@ -9290,7 +9296,7 @@ md-tooltip .md-content {
     height: 32px;
     line-height: 32px;
     padding-left: 16px;
-    padding-right: 16px
+    padding-right: 16px;
 }
 @media screen and (min-width:600px) {
     md-tooltip .md-content {
@@ -9302,27 +9308,26 @@ md-tooltip .md-content {
 }
 md-tooltip .md-content.md-show-add {
     transition: all .4s cubic-bezier(.25, .8, .25, 1);
-    opacity: 0
+    opacity: 0;
 }
 md-tooltip .md-content.md-show, md-tooltip .md-content.md-show-add-active {
-    opacity: 1
+    opacity: 1;
 }
 md-tooltip .md-content.md-show-remove {
-    transition: all .3s cubic-bezier(.55, 0, .55, .2)
+    transition: all .3s cubic-bezier(.55, 0, .55, .2);
 }
 md-tooltip .md-content.md-show-remove.md-show-remove-active {
-    opacity: 0
+    opacity: 0;
 }
 md-tooltip.md-hide {
-    transition: all .3s cubic-bezier(.55, 0, .55, .2)
+    transition: all .3s cubic-bezier(.55, 0, .55, .2);
 }
 md-tooltip.md-show {
     transition: all .4s cubic-bezier(.25, .8, .25, 1);
     pointer-events: auto;
     -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0)
+    transform: translate3d(0, 0, 0);
 }
-
 .md-virtual-repeat-container {
     box-sizing: border-box;
     display: block;

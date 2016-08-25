@@ -1,40 +1,43 @@
+
 /*name of calendar*/
+
 .titlecal {
     text-align: center;
     font-size: 50px;
     padding-top: 30px;
 }
-@media(max-width:1300px){
-  .titlecal{
-    font-size: 40px;
-    padding-top: 30px;
-  }
+@media(max-width:1300px) {
+    .titlecal {
+        font-size: 40px;
+        padding-top: 30px;
+    }
 }
-@media(max-width:800px){
-  .titlecal{
-    font-size: 30px;
-    padding-top: 30px;
-  }
+@media(max-width:800px) {
+    .titlecal {
+        font-size: 30px;
+        padding-top: 30px;
+    }
 }
-@media(max-width:500px){
-  .titlecal{
-    font-size: 20px;
-    padding-top: 30px;
-  }
+@media(max-width:500px) {
+    .titlecal {
+        font-size: 20px;
+        padding-top: 30px;
+    }
 }
-.cal{
-  height: 500px ;
+.cal {
+    height: 500px;
 }
-@media(max-width:800px){
-  .cal{
-    height:400px ;
-  }
+@media(max-width:800px) {
+    .cal {
+        height: 400px;
+    }
 }
-@media(max-width:500px){
-  .cal{
-    height: 300px;
-  }
+@media(max-width:500px) {
+    .cal {
+        height: 300px;
+    }
 }
+
 /* description pop up*/
 
 .descpopup {
@@ -44,8 +47,8 @@
 .descpopup .descpopuptext {
     visibility: hidden;
     width: 200px;
-    background-color: #CFCFCF;
-    color: #0000;
+    background-color: #000000;
+    color: #FFFFFF;
     text-align: center;
     border-radius: 6px;
     padding: 5px 15px;
@@ -109,7 +112,8 @@
 }
 
 /******course detail*******/
-.course-tab{
+
+.course-tab {
     margin: 100px 35px;
 }
 .text {
@@ -128,16 +132,17 @@
     text-align: center;
 }
 @media (max-width:480px) {
-  .name {
-      font-size: 25px;
-  }
-  .trname {
-      font-size: 15px;
-  }
-  .course-tab{
-      margin: 50px 35px;
-  }
+    .name {
+        font-size: 25px;
+    }
+    .trname {
+        font-size: 15px;
+    }
+    .course-tab {
+        margin: 50px 35px;
+    }
 }
+
 /***********slider text****************/
 
 .slidertext {
@@ -172,10 +177,17 @@
 .tableheader {
     font-size: 25px;
     font-weight: bold;
-    border: 5px solid grey
+    border: 5px solid white;
+    color: white;
 }
-table {
-    border: 5px solid grey;
+table, tr {
+    border: 5px solid white;
+}
+tr:nth-child(odd) {
+    background-color: #E8E8E8
+}
+tr:nth-child(even) {
+    background-color: #CFCFCF
 }
 
 /***********navbar dcc****************/
@@ -291,7 +303,7 @@ table {
 .navbar-dcc .navbar-name {
     color: #f8f8f8;
 }
-.navbar-dcc .navbar-name:hover{
+.navbar-dcc .navbar-name:hover {
     color: #5e5e5e;
     background-color: transparent;
 }
@@ -366,8 +378,8 @@ table {
     }
 }
 
-
 /*--------------transparent dropdown Menu---------------------*/
+
 @font-face {
     font-family: 'icomoon';
     src: url('../fonts/icomoon.eot');
@@ -1049,7 +1061,6 @@ table {
 }
 .features .features-thumb a img {
     width: 250px;
-
 }
 .features .features-thumb .overlay {
     opacity: 0;
