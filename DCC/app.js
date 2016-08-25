@@ -87,29 +87,7 @@ models.sequelize.sync({
   force:false
 });
 //
-//
-// var nguyen = models.User.build({
-//   id:2
-// })
-//
-// models.class.findOne({
-//   where:{
-//     id: 2,
-//   }
-// }).then(function(classInstance){
-//   classInstance.addTrainer(nguyen);
-// })
-// //
-// models.class.findOne({
-//   where:{
-//     id:1
-//   }
-// }).then(function(aClass){
-//   aClass.getTrainer().then(function(res){
-//     console.log(res[1].username);
-//   });
-//   // console.log(aClass);
-// });
+
 
 // Set Port
 app.set('port', (process.env.PORT || 3210));

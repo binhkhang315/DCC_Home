@@ -153,10 +153,10 @@
 
                         <!-- Course TrainerID -->
                         <div class="form-group" ng-class="{ 'has-error' : addCourseForm.courseTrainerID.$invalid && !addCourseForm.courseTrainerID.$pristine }">
-                            <label class="col-sm-4 control-label">Trainer</label>
+                            <label class="col-sm-4 control-label">Trainers</label>
                             <div class="col-sm-8">
                                 <tags-input name="courseTrainerID" min-length="1" replace-spaces-with-dashes="false" ng-model="courseslist.courseTrainerID" placeholder="Trainer name" required></tags-input>
-                                <p ng-show="addCourseForm.courseTrainerID.$invalid && !addCourseForm.courseTrainerID.$pristine" class="help-block">Course trainerID is required.</p>
+                                <p ng-show="addCourseForm.courseTrainerID.$invalid && !addCourseForm.courseTrainerID.$pristine" class="help-block">Course trainers is required.</p>
                             </div>
                         </div>
                         <!-- Course Description -->
@@ -235,7 +235,7 @@
                             <label class="col-sm-4 control-label">Trainer</label>
                             <div class="col-sm-8">
                                 <tags-input name="courseTrainerIDEdit" min-length="1" replace-spaces-with-dashes="false" ng-model="courseslistEdit.courseTrainerIDEdit" placeholder="Trainer name" required></tags-input>
-                                <p ng-show="editCourseForm.courseTrainerIDEdit.$invalid && !editCourseForm.courseTrainerIDEdit.$pristine" class="help-block">Course trainerID is required.</p>
+                                <p ng-show="editCourseForm.courseTrainerIDEdit.$invalid && !editCourseForm.courseTrainerIDEdit.$pristine" class="help-block">Course's trainers is required.</p>
                             </div>
                         </div>
                         <!-- Course Description -->
