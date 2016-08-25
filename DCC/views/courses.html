@@ -153,7 +153,7 @@
 
                         <!-- Course TrainerID -->
                         <div class="form-group" ng-class="{ 'has-error' : addCourseForm.courseTrainerID.$invalid && !addCourseForm.courseTrainerID.$pristine }">
-                            <label class="col-sm-4 control-label">TrainerID</label>
+                            <label class="col-sm-4 control-label">Trainer</label>
                             <div class="col-sm-8">
                                 <tags-input name="courseTrainerID" min-length="1" replace-spaces-with-dashes="false" ng-model="courseslist.courseTrainerID" placeholder="Trainer name" required></tags-input>
                                 <p ng-show="addCourseForm.courseTrainerID.$invalid && !addCourseForm.courseTrainerID.$pristine" class="help-block">Course trainerID is required.</p>
@@ -232,7 +232,7 @@
 
                         <!-- Course TrainerID -->
                         <div class="form-group" ng-class="{ 'has-error' : editCourseForm.courseTrainerIDEdit.$invalid && !editCourseForm.courseTrainerIDEdit.$pristine }">
-                            <label class="col-sm-4 control-label">TrainerID</label>
+                            <label class="col-sm-4 control-label">Trainer</label>
                             <div class="col-sm-8">
                                 <tags-input name="courseTrainerIDEdit" min-length="1" replace-spaces-with-dashes="false" ng-model="courseslistEdit.courseTrainerIDEdit" placeholder="Trainer name" required></tags-input>
                                 <p ng-show="editCourseForm.courseTrainerIDEdit.$invalid && !editCourseForm.courseTrainerIDEdit.$pristine" class="help-block">Course trainerID is required.</p>

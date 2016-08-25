@@ -1,16 +1,16 @@
 var myApp = angular.module('myApp', ['ngCookies', 'ngTagsInput', 'textAngular', 'ngMaterial', 'materialCalendar', 'course']);
 // creat angular controller
-myApp.controller('ToastCtrl',function($scope,$rootScope,$mdToast){
-  $rootScope.showToast = function(msg){
-    $mdToast.show(
-      $mdToast.simple()
-        .content(msg)
-        .hideDelay(3000)
-    );
-  }
+myApp.controller('ToastCtrl', function($scope, $rootScope, $mdToast) {
+    $rootScope.showToast = function(msg) {
+        $mdToast.show(
+            $mdToast.simple()
+            .content(msg)
+            .hideDelay(3000)
+        );
+    }
 });
-
-myApp.controller('LoginCtrl', function($scope, $http, $cookies, $rootScope, $window,ToastService) {
+var events;
+myApp.controller('LoginCtrl', function($scope, $http, $cookies, $rootScope, $window, ToastService) {
     // get route '/isLogged' to check user logined or not
     $http.get('/isLogged')
         .then(function(res) {
@@ -234,8 +234,8 @@ myApp.controller('FeedbackCtrl', function($scope, $http, $window) {
 
 myApp.controller('CalendarCtrl', function($scope, $filter, $http, $q, MaterialCalendarData) {
     $scope.dayFormat = 'd';
-    var events;
-    $scope.myTemplate = "<md-content layout='column' layout-fill md-swipe-left='next()' md-swipe-right='prev()'><md-toolbar><div class='md-toolbar-tools' layout='row'><md-button class='md-icon-button' ng-click='prev()'><md-icon md-svg-icon='md-tabs-arrow'></md-icon></md-button><div flex></div><span class='calendar-md-title'>{{ calendar.start | date:titleFormat:timezone }}</span><div flex></div><md-button class='md-icon-button' ng-click='next()' ><md-icon md-svg-icon='md-tabs-arrow' class='moveNext'></md-icon></md-button></div></md-toolbar><!-- agenda view --><md-content ng-if='weekLayout === columnWeekLayout' class='agenda'><div ng-repeat='week in calendar.weeks track by $index'><div ng-if='sameMonth(day)' ng-class='{&quot;disabled&quot; : isDisabled(day), active: active === day }' ng-click='handleDayClick(day)' ng-repeat='day in week' layout><md-tooltip ng-if='::tooltips()'>{{ day | date:dayTooltipFormat:timezone }}</md-tooltip><div>{{ day | date:dayFormat:timezone }}</div><div flex compile='dataService.data[dayKey(day)]'></div></div></div></md-content><!-- calendar view --><md-content ng-if='weekLayout !== columnWeekLayout' flex layout='column' class='calendar'><div layout='row' class='subheader'><div layout-padding class='subheader-day' flex ng-repeat='day in calendar.weeks[0]'>{{ day | date:dayLabelFormat }}</div></div><div ng-if='week.length' ng-repeat='week in calendar.weeks track by $index' flex layout='row'><div tabindex='{{ sameMonth(day) ? (day | date:dayFormat:timezone) : 0 }}' ng-repeat='day in week track by $index' ng-click='handleDayClick(day)' flex layout layout-padding ng-class='{&quot;disabled&quot; : isDisabled(day), &quot;active&quot;: isActive(day), &quot;md-whiteframe-12dp&quot;: hover || focus }' ng-focus='focus = true;' ng-blur='focus = false;' ng-mouseleave='hover = false' ng-mouseenter='hover = true'><md-tooltip ng-if='::tooltips()' compile='dataService.data[dayKey(day)]'></md-tooltip><div>{{ day | date:dayFormat }}</div><div class='events' flex compile='dataService.data[dayKey(day)]' id='{{ day | date:dayIdFormat }}'></div></div></div></md-content></md-content>";
+
+    $scope.myTemplate = "<md-content layout='column' layout-fill md-swipe-left='next()' md-swipe-right='prev()'><md-toolbar><div class='md-toolbar-tools' layout='row'><md-button class='md-icon-button' ng-click='prev()'><md-icon md-svg-icon='md-tabs-arrow'></md-icon></md-button><div flex></div><span class='calendar-md-title'>{{ calendar.start | date:titleFormat:timezone }}</span><div flex></div><md-button class='md-icon-button' ng-click='next()' ><md-icon md-svg-icon='md-tabs-arrow' class='moveNext'></md-icon></md-button></div></md-toolbar><!-- calendar view --><md-content ng-if='weekLayout !== columnWeekLayout' flex layout='column' class='calendar'><div layout='row' class='subheader'><div layout-padding class='subheader-day' flex ng-repeat='day in calendar.weeks[0]'>{{ day | date:dayLabelFormat }}</div></div><div ng-if='week.length' ng-repeat='week in calendar.weeks track by $index' flex layout='row'><div tabindex='{{ sameMonth(day) ? (day | date:dayFormat:timezone) : 0 }}' ng-repeat='day in week track by $index' ng-click='handleDayClick(day)' flex layout layout-padding ng-class='{&quot;disabled&quot; : isDisabled(day), &quot;active&quot;: isActive(day), &quot;md-whiteframe-12dp&quot;: hover || focus }' ng-focus='focus = true;' ng-blur='focus = false;' ng-mouseleave='hover = false' ng-mouseenter='hover = true'><md-tooltip ng-if='::tooltips()' compile='dataService.data[dayKey(day)]'></md-tooltip><div>{{ day | date:dayFormat }}</div><div class='events' flex compile='dataService.data[dayKey(day)]' id='{{ day | date:dayIdFormat }}'></div></div></div></md-content></md-content>";
     // To select a single date, make sure the ngModel is not an array.
     $scope.selectedDate = null;
 
@@ -245,15 +245,15 @@ myApp.controller('CalendarCtrl', function($scope, $filter, $http, $q, MaterialCa
     $scope.firstDayOfWeek = 0; // First day of the week, 0 for Sunday, 1 for Monday, etc.
     $scope.setDirection = function(direction) {
         $scope.direction = direction;
-        $scope.dayFormat = direction === 'vertical'
-                                        ? 'EEEE, MMMM d'
-                                        : 'd';
+        $scope.dayFormat = direction === 'vertical' ?
+            'EEEE, MMMM d' :
+            'd';
     };
 
     $scope.dayClick = function(date) {
-      var checkDate = MaterialCalendarData.getDayKey(date);
-      var dateData = MaterialCalendarData.data[checkDate];
-      $scope.popup = dateData;
+        var checkDate = MaterialCalendarData.getDayKey(date);
+        var dateData = MaterialCalendarData.data[checkDate];
+        $scope.popup = dateData;
     };
 
     $scope.prevMonth = function(data) {
@@ -267,7 +267,7 @@ myApp.controller('CalendarCtrl', function($scope, $filter, $http, $q, MaterialCa
     // set events
 
     $http.get('/getEvents').then(function(result) {
-      $scope.msg = 'test';
+        $scope.msg = 'test';
         events = result.data;
         for (var i = 0; i < events.length; i++) {
             var event = events[i];
@@ -278,7 +278,23 @@ myApp.controller('CalendarCtrl', function($scope, $filter, $http, $q, MaterialCa
             if (typeof(dateData) === 'undefined') {
                 dateData = '';
             }
-            MaterialCalendarData.setDayContent(eventDate, dateData + event.summary + '</br>');
+            var arr = event.summary.split(']');
+            event.summary = arr[arr.length - 1];
+            MaterialCalendarData.setDayContent(eventDate, dateData + '<a onmouseover="showEvent(' + i + ')" onmouseleave="hideEvent()" >' + event.summary + '</a>' + '</br>');
         }
     });
 });
+
+function showEvent(i) {
+    $("#popups").show();
+    var pop;
+    if (events[i].description == null) {
+        events[i].description = '';
+    }
+    pop = '<p class="eventtext">Event:' + events[i].summary + '</p><p class="textorg"> Organizer: ' + events[i].organizer.displayName + '</p> Description: ' + events[i].description;
+    $("#popups").html(pop);
+};
+
+function hideEvent() {
+    $("#popups").hide();
+};

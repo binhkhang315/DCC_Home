@@ -1,6 +1,21 @@
+/*pop up calendar*/
+div.event {
+   position: fixed;
+   top: 35%;
+   left: 35%;
+   border: 1px solid #000000 ;
+   z-index: 10;
+   background-color: #FFFFFF ;
+   padding: 5px 5px;
+}
+.eventtext{
+  color: #20B2AA;
+}
+.eventorg{
+  color: #20B2AA;
+}
 
 /*name of calendar*/
-
 .titlecal {
     text-align: center;
     font-size: 50px;

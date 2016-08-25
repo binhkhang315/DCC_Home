@@ -120,7 +120,7 @@
                   </a>
               </div>
               <div class="features" ng-controller="FeedbackCtrl">
-                  <h1>Rating for Course</h1>
+                  <h1 style="float:left">Rating for Course</h1>
                   <fieldset class="rating" >
                       <input type="radio" id="star5" name="rating" value="5" ng-model="rating" ng-click="addRating()" />
                       <label class="full" for="star5" title="Awesome - 5 stars"></label>
@@ -133,13 +133,14 @@
                       <input type="radio" id="star1" name="rating" value="1" ng-model="rating" ng-click="addRating()" />
                       <label class="full" for="star1" title="Sucks big time - 1 star"></label>
                   </fieldset>
-                  <h1>Average Rating {{average}}</h1>
               </div>
-              <div class="" style="padding-left:15%;">
+            </br>
+              <div class="" style="float:left">
                   <div ng-controller="FeedbackCtrl">
                       <button class="btn btn-primary" ng-click="showFeedback()">Show feedbacks</button>
                       <ul ng-repeat="feedback in feedbackList">
-                          <li> {{feedback.comment}} : RATING {{feedback.rating}}</li>
+                          <li>Feedback: {{feedback.comment}}</li>
+                          <li>Rating: {{feedback.rating}}</li>
                       </ul>
                   </div>
               </div>
