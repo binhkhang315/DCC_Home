@@ -1,3 +1,5 @@
+"use strict";
+
 var myApp = angular.module('myApp', ['ngCookies', 'ngTagsInput', 'textAngular', 'ngMaterial', 'materialCalendar', 'course']);
 // creat angular controller
 myApp.controller('ToastCtrl', function($scope, $rootScope, $mdToast) {
@@ -7,7 +9,7 @@ myApp.controller('ToastCtrl', function($scope, $rootScope, $mdToast) {
             .content(msg)
             .hideDelay(3000)
         );
-    }
+    };
 });
 var events;
 
@@ -49,7 +51,7 @@ myApp.controller('LoginCtrl', function($scope, $http, $cookies, $rootScope, $win
     // logout function
     $rootScope.logout = function() {
         $cookies.remove('userid');
-    }
+    };
 });
 
 myApp.controller('SetCourseCtrl', function($scope, $http, $window, $sce) {
@@ -88,8 +90,8 @@ myApp.controller('GetListCtrl', function($scope, $rootScope, $http, CourseList) 
             courseTestEdit: course.test,
             courseDocumentsEdit: course.documents,
             courseTrainerIDEdit: course.trainerIDJSON
-        }
-    }
+        };
+    };
 
     // delete course
     $scope.deleteCourse = function(course) {
@@ -97,8 +99,8 @@ myApp.controller('GetListCtrl', function($scope, $rootScope, $http, CourseList) 
             courseIDDelete: course.id,
             courseNameDelete: course.name,
             courseIsDeletedDelete: course.isDeleted
-        }
-    }
+        };
+    };
 });
 
 myApp.controller('SetFeatureCtrl', function($scope, $http) {
@@ -137,7 +139,7 @@ myApp.controller('SetProfileCtrl', function($scope, $rootScope, $http, $window) 
             $scope.msg = result.data.msg;
             $window.location.href = '/users/userprofile';
         });
-    }
+    };
 });
 
 // AddCourseCtrl: add course controller
@@ -161,7 +163,7 @@ myApp.controller('AddCourseCtrl', function($scope, $rootScope, $http, CourseList
                 ToastService.showToast($scope.postMsg);
             });
         });
-    }
+    };
 });
 
 // UpdateCourseCtrl: edit course controller
@@ -176,7 +178,7 @@ myApp.controller('UpdateCourseCtrl', function($scope, $rootScope, $http, CourseL
                 ToastService.showToast($scope.postMsg);
             });
         });
-    }
+    };
 });
 
 // IsDeletedCourseCtrl: delete course controller
@@ -191,7 +193,7 @@ myApp.controller('IsDeletedCourseCtrl', function($scope, $rootScope, $http, Cour
                 ToastService.showToast($scope.postMsg);
             });
         });
-    }
+    };
 });
 
 //controller for Feedback
@@ -209,7 +211,7 @@ myApp.controller('FeedbackCtrl', function($scope, $http, $window) {
         }).then(function(result) {
             $scope.msg = result.data.msg;
         });
-    }
+    };
     $scope.addRating = function() {
         $http.post('/feedback/rating', {
             rating: $scope.rating,
@@ -217,7 +219,7 @@ myApp.controller('FeedbackCtrl', function($scope, $http, $window) {
         }).then(function(result) {
             $scope.msg = result.data.msg;
         });
-    }
+    };
     $scope.showFeedback = function() {
         $scope.feedbackList = [];
         $http.post('/feedback/showFeedback', {
@@ -225,7 +227,7 @@ myApp.controller('FeedbackCtrl', function($scope, $http, $window) {
         }).then(function(result) {
             $scope.feedbackList = result.data;
         });
-    }
+    };
     $http.post('/feedback/showAverageRating', {
         courseId: courseID
     }).then(function(result) {
@@ -295,12 +297,12 @@ function show(i){
 function showEvent(i) {
     $("#popups").show();
     var pop;
-    if (events[i].description == null) {
+    if (events[i].description === null) {
         events[i].description = '';
     }
     pop = '<p class="eventtext">' + events[i].summary + '</p><p class="textorg"> Organizer: ' + events[i].organizer.displayName + '</p>' + events[i].description;
     $("#popups").html(pop);
-};
+}
 function hideEvent() {
     $("#popups").hide();
-};
+}

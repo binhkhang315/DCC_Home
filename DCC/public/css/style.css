@@ -80,6 +80,8 @@ body {
 .page-header{
   margin-top: 0;
 }
-footer{
-  margin-top: 50px; 
+
+/*Index*/
+footer {
+  margin: 0;
 }
