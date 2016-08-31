@@ -1,12 +1,14 @@
 //  Scroll To ID
-$(function() {
-    $("#button-calendar").click(function() {
+$(document).ready(function() {
+    $("#button-calendar").click(function(e) {
+        e.preventDefault();
         $('html, body').animate({
             scrollTop: $("#calendar").offset().top - 100
         }, 500);
     });
 
-    $("#button-contact").click(function() {
+    $("#button-contact").click(function(e) {
+        e.preventDefault();
         $('html, body').animate({
             scrollTop: $("#contact").offset().top
         }, 500);
