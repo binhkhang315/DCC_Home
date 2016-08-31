@@ -20,28 +20,28 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">85.03% </span>
+        <span class="strong">78.05% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>125/147</span>
+        <span class='fraction'>128/164</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">60% </span>
+        <span class="strong">50% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>6/10</span>
+        <span class='fraction'>6/12</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">75.56% </span>
+        <span class="strong">70.83% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>34/45</span>
+        <span class='fraction'>34/48</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">85.03% </span>
+        <span class="strong">78.05% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>125/147</span>
+        <span class='fraction'>128/164</span>
       </div>
     </div>
   </div>
-  <div class='status-line high'></div>
+  <div class='status-line medium'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -327,7 +327,33 @@
 282
 283
 284
-285</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -338,6 +364,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -563,7 +590,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">7×</span>
-<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">7×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">7×</span>
@@ -608,22 +635,46 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">var myApp = angular.module('myApp', ['ngCookies', 'ngTagsInput', 'textAngular', 'ngMaterial', 'materialCalendar', 'course']);
-// creat angular controller
-myApp.controller('ToastCtrl',<span class="fstat-no" title="function not covered" >function($scope,$rootScope,$mdToast){</span>
-<span class="cstat-no" title="statement not covered" >  $rootScope.showToast = <span class="fstat-no" title="function not covered" >function(msg){</span></span>
-<span class="cstat-no" title="statement not covered" >    $mdToast.show(</span>
-      $mdToast.simple()
-        .content(msg)
-        .hideDelay(3000)
-    );
-  }
-});
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">"use strict";
 &nbsp;
-myApp.controller('LoginCtrl', function($scope, $http, $cookies, $rootScope, $window,ToastService) {
+var myApp = angular.module('myApp', ['ngCookies', 'ngTagsInput', 'textAngular', 'ngMaterial', 'materialCalendar', 'course']);
+// creat angular controller
+myApp.controller('ToastCtrl', <span class="fstat-no" title="function not covered" >function($scope, $rootScope, $mdToast) {</span>
+<span class="cstat-no" title="statement not covered" >    $rootScope.showToast = <span class="fstat-no" title="function not covered" >function(msg) {</span></span>
+<span class="cstat-no" title="statement not covered" >        $mdToast.show(</span>
+            $mdToast.simple()
+            .content(msg)
+            .hideDelay(3000)
+        );
+    };
+});
+var events;
+&nbsp;
+myApp.controller('LoginCtrl', function($scope, $http, $cookies, $rootScope, $window, ToastService) {
     // get route '/isLogged' to check user logined or not
     $http.get('/isLogged')
         .then(function(res) {
@@ -661,7 +712,7 @@ myApp.controller('LoginCtrl', function($scope, $http, $cookies, $rootScope, $win
     // logout function
     $rootScope.logout = <span class="fstat-no" title="function not covered" >function() {</span>
 <span class="cstat-no" title="statement not covered" >        $cookies.remove('userid');</span>
-    }
+    };
 });
 &nbsp;
 myApp.controller('SetCourseCtrl', function($scope, $http, $window, $sce) {
@@ -700,8 +751,8 @@ myApp.controller('GetListCtrl', function($scope, $rootScope, $http, CourseList) 
             courseTestEdit: course.test,
             courseDocumentsEdit: course.documents,
             courseTrainerIDEdit: course.trainerIDJSON
-        }
-    }
+        };
+    };
 &nbsp;
     // delete course
     $scope.deleteCourse = function(course) {
@@ -709,8 +760,8 @@ myApp.controller('GetListCtrl', function($scope, $rootScope, $http, CourseList) 
             courseIDDelete: course.id,
             courseNameDelete: course.name,
             courseIsDeletedDelete: course.isDeleted
-        }
-    }
+        };
+    };
 });
 &nbsp;
 myApp.controller('SetFeatureCtrl', function($scope, $http) {
@@ -749,7 +800,7 @@ myApp.controller('SetProfileCtrl', function($scope, $rootScope, $http, $window) 
             $scope.msg = result.data.msg;
             $window.location.href = '/users/userprofile';
         });
-    }
+    };
 });
 &nbsp;
 // AddCourseCtrl: add course controller
@@ -773,7 +824,7 @@ myApp.controller('AddCourseCtrl', function($scope, $rootScope, $http, CourseList
                 ToastService.showToast($scope.postMsg);
             });
         });
-    }
+    };
 });
 &nbsp;
 // UpdateCourseCtrl: edit course controller
@@ -788,7 +839,7 @@ myApp.controller('UpdateCourseCtrl', function($scope, $rootScope, $http, CourseL
                 ToastService.showToast($scope.postMsg);
             });
         });
-    }
+    };
 });
 &nbsp;
 // IsDeletedCourseCtrl: delete course controller
@@ -803,7 +854,7 @@ myApp.controller('IsDeletedCourseCtrl', function($scope, $rootScope, $http, Cour
                 ToastService.showToast($scope.postMsg);
             });
         });
-    }
+    };
 });
 &nbsp;
 //controller for Feedback
@@ -821,7 +872,7 @@ myApp.controller('FeedbackCtrl', function($scope, $http, $window) {
         }).then(<span class="fstat-no" title="function not covered" >function(result) {</span>
 <span class="cstat-no" title="statement not covered" >            $scope.msg = result.data.msg;</span>
         });
-    }
+    };
     $scope.addRating = <span class="fstat-no" title="function not covered" >function() {</span>
 <span class="cstat-no" title="statement not covered" >        $http.post('/feedback/rating', {</span>
             rating: $scope.rating,
@@ -829,7 +880,7 @@ myApp.controller('FeedbackCtrl', function($scope, $http, $window) {
         }).then(<span class="fstat-no" title="function not covered" >function(result) {</span>
 <span class="cstat-no" title="statement not covered" >            $scope.msg = result.data.msg;</span>
         });
-    }
+    };
     $scope.showFeedback = <span class="fstat-no" title="function not covered" >function() {</span>
 <span class="cstat-no" title="statement not covered" >        $scope.feedbackList = [];</span>
 <span class="cstat-no" title="statement not covered" >        $http.post('/feedback/showFeedback', {</span>
@@ -837,7 +888,7 @@ myApp.controller('FeedbackCtrl', function($scope, $http, $window) {
         }).then(<span class="fstat-no" title="function not covered" >function(result) {</span>
 <span class="cstat-no" title="statement not covered" >            $scope.feedbackList = result.data;</span>
         });
-    }
+    };
     $http.post('/feedback/showAverageRating', {
         courseId: courseID
     }).then(<span class="fstat-no" title="function not covered" >function(result) {</span>
@@ -847,8 +898,8 @@ myApp.controller('FeedbackCtrl', function($scope, $http, $window) {
 &nbsp;
 myApp.controller('CalendarCtrl', function($scope, $filter, $http, $q, MaterialCalendarData) {
     $scope.dayFormat = 'd';
-    var events;
-    $scope.myTemplate = "&lt;md-content layout='column' layout-fill md-swipe-left='next()' md-swipe-right='prev()'&gt;&lt;md-toolbar&gt;&lt;div class='md-toolbar-tools' layout='row'&gt;&lt;md-button class='md-icon-button' ng-click='prev()'&gt;&lt;md-icon md-svg-icon='md-tabs-arrow'&gt;&lt;/md-icon&gt;&lt;/md-button&gt;&lt;div flex&gt;&lt;/div&gt;&lt;span class='calendar-md-title'&gt;{{ calendar.start | date:titleFormat:timezone }}&lt;/span&gt;&lt;div flex&gt;&lt;/div&gt;&lt;md-button class='md-icon-button' ng-click='next()' &gt;&lt;md-icon md-svg-icon='md-tabs-arrow' class='moveNext'&gt;&lt;/md-icon&gt;&lt;/md-button&gt;&lt;/div&gt;&lt;/md-toolbar&gt;&lt;!-- agenda view --&gt;&lt;md-content ng-if='weekLayout === columnWeekLayout' class='agenda'&gt;&lt;div ng-repeat='week in calendar.weeks track by $index'&gt;&lt;div ng-if='sameMonth(day)' ng-class='{&amp;quot;disabled&amp;quot; : isDisabled(day), active: active === day }' ng-click='handleDayClick(day)' ng-repeat='day in week' layout&gt;&lt;md-tooltip ng-if='::tooltips()'&gt;{{ day | date:dayTooltipFormat:timezone }}&lt;/md-tooltip&gt;&lt;div&gt;{{ day | date:dayFormat:timezone }}&lt;/div&gt;&lt;div flex compile='dataService.data[dayKey(day)]'&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/md-content&gt;&lt;!-- calendar view --&gt;&lt;md-content ng-if='weekLayout !== columnWeekLayout' flex layout='column' class='calendar'&gt;&lt;div layout='row' class='subheader'&gt;&lt;div layout-padding class='subheader-day' flex ng-repeat='day in calendar.weeks[0]'&gt;&lt;md-tooltip ng-if='::tooltips()'&gt;{{ day | date:dayLabelTooltipFormat }}&lt;/md-tooltip&gt;{{ day | date:dayLabelFormat }}&lt;/div&gt;&lt;/div&gt;&lt;div ng-if='week.length' ng-repeat='week in calendar.weeks track by $index' flex layout='row'&gt;&lt;div tabindex='{{ sameMonth(day) ? (day | date:dayFormat:timezone) : 0 }}' ng-repeat='day in week track by $index' ng-click='handleDayClick(day)' flex layout layout-padding ng-class='{&amp;quot;disabled&amp;quot; : isDisabled(day), &amp;quot;active&amp;quot;: isActive(day), &amp;quot;md-whiteframe-12dp&amp;quot;: hover || focus }' ng-focus='focus = true;' ng-blur='focus = false;' ng-mouseleave='hover = false' ng-mouseenter='hover = true'&gt;&lt;md-tooltip ng-if='::tooltips()' compile='dataService.data[dayKey(day)]'&gt;&lt;/md-tooltip&gt;&lt;div&gt;{{ day | date:dayFormat }}&lt;/div&gt;&lt;div class='events' flex compile='dataService.data[dayKey(day)]' id='{{ day | date:dayIdFormat }}'&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/md-content&gt;&lt;/md-content&gt;";
+&nbsp;
+    $scope.myTemplate = "&lt;md-content layout='column' layout-fill md-swipe-left='next()' md-swipe-right='prev()'&gt;&lt;md-toolbar&gt;&lt;div class='md-toolbar-tools' layout='row'&gt;&lt;md-button class='md-icon-button' ng-click='prev()'&gt;&lt;md-icon md-svg-icon='md-tabs-arrow'&gt;&lt;/md-icon&gt;&lt;/md-button&gt;&lt;div flex&gt;&lt;/div&gt;&lt;span class='calendar-md-title'&gt;{{ calendar.start | date:titleFormat:timezone }}&lt;/span&gt;&lt;div flex&gt;&lt;/div&gt;&lt;md-button class='md-icon-button' ng-click='next()' &gt;&lt;md-icon md-svg-icon='md-tabs-arrow' class='moveNext'&gt;&lt;/md-icon&gt;&lt;/md-button&gt;&lt;/div&gt;&lt;/md-toolbar&gt;&lt;!-- calendar view --&gt;&lt;md-content ng-if='weekLayout !== columnWeekLayout' flex layout='column' class='calendar'&gt;&lt;div layout='row' class='subheader'&gt;&lt;div layout-padding class='subheader-day' flex ng-repeat='day in calendar.weeks[0]'&gt;{{ day | date:dayLabelFormat }}&lt;/div&gt;&lt;/div&gt;&lt;div ng-if='week.length' ng-repeat='week in calendar.weeks track by $index' flex layout='row'&gt;&lt;div tabindex='{{ sameMonth(day) ? (day | date:dayFormat:timezone) : 0 }}' ng-repeat='day in week track by $index' ng-click='handleDayClick(day)' flex layout layout-padding ng-class='{&amp;quot;disabled&amp;quot; : isDisabled(day), &amp;quot;active&amp;quot;: isActive(day), &amp;quot;md-whiteframe-12dp&amp;quot;: hover || focus }' ng-focus='focus = true;' ng-blur='focus = false;' ng-mouseleave='hover = false' ng-mouseenter='hover = true'&gt;&lt;md-tooltip ng-if='::tooltips()' compile='dataService.data[dayKey(day)]'&gt;&lt;/md-tooltip&gt;&lt;div&gt;{{ day | date:dayFormat }}&lt;/div&gt;&lt;div class='events' flex compile='dataService.data[dayKey(day)]' id='{{ day | date:dayIdFormat }}'&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/md-content&gt;&lt;/md-content&gt;";
     // To select a single date, make sure the ngModel is not an array.
     $scope.selectedDate = null;
 &nbsp;
@@ -858,15 +909,15 @@ myApp.controller('CalendarCtrl', function($scope, $filter, $http, $q, MaterialCa
     $scope.firstDayOfWeek = 0; // First day of the week, 0 for Sunday, 1 for Monday, etc.
     $scope.setDirection = function(direction) {
         $scope.direction = direction;
-        $scope.dayFormat = direction === 'vertical'
-                                        ? 'EEEE, MMMM d'
-                                        : 'd';
+        $scope.dayFormat = direction === 'vertical' ?
+            'EEEE, MMMM d' :
+            'd';
     };
 &nbsp;
     $scope.dayClick = <span class="fstat-no" title="function not covered" >function(date) {</span>
-<span class="cstat-no" title="statement not covered" >      var checkDate = MaterialCalendarData.getDayKey(date);</span>
-<span class="cstat-no" title="statement not covered" >      var dateData = MaterialCalendarData.data[checkDate];</span>
-<span class="cstat-no" title="statement not covered" >      $scope.popup = dateData;</span>
+<span class="cstat-no" title="statement not covered" >        var checkDate = MaterialCalendarData.getDayKey(date);</span>
+<span class="cstat-no" title="statement not covered" >        var dateData = MaterialCalendarData.data[checkDate];</span>
+<span class="cstat-no" title="statement not covered" >        $scope.popup = dateData;</span>
     };
 &nbsp;
     $scope.prevMonth = function(data) {
@@ -880,7 +931,7 @@ myApp.controller('CalendarCtrl', function($scope, $filter, $http, $q, MaterialCa
     // set events
 &nbsp;
     $http.get('/getEvents').then(function(result) {
-      $scope.msg = 'test';
+        $scope.msg = 'test';
         events = result.data;
         for (var i = 0; i &lt; events.length; i++) {
 <span class="cstat-no" title="statement not covered" >            var event = events[i];</span>
@@ -891,17 +942,38 @@ myApp.controller('CalendarCtrl', function($scope, $filter, $http, $q, MaterialCa
 <span class="cstat-no" title="statement not covered" >            if (typeof(dateData) === 'undefined') {</span>
 <span class="cstat-no" title="statement not covered" >                dateData = '';</span>
             }
-<span class="cstat-no" title="statement not covered" >            MaterialCalendarData.setDayContent(eventDate, dateData + event.summary + '&lt;/br&gt;');</span>
+<span class="cstat-no" title="statement not covered" >            var arr = event.summary.split(']');</span>
+<span class="cstat-no" title="statement not covered" >            event.summary = arr[arr.length - 1];</span>
+<span class="cstat-no" title="statement not covered" >            $("#popups").hide();</span>
+<span class="cstat-no" title="statement not covered" >            MaterialCalendarData.setDayContent(eventDate, dateData + '&lt;a onclick="show(' +i +');" onmouseover="showEvent(' + i + ')" onmouseleave="hideEvent()" &gt;' + event.summary + '&lt;/a&gt;' + '&lt;/br&gt;');</span>
         }
     });
 });
+<span class="fstat-no" title="function not covered" >function show(i){</span>
+<span class="cstat-no" title="statement not covered" >  $("#cName").html('&lt;p class="eventtext"&gt;' + events[i].summary + '&lt;/p&gt;');</span>
+<span class="cstat-no" title="statement not covered" >  $("#cOrg").html('&lt;h3 class="eventtext"&gt;Organizer:&lt;/h3&gt; ' + events[i].organizer.displayName);</span>
+<span class="cstat-no" title="statement not covered" >  $("#cDes").html('&lt;h3 class="eventtext"&gt;Description:&lt;/h3&gt; ' + events[i].description);</span>
+<span class="cstat-no" title="statement not covered" >  $("#id01").modal();</span>
+}
+<span class="fstat-no" title="function not covered" >function showEvent(i) {</span>
+<span class="cstat-no" title="statement not covered" >    $("#popups").show();</span>
+<span class="cstat-no" title="statement not covered" >    var pop;</span>
+<span class="cstat-no" title="statement not covered" >    if (events[i].description === null) {</span>
+<span class="cstat-no" title="statement not covered" >        events[i].description = '';</span>
+    }
+<span class="cstat-no" title="statement not covered" >    pop = '&lt;p class="eventtext"&gt;' + events[i].summary + '&lt;/p&gt;&lt;p class="textorg"&gt; Organizer: ' + events[i].organizer.displayName + '&lt;/p&gt;' + events[i].description;</span>
+<span class="cstat-no" title="statement not covered" >    $("#popups").html(pop);</span>
+}
+<span class="fstat-no" title="function not covered" >function hideEvent() {</span>
+<span class="cstat-no" title="statement not covered" >    $("#popups").hide();</span>
+}
 &nbsp;</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Aug 23 2016 14:21:25 GMT+0700 (SE Asia Standard Time)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Aug 31 2016 14:10:45 GMT+0700 (SE Asia Standard Time)
 </div>
 </div>
 <script src="../prettify.js"></script>
