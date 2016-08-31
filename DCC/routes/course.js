@@ -19,24 +19,24 @@ models.course.sync({
     force: false
 });
 
-router.post('/getCourse', function(req, res) {
-    log.info('/route/course: Get Course Information');
-    models.course.findOne({
-        where: {
-            id: parseInt(req.body.courseID)
-        }
-    }).then(function(course) {
-        var tID = JSON.parse(course.trainerID);
-        res.send({
-            courseName: course.name,
-            courseTrainer: tID,
-            courseTrainerPage: '/course/trainerdashboard',
-            courseDescription: course.description,
-            courseDocuments: course.documents,
-            courseCategory: course.category
-        });
-    });
-});
+// router.post('/getCourse', function(req, res) {
+//     log.info('/route/course: Get Course Information');
+//     models.course.findOne({
+//         where: {
+//             id: parseInt(req.body.courseID)
+//         }
+//     }).then(function(course) {
+//         var tID = JSON.parse(course.trainerID);
+//         res.send({
+//             courseName: course.name,
+//             courseTrainer: tID,
+//             courseTrainerPage: '/course/trainerdashboard',
+//             courseDescription: course.description,
+//             courseDocuments: course.documents,
+//             courseCategory: course.category
+//         });
+//     });
+// });
 
 // add course to database
 router.post('/addCourse', function(req, res) {
