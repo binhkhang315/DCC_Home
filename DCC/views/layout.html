@@ -3,15 +3,13 @@
 
     <head>
         <!-- -------------------------------------------------->
-        <!-- <title>{{title}}</title> -->
-        <!-- We don't need the title, here is just the layout -->
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="">
         <meta name="author" content="">
         <link rel="icon" href="/img/DCC-icon.png"/>
-        <link rel="stylesheet" href="/js/dist/textAngular.css"/>
+        <link rel="stylesheet" href="/js/dist/textAngular.css">
 
         <!-- jQuery -->
         <script src="/js/jquery.js"></script>
@@ -105,22 +103,25 @@
                             <button class="dl-trigger">MENU</button>
                             <ul class="dl-menu">
                                 <li>
-                                    <a href="#">Training Calendar</a>
+                                    <a>Training Calendar</a>
                                 </li>
                                 <li>
-                                    <a href="#">Contact</a>
+                                    <a>Contact</a>
                                 </li>
-                                <li role="presentation">
+                                <li ng-hide="userid">
+                                    <a id="login">Login</a>
+                                </li>
+                                <li role="presentation" ng-hide="!userid">
                                     <a href="#">Admin&nbsp;<span class="glyphicon glyphicon-hand-right"></span>
                                     </a>
                                     <ul class="dl-submenu">
-                                        <li>
+                                        <li role="presentation" ng-hide="!userid">
                                             <a href="/course">Courses</a>
                                         </li>
                                         <li>
                                             <a href="/users/userprofile">Profile</a>
                                         </li>
-                                        <li ng-click="logout()">
+                                        <li role="presentation" ng-hide="!userid" ng-click="logout()">
                                             <a href="/users/logout">Logout</a>
                                         </li>
                                     </ul>
@@ -130,33 +131,34 @@
                     </div>
 
                     <div class="navbar-header">
-                        <a class="navbar-logo" href="/">
-                            <img class="img-responsive" src="/img/DCC-ver4.png" alt="" width="100">
+                        <a class="navbar-home" href="/">
+                            <img class="navbar-logo img-responsive" src="/img/DCC-ver4.png" alt="DCC Logo" width="100">
+                            <a class="navbar-name" href="/">DEK<br>Competence Center</a>
                         </a>
-                    </div>
-                    <div>
-                        <a class="navbar-name" href="/">DEK<br>Competence Center</a>
                     </div>
 
                     <div class="collapse navbar-rowmenu">
                         <ul class="nav navbar-nav navbar-right">
                             <li>
-                                <a href="#" id="button-calendar">Training Calendar</a>
+                                <a id="button-calendar" href="">Training Calendar</a>
                             </li>
                             <li>
-                                <a href="#" id="button-contact">Contact</a>
+                                <a id="button-contact"  href="">Contact</a>
                             </li>
-                            <li role="presentation" class="dropdown">
+                            <li role="presentation" ng-hide="userid">
+                                <a data-toggle="modal" href="#loginModal">Login</a>
+                            </li>
+                            <li role="presentation" ng-hide="!userid" class="dropdown">
                                 <a onclick="myFunction()" class="dropbtn">Admin&nbsp;<span class="glyphicon glyphicon-hand-down"></span>
                                 </a>
                                 <ul id="myDropdown" class="dropdown-content">
-                                    <li>
+                                    <li role="presentation" ng-hide="!userid">
                                         <a href="/course">Courses</a>
                                     </li>
-                                    <li>
+                                    <li role="presentation" ng-hide="!userid">
                                         <a href="/users/userprofile">Profile</a>
                                     </li>
-                                    <li ng-click="logout()">
+                                    <li role="presentation" ng-hide="!userid" ng-click="logout()">
                                         <a href="/users/logout">Logout</a>
                                     </li>
                                 </ul>
@@ -167,8 +169,8 @@
                 </div>
             </nav>
         </div>
-        <!--  Here we return the body of all html files -->
-        <div>
+        <!-- Body -->
+        <div class="sep-nav">
             <%-body%>
         </div>
         <!-- Footer -->

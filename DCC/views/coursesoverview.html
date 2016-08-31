@@ -9,7 +9,7 @@
 
 <body>
     <!-- main course page -->
-    <div class="course-tab features">
+    <div class="course-detail course-tab features">
         <div ng-controller="SetCourseCtrl">
             <p class="name"> {{ courseName }} </p>
             <div class="trname" ng-repeat="trainer in courseTrainer">
@@ -25,7 +25,7 @@
             <input id="tab8" type="radio" name="tabs">
             <label for="tab8">Test</label>
             <input id="tab9" type="radio" name="tabs">
-            <label for="tab9">Feedback & Rating</label>
+            <label for="tab9">Feedback &amp; Rating</label>
             <section id="content1">
                 <div ng-bind-html="courseDescription" style="padding-left:2%;"></div>
             </section>

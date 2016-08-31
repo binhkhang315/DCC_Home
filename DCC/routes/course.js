@@ -64,11 +64,11 @@ router.post('/addCourse', function(req, res) {
                     res.send({
                         msg: 'Add course success!'
                     });
-                })
+                });
             }
         });
     });
-})
+});
 
 // update course in database
 router.post('/updateCourse', function(req, res) {
@@ -132,7 +132,7 @@ router.get('/list', function(req, res) {
         var datasend = {
             course: course,
             msg:'send list success'
-        }
+        };
         res.send(datasend);
     });
 });
