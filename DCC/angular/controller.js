@@ -1,8 +1,8 @@
-"use strict";
-
 var myApp = angular.module('myApp', ['ngCookies', 'ngTagsInput', 'textAngular', 'ngMaterial', 'materialCalendar', 'course']);
 // creat angular controller
 myApp.controller('ToastCtrl', function($scope, $rootScope, $mdToast) {
+    "use strict";
+
     $rootScope.showToast = function(msg) {
         $mdToast.show(
             $mdToast.simple()
@@ -13,41 +13,43 @@ myApp.controller('ToastCtrl', function($scope, $rootScope, $mdToast) {
 });
 var events;
 
-myApp.controller('LoginCtrl', function($scope, $http, $cookies, $rootScope, $window, ToastService) {
-    // get route '/isLogged' to check user logined or not
-    $http.get('/isLogged')
-        .then(function(res) {
-            $cookies.put('userid', res.data);
-            $rootScope.userid = $cookies.get('userid');
-        });
-    // get userid in cookies if it exist
-    if ($cookies.get('userid')) {
-        $rootScope.userid = $cookies.get('userid');
-    }
-    // login/ logout message: success or fail
-    $scope.message = '';
-    // receive value username and password from login page
-    $scope.user = {
-        username: '',
-        password: ''
-    };
-    $scope.isAuthenticated = false;
-    // login function, post to server user's credentials
-    $scope.login = function() {
-        $http.post('/users/login', $scope.user).then(function(result) {
-            if (result.data.userid) {
-                $scope.isAuthenticated = true;
-                $cookies.put('userid', result.data.userid);
-                $rootScope.userid = result.data.userid;
-                $scope.message = result.data.msg;
-                ToastService.showToast($scope.message);
-            } else {
-                $scope.isAuthenticated = false;
-                $scope.message = result.data.msg;
-                ToastService.showToast($scope.message);
-            }
-        });
-    };
+// myApp.controller('LoginCtrl', function($scope, $http, $cookies, $rootScope, $window, ToastService) {
+//     "use strict";
+//
+//     // get route '/isLogged' to check user logined or not
+//     $http.get('/isLogged')
+//         .then(function(res) {
+//             $cookies.put('userid', res.data);
+//             $rootScope.userid = $cookies.get('userid');
+//         });
+//     // get userid in cookies if it exist
+//     if ($cookies.get('userid')) {
+//         $rootScope.userid = $cookies.get('userid');
+//     }
+//     // login/ logout message: success or fail
+//     $scope.message = '';
+//     // receive value username and password from login page
+//     $scope.user = {
+//         username: '',
+//         password: ''
+//     };
+//     $scope.isAuthenticated = false;
+//     // login function, post to server user's credentials
+//     $scope.login = function() {
+//         $http.post('/users/login', $scope.user).then(function(result) {
+//             if (result.data.userid) {
+//                 $scope.isAuthenticated = true;
+//                 $cookies.put('userid', result.data.userid);
+//                 $rootScope.userid = result.data.userid;
+//                 $scope.message = result.data.msg;
+//                 ToastService.showToast($scope.message);
+//             } else {
+//                 $scope.isAuthenticated = false;
+//                 $scope.message = result.data.msg;
+//                 ToastService.showToast($scope.message);
+//             }
+//         });
+//     };
     // logout function
     $rootScope.logout = function() {
         $cookies.remove('userid');
@@ -55,6 +57,8 @@ myApp.controller('LoginCtrl', function($scope, $http, $cookies, $rootScope, $win
 });
 
 myApp.controller('SetCourseCtrl', function($scope, $http, $window, $sce) {
+    "use strict";
+
     var path = $window.location.pathname;
     path = path.split('/');
     var courseID = path.pop();
@@ -76,6 +80,8 @@ myApp.controller('SetCourseCtrl', function($scope, $http, $window, $sce) {
 });
 
 myApp.controller('GetListCtrl', function($scope, $rootScope, $http, CourseList) {
+    "use strict";
+
     CourseList.getCourseList().then(function(result) {
         $rootScope.coursesList = result;
     });
@@ -95,6 +101,7 @@ myApp.controller('GetListCtrl', function($scope, $rootScope, $http, CourseList) 
 
     // delete course
     $scope.deleteCourse = function(course) {
+
         $rootScope.courseslistDelete = {
             courseIDDelete: course.id,
             courseNameDelete: course.name,
@@ -104,6 +111,8 @@ myApp.controller('GetListCtrl', function($scope, $rootScope, $http, CourseList) 
 });
 
 myApp.controller('SetFeatureCtrl', function($scope, $http) {
+    "use strict";
+
     $http.get('/course/features').then(function(result) {
         $scope.courseDocuments = result.data.courseDocuments;
         $scope.courseFeedback = result.data.courseFeedback;
@@ -114,6 +123,8 @@ myApp.controller('SetFeatureCtrl', function($scope, $http) {
 });
 
 myApp.controller('SetProfileCtrl', function($scope, $rootScope, $http, $window) {
+    "use strict";
+
     $scope.user = {
         pStatus: '',
         pName: '',
@@ -144,6 +155,8 @@ myApp.controller('SetProfileCtrl', function($scope, $rootScope, $http, $window) 
 
 // AddCourseCtrl: add course controller
 myApp.controller('AddCourseCtrl', function($scope, $rootScope, $http, CourseList, ToastService) {
+    "use strict";
+
     $scope.courseslist = {
         courseName: '',
         courseDescription: '',
@@ -168,6 +181,8 @@ myApp.controller('AddCourseCtrl', function($scope, $rootScope, $http, CourseList
 
 // UpdateCourseCtrl: edit course controller
 myApp.controller('UpdateCourseCtrl', function($scope, $rootScope, $http, CourseList, ToastService) {
+    "use strict";
+
     $scope.postMsg = '';
     $scope.getMsg = '';
     $scope.updateCourse = function() {
@@ -183,6 +198,8 @@ myApp.controller('UpdateCourseCtrl', function($scope, $rootScope, $http, CourseL
 
 // IsDeletedCourseCtrl: delete course controller
 myApp.controller('IsDeletedCourseCtrl', function($scope, $rootScope, $http, CourseList, ToastService) {
+    "use strict";
+
     $scope.postMsg = '';
     $scope.getMsg = '';
     $scope.isDeletedCourse = function() {
@@ -198,6 +215,8 @@ myApp.controller('IsDeletedCourseCtrl', function($scope, $rootScope, $http, Cour
 
 //controller for Feedback
 myApp.controller('FeedbackCtrl', function($scope, $http, $window) {
+    "use strict";
+
     var path = $window.location.pathname;
     path = path.split('/');
     var courseID = path.pop();
@@ -236,6 +255,8 @@ myApp.controller('FeedbackCtrl', function($scope, $http, $window) {
 });
 
 myApp.controller('CalendarCtrl', function($scope, $filter, $http, $q, MaterialCalendarData) {
+    "use strict";
+
     $scope.dayFormat = 'd';
 
     $scope.myTemplate = "<md-content layout='column' layout-fill md-swipe-left='next()' md-swipe-right='prev()'><md-toolbar><div class='md-toolbar-tools' layout='row'><md-button class='md-icon-button' ng-click='prev()'><md-icon md-svg-icon='md-tabs-arrow'></md-icon></md-button><div flex></div><span class='calendar-md-title'>{{ calendar.start | date:titleFormat:timezone }}</span><div flex></div><md-button class='md-icon-button' ng-click='next()' ><md-icon md-svg-icon='md-tabs-arrow' class='moveNext'></md-icon></md-button></div></md-toolbar><!-- calendar view --><md-content ng-if='weekLayout !== columnWeekLayout' flex layout='column' class='calendar'><div layout='row' class='subheader'><div layout-padding class='subheader-day' flex ng-repeat='day in calendar.weeks[0]'>{{ day | date:dayLabelFormat }}</div></div><div ng-if='week.length' ng-repeat='week in calendar.weeks track by $index' flex layout='row'><div tabindex='{{ sameMonth(day) ? (day | date:dayFormat:timezone) : 0 }}' ng-repeat='day in week track by $index' ng-click='handleDayClick(day)' flex layout layout-padding ng-class='{&quot;disabled&quot; : isDisabled(day), &quot;active&quot;: isActive(day), &quot;md-whiteframe-12dp&quot;: hover || focus }' ng-focus='focus = true;' ng-blur='focus = false;' ng-mouseleave='hover = false' ng-mouseenter='hover = true'><md-tooltip ng-if='::tooltips()' compile='dataService.data[dayKey(day)]'></md-tooltip><div>{{ day | date:dayFormat }}</div><div class='events' flex compile='dataService.data[dayKey(day)]' id='{{ day | date:dayIdFormat }}'></div></div></div></md-content></md-content>";
@@ -288,21 +309,3 @@ myApp.controller('CalendarCtrl', function($scope, $filter, $http, $q, MaterialCa
         }
     });
 });
-function show(i){
-  $("#cName").html('<p class="eventtext">' + events[i].summary + '</p>');
-  $("#cOrg").html('<h3 class="eventtext">Organizer:</h3> ' + events[i].organizer.displayName);
-  $("#cDes").html('<h3 class="eventtext">Description:</h3> ' + events[i].description);
-  $("#id01").modal();
-}
-function showEvent(i) {
-    $("#popups").show();
-    var pop;
-    if (events[i].description === null) {
-        events[i].description = '';
-    }
-    pop = '<p class="eventtext">' + events[i].summary + '</p><p class="textorg"> Organizer: ' + events[i].organizer.displayName + '</p>' + events[i].description;
-    $("#popups").html(pop);
-}
-function hideEvent() {
-    $("#popups").hide();
-}
