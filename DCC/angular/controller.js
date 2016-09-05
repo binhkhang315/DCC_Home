@@ -1,17 +1,17 @@
 var myApp = angular.module('myApp', ['ngCookies', 'ngTagsInput', 'textAngular', 'ngMaterial', 'materialCalendar', 'course']);
 
 // creat angular controller
-// myApp.controller('ToastCtrl', function($scope, $rootScope, $mdToast) {
-//     "use strict";
-//
-//     $rootScope.showToast = function(msg) {
-//         $mdToast.show(
-//             $mdToast.simple()
-//             .content(msg)
-//             .hideDelay(3000)
-//         );
-//     };
-// });
+myApp.controller('ToastCtrl', function($scope, $rootScope, $mdToast) {
+    "use strict";
+
+    $rootScope.showToast = function(msg) {
+        $mdToast.show(
+            $mdToast.simple()
+            .content(msg)
+            .hideDelay(3000)
+        );
+    };
+});
 var events;
 
 myApp.controller('LoginCtrl', function($scope, $http, $cookies, $rootScope, $window, ToastService) {
