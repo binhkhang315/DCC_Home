@@ -13,48 +13,48 @@ myApp.controller('ToastCtrl', function($scope, $rootScope, $mdToast) {
 });
 var events;
 
-// myApp.controller('LoginCtrl', function($scope, $http, $cookies, $rootScope, $window, ToastService) {
-//     "use strict";
-//
-//     // get route '/isLogged' to check user logined or not
-//     $http.get('/isLogged')
-//         .then(function(res) {
-//             $cookies.put('userid', res.data);
-//             $rootScope.userid = $cookies.get('userid');
-//         });
-//     // get userid in cookies if it exist
-//     if ($cookies.get('userid')) {
-//         $rootScope.userid = $cookies.get('userid');
-//     }
-//     // login/ logout message: success or fail
-//     $scope.message = '';
-//     // receive value username and password from login page
-//     $scope.user = {
-//         username: '',
-//         password: ''
-//     };
-//     $scope.isAuthenticated = false;
-//     // login function, post to server user's credentials
-//     $scope.login = function() {
-//         $http.post('/users/login', $scope.user).then(function(result) {
-//             if (result.data.userid) {
-//                 $scope.isAuthenticated = true;
-//                 $cookies.put('userid', result.data.userid);
-//                 $rootScope.userid = result.data.userid;
-//                 $scope.message = result.data.msg;
-//                 ToastService.showToast($scope.message);
-//             } else {
-//                 $scope.isAuthenticated = false;
-//                 $scope.message = result.data.msg;
-//                 ToastService.showToast($scope.message);
-//             }
-//         });
-//     };
-//     // logout function
-//     $rootScope.logout = function() {
-//         $cookies.remove('userid');
-//     };
-// });
+myApp.controller('LoginCtrl', function($scope, $http, $cookies, $rootScope, $window, ToastService) {
+    "use strict";
+
+    // get route '/isLogged' to check user logined or not
+    $http.get('/isLogged')
+        .then(function(res) {
+            $cookies.put('userid', res.data);
+            $rootScope.userid = $cookies.get('userid');
+        });
+    // get userid in cookies if it exist
+    if ($cookies.get('userid')) {
+        $rootScope.userid = $cookies.get('userid');
+    }
+    // login/ logout message: success or fail
+    $scope.message = '';
+    // receive value username and password from login page
+    $scope.user = {
+        username: '',
+        password: ''
+    };
+    $scope.isAuthenticated = false;
+    // login function, post to server user's credentials
+    $scope.login = function() {
+        $http.post('/users/login', $scope.user).then(function(result) {
+            if (result.data.userid) {
+                $scope.isAuthenticated = true;
+                $cookies.put('userid', result.data.userid);
+                $rootScope.userid = result.data.userid;
+                $scope.message = result.data.msg;
+                ToastService.showToast($scope.message);
+            } else {
+                $scope.isAuthenticated = false;
+                $scope.message = result.data.msg;
+                ToastService.showToast($scope.message);
+            }
+        });
+    };
+    // logout function
+    $rootScope.logout = function() {
+        $cookies.remove('userid');
+    };
+});
 
 myApp.controller('SetCourseCtrl', function($scope, $http, $window, $sce) {
     "use strict";
