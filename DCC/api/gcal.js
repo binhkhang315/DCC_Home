@@ -14,12 +14,12 @@ var TOKEN_PATH = TOKEN_DIR + 'calendar-nodejs-quickstart.json';
 var oauth2Client;
 // Load client secrets from a local file.
 fs.readFile('client_secret.json', function processClientSecrets(err, content) {
-  if (err) {
-    return;
-  }
-  // Authorize a client with the loaded credentials, then call the
-  // Google Calendar API.
-  authorize(JSON.parse(content), listEvents);
+    if (err) {
+        return;
+    }
+    // Authorize a client with the loaded credentials, then call the
+    // Google Calendar API.
+    authorize(JSON.parse(content), listEvents);
 });
 
 /**
@@ -30,17 +30,17 @@ fs.readFile('client_secret.json', function processClientSecrets(err, content) {
  * @param {function} callback The callback to call with the authorized client.
  */
 function authorize(credentials, callback) {
-  var clientSecret = credentials.installed.client_secret;
-  var clientId = credentials.installed.client_id;
-  var redirectUrl = credentials.installed.redirect_uris[0];
-  var auth = new googleAuth();
-  oauth2Client = new auth.OAuth2(clientId, clientSecret, redirectUrl);
+    var clientSecret = credentials.installed.client_secret;
+    var clientId = credentials.installed.client_id;
+    var redirectUrl = credentials.installed.redirect_uris[0];
+    var auth = new googleAuth();
+    oauth2Client = new auth.OAuth2(clientId, clientSecret, redirectUrl);
 
-  // Check if we have previously stored a token.
-  fs.readFile(TOKEN_PATH, function(err, token) {
-      oauth2Client.credentials = JSON.parse(token);
-      callback(oauth2Client);
-  });
+    // Check if we have previously stored a token.
+    fs.readFile(TOKEN_PATH, function(err, token) {
+        oauth2Client.credentials = JSON.parse(token);
+        callback(oauth2Client);
+    });
 }
 
 /**
@@ -50,26 +50,26 @@ function authorize(credentials, callback) {
  */
 
 var listEvents = function(auth) {
-  var calendar = google.calendar('v3');
-  var timem = new Date();
-  timem.setDate(timem.getDate()-30);
-  calendar.events.list({
-    auth: auth,
-    calendarId: 'primary',
-    timeMin: timem.toISOString(),
-    maxResults: 100,
-    singleEvents: true,
-    orderBy: 'startTime'
-  }, function(err, response) {
-    if (err) {
-      return;
-    }
-    var events = response.items;
-      eventList = events;
-  })
+    var calendar = google.calendar('v3');
+    var timem = new Date();
+    timem.setDate(timem.getDate() - 30);
+    calendar.events.list({
+        auth: auth,
+        calendarId: 'primary',
+        timeMin: timem.toISOString(),
+        maxResults: 100,
+        singleEvents: true,
+        orderBy: 'startTime'
+    }, function(err, response) {
+        if (err) {
+            return;
+        }
+        var events = response.items;
+        eventList = events;
+    });
 }
 
-exports.getEvents = function(cb){
-  listEvents(oauth2Client);
-  cb( eventList);
+exports.getEvents = function(cb) {
+    listEvents(oauth2Client);
+    cb(eventList);
 };
