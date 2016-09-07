@@ -236,6 +236,7 @@ describe('<Unit test for Course controller', function() {
                 });
         });
     });
+
     describe('', function() {
         return it('Test case 2 : POST /course/addCourse duplicate name', function(done) {
             var datasend = {
@@ -243,10 +244,10 @@ describe('<Unit test for Course controller', function() {
                 courseDescription: 'This is testing Des',
                 courseCategory: 'testing cat',
                 courseTest: 'testing test',
-                courseDocuments: 'testing doc',
-                courseTrainerID: [{
-                    "text": "testing"
-                }]
+                courseDocuments: 'testing doc'
+                // courseTrainerID: [{
+                //     "text": "testing"
+                // }]
             };
             request(route)
                 .post('/course/addCourse')
@@ -264,10 +265,10 @@ describe('<Unit test for Course controller', function() {
                 courseDescription: 'This is testing Des',
                 courseCategory: 'testing cat',
                 courseTest: 'testing test',
-                courseDocuments: 'testing doc',
-                courseTrainerID: [{
-                    "text": "testing"
-                }]
+                courseDocuments: 'testing doc'
+                // courseTrainerID: [{
+                //     "text": "testing"
+                // }]
             };
             request(route)
                 .post('/course/addCourse')
@@ -293,10 +294,10 @@ describe('<Unit test for Course controller', function() {
                 courseDescriptionEdit: 'This is testing Des3',
                 courseCategoryEdit: 'testing cat3',
                 courseTestEdit: 'testing testing3',
-                courseDocumentsEdit: 'testing doc3',
-                courseTrainerIDEdit: [{
-                    "text": "testing3"
-                }]
+                courseDocumentsEdit: 'testing doc3'
+                // courseTrainerIDEdit: [{
+                //     "text": "testing3"
+                // }]
             };
             request(route)
                 .post('/course/updateCourse')
@@ -315,10 +316,10 @@ describe('<Unit test for Course controller', function() {
                 courseDescriptionEdit: 'This is testing Des3',
                 courseCategoryEdit: 'testing cat3',
                 courseTestEdit: 'testing testing3',
-                courseDocumentsEdit: 'testing doc3',
-                courseTrainerIDEdit: [{
-                    "text": "testing3"
-                }]
+                courseDocumentsEdit: 'testing doc3'
+                // courseTrainerIDEdit: [{
+                //     "text": "testing3"
+                // }]
             };
             request(route)
                 .post('/course/updateCourse')
