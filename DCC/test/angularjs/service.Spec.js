@@ -8,38 +8,38 @@ describe('Service test', function(){
           Course = CourseList;
         }));
 
-        it('1. getCourseList function test 1', function(){
+        it('1. getCourses function test 1', function(){
           $injector = angular.injector([ 'course' ]);
           var data = {course:[{
-              trainerID: '[{"text":"asd"},{"text":"qwe"}]'
+              name: 'hahaha'
           }]};
           $httpBackend.whenGET('/course/list').respond(data);
-          Course.getCourseList().then(function(result){
-            expect(result[0].trainerID).toEqual('asd / qwe');
+          Course.getCourses().then(function(result){
+            expect(result[0].name).toEqual('hahaha');
           });
           $httpBackend.flush();
         });
 
-        it('2. getCourseList function test 2', function(){
+        it('2. getCourses function test 2', function(){
           $injector = angular.injector([ 'course' ]);
           var data = {course:[{
-              trainerID: '[{"text":"hihi"}]'
+              name: '0'
           }]};
           $httpBackend.whenGET('/course/list').respond(data);
-          Course.getCourseList().then(function(result){
-            expect(result[0].trainerID).toEqual('hihi');
+          Course.getCourses().then(function(result){
+            expect(result[0].name).toEqual('0');
           });
           $httpBackend.flush();
         });
 
-        it('3. getCourseList function test 3', function(){
+        it('3. getCourses function test 3', function(){
           $injector = angular.injector([ 'course' ]);
           var data = {course:[{
-              trainerID: '[{"text":""}]'
+              name: ''
           }]};
           $httpBackend.whenGET('/course/list').respond(data);
-          Course.getCourseList().then(function(result){
-            expect(result[0].trainerID).toEqual('');
+          Course.getCourses().then(function(result){
+            expect(result[0].name).toEqual('');
           });
           $httpBackend.flush();
         });

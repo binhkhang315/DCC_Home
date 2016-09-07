@@ -21,16 +21,12 @@ models.course.sync({
 
 router.post('/getCourse', function(req, res) {
     log.info('/route/course: Get Course Information');
-    models.course.findOne({
-        where: {
-            id: parseInt(req.body.courseID)
-        }
-    }).then(function(course) {
-        var tID = JSON.parse(course.trainerID);
+    models.course.getByID(parseInt(req.body.courseID), function(course) {
+        // var tID = JSON.parse(course.trainerID);
         res.send({
             courseName: course.name,
-            courseTrainer: tID,
-            courseTrainerPage: '/course/trainerdashboard',
+            // courseTrainer: tID,
+            // courseTrainerPage: '/course/trainerdashboard',
             courseDescription: course.description,
             courseDocuments: course.documents,
             courseCategory: course.category
@@ -41,12 +37,12 @@ router.post('/getCourse', function(req, res) {
 // add course to database
 router.post('/addCourse', function(req, res) {
     log.info('/route/course: Add course :' + req.body);
-    var tID = JSON.stringify(req.body.courseTrainerID);
+    // var tID = JSON.stringify(req.body.courseTrainerID);
     models.course.sync({
         force: false
     }).then(function() {
         // this function check if the courseName is already existed
-        models.course.getCourseByName(req.body.courseName, function(result) {
+        models.course.getByName(req.body.courseName, function(result) {
             if (result) {
                 res.send({
                     msg: 'Name already existed. Add fail!'
@@ -59,7 +55,7 @@ router.post('/addCourse', function(req, res) {
                     category: req.body.courseCategory,
                     test: req.body.courseTest,
                     documents: req.body.courseDocuments,
-                    trainerID: tID
+                    // trainerID: tID
                 }).then(function() {
                     res.send({
                         msg: 'Add course success!'
@@ -73,11 +69,11 @@ router.post('/addCourse', function(req, res) {
 // update course in database
 router.post('/updateCourse', function(req, res) {
     log.info('Get Course Information');
-    var tID = JSON.stringify(req.body.courseTrainerIDEdit);
+    // var tID = JSON.stringify(req.body.courseTrainerIDEdit);
     models.course.sync({
         force: false
     }).then(function() {
-        models.course.getCourseByID(req.body.courseIDEdit, function(result) {
+        models.course.getByID(req.body.courseIDEdit, function(result) {
             if (result) {
                 models.course.update({
                     name: req.body.courseNameEdit,
@@ -85,7 +81,7 @@ router.post('/updateCourse', function(req, res) {
                     category: req.body.courseCategoryEdit,
                     test: req.body.courseTestEdit,
                     documents: req.body.courseDocumentsEdit,
-                    trainerID: tID
+                    // trainerID: tID
                 }, {
                     where: {
                         id: req.body.courseIDEdit
@@ -100,13 +96,14 @@ router.post('/updateCourse', function(req, res) {
                     msg: 'Course not found in database'
                 });
             }
+
         });
 });
 });
 // mark course as deleted (isDeleted = true)
 router.post('/isDeletedCourse', function(req, res) {
     log.info('Get Delete Command');
-    models.course.getCourseByID(req.body.courseIDDelete, function(result) {
+    models.course.getByID(req.body.courseIDDelete, function(result) {
         if (result) {
             models.course.update({
                 isDeleted: true
@@ -128,7 +125,7 @@ router.post('/isDeletedCourse', function(req, res) {
 
 router.get('/list', function(req, res) {
     log.info('/route/course: get course list data');
-    models.course.getCourseList(function(course) {
+    models.course.getCourses(function(course) {
         var datasend = {
             course: course,
             msg:'send list success'
@@ -141,14 +138,14 @@ router.get('/', function(req, res) {
     res.render('courses');
     log.info('/route/course: GET /course');
 });
-router.get('/coursesoverview/', function(req, res) {
-    res.render('coursesoverview');
-    log.info('/route/course: GET /course/coursesoverview');
+router.get('/coursedetail/', function(req, res) {
+    res.render('coursedetail');
+    log.info('/route/course: GET /course/coursedetail');
 });
 
-router.get('/coursesoverview/:id', function(req, res) {
-    res.render('coursesoverview');
-    log.info('/route/course: GET /course/coursesoverview/:id');
+router.get('/coursedetail/:id', function(req, res) {
+    res.render('coursedetail');
+    log.info('/route/course: GET /course/coursedetail/:id');
 });
 router.get('/trainerdashboard', function(req, res) {
     log.info('/route/course: GET /course/trainerdashboard');

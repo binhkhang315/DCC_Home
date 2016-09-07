@@ -34,16 +34,16 @@ describe('<Unit Test for Routing>', function() {
     });
 
     describe('', function() {
-        return it('Test case 3 : get /course/coursesoverview ', function(done) {
+        return it('Test case 3 : get /course/coursedetail ', function(done) {
             request(route)
-                .get('/course/coursesoverview')
+                .get('/course/coursedetail')
                 .expect(200, done)
         });
     });
     describe('', function() {
-        return it('Test case 4 : get /course/coursesoverview/:id ', function(done) {
+        return it('Test case 4 : get /course/coursedetail/:id ', function(done) {
             request(route)
-                .get('/course/coursesoverview/1')
+                .get('/course/coursedetail/1')
                 .expect(200, done)
         });
     });
@@ -377,40 +377,40 @@ describe('<Unit test for Course controller', function() {
 
 describe('<Unit test for Course model', function() {
     describe('Method Course', function() {
-        return it('Test case 1: getCourseByID with id existed in database - return course object', function(done) {
-            models.course.getCourseByID('1', function(course) {
+        return it('Test case 1: getByID with id existed in database - return course object', function(done) {
+            models.course.getByID('1', function(course) {
                 assert.equal(course.id, 1);
                 return done();
             })
         });
     });
     describe('', function() {
-        return it('Test case 2: getCourseByID with id not found in database - return null', function(done) {
-            models.course.getCourseByID('not found', function(course) {
+        return it('Test case 2: getByID with id not found in database - return null', function(done) {
+            models.course.getByID('not found', function(course) {
                 assert.equal(course, null);
                 return done();
             })
         });
     });
     describe('', function() {
-        return it('Test case 3: getCourseByName with name existed in database - return course course object', function(done) {
-            models.course.getCourseByName('CBA Overview', function(course) {
+        return it('Test case 3: getByName with name existed in database - return course course object', function(done) {
+            models.course.getByName('CBA Overview', function(course) {
                 assert.equal(course.name, 'CBA Overview');
                 return done();
             })
         });
     });
     describe('', function() {
-        return it('Test case 4: getCourseByName with name not found in database - return course = null', function(done) {
-            models.course.getCourseByName('not found', function(course) {
+        return it('Test case 4: getByName with name not found in database - return course = null', function(done) {
+            models.course.getByName('not found', function(course) {
                 assert.equal(course, null);
                 return done();
             })
         });
     });
     describe('', function() {
-        return it('Test case 5: getCourseByCategory with category existed in database - return course[] list object ', function(done) {
-            models.course.getCourseByCategory('CBA Overview', function(course) {
+        return it('Test case 5: getByCategory with category existed in database - return course[] list object ', function(done) {
+            models.course.getByCategory('CBA Overview', function(course) {
                 assert.equal(course[0].category, 'CBA Overview');
                 assert.equal(course[2].category, 'CBA Overview');
                 return done();
@@ -418,32 +418,32 @@ describe('<Unit test for Course model', function() {
         });
     });
     describe('', function() {
-        return it('Test case 6: getCourseByCategory with category not found in database - return course[] null ', function(done) {
-            models.course.getCourseByCategory('not found', function(course) {
+        return it('Test case 6: getByCategory with category not found in database - return course[] null ', function(done) {
+            models.course.getByCategory('not found', function(course) {
                 assert.equal(course[0], null);
                 return done();
             })
         });
     });
     // describe('', function() {
-    //     return it('Test case 7: getCourseByTrainerID with trainerID existed in database - return course[] list object', function(done) {
-    //         models.course.getCourseByTrainerID('King Nguyen', function(course) {
+    //     return it('Test case 7: getByTrainerID with trainerID existed in database - return course[] list object', function(done) {
+    //         models.course.getByTrainerID('King Nguyen', function(course) {
     //             assert.equal(course[0].trainerID, 'King Nguyen');
     //             return done();
     //         })
     //     });
     // });
+    // describe('', function() {
+    //     return it('Test case 8: getByTrainerID with TrainerID not found in database - return course[] null', function(done) {
+    //         models.course.getByTrainerID('not found', function(course) {
+    //             assert.equal(course[0], null);
+    //             return done();
+    //         })
+    //     });
+    // });
     describe('', function() {
-        return it('Test case 8: getCourseByTrainerID with TrainerID not found in database - return course[] null', function(done) {
-            models.course.getCourseByTrainerID('not found', function(course) {
-                assert.equal(course[0], null);
-                return done();
-            })
-        });
-    });
-    describe('', function() {
-        return it('Test case 9: getCourseList in database - return course[] list object', function(done) {
-            models.course.getCourseList(function(course) {
+        return it('Test case 9: getCourses in database - return course[] list object', function(done) {
+            models.course.getCourses(function(course) {
                 assert.equal(course[0].id, '1');
                 return done();
             })

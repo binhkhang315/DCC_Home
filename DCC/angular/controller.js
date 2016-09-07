@@ -66,15 +66,15 @@ myApp.controller('SetCourseCtrl', function($scope, $http, $window, $sce) {
     $http.post('/course/getCourse', {
         courseID: courseID
     }).then(function(result) {
-        var trainerJSON = result.data.courseTrainer;
-        var trainers = [];
-        for (var i = 0; i < trainerJSON.length; i++) {
-            trainers.push(trainerJSON[i].text);
-        }
+        // var trainerJSON = result.data.courseTrainer;
+        // var trainers = [];
+        // for (var i = 0; i < trainerJSON.length; i++) {
+        //     trainers.push(trainerJSON[i].text);
+        // }
         $scope.courseName = result.data.courseName;
-        $scope.courseTrainer = trainers;
-        $scope.courseTrainerPage = result.data.courseTrainerPage;
-        $scope.courseDescription = $sce.trustAsHtml(result.data.courseDescription);
+        // $scope.courseTrainer = trainers;
+        // $scope.courseTrainerPage = result.data.courseTrainerPage;
+        $scope.courseDescription = result.data.courseDescription;
         $scope.courseCategory = result.data.courseCategory;
         $scope.courseDocuments = result.data.courseDocuments;
     });
@@ -83,7 +83,7 @@ myApp.controller('SetCourseCtrl', function($scope, $http, $window, $sce) {
 myApp.controller('GetListCtrl', function($scope, $rootScope, $http, CourseList) {
     "use strict";
 
-    CourseList.getCourseList().then(function(result) {
+    CourseList.getCourses().then(function(result) {
         $rootScope.coursesList = result;
     });
 
@@ -96,7 +96,7 @@ myApp.controller('GetListCtrl', function($scope, $rootScope, $http, CourseList) 
             courseCategoryEdit: course.category,
             courseTestEdit: course.test,
             courseDocumentsEdit: course.documents,
-            courseTrainerIDEdit: course.trainerIDJSON
+            // courseTrainerIDEdit: course.trainerIDJSON
         };
     };
 
@@ -164,7 +164,7 @@ myApp.controller('AddCourseCtrl', function($scope, $rootScope, $http, CourseList
         courseCategory: '',
         courseTest: '',
         courseDocuments: '',
-        courseTrainerID: ''
+        // courseTrainerID: ''
     };
     $scope.postMsg = '';
     $scope.getMsg = '';
@@ -172,7 +172,7 @@ myApp.controller('AddCourseCtrl', function($scope, $rootScope, $http, CourseList
 
         $http.post('/course/addCourse', $scope.courseslist).then(function(result) {
             $scope.postMsg = result.data.msg;
-            CourseList.getCourseList().then(function(result) {
+            CourseList.getCourses().then(function(result) {
                 $rootScope.coursesList = result;
                 ToastService.showToast($scope.postMsg);
             });
@@ -189,7 +189,7 @@ myApp.controller('UpdateCourseCtrl', function($scope, $rootScope, $http, CourseL
     $scope.updateCourse = function() {
         $http.post('/course/updateCourse', $rootScope.courseslistEdit).then(function(result) {
             $scope.postMsg = result.data.msg;
-            CourseList.getCourseList().then(function(result) {
+            CourseList.getCourses().then(function(result) {
                 $rootScope.coursesList = result;
                 ToastService.showToast($scope.postMsg);
             });
@@ -206,7 +206,7 @@ myApp.controller('IsDeletedCourseCtrl', function($scope, $rootScope, $http, Cour
     $scope.isDeletedCourse = function() {
         $http.post('/course/isDeletedCourse', $rootScope.courseslistDelete).then(function(result) {
             $scope.postMsg = result.data.msg;
-            CourseList.getCourseList().then(function(result) {
+            CourseList.getCourses().then(function(result) {
                 $rootScope.coursesList = result;
                 ToastService.showToast($scope.postMsg);
             });

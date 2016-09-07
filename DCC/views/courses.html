@@ -14,7 +14,7 @@
                         <tr class="tableheader" style="background-color: #363636">
                             <th>Name</th>
                             <th>Category</th>
-                            <th>Trainer</th>
+                            <!-- <th>Trainer</th> -->
                             <th style="text-align:center">
                                 <div class="btn btn-default" data-toggle="modal" href="#addCourseModal"><span class="glyphicon glyphicon-plus"></span></div>
                             </th>
@@ -23,13 +23,13 @@
                     <tbody>
                         <tr ng-repeat="course in coursesList">
                             <td class="descpopup" style="font-weight:bold">
-                                <a href="/course/coursesoverview/{{course.id}}">{{ course.name }}</a>
-                                <div ng-bind-html="course.description" class="descpopuptext"></div>
+                                <a href="/course/coursedetail/{{course.id}}">{{ course.name }}</a>
+                                <div class="descpopuptext">{{ course.description }}</div>
                             </td>
                             <td>{{ course.category }}</td>
-                            <td>{{ course.trainerID }}</td>
+                            <!-- <td>{{ course.trainerID }}</td> -->
                             <td style="text-align:center">
-                                <a class="a-inside edit" data-toggle="modal" href="#editCourseModal" ng-click="editCourse(course)"><span class="glyphicon glyphicon-pencil"></span>&nbsp&nbsp&nbsp&nbsp&nbsp</a>
+                                <a class="a-inside edit" data-toggle="modal" href="#editCourseModal" ng-click="editCourse(course)"><span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
                                 <a class="a-inside delete" data-toggle="modal" href="#deleteCourseModal" ng-click="deleteCourse(course)"><span class="glyphicon glyphicon-trash"></span></a>
                             </td>
                         </tr>
@@ -93,13 +93,14 @@
                         </div>
 
                         <!-- Course TrainerID -->
-                        <div class="form-group" ng-class="{ 'has-error' : addCourseForm.courseTrainerID.$invalid && !addCourseForm.courseTrainerID.$pristine }">
+                        <!-- <div class="form-group" ng-class="{ 'has-error' : addCourseForm.courseTrainerID.$invalid && !addCourseForm.courseTrainerID.$pristine }">
                             <label class="col-sm-4 control-label">Trainers</label>
                             <div class="col-sm-8">
                                 <tags-input name="courseTrainerID" min-length="1" replace-spaces-with-dashes="false" ng-model="courseslist.courseTrainerID" placeholder="Trainer name" required></tags-input>
                                 <p ng-show="addCourseForm.courseTrainerID.$invalid && !addCourseForm.courseTrainerID.$pristine" class="help-block">Course trainers is required.</p>
                             </div>
-                        </div>
+                        </div> -->
+
                         <!-- Course Description -->
                         <div style="text-align:center" class="form-group" ng-class="{ 'has-error' : addCourseForm.courseDescription.$invalid && !addCourseForm.courseDescription.$pristine }">
                             <label class=" control-label">Course description</label>
@@ -172,13 +173,14 @@
                         </div>
 
                         <!-- Course TrainerID -->
-                        <div class="form-group" ng-class="{ 'has-error' : editCourseForm.courseTrainerIDEdit.$invalid && !editCourseForm.courseTrainerIDEdit.$pristine }">
+                        <!-- <div class="form-group" ng-class="{ 'has-error' : editCourseForm.courseTrainerIDEdit.$invalid && !editCourseForm.courseTrainerIDEdit.$pristine }">
                             <label class="col-sm-4 control-label">Trainer</label>
                             <div class="col-sm-8">
                                 <tags-input name="courseTrainerIDEdit" min-length="1" replace-spaces-with-dashes="false" ng-model="courseslistEdit.courseTrainerIDEdit" placeholder="Trainer name" required></tags-input>
                                 <p ng-show="editCourseForm.courseTrainerIDEdit.$invalid && !editCourseForm.courseTrainerIDEdit.$pristine" class="help-block">Course's trainers is required.</p>
                             </div>
-                        </div>
+                        </div> -->
+
                         <!-- Course Description -->
                         <div class="form-group" style="text-align:center">
                             <label class="control-label">Course description</label>

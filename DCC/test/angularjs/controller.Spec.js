@@ -11,7 +11,7 @@ describe('GetListCtrl Unit testing #1', function() {
         $q = _$q_;
         $rootScope = _$rootScope_.$new();
         deferred = _$q_.defer();
-        spyOn(CourseList, 'getCourseList').and.returnValue(deferred.promise);
+        spyOn(CourseList, 'getCourses').and.returnValue(deferred.promise);
         $controller('GetListCtrl', {
             $scope: $rootScope,
             CourseList: CourseList
@@ -50,7 +50,7 @@ describe('GetListCtrl Unit testing #1', function() {
             category: 'agile' ,
             test: 'test131',
             documents: 'agile131.pdf',
-            trainerIDJSON: '123321'
+            // trainerIDJSON: '123321'
         };
         $rootScope.editCourse(course);
         expect($rootScope.courseslistEdit.courseIDEdit).toBe(course.id);
@@ -59,7 +59,7 @@ describe('GetListCtrl Unit testing #1', function() {
         expect($rootScope.courseslistEdit.courseCategoryEdit).toBe(course.category);
         expect($rootScope.courseslistEdit.courseTestEdit).toBe(course.test);
         expect($rootScope.courseslistEdit.courseDocumentsEdit).toBe(course.documents);
-        expect($rootScope.courseslistEdit.courseTrainerIDEdit).toBe(course.trainerIDJSON);
+        // expect($rootScope.courseslistEdit.courseTrainerIDEdit).toBe(course.trainerIDJSON);
     }));
 
     it('Test 6: editCourse() test', inject(function() {
@@ -70,7 +70,7 @@ describe('GetListCtrl Unit testing #1', function() {
             category: 'ICT' ,
             test: 'test for ICT course',
             documents: 'ict.pdf',
-            trainerIDJSON: '123321'
+            // trainerIDJSON: '123321'
         };
         $rootScope.editCourse(course);
         expect($rootScope.courseslistEdit.courseIDEdit).toBe(course.id);
@@ -79,7 +79,7 @@ describe('GetListCtrl Unit testing #1', function() {
         expect($rootScope.courseslistEdit.courseCategoryEdit).toBe(course.category);
         expect($rootScope.courseslistEdit.courseTestEdit).toBe(course.test);
         expect($rootScope.courseslistEdit.courseDocumentsEdit).toBe(course.documents);
-        expect($rootScope.courseslistEdit.courseTrainerIDEdit).toBe(course.trainerIDJSON);
+        // expect($rootScope.courseslistEdit.courseTrainerIDEdit).toBe(course.trainerIDJSON);
     }));
     //----------------------------------------------------------
 
@@ -91,7 +91,7 @@ describe('GetListCtrl Unit testing #1', function() {
             category: 'ICT' ,
             test: 'test for ICT course',
             documents: 'ict.pdf',
-            trainerID: '123321',
+            // trainerID: '123321',
             isDeleted: true
         };
 
@@ -109,7 +109,7 @@ describe('GetListCtrl Unit testing #1', function() {
             category: 'agile' ,
             test: 'test for agile course',
             documents: 'ict.pdf',
-            trainerID: '123456',
+            // trainerID: '123456',
             isDeleted: false
         };
 
@@ -277,7 +277,7 @@ describe("AddCourseCtrl Unit testing #3", function() {
             courseCategory: 'agile training',
             courseTest: 'test131',
             courseDocuments: 'agile131.pdf',
-            courseTrainerID: '123321'
+            // courseTrainerID: '123321'
         };
         var getData = {
           course: course,
@@ -326,7 +326,7 @@ describe("UpdateCourseCtrl Unit testing #4", function() {
             courseCategory: 'agile training',
             courseTest: 'test131',
             courseDocuments: 'agile131.pdf',
-            courseTrainerID: '123321'
+            // courseTrainerID: '123321'
         };
         var getData = {
           course: course,
@@ -380,8 +380,8 @@ describe("SetCourseCtrl Unit testing #5", function() {
         var courseID = '1';
         var result = {
             courseName: 'agile',
-            courseTrainer: [{text:'hihi'}],
-            courseTrainerPage: 'trainer page',
+            // courseTrainer: [{text:'hihi'}],
+            // courseTrainerPage: 'trainer page',
             courseDescription: 'description',
             courseCategory: 'category',
             courseDocuments: 'doc.pdf'
@@ -391,8 +391,8 @@ describe("SetCourseCtrl Unit testing #5", function() {
         }).respond(result);
         $httpBackend.flush();
         expect($rootScope.courseName).toBe(result.courseName);
-        expect($rootScope.courseTrainerPage).toBe(result.courseTrainerPage);
-        expect($rootScope.courseTrainer[0]).toBe('hihi');
+        // expect($rootScope.courseTrainerPage).toBe(result.courseTrainerPage);
+        // expect($rootScope.courseTrainer[0]).toBe('hihi');
         expect($rootScope.courseCategory).toBe(result.courseCategory);
         expect($rootScope.courseDocuments).toBe(result.courseDocuments);
 
@@ -403,8 +403,8 @@ describe("SetCourseCtrl Unit testing #5", function() {
         var courseID = '1';
         var result = {
             courseName: null,
-            courseTrainer: [{text:'hihi'}],
-            courseTrainerPage: 'trainer page',
+            // courseTrainer: [{text:'hihi'}],
+            // courseTrainerPage: 'trainer page',
             courseDescription: 'description',
             courseCategory: 'category',
             courseDocuments: 'doc.pdf'
@@ -414,8 +414,8 @@ describe("SetCourseCtrl Unit testing #5", function() {
         }).respond(result);
         $httpBackend.flush();
         expect($rootScope.courseName).toBe(result.courseName);
-        expect($rootScope.courseTrainerPage).toBe(result.courseTrainerPage);
-        expect($rootScope.courseTrainer[0]).toBe('hihi');
+        // expect($rootScope.courseTrainerPage).toBe(result.courseTrainerPage);
+        // expect($rootScope.courseTrainer[0]).toBe('hihi');
         expect($rootScope.courseCategory).toBe(result.courseCategory);
         expect($rootScope.courseDocuments).toBe(result.courseDocuments);
     }));
@@ -455,7 +455,7 @@ describe("IsDeletedCourseCtrl Unit testing #6", function() {
             courseCategory: 'agile training',
             courseTest: 'test131',
             courseDocuments: 'agile131.pdf',
-            courseTrainerID: '123321'
+            // courseTrainerID: '123321'
         };
         var getData = {
           course: course,

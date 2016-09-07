@@ -25,10 +25,6 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: true
         },
-        trainerID: {
-            type: DataTypes.STRING,
-            allowNull: true
-        },
         test: {
             type: DataTypes.STRING,
             allowNull: true
@@ -40,8 +36,8 @@ module.exports = function(sequelize, DataTypes) {
         },
     }, {
         classMethods: {
-            getCourseList: function(cb) {
-                log.info('/models/course: getCourseList() : ');
+            getCourses: function(cb) {
+                log.info('/models/course: getCourses() : ');
                 var query = {
                     where: {
                         isDeleted: false
@@ -49,8 +45,8 @@ module.exports = function(sequelize, DataTypes) {
                 };
                 Course.findAll(query).then(cb);
             },
-            getCourseByID: function(id, cb) {
-                log.info('/models/course: getCourseByID() : ' + id);
+            getByID: function(id, cb) {
+                log.info('/models/course: getByID() : ' + id);
                 var query = {
                     where: {
                         id: id,
@@ -59,8 +55,8 @@ module.exports = function(sequelize, DataTypes) {
                 };
                 Course.findOne(query).then(cb);
             },
-            getCourseByName: function(name, cb) {
-                log.info('/models/course: getCourseByName() : ' + name);
+            getByName: function(name, cb) {
+                log.info('/models/course: getByName() : ' + name);
                 var query = {
                     where: {
                         name: name,
@@ -69,8 +65,8 @@ module.exports = function(sequelize, DataTypes) {
                 };
                 Course.findOne(query).then(cb);
             },
-            getCourseByCategory: function(category, cb) {
-                log.info('/models/course: getCourseByCategory() : ' + category);
+            getByCategory: function(category, cb) {
+                log.info('/models/course: getByCategory() : ' + category);
                 var query = {
                     where: {
                         category: category,
@@ -79,18 +75,18 @@ module.exports = function(sequelize, DataTypes) {
                 };
                 Course.findAll(query).then(cb);
             },
-            getCourseByTrainerID: function(trainerID, cb) {
-                log.info('/models/course: getCourseByTrainerID() : ' + trainerID);
-                var query = {
-                    where: {
-                        trainerID: trainerID,
-                        isDeleted: false
-                    }
-                };
-                Course.findAll(query).then(cb);
-            },
+            // getByTrainer: function(trainer, cb) {
+            //     log.info('/models/course: getByTrainer() : ' + trainer);
+            //     var query = {
+            //         where: {
+            //             trainer: trainer,
+            //             isDeleted: false
+            //         }
+            //     };
+            //     Course.findAll(query).then(cb);
+            // },
         },
-        tableName: 'course'
+        tableName: 'Courses'
     });
     return Course;
 };

@@ -43,7 +43,7 @@ CREATE TABLE `course` (
 -- Dumping data for table `course`
 --
 
-INSERT INTO `course` (`id`, `name`, `description`, `category`, `documents`, `trainerID`, `test`, `isDeleted`, `createdAt`, `updatedAt`) VALUES
+INSERT INTO `Courses` (`id`, `name`, `description`, `category`, `documents`, `trainerID`, `test`, `isDeleted`, `createdAt`, `updatedAt`) VALUES
 (1, 'CBA Overview', '1. Overview\n2. CoreMW\n3. OAM (COM, ECIM)\n4. Linux (LOTC)\n5. Application Environment (Optional)', 'CBA Overview', 'This is CBA Overview document', '[{"text":"Khai Doan"}]', 'This is CBA Overview test', 0, '2016-08-10 07:10:18', '2016-08-11 04:43:12'),
 (2, 'CoreMW Overview', '1. Overview\r\n2. Availability Services\r\n3. Manageability Services\r\n4. OpenSAF Infrastructure Services', 'CBA Overview', 'This is CoreMW Overview document', '[{"text":"Tai Dinh"}]', 'This is CoreMW Overview test', 0, '2016-08-10 07:10:18', '2016-08-11 04:37:05'),
 (3, 'LDE', '1. Cluster introduction\r\n2. LOTC version\r\n3. Maintenance mode\r\n4. Install LOTC', 'CBA Overview', 'This is LDE document', '[{"text":"King Nguyen"}]', 'This is LDE test', 0, '2016-08-10 07:10:18', '2016-08-11 04:39:36'),

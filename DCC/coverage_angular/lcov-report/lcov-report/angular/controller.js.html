@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">83.33% </span>
+        <span class="strong">82.64% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>125/150</span>
+        <span class='fraction'>119/144</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">60% </span>
@@ -35,9 +35,9 @@
         <span class='fraction'>34/45</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">83.33% </span>
+        <span class="strong">82.64% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>125/150</span>
+        <span class='fraction'>119/144</span>
       </div>
     </div>
   </div>
@@ -423,14 +423,14 @@
 <span class="cline-any cline-yes">3×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2×</span>
-<span class="cline-any cline-yes">2×</span>
-<span class="cline-any cline-yes">2×</span>
-<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2×</span>
-<span class="cline-any cline-yes">2×</span>
-<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2×</span>
 <span class="cline-any cline-yes">2×</span>
 <span class="cline-any cline-yes">2×</span>
@@ -735,15 +735,15 @@ myApp.controller('SetCourseCtrl', function($scope, $http, $window, $sce) {
     $http.post('/course/getCourse', {
         courseID: courseID
     }).then(function(result) {
-        var trainerJSON = result.data.courseTrainer;
-        var trainers = [];
-        for (var i = 0; i &lt; trainerJSON.length; i++) {
-            trainers.push(trainerJSON[i].text);
-        }
+        // var trainerJSON = result.data.courseTrainer;
+        // var trainers = [];
+        // for (var i = 0; i &lt; trainerJSON.length; i++) {
+        //     trainers.push(trainerJSON[i].text);
+        // }
         $scope.courseName = result.data.courseName;
-        $scope.courseTrainer = trainers;
-        $scope.courseTrainerPage = result.data.courseTrainerPage;
-        $scope.courseDescription = $sce.trustAsHtml(result.data.courseDescription);
+        // $scope.courseTrainer = trainers;
+        // $scope.courseTrainerPage = result.data.courseTrainerPage;
+        $scope.courseDescription = result.data.courseDescription;
         $scope.courseCategory = result.data.courseCategory;
         $scope.courseDocuments = result.data.courseDocuments;
     });
@@ -752,7 +752,7 @@ myApp.controller('SetCourseCtrl', function($scope, $http, $window, $sce) {
 myApp.controller('GetListCtrl', function($scope, $rootScope, $http, CourseList) {
     "use strict";
 &nbsp;
-    CourseList.getCourseList().then(function(result) {
+    CourseList.getCourses().then(function(result) {
         $rootScope.coursesList = result;
     });
 &nbsp;
@@ -765,7 +765,7 @@ myApp.controller('GetListCtrl', function($scope, $rootScope, $http, CourseList) 
             courseCategoryEdit: course.category,
             courseTestEdit: course.test,
             courseDocumentsEdit: course.documents,
-            courseTrainerIDEdit: course.trainerIDJSON
+            // courseTrainerIDEdit: course.trainerIDJSON
         };
     };
 &nbsp;
@@ -833,7 +833,7 @@ myApp.controller('AddCourseCtrl', function($scope, $rootScope, $http, CourseList
         courseCategory: '',
         courseTest: '',
         courseDocuments: '',
-        courseTrainerID: ''
+        // courseTrainerID: ''
     };
     $scope.postMsg = '';
     $scope.getMsg = '';
@@ -841,7 +841,7 @@ myApp.controller('AddCourseCtrl', function($scope, $rootScope, $http, CourseList
 &nbsp;
         $http.post('/course/addCourse', $scope.courseslist).then(function(result) {
             $scope.postMsg = result.data.msg;
-            CourseList.getCourseList().then(function(result) {
+            CourseList.getCourses().then(function(result) {
                 $rootScope.coursesList = result;
                 ToastService.showToast($scope.postMsg);
             });
@@ -858,7 +858,7 @@ myApp.controller('UpdateCourseCtrl', function($scope, $rootScope, $http, CourseL
     $scope.updateCourse = function() {
         $http.post('/course/updateCourse', $rootScope.courseslistEdit).then(function(result) {
             $scope.postMsg = result.data.msg;
-            CourseList.getCourseList().then(function(result) {
+            CourseList.getCourses().then(function(result) {
                 $rootScope.coursesList = result;
                 ToastService.showToast($scope.postMsg);
             });
@@ -875,7 +875,7 @@ myApp.controller('IsDeletedCourseCtrl', function($scope, $rootScope, $http, Cour
     $scope.isDeletedCourse = function() {
         $http.post('/course/isDeletedCourse', $rootScope.courseslistDelete).then(function(result) {
             $scope.postMsg = result.data.msg;
-            CourseList.getCourseList().then(function(result) {
+            CourseList.getCourses().then(function(result) {
                 $rootScope.coursesList = result;
                 ToastService.showToast($scope.postMsg);
             });
@@ -985,7 +985,7 @@ myApp.controller('CalendarCtrl', function($scope, $filter, $http, $q, MaterialCa
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Sep 06 2016 11:44:48 GMT+0700 (SE Asia Standard Time)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Sep 07 2016 16:17:24 GMT+0700 (SE Asia Standard Time)
 </div>
 </div>
 <script src="../prettify.js"></script>
