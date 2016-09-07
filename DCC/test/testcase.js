@@ -222,158 +222,158 @@ describe('<Unit test for Login>', function() {
 //------------------------------------------------------------------------------
 //------------------------------------------------------------------------------
 //------------------------------------------------------------------------------
-describe('<Unit test for Course controller', function() {
-    describe('', function() {
-        return it('Test case 1 : POST /course/getCourse', function(done) {
-            request(route)
-                .post('/course/getCourse')
-                .send({
-                    courseID: '1'
-                })
-                .end(function(err, res) {
-                    assert.equal(res.body.courseName, 'CBA Overview');
-                    return done();
-                });
-        });
-    });
-
-    describe('', function() {
-        return it('Test case 2 : POST /course/addCourse duplicate name', function(done) {
-            var datasend = {
-                courseName: 'CBA Overview',
-                courseDescription: 'This is testing Des',
-                courseCategory: 'testing cat',
-                courseTest: 'testing test',
-                courseDocuments: 'testing doc'
-                // courseTrainerID: [{
-                //     "text": "testing"
-                // }]
-            };
-            request(route)
-                .post('/course/addCourse')
-                .send(datasend)
-                .end(function(err, res) {
-                    assert.equal(res.body.msg, 'Name already existed. Add fail!');
-                    return done();
-                });
-        });
-    });
-    describe('', function() {
-        return it('Test case 3 : POST /course/addCourse success', function(done) {
-            var datasend = {
-                courseName: 'Testing123',
-                courseDescription: 'This is testing Des',
-                courseCategory: 'testing cat',
-                courseTest: 'testing test',
-                courseDocuments: 'testing doc'
-                // courseTrainerID: [{
-                //     "text": "testing"
-                // }]
-            };
-            request(route)
-                .post('/course/addCourse')
-                .send(datasend)
-                .end(function(err, res) {
-                    assert.equal(res.body.msg, 'Add course success!');
-                    return done();
-                });
-            afterEach(function() {
-                models.course.destroy({
-                    where: {
-                        name: 'Testing123'
-                    }
-                });
-            });
-        });
-    });
-    describe('', function() {
-        return it('Test case 4 : POST /course/updateCourse success', function(done) {
-            var datasend = {
-                courseIDEdit: 999,
-                courseNameEdit: 'testing3',
-                courseDescriptionEdit: 'This is testing Des3',
-                courseCategoryEdit: 'testing cat3',
-                courseTestEdit: 'testing testing3',
-                courseDocumentsEdit: 'testing doc3'
-                // courseTrainerIDEdit: [{
-                //     "text": "testing3"
-                // }]
-            };
-            request(route)
-                .post('/course/updateCourse')
-                .send(datasend)
-                .end(function(err, res) {
-                    assert.equal(res.body.msg, 'Edit course success!');
-                    return done();
-                });
-        });
-    });
-    describe('', function() {
-        return it('Test case 5 : POST /course/updateCourse : Course not found', function(done) {
-            var datasend = {
-                courseIDEdit: 992,
-                courseNameEdit: 'testing3',
-                courseDescriptionEdit: 'This is testing Des3',
-                courseCategoryEdit: 'testing cat3',
-                courseTestEdit: 'testing testing3',
-                courseDocumentsEdit: 'testing doc3'
-                // courseTrainerIDEdit: [{
-                //     "text": "testing3"
-                // }]
-            };
-            request(route)
-                .post('/course/updateCourse')
-                .send(datasend)
-                .end(function(err, res) {
-                    assert.equal(res.body.msg, 'Course not found in database');
-                    return done();
-                });
-        });
-    });
-    describe('', function() {
-        return it('Test case 6 : POST /course/list return courselist', function(done) {
-            request(route)
-                .get('/course/list')
-                .end(function(err, res) {
-                    assert.equal(res.body.msg, 'send list success');
-                    return done();
-                });
-        });
-    });
-    describe('', function() {
-        return it('Test case 7 : POST /course/isDeletedCourse delete success', function(done) {
-            request(route)
-                .post('/course/isDeletedCourse')
-                .send({
-                    courseIDDelete: 999
-                })
-                .end(function(err, res) {
-                    assert.equal(res.body.msg, 'Delete success');
-                    return done();
-                });
-        });
-    });
-    describe('', function() {
-        return it('Test case 8 : POST /course/isDeletedCourse delete course already deleted', function(done) {
-            request(route)
-                .post('/course/isDeletedCourse')
-                .send({
-                    courseIDDelete: 999
-                })
-                .end(function(err, res) {
-                    models.course.update({
-                        isDeleted: false
-                    }, {
-                        where: {
-                            id: 999
-                        }
-                    });
-                    assert.equal(res.body.msg, 'Delete failure');
-                    return done();
-                });
-        });
-    });
-});
+// describe('<Unit test for Course controller', function() {
+//     describe('', function() {
+//         return it('Test case 1 : POST /course/getCourse', function(done) {
+//             request(route)
+//                 .post('/course/getCourse')
+//                 .send({
+//                     courseID: '1'
+//                 })
+//                 .end(function(err, res) {
+//                     assert.equal(res.body.courseName, 'CBA Overview');
+//                     return done();
+//                 });
+//         });
+//     });
+//
+//     describe('', function() {
+//         return it('Test case 2 : POST /course/addCourse duplicate name', function(done) {
+//             var datasend = {
+//                 courseName: 'CBA Overview',
+//                 courseDescription: 'This is testing Des',
+//                 courseCategory: 'testing cat',
+//                 courseTest: 'testing test',
+//                 courseDocuments: 'testing doc'
+//                 // courseTrainerID: [{
+//                 //     "text": "testing"
+//                 // }]
+//             };
+//             request(route)
+//                 .post('/course/addCourse')
+//                 .send(datasend)
+//                 .end(function(err, res) {
+//                     assert.equal(res.body.msg, 'Name already existed. Add fail!');
+//                     return done();
+//                 });
+//         });
+//     });
+//     describe('', function() {
+//         return it('Test case 3 : POST /course/addCourse success', function(done) {
+//             var datasend = {
+//                 courseName: 'Testing123',
+//                 courseDescription: 'This is testing Des',
+//                 courseCategory: 'testing cat',
+//                 courseTest: 'testing test',
+//                 courseDocuments: 'testing doc'
+//                 // courseTrainerID: [{
+//                 //     "text": "testing"
+//                 // }]
+//             };
+//             request(route)
+//                 .post('/course/addCourse')
+//                 .send(datasend)
+//                 .end(function(err, res) {
+//                     assert.equal(res.body.msg, 'Add course success!');
+//                     return done();
+//                 });
+//             afterEach(function() {
+//                 models.course.destroy({
+//                     where: {
+//                         name: 'Testing123'
+//                     }
+//                 });
+//             });
+//         });
+//     });
+//     describe('', function() {
+//         return it('Test case 4 : POST /course/updateCourse success', function(done) {
+//             var datasend = {
+//                 courseIDEdit: 999,
+//                 courseNameEdit: 'testing3',
+//                 courseDescriptionEdit: 'This is testing Des3',
+//                 courseCategoryEdit: 'testing cat3',
+//                 courseTestEdit: 'testing testing3',
+//                 courseDocumentsEdit: 'testing doc3'
+//                 // courseTrainerIDEdit: [{
+//                 //     "text": "testing3"
+//                 // }]
+//             };
+//             request(route)
+//                 .post('/course/updateCourse')
+//                 .send(datasend)
+//                 .end(function(err, res) {
+//                     assert.equal(res.body.msg, 'Edit course success!');
+//                     return done();
+//                 });
+//         });
+//     });
+//     describe('', function() {
+//         return it('Test case 5 : POST /course/updateCourse : Course not found', function(done) {
+//             var datasend = {
+//                 courseIDEdit: 992,
+//                 courseNameEdit: 'testing3',
+//                 courseDescriptionEdit: 'This is testing Des3',
+//                 courseCategoryEdit: 'testing cat3',
+//                 courseTestEdit: 'testing testing3',
+//                 courseDocumentsEdit: 'testing doc3'
+//                 // courseTrainerIDEdit: [{
+//                 //     "text": "testing3"
+//                 // }]
+//             };
+//             request(route)
+//                 .post('/course/updateCourse')
+//                 .send(datasend)
+//                 .end(function(err, res) {
+//                     assert.equal(res.body.msg, 'Course not found in database');
+//                     return done();
+//                 });
+//         });
+//     });
+//     describe('', function() {
+//         return it('Test case 6 : POST /course/list return courselist', function(done) {
+//             request(route)
+//                 .get('/course/list')
+//                 .end(function(err, res) {
+//                     assert.equal(res.body.msg, 'send list success');
+//                     return done();
+//                 });
+//         });
+//     });
+//     describe('', function() {
+//         return it('Test case 7 : POST /course/isDeletedCourse delete success', function(done) {
+//             request(route)
+//                 .post('/course/isDeletedCourse')
+//                 .send({
+//                     courseIDDelete: 999
+//                 })
+//                 .end(function(err, res) {
+//                     assert.equal(res.body.msg, 'Delete success');
+//                     return done();
+//                 });
+//         });
+//     });
+//     describe('', function() {
+//         return it('Test case 8 : POST /course/isDeletedCourse delete course already deleted', function(done) {
+//             request(route)
+//                 .post('/course/isDeletedCourse')
+//                 .send({
+//                     courseIDDelete: 999
+//                 })
+//                 .end(function(err, res) {
+//                     models.course.update({
+//                         isDeleted: false
+//                     }, {
+//                         where: {
+//                             id: 999
+//                         }
+//                     });
+//                     assert.equal(res.body.msg, 'Delete failure');
+//                     return done();
+//                 });
+//         });
+//     });
+// });
 
 
 describe('<Unit test for Course model', function() {
