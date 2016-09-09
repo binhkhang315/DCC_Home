@@ -1,9 +1,9 @@
-//Use to import all created modules in this path
+//Use to import all created module in this path
 "use strict";
 
 var fs        = require("fs");
 var path      = require("path");
-var DataObjects = {};
+var Modules = {};
 
 fs
   .readdirSync(__dirname)
@@ -13,9 +13,9 @@ fs
   })
   .forEach(function(file)
   {
-    var ObjectName = file.split(".");
-    var _object = require(path.join(__dirname, file));
-    DataObjects[ObjectName[0]] = _object;
+    var ModuleName = file.split(".");
+    var _module = require(path.join(__dirname, file));
+    Modules[ModuleName[0]] = _module;
   });
 
-module.exports = DataObjects;
+module.exports = Modules;
