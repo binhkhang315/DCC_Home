@@ -194,7 +194,7 @@ describe('<Unit test for Login>', function() {
                     .post('/users/login')
                     .send({
                         username: 'thach2',
-                        password: null
+                        password: 1
                     })
                     .end(function(err, res) {
                         assert.equal(res.body.userid, null);
