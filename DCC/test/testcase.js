@@ -138,7 +138,7 @@ describe('<Unit test for Login>', function() {
                     password: 'thach13'
                 })
                 .end(function(err, res) {
-                    assert.equal(res.body.userid,1 );
+                    assert.equal(res.body.userid,null);
                     return done();
                 });
           });
