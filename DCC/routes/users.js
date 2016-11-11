@@ -13,7 +13,7 @@ var LDAP_PORT = 389;
 // admin's credentials for connecting to openLDAP server
 var BASE_OPTS = {
     server: {
-        url: 'ldap://192.168.122.51:' + LDAP_PORT.toString(),
+        url: 'ldap://192.168.122.20:' + LDAP_PORT.toString(),
         bindDn: 'cn=admin,dc=example,dc=com',
         bindCredentials: '123456',
         searchBase: 'dc=example,dc=com',
@@ -40,7 +40,7 @@ var storage	=	multer.diskStorage({
 var upload = multer({ storage : storage}).single('userPhoto');
 // connect to mysql
 var db = new Sequelize('nodejs', 'root', 'dekvn@123321', {
-    host: '192.168.122.51',
+    host: '192.168.122.20',
     dialect: 'mysql',
   pool: {
     max: 5,
