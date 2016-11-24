@@ -2,7 +2,7 @@ var myApp = angular.module('myApp', ['ngCookies', 'ngTagsInput', 'textAngular', 
 
 // creat angular controller
 myApp.controller('ToastCtrl', function($scope, $rootScope, $mdToast) {
-    "use strict";
+
 
     $rootScope.showToast = function(msg) {
         $mdToast.show(
@@ -15,7 +15,7 @@ myApp.controller('ToastCtrl', function($scope, $rootScope, $mdToast) {
 var events;
 
 myApp.controller('LoginCtrl', function($scope, $http, $cookies, $rootScope, $window, ToastService) {
-    "use strict";
+    
 
     // get route '/isLogged' to check user logined or not
     $http.get('/isLogged')
@@ -58,7 +58,7 @@ myApp.controller('LoginCtrl', function($scope, $http, $cookies, $rootScope, $win
 });
 
 myApp.controller('SetCourseCtrl', function($scope, $http, $window) {
-    "use strict";
+
 
     var path = $window.location.pathname;
     path = path.split('/');
@@ -74,7 +74,7 @@ myApp.controller('SetCourseCtrl', function($scope, $http, $window) {
 });
 
 myApp.controller('GetListCtrl', function($scope, $rootScope, $http, CourseList) {
-    "use strict";
+
 
     CourseList.getCourses().then(function(result) {
         $rootScope.coursesList = result;
@@ -105,7 +105,7 @@ myApp.controller('GetListCtrl', function($scope, $rootScope, $http, CourseList) 
 });
 
 myApp.controller('SetFeatureCtrl', function($scope, $http) {
-    "use strict";
+
 
     $http.get('/course/features').then(function(result) {
         $scope.courseDocuments = result.data.courseDocuments;
@@ -117,7 +117,7 @@ myApp.controller('SetFeatureCtrl', function($scope, $http) {
 });
 
 myApp.controller('SetProfileCtrl', function($scope, $rootScope, $http, $window) {
-    "use strict";
+
 
     $scope.user = {
         pStatus: '',
@@ -149,7 +149,7 @@ myApp.controller('SetProfileCtrl', function($scope, $rootScope, $http, $window) 
 
 // AddCourseCtrl: add course controller
 myApp.controller('AddCourseCtrl', function($scope, $rootScope, $http, CourseList, ToastService) {
-    "use strict";
+
 
     $scope.courseslist = {
         courseName: '',
@@ -175,7 +175,7 @@ myApp.controller('AddCourseCtrl', function($scope, $rootScope, $http, CourseList
 
 // UpdateCourseCtrl: edit course controller
 myApp.controller('UpdateCourseCtrl', function($scope, $rootScope, $http, CourseList, ToastService) {
-    "use strict";
+
 
     $scope.postMsg = '';
     $scope.getMsg = '';
@@ -192,7 +192,7 @@ myApp.controller('UpdateCourseCtrl', function($scope, $rootScope, $http, CourseL
 
 // IsDeletedCourseCtrl: delete course controller
 myApp.controller('IsDeletedCourseCtrl', function($scope, $rootScope, $http, CourseList, ToastService) {
-    "use strict";
+
 
     $scope.postMsg = '';
     $scope.getMsg = '';
@@ -209,7 +209,7 @@ myApp.controller('IsDeletedCourseCtrl', function($scope, $rootScope, $http, Cour
 
 //controller for Feedback
 myApp.controller('FeedbackCtrl', function($scope, $http, $window) {
-    "use strict";
+
 
     var path = $window.location.pathname;
     path = path.split('/');
@@ -249,7 +249,7 @@ myApp.controller('FeedbackCtrl', function($scope, $http, $window) {
 });
 
 myApp.controller('CalendarCtrl', function($scope, $filter, $http, $q, MaterialCalendarData) {
-    "use strict";
+
 
     $scope.dayFormat = 'd';
 

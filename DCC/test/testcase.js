@@ -12,7 +12,7 @@ models.course.sync({
 
 function isEmpty(str) {
     return (!str || 0 === str.length);
-};
+}
 
 describe('<Unit Test for Routing>', function() {
     describe('', function() {

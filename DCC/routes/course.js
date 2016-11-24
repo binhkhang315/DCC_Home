@@ -65,7 +65,6 @@ router.post('/addCourse', function(req, res) {
 // update course in database
 router.post('/updateCourse', function(req, res) {
     log.info('Get Course Information');
-    // var tID = JSON.stringify(req.body.courseTrainerIDEdit);
     models.course.sync({
         force: false
     }).then(function() {
@@ -77,7 +76,6 @@ router.post('/updateCourse', function(req, res) {
                     category: req.body.courseCategoryEdit,
                     test: req.body.courseTestEdit,
                     documents: req.body.courseDocumentsEdit,
-                    // trainerID: tID
                 }, {
                     where: {
                         id: req.body.courseIDEdit
