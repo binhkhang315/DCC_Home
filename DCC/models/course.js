@@ -66,16 +66,6 @@ module.exports = function(sequelize, DataTypes)
         };
         Course.findAll(query).then(cb);
       },
-            // getByTrainer: function(trainer, cb) {
-            //     log.info('/models/course: getByTrainer() : ' + trainer);
-            //     var query = {
-            //         where: {
-            //             trainer: trainer,
-            //             isDeleted: false
-            //         }
-            //     };
-            //     Course.findAll(query).then(cb);
-            // },
     },
     tableName: 'Courses'
   });

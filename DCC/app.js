@@ -58,21 +58,13 @@ app.use('/users', users);
 app.use('/course', course);
 app.use('/feedback', feedback);
 
-//association for user vs class as trainee vs class
 models.User.belongsToMany(models.class, {as: 'Trainee', through: models.class_record, foreignKey:'trainee'});
 models.class.belongsToMany(models.User, {as: 'StudyingClass', through: models.class_record, foreignKey:'class'});
 
-//association for feedback
 models.User.belongsToMany(models.course, {through: models.Feedback});
 models.course.belongsToMany(models.User, {through: models.Feedback});
-//association for user vs course as trainer vs class
 
 models.course.belongsToMany(models.User,{as:'Trainer', through: 'trainer_course', foreignKey: 'course', otherKey:'trainer'});
-// models.User.belongsToMany(models.course,{as:'C', through: 'trainer_class', foreignKey: 'trainer'});
-
-// models.class.belongsToMany(models.User,{through: 'trainer_class', foreignKey: 'class'});
-// models.User.belongsToMany(models.class,{as:'TeachingClass', through: 'trainer_class', foreignKey: 'trainer'});
-
 models.class.belongsToMany(models.course,{through: 'course_class'});
 models.course.belongsToMany(models.class,{through: 'course_class'});
 
@@ -96,4 +88,3 @@ var server = app.listen(app.get('port'), function() {
     console.log('Server started on port ' + app.get('port'));
 });
 module.exports = server;
-//exports.log = log;

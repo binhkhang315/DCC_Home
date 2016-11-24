@@ -9,8 +9,6 @@ var globalCookies;
 models.course.sync({
     force: false
 });
-// mongoose.connect('mongodb://localhost/loginapp');
-// var db = mongoose.connection;
 
 function isEmpty(str) {
     return (!str || 0 === str.length);

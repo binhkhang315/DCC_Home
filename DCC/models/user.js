@@ -54,9 +54,6 @@ module.exports = function(sequelize, DataTypes) {
         };
         User.findOne(query).then(cb);
       },
-      // associate: function(models){
-      //   User.belongsToMany(models.Course, {through: models.Feedback});
-      // }
     },
     tableName: 'user'
   });

@@ -66,14 +66,7 @@ myApp.controller('SetCourseCtrl', function($scope, $http, $window, $sce) {
     $http.post('/course/getCourse', {
         courseID: courseID
     }).then(function(result) {
-        // var trainerJSON = result.data.courseTrainer;
-        // var trainers = [];
-        // for (var i = 0; i < trainerJSON.length; i++) {
-        //     trainers.push(trainerJSON[i].text);
-        // }
         $scope.courseName = result.data.courseName;
-        // $scope.courseTrainer = trainers;
-        // $scope.courseTrainerPage = result.data.courseTrainerPage;
         $scope.courseDescription = result.data.courseDescription;
         $scope.courseCategory = result.data.courseCategory;
         $scope.courseDocuments = result.data.courseDocuments;
@@ -306,7 +299,7 @@ myApp.controller('CalendarCtrl', function($scope, $filter, $http, $q, MaterialCa
             var arr = event.summary.split(']');
             event.summary = arr[arr.length - 1];
             $("#popups").hide();
-            MaterialCalendarData.setDayContent(eventDate, dateData + '<a onclick="show(' +i +');" onmouseover="showEvent(' + i + ')" onmouseleave="hideEvent()" >' + event.summary + '</a>' + '</br>');
+            MaterialCalendarData.setDayContent(eventDate, dateData + '<a onclick="show(' + i + ');" onmouseover="showEvent(' + i + ')" onmouseleave="hideEvent()" >' + event.summary + '</a>' + '</br>');
         }
     });
 });
