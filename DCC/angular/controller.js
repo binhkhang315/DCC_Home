@@ -57,7 +57,7 @@ myApp.controller('LoginCtrl', function($scope, $http, $cookies, $rootScope, $win
     };
 });
 
-myApp.controller('SetCourseCtrl', function($scope, $http, $window, $sce) {
+myApp.controller('SetCourseCtrl', function($scope, $http, $window) {
     "use strict";
 
     var path = $window.location.pathname;

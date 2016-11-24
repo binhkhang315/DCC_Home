@@ -12,8 +12,27 @@ var SCOPES = ['https://www.googleapis.com/auth/calendar.readonly'];
 var TOKEN_DIR = './';
 var TOKEN_PATH = TOKEN_DIR + 'calendar-nodejs-quickstart.json';
 var oauth2Client;
+var listEvents = function(auth) {
+    var calendar = google.calendar('v3');
+    var timem = new Date();
+    timem.setDate(timem.getDate() - 30);
+    calendar.events.list({
+        auth: auth,
+        calendarId: 'primary',
+        timeMin: timem.toISOString(),
+        maxResults: 100,
+        singleEvents: true,
+        orderBy: 'startTime'
+    }, function(err, response) {
+        if (err) {
+            return;
+        }
+        var events = response.items;
+        eventList = events;
+    });
+}
 // Load client secrets from a local file.
-fs.readFile('client_secret.json', function processClientSecrets(err, content) {
+fs.readFile('client_secret.json', function (err, content) {
     if (err) {
         return;
     }
@@ -49,25 +68,7 @@ function authorize(credentials, callback) {
  * @param {google.auth.OAuth2} auth An authorized OAuth2 client.
  */
 
-var listEvents = function(auth) {
-    var calendar = google.calendar('v3');
-    var timem = new Date();
-    timem.setDate(timem.getDate() - 30);
-    calendar.events.list({
-        auth: auth,
-        calendarId: 'primary',
-        timeMin: timem.toISOString(),
-        maxResults: 100,
-        singleEvents: true,
-        orderBy: 'startTime'
-    }, function(err, response) {
-        if (err) {
-            return;
-        }
-        var events = response.items;
-        eventList = events;
-    });
-}
+
 
 exports.getEvents = function(cb) {
     listEvents(oauth2Client);

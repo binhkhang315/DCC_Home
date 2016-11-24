@@ -128,31 +128,6 @@ router.post('/photo',function(req,res){
 	});
 });
 
-// ensure authenticated
-// function ensureAuthenticated(req, res, next) {
-//     if (req.isAuthenticated()) {
-//         return next();
-//     } else {
-//         res.redirect('/');
-//     }
-// }
-
-
-// This creates a set of roles which have permissions on
-//  different resources.
-
-function setRoles() {
-    acl.allow([{
-        roles: 'admin',
-        allows: [{
-            resources: 'dashboard',
-            permissions: 'view'
-        }]
-    }, {
-        roles: 'guest',
-        allows: []
-    }]);
-}
 // passport Strategy
 passport.use(new LdapStrategy(BASE_OPTS, function(user, callback) {
     // if authenticate success, user is returned here
