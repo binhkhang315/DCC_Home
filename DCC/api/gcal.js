@@ -62,7 +62,7 @@ var listEvents = function(auth) {
     });
 }
 
-fs.readFile('client_secret.json', function processClientSecrets(err, content) {
+ fs.readFile('client_secret.json', function processClientSecrets(err, content) {
     if (err) {
         return;
     }
