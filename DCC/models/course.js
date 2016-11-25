@@ -8,7 +8,7 @@ var log = require('simple-node-logger').createLogManager(opts).createLogger();
 var DataObjects = require('./DataObjects');
 var _course = new DataObjects.Course.Course();
 
-module.exports = function(sequelize, DataTypes)
+module.exports = function(sequelize)
 {
   var Course = sequelize.define('course', _course,
   {
