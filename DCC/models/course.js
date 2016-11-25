@@ -1,5 +1,4 @@
 /* jshint indent: 2 */
-"use strict";
 var opts = {
     logDirectory: './public/log',
     fileNamePattern: 'roll-<DATE>.log',

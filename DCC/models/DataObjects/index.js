@@ -1,6 +1,4 @@
 //Use to import all created module in this path
-"use strict";
-
 var fs        = require("fs");
 var path      = require("path");
 var Modules = {};

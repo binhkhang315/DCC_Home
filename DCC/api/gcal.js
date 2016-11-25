@@ -1,4 +1,3 @@
-"use strict"
 var fs = require('fs');
 var readline = require('readline');
 var google = require('googleapis');
@@ -62,7 +61,7 @@ var listEvents = function(auth) {
     });
 }
 
- fs.readFile('client_secret.json', function processClientSecrets(err, content) {
+ fs.readFile('client_secret.json', function (err, content) {
     if (err) {
         return;
     }

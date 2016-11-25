@@ -1,5 +1,3 @@
-"use strict";
-
 var opts = {
     logDirectory: './public/log',
     fileNamePattern: 'roll-<DATE>.log',
