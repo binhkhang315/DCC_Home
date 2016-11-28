@@ -4,6 +4,8 @@ var expect = require('chai').expect;
 var route = require('../app.js');
 var models = require('../models');
 
+
+
 var globalCookies;
 
 models.course.sync({
@@ -72,6 +74,7 @@ describe('<Unit Test for Routing>', function() {
 });
 
 //---------------------------------------------------------------------------------------
+
 describe('<Unit test for Login>', function() {
 
     describe('', function() {

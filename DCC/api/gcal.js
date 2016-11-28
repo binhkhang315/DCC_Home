@@ -41,7 +41,7 @@ function authorize(credentials, callback) {
  * @param {google.auth.OAuth2} auth An authorized OAuth2 client.
  */
 
-var listEvents = function(auth) {
+function listEvents(auth) {
     var calendar = google.calendar('v3');
     var timem = new Date();
     timem.setDate(timem.getDate() - 30);
@@ -53,24 +53,20 @@ var listEvents = function(auth) {
         singleEvents: true,
         orderBy: 'startTime'
     }, function(err, response) {
-        if (err) {
-            return;
-        }
-        var events = response.items;
-        eventList = events;
+        if (err) return;
+        eventList = response.items;
     });
 }
 
- fs.readFile('client_secret.json', function (err, content) {
-    if (err) {
-        return;
-    }
-    // Authorize a client with the loaded credentials, then call the
-    // Google Calendar API.
-    authorize(JSON.parse(content), listEvents);
-});
+
 
 exports.getEvents = function(cb) {
+    fs.readFile('client_secret.json', function (err, content) {
+      if (err) return;
+      // Authorize a client with the loaded credentials, then call the
+      // Google Calendar API.
+      authorize(JSON.parse(content), listEvents);
+    });
     listEvents(oauth2Client);
     cb(eventList);
 };
