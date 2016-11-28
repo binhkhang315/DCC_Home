@@ -15,7 +15,7 @@ myApp.controller('ToastCtrl', function($scope, $rootScope, $mdToast) {
 var events;
 
 myApp.controller('LoginCtrl', function($scope, $http, $cookies, $rootScope, $window, ToastService) {
-    
+
 
     // get route '/isLogged' to check user logined or not
     $http.get('/isLogged')
@@ -283,9 +283,13 @@ myApp.controller('CalendarCtrl', function($scope, $filter, $http, $q, MaterialCa
     };
     $scope.tooltips = true;
     // set events
-
     $http.get('/getEvents').then(function(result) {
-        $scope.msg = 'test';
+        $scope.msg = 'test'
+        if(result.data=='')
+        {
+          console.log("testing");
+          $("#popups").hide();
+        }
         events = result.data;
         for (var i = 0; i < events.length; i++) {
             var event = events[i];
