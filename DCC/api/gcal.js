@@ -53,8 +53,10 @@ function listEvents(auth) {
         singleEvents: true,
         orderBy: 'startTime'
     }, function(err, response) {
-        if (err) return;
-        eventList = response.items;
+        if (err) {
+        return; }
+        else {
+          eventList = response.items; }
     });
 }
 
@@ -62,7 +64,8 @@ function listEvents(auth) {
 
 exports.getEvents = function(cb) {
     fs.readFile('client_secret.json', function (err, content) {
-      if (err) return;
+      if (err) {
+      return; }
       // Authorize a client with the loaded credentials, then call the
       // Google Calendar API.
       authorize(JSON.parse(content), listEvents);
