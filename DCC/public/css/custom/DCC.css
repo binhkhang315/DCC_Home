@@ -146,6 +146,7 @@ h2 {
     min-width: 160px;
     margin-top: 23px;
     background: linear-gradient( rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8));
+    background: -webkit-linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)) ; /* For Safari 5.1 to 6.0 */
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 .dropdown-content a {

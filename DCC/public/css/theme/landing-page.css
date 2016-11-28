@@ -141,6 +141,7 @@ h6 {
     /*padding: 50px 20px;*/
     color: #f8f8f8;
     background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(/img/features/connect.jpg) no-repeat center center;
+    background: -webkit-linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url(/img/features/connect.jpg) no-repeat center center ; /* For Safari 5.1 to 6.0 */
     background-size: cover;
 }
 
