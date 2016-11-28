@@ -641,7 +641,7 @@ describe('<Unit test for feedback function>', function() {
 describe('<Logout Function>', function() {
     return it('Test for get /users/logout ', function(done) {
         var req = request(route).get('/users/logout');
-        req.cookies = globalCookies;
+        req.cookies = null;
         req
         .set('Accept','application/json')
         .end(function(err, res) {
