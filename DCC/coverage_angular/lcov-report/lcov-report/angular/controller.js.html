@@ -348,14 +348,7 @@
 303
 304
 305
-306
-307
-308
-309
-310
-311
-312
-313</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
+306</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
@@ -421,16 +414,9 @@
 <span class="cline-any cline-yes">3×</span>
 <span class="cline-any cline-yes">3×</span>
 <span class="cline-any cline-yes">3×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2×</span>
 <span class="cline-any cline-yes">2×</span>
 <span class="cline-any cline-yes">2×</span>
@@ -671,7 +657,7 @@
 &nbsp;
 // creat angular controller
 myApp.controller('ToastCtrl', <span class="fstat-no" title="function not covered" >function($scope, $rootScope, $mdToast) {</span>
-    "use strict";
+&nbsp;
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    $rootScope.showToast = <span class="fstat-no" title="function not covered" >function(msg) {</span></span>
 <span class="cstat-no" title="statement not covered" >        $mdToast.show(</span>
@@ -684,7 +670,7 @@ myApp.controller('ToastCtrl', <span class="fstat-no" title="function not covered
 var events;
 &nbsp;
 myApp.controller('LoginCtrl', function($scope, $http, $cookies, $rootScope, $window, ToastService) {
-    "use strict";
+    
 &nbsp;
     // get route '/isLogged' to check user logined or not
     $http.get('/isLogged')
@@ -726,8 +712,8 @@ myApp.controller('LoginCtrl', function($scope, $http, $cookies, $rootScope, $win
     };
 });
 &nbsp;
-myApp.controller('SetCourseCtrl', function($scope, $http, $window, $sce) {
-    "use strict";
+myApp.controller('SetCourseCtrl', function($scope, $http, $window) {
+&nbsp;
 &nbsp;
     var path = $window.location.pathname;
     path = path.split('/');
@@ -735,14 +721,7 @@ myApp.controller('SetCourseCtrl', function($scope, $http, $window, $sce) {
     $http.post('/course/getCourse', {
         courseID: courseID
     }).then(function(result) {
-        // var trainerJSON = result.data.courseTrainer;
-        // var trainers = [];
-        // for (var i = 0; i &lt; trainerJSON.length; i++) {
-        //     trainers.push(trainerJSON[i].text);
-        // }
         $scope.courseName = result.data.courseName;
-        // $scope.courseTrainer = trainers;
-        // $scope.courseTrainerPage = result.data.courseTrainerPage;
         $scope.courseDescription = result.data.courseDescription;
         $scope.courseCategory = result.data.courseCategory;
         $scope.courseDocuments = result.data.courseDocuments;
@@ -750,7 +729,7 @@ myApp.controller('SetCourseCtrl', function($scope, $http, $window, $sce) {
 });
 &nbsp;
 myApp.controller('GetListCtrl', function($scope, $rootScope, $http, CourseList) {
-    "use strict";
+&nbsp;
 &nbsp;
     CourseList.getCourses().then(function(result) {
         $rootScope.coursesList = result;
@@ -781,7 +760,7 @@ myApp.controller('GetListCtrl', function($scope, $rootScope, $http, CourseList) 
 });
 &nbsp;
 myApp.controller('SetFeatureCtrl', function($scope, $http) {
-    "use strict";
+&nbsp;
 &nbsp;
     $http.get('/course/features').then(function(result) {
         $scope.courseDocuments = result.data.courseDocuments;
@@ -793,7 +772,7 @@ myApp.controller('SetFeatureCtrl', function($scope, $http) {
 });
 &nbsp;
 myApp.controller('SetProfileCtrl', function($scope, $rootScope, $http, $window) {
-    "use strict";
+&nbsp;
 &nbsp;
     $scope.user = {
         pStatus: '',
@@ -825,7 +804,7 @@ myApp.controller('SetProfileCtrl', function($scope, $rootScope, $http, $window) 
 &nbsp;
 // AddCourseCtrl: add course controller
 myApp.controller('AddCourseCtrl', function($scope, $rootScope, $http, CourseList, ToastService) {
-    "use strict";
+&nbsp;
 &nbsp;
     $scope.courseslist = {
         courseName: '',
@@ -851,7 +830,7 @@ myApp.controller('AddCourseCtrl', function($scope, $rootScope, $http, CourseList
 &nbsp;
 // UpdateCourseCtrl: edit course controller
 myApp.controller('UpdateCourseCtrl', function($scope, $rootScope, $http, CourseList, ToastService) {
-    "use strict";
+&nbsp;
 &nbsp;
     $scope.postMsg = '';
     $scope.getMsg = '';
@@ -868,7 +847,7 @@ myApp.controller('UpdateCourseCtrl', function($scope, $rootScope, $http, CourseL
 &nbsp;
 // IsDeletedCourseCtrl: delete course controller
 myApp.controller('IsDeletedCourseCtrl', function($scope, $rootScope, $http, CourseList, ToastService) {
-    "use strict";
+&nbsp;
 &nbsp;
     $scope.postMsg = '';
     $scope.getMsg = '';
@@ -885,7 +864,7 @@ myApp.controller('IsDeletedCourseCtrl', function($scope, $rootScope, $http, Cour
 &nbsp;
 //controller for Feedback
 myApp.controller('FeedbackCtrl', function($scope, $http, $window) {
-    "use strict";
+&nbsp;
 &nbsp;
     var path = $window.location.pathname;
     path = path.split('/');
@@ -925,7 +904,7 @@ myApp.controller('FeedbackCtrl', function($scope, $http, $window) {
 });
 &nbsp;
 myApp.controller('CalendarCtrl', function($scope, $filter, $http, $q, MaterialCalendarData) {
-    "use strict";
+&nbsp;
 &nbsp;
     $scope.dayFormat = 'd';
 &nbsp;
@@ -975,7 +954,7 @@ myApp.controller('CalendarCtrl', function($scope, $filter, $http, $q, MaterialCa
 <span class="cstat-no" title="statement not covered" >            var arr = event.summary.split(']');</span>
 <span class="cstat-no" title="statement not covered" >            event.summary = arr[arr.length - 1];</span>
 <span class="cstat-no" title="statement not covered" >            $("#popups").hide();</span>
-<span class="cstat-no" title="statement not covered" >            MaterialCalendarData.setDayContent(eventDate, dateData + '&lt;a onclick="show(' +i +');" onmouseover="showEvent(' + i + ')" onmouseleave="hideEvent()" &gt;' + event.summary + '&lt;/a&gt;' + '&lt;/br&gt;');</span>
+<span class="cstat-no" title="statement not covered" >            MaterialCalendarData.setDayContent(eventDate, dateData + '&lt;a onclick="show(' + i + ');" onmouseover="showEvent(' + i + ')" onmouseleave="hideEvent()" &gt;' + event.summary + '&lt;/a&gt;' + '&lt;/br&gt;');</span>
         }
     });
 });
@@ -985,7 +964,7 @@ myApp.controller('CalendarCtrl', function($scope, $filter, $http, $q, MaterialCa
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Sep 08 2016 17:03:43 GMT+0700 (SE Asia Standard Time)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Nov 28 2016 10:14:31 GMT+0700 (SE Asia Standard Time)
 </div>
 </div>
 <script src="../prettify.js"></script>
