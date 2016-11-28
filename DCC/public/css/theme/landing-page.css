@@ -142,6 +142,9 @@ h6 {
     color: #f8f8f8;
     background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(/img/features/connect.jpg) no-repeat center center;
     background: -webkit-linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url(/img/features/connect.jpg) no-repeat center center ; /* For Safari 5.1 to 6.0 */
+  
+    background: -o-linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url(/img/features/connect.jpg) no-repeat center center ;; /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url(/img/features/connect.jpg) no-repeat center center ;; /* For Firefox 3.6 to 15 */
     background-size: cover;
 }
 
