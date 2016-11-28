@@ -15,17 +15,21 @@ var log = require('simple-node-logger').createLogManager(opts).createLogger();
 //   force: false
 // });
 
+
 router.post('/comment', function(req, res) {
-  log.info('/route/feedback : comment for course that its id is ' + req.body.courseId);
-  models.User.findOne({
+  var query = {
     where: {username: req.user.mail}
-  }).then(function(user) {
-    models.Feedback.findOne({
+  };
+
+  log.info('/route/feedback : comment for course that its id is ' + req.body.courseId);
+  models.User.findOne(query).then(function(user) {
+    var queryFeedback = {
       where: {
         UserId: user.id,
         courseId: req.body.courseId
       }
-    }).then(function(feedback) {
+    };
+    models.Feedback.findOne(queryFeedback).then(function(feedback) {
       if (feedback === null) {
         models.Feedback.create({
           UserId: user.id,
