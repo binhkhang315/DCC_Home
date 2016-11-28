@@ -1,5 +1,5 @@
 TN:
-SF:D:\nam.h.nguyen\workspace\DEK-Talentnet\DCC\angular\app.js
+SF:D:\tools\DCC master brand\DEK-Talentnet\DCC\angular\app.js
 FNF:0
 FNH:0
 LF:0
@@ -8,7 +8,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:D:\nam.h.nguyen\workspace\DEK-Talentnet\DCC\angular\controller.js
+SF:D:\tools\DCC master brand\DEK-Talentnet\DCC\angular\controller.js
 FN:4,(anonymous_1)
 FN:7,(anonymous_2)
 FN:17,(anonymous_3)
@@ -233,39 +233,35 @@ DA:284,7
 DA:286,7
 DA:287,1
 DA:288,1
+DA:289,1
 DA:290,0
-DA:292,1
-DA:293,1
+DA:291,0
+DA:292,0
+DA:293,0
 DA:294,0
 DA:295,0
 DA:296,0
-DA:297,0
 DA:298,0
 DA:299,0
 DA:300,0
-DA:302,0
-DA:303,0
-DA:304,0
-DA:305,0
-LF:146
-LH:120
+DA:301,0
+LF:144
+LH:119
 BRDA:27,1,0,4
 BRDA:27,1,1,2
 BRDA:41,2,0,1
 BRDA:41,2,1,4
 BRDA:266,3,0,1
 BRDA:266,3,1,2
-BRDA:288,4,0,0
-BRDA:288,4,1,1
+BRDA:291,4,0,0
+BRDA:291,4,1,0
 BRDA:295,5,0,0
 BRDA:295,5,1,0
-BRDA:299,6,0,0
-BRDA:299,6,1,0
-BRF:12
-BRH:7
+BRF:10
+BRH:6
 end_of_record
 TN:
-SF:D:\nam.h.nguyen\workspace\DEK-Talentnet\DCC\angular\service.js
+SF:D:\tools\DCC master brand\DEK-Talentnet\DCC\angular\service.js
 FN:2,(anonymous_1)
 FN:3,(anonymous_2)
 FN:5,(anonymous_3)

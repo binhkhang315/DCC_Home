@@ -284,11 +284,7 @@ myApp.controller('CalendarCtrl', function($scope, $filter, $http, $q, MaterialCa
     $scope.tooltips = true;
     // set events
     $http.get('/getEvents').then(function(result) {
-        $scope.msg = 'test'
-        if(result.data==='')
-        {
-          $("#popups").hide();
-        }
+        $scope.msg = 'test';
         events = result.data;
         for (var i = 0; i < events.length; i++) {
             var event = events[i];

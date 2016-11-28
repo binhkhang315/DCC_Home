@@ -44,7 +44,6 @@ function hideEvent() {
     // global
     var Modernizr = window.Modernizr,
         $body = $('body');
-
     $.DLMenu = function(options, element) {
         this.$el = $(element);
         this._init(options);
