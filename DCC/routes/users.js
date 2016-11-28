@@ -39,7 +39,7 @@ var storage	=	multer.diskStorage({
 });
 var upload = multer({ storage : storage}).single('userPhoto');
 // connect to mysql
-var db = new Sequelize('DCC', 'root', 'dekvn@123321', {
+var db = new Sequelize('DCC2', 'root', 'dekvn@123321', {
     host: '192.168.122.20',
     dialect: 'mysql',
   pool: {

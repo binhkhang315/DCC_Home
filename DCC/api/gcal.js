@@ -56,7 +56,7 @@ function listEvents(auth) {
         if (err) {
         return; }
         else {
-          eventList = response.items; }
+        eventList = response.items; }
     });
 }
 
