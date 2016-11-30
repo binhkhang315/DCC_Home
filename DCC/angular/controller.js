@@ -128,36 +128,11 @@ myApp.controller('SetProfileCtrl', function($scope, $rootScope, $http, $window) 
         id: '3',
         name: 'Trainee Dashboard'
     }];
-    $scope.setAction = function(action) {
-        $scope.selectedAction = action;
-        switch (parseInt($scope.selectedAction.id)) {
-            case 1:
-                $scope.admin = true;
-                $scope.trainer = false;
-                $scope.trainee = false;
-                break;
-            case 2:
-                $scope.admin = false;
-                $scope.trainer = true;
-                $scope.trainee = false;
-                break;
-            case 3:
-                $scope.admin = false;
-                $scope.trainer = false;
-                $scope.trainee = true;
-                break;
-            default:
-                $scope.admin = false;
-                $scope.trainer = false;
-                $scope.trainee = false;
-          }
-        $scope.submit();
-    };
+
     $scope.submit = function() {
         console.log("Yay!");
     };
-    if($rootScope.isAuthenticated === true)
-    {Console.log("ABCDE");}
+
     $scope.user = {
         pStatus: '',
         pName: '',
