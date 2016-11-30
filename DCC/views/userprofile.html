@@ -4,9 +4,63 @@
     <title>DEK Technologies Vietnam Talentnet - Landing Page</title>
   </head>
 <body>
-    <div class="container profile"  ng-controller = "SetProfileCtrl">
-      <div class="col-xs-12 col-sm-12 ">
-        <div class="panel panel-info">
+  <div class="container profile" ng-controller="SetProfileCtrl" ng-cloak>
+  <ul class="nav nav-tabs col-xs-12 col-sm-12" style="margin-top:-1.25cm; " ng-init="userprofile = 1">
+      <!-- <li class="active"><a href="#">Home</a></li> -->
+      <li data-toggle="tab" class="dropdown active">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#" ng-click="submit()">
+              {{selectedAction.name}}
+              <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+              <li>
+                  <a href="#" ng-click="setAction({id: '1', name: 'Admin Dashboard'}) ;
+                  userprofile = 1 ; course = 0; administrator=0;trainerAdmin = 0;traineeAdmin = 0"
+                  ng-show="user.pAdmin">
+                      Admin Dashboard</a>
+                  <a href="#" ng-click="setAction({id: '2', name: 'Trainer Dashboard'}) ;
+                  userprofile = 1 ; course = 0;administrator=0;trainerAdmin = 0;traineeAdmin = 0"
+                  ng-show="user.pTrainer">
+                      Trainer Dashboard</a>
+                  <a href="#" ng-click="setAction({id: '3', name: 'Trainee Dashboard'}) ;
+                  userprofile = 1 ; course = 0;administrator=0;trainerAdmin = 0;traineeAdmin = 0"
+                  ng-show="user.pTrainee">
+                      Trainee Dashboard</a>
+              </li>
+          </ul>
+      </li>
+      <li data-toggle="tab" ng-show="admin"
+      ng-click="userprofile = 0;course = 0;administrator=1;trainerAdmin = 0;traineeAdmin = 0">
+          <a href="#">Administrator</a>
+      </li>
+      <li data-toggle="tab" ng-show="trainer"
+      ng-click="userprofile = 0;course = 0;administrator=0;trainerAdmin = 1;traineeAdmin = 0">
+          <a href="#">Trainer Administrator</a>
+      </li>
+      <li data-toggle="tab" ng-show="trainee"
+      ng-click="userprofile = 0;course = 0;administrator=0;trainerAdmin = 0;traineeAdmin = 1">
+          <a href="#">Trainee Administrator</a>
+
+      </li>
+      <li data-toggle="tab" ng-show="trainee || admin || trainer"
+      ng-click="userprofile = 0; course = 1;administrator=0;trainerAdmin = 0;traineeAdmin = 0">
+          <a href="#">Course</a>
+      </li>
+  </ul>
+  <div>
+      <div ng-show="course">
+        <center><h3>This is Course page</h3></center>
+      </div>
+      <div ng-show="administrator">
+        <center><h3>This is Administrator page</h3></center>
+      </div>
+      <div ng-show="trainerAdmin">
+        <center><h3>This is Trainer Administrator page</h3></center>
+      </div>
+      <div ng-show="traineeAdmin">
+        <center><h3>This is Trainee Administrator page</h3></center>
+      </div>
+      <div class="panel panel-info col-xs-12 col-sm-12" ng-show="userprofile">
           <div class="panel-heading">
             <h3 class="panel-title">{{ user.pName }}</h3>
           </div>

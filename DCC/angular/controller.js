@@ -117,8 +117,47 @@ myApp.controller('SetFeatureCtrl', function($scope, $http) {
 });
 
 myApp.controller('SetProfileCtrl', function($scope, $rootScope, $http, $window) {
-
-
+    "use strict";
+    $scope.actions = [{
+        id: '1',
+        name: 'Admin Dashboard'
+    }, {
+        id: '2',
+        name: 'Trainer Dashboard'
+    }, {
+        id: '3',
+        name: 'Trainee Dashboard'
+    }];
+    $scope.setAction = function(action) {
+        $scope.selectedAction = action;
+        switch (parseInt($scope.selectedAction.id)) {
+            case 1:
+                $scope.admin = true;
+                $scope.trainer = false;
+                $scope.trainee = false;
+                break;
+            case 2:
+                $scope.admin = false;
+                $scope.trainer = true;
+                $scope.trainee = false;
+                break;
+            case 3:
+                $scope.admin = false;
+                $scope.trainer = false;
+                $scope.trainee = true;
+                break;
+            default:
+                $scope.admin = false;
+                $scope.trainer = false;
+                $scope.trainee = false;
+          }
+        $scope.submit();
+    };
+    $scope.submit = function() {
+        console.log("Yay!");
+    };
+    if($rootScope.isAuthenticated === true)
+    {Console.log("ABCDE");}
     $scope.user = {
         pStatus: '',
         pName: '',
@@ -126,8 +165,15 @@ myApp.controller('SetProfileCtrl', function($scope, $rootScope, $http, $window) 
         pPhone: '',
         pLocation: '',
         pEmail: '',
-        pAvatar: ''
+        pAvatar: '',
+        pAdmin: ''
     };
+    $scope.trainingProgram = {
+        trainingProgramName: ''
+    };
+    $http.get('/users/trainingProgram').then(function(program) {
+      $scope.trainingProgram.trainingProgramName = program.data.trainingProgramName;
+    });
     $http.get('/users/userprofileController').then(function(result) {
         $scope.user.pStatus = result.data.pStatus;
         $scope.user.pName = result.data.pName;
@@ -136,8 +182,20 @@ myApp.controller('SetProfileCtrl', function($scope, $rootScope, $http, $window) 
         $scope.user.pLocation = result.data.pLocation;
         $scope.user.pEmail = result.data.pEmail;
         $scope.user.pAvatar = result.data.pAvatar;
+        $scope.user.pAdmin = result.data.pAdmin;
+        $scope.user.pTrainer = result.data.pTrainer;
+        $scope.user.pTrainee = result.data.pTrainee;
+    }).then(function(){
+      if($scope.user.pAdmin){
+        $scope.setAction($scope.actions[0]);
+      } else
+      if($scope.user.pTrainer){
+        $scope.setAction($scope.actions[1]);
+      } else
+      if($scope.user.pTrainee){
+         $scope.setAction($scope.actions[2]);
+       }
     });
-
     $scope.msg = '';
     $rootScope.edit = function() {
         $http.post('/users/userprofileReturnValue', $scope.user).then(function(result) {
@@ -250,7 +308,7 @@ myApp.controller('FeedbackCtrl', function($scope, $http, $window) {
 
 myApp.controller('CalendarCtrl', function($scope, $filter, $http, $q, MaterialCalendarData) {
 
-
+// start template
     $scope.dayFormat = 'd';
 
     $scope.myTemplate = "<md-content layout='column' layout-fill md-swipe-left='next()' md-swipe-right='prev()'><md-toolbar><div class='md-toolbar-tools' layout='row'><md-button class='md-icon-button' ng-click='prev()'><md-icon md-svg-icon='md-tabs-arrow'></md-icon></md-button><div flex></div><span class='calendar-md-title'>{{ calendar.start | date:titleFormat:timezone }}</span><div flex></div><md-button class='md-icon-button' ng-click='next()' ><md-icon md-svg-icon='md-tabs-arrow' class='moveNext'></md-icon></md-button></div></md-toolbar><!-- calendar view --><md-content ng-if='weekLayout !== columnWeekLayout' flex layout='column' class='calendar'><div layout='row' class='subheader'><div layout-padding class='subheader-day' flex ng-repeat='day in calendar.weeks[0]'>{{ day | date:dayLabelFormat }}</div></div><div ng-if='week.length' ng-repeat='week in calendar.weeks track by $index' flex layout='row'><div tabindex='{{ sameMonth(day) ? (day | date:dayFormat:timezone) : 0 }}' ng-repeat='day in week track by $index' ng-click='handleDayClick(day)' flex layout layout-padding ng-class='{&quot;disabled&quot; : isDisabled(day), &quot;active&quot;: isActive(day), &quot;md-whiteframe-12dp&quot;: hover || focus }' ng-focus='focus = true;' ng-blur='focus = false;' ng-mouseleave='hover = false' ng-mouseenter='hover = true'><md-tooltip ng-if='::tooltips()' compile='dataService.data[dayKey(day)]'></md-tooltip><div>{{ day | date:dayFormat }}</div><div class='events' flex compile='dataService.data[dayKey(day)]' id='{{ day | date:dayIdFormat }}'></div></div></div></md-content></md-content>";
@@ -282,6 +340,7 @@ myApp.controller('CalendarCtrl', function($scope, $filter, $http, $q, MaterialCa
         $scope.msg = 'You clicked (next) month ' + data.month + ', ' + data.year;
     };
     $scope.tooltips = true;
+    // end template
     // set events
     $http.get('/getEvents').then(function(result) {
         $scope.msg = 'test';

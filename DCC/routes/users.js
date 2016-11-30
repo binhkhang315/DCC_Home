@@ -64,6 +64,7 @@ router.get('/userprofile', function(req, res) {
 
 router.get('/userprofileController', function(req, res) {
     log.info('/routes/users: GET /users/userprofileController');
+    if(req.isAuthenticated()){
     models.User
       .findOrCreate({
         where: {username: req.user.mail},
@@ -83,11 +84,16 @@ router.get('/userprofileController', function(req, res) {
            pPhone: user[0].dataValues.phone,
            pLocation: user[0].dataValues.location,
            pEmail: user[0].dataValues.email,
-           pAvatar: user[0].dataValues.avatar
+           pAvatar: user[0].dataValues.avatar,
+           pAdmin: user[0].dataValues.admin,
+           pTrainer: user[0].dataValues.trainer,
+           pTrainee: user[0].dataValues.trainee
         });
     });
+  } else{
+    res.redirect('../');
+  }
 });
-
 router.get('/edituserprofile', function(req, res) {
   log.info('/routes/users: GET /users/edituserprofile');
   res.render('edituserprofile');
