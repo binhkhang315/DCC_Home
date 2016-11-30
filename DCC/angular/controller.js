@@ -118,20 +118,6 @@ myApp.controller('SetFeatureCtrl', function($scope, $http) {
 
 myApp.controller('SetProfileCtrl', function($scope, $rootScope, $http, $window) {
     "use strict";
-    $scope.actions = [{
-        id: '1',
-        name: 'Admin Dashboard'
-    }, {
-        id: '2',
-        name: 'Trainer Dashboard'
-    }, {
-        id: '3',
-        name: 'Trainee Dashboard'
-    }];
-
-    $scope.submit = function() {
-        console.log("Yay!");
-    };
 
     $scope.user = {
         pStatus: '',
@@ -155,17 +141,7 @@ myApp.controller('SetProfileCtrl', function($scope, $rootScope, $http, $window) 
         $scope.user.pAdmin = result.data.pAdmin;
         $scope.user.pTrainer = result.data.pTrainer;
         $scope.user.pTrainee = result.data.pTrainee;
-    }).then(function(){
-      if($scope.user.pAdmin){
-        $scope.setAction($scope.actions[0]);
-      } else
-      if($scope.user.pTrainer){
-        $scope.setAction($scope.actions[1]);
-      } else
-      if($scope.user.pTrainee){
-         $scope.setAction($scope.actions[2]);
-       }
-    });
+    })
     $scope.msg = '';
     $rootScope.edit = function() {
         $http.post('/users/userprofileReturnValue', $scope.user).then(function(result) {
