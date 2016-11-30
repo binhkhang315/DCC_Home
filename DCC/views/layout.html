@@ -73,7 +73,7 @@
         <!-- Navigation -->
         <div class="" ng-cloak>
             <nav class="navbar navbar-dcc navbar-fixed-top topnav" role="navigation">
-                <div class="container">
+                <div class="container" >
                     <div class="navbar-menu">
                         <div id="dl-menu" class="dl-menuwrapper">
                             <button class="dl-trigger">MENU</button>
@@ -87,8 +87,8 @@
                                 <li ng-hide="userid">
                                     <a id="login">Login</a>
                                 </li>
-                                <li role="presentation" ng-hide="!userid">
-                                    <a href="#">Admin&nbsp;<span class="glyphicon glyphicon-hand-right"></span>
+                                <li role="presentation" ng-hide="!userid" >
+                                    <a href="#">{{user.pEmail}}&nbsp;<span class="glyphicon glyphicon-hand-right"></span>
                                     </a>
                                     <ul class="dl-submenu">
                                         <li role="presentation" ng-hide="!userid">
@@ -113,7 +113,7 @@
                         </a>
                     </div>
 
-                    <div class="collapse navbar-rowmenu">
+                    <div class="collapse navbar-rowmenu" ng-Controller="SetProfileCtrl">
                         <ul class="nav navbar-nav navbar-right">
                             <li>
                                 <a id="button-calendar" href="/#calendar">Training Calendar</a>
@@ -125,7 +125,7 @@
                                 <a data-toggle="modal" href="#loginModal">Login</a>
                             </li>
                             <li role="presentation" ng-hide="!userid" class="dropdown">
-                                <a onclick="myFunction()" class="dropbtn">Admin&nbsp;<span class="glyphicon glyphicon-hand-down"></span>
+                                <a onclick="myFunction()" class="dropbtn">{{user.pEmail}}&nbsp;<span class="glyphicon glyphicon-hand-down"></span>
                                 </a>
                                 <ul id="myDropdown" class="dropdown-content">
                                     <li role="presentation" ng-hide="!userid">
