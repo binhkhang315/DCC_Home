@@ -168,12 +168,7 @@ myApp.controller('SetProfileCtrl', function($scope, $rootScope, $http, $window) 
         pAvatar: '',
         pAdmin: ''
     };
-    $scope.trainingProgram = {
-        trainingProgramName: ''
-    };
-    $http.get('/users/trainingProgram').then(function(program) {
-      $scope.trainingProgram.trainingProgramName = program.data.trainingProgramName;
-    });
+
     $http.get('/users/userprofileController').then(function(result) {
         $scope.user.pStatus = result.data.pStatus;
         $scope.user.pName = result.data.pName;
