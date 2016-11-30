@@ -117,8 +117,6 @@ myApp.controller('SetFeatureCtrl', function($scope, $http) {
 });
 
 myApp.controller('SetProfileCtrl', function($scope, $rootScope, $http, $window) {
-    "use strict";
-
     $scope.user = {
         pStatus: '',
         pName: '',
