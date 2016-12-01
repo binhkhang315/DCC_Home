@@ -53,12 +53,11 @@ function listEvents(auth) {
         singleEvents: true,
         orderBy: 'startTime'
     }, function(err, response) {
-        if (err) {
-        return; }
-        else {
-        eventList = response.items; }
-    });
-}
+        if (!err)
+         eventList = response.items;
+    })
+  };
+
 
 
 
