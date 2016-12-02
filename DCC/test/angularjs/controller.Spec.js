@@ -127,7 +127,7 @@ describe("LoginCtrl Unit testing #2", function() {
     var mockScope;
     var controller;
     var ToastService;
-    var controller, $controller, $scope, $http, $rootScope, createController;
+    var controller, $controller, $scope, $http, $rootScope, createController,$cookies;
     beforeEach(angular.mock.module("myApp"));
     beforeEach(function(){
       ToastService = {
@@ -139,6 +139,7 @@ describe("LoginCtrl Unit testing #2", function() {
         $controller = $injector.get('$controller');
         $http = $injector.get('$http');
         $httpBackend = $injector.get('$httpBackend');
+        $cookies=$injector.get('$cookies');
         createController = {
             loginCtrl: function() {
                 return $controller('LoginCtrl', {
@@ -242,7 +243,23 @@ describe("LoginCtrl Unit testing #2", function() {
         $httpBackend.flush();
         expect($rootScope.isAuthenticated).toBe(false);
     });
-
+    it('Test 7: Check cookies when user logout ', function() {
+      controller = createController.loginCtrl();
+      var user = {
+          username: 'thach',
+          password: 'thach123'
+      };
+      $rootScope.user = user;
+      var data = {
+          userid: 'thach',
+          msg: 'You are authenticated!'
+      };
+      $rootScope.login();
+      $httpBackend.whenPOST('/users/login', user).respond(data);
+      $httpBackend.whenGET('/isLogged').respond(data);
+      $rootScope.logout();
+      expect($cookies.get('userid')).toBe(undefined);
+    });
 });
 
 describe("AddCourseCtrl Unit testing #3", function() {

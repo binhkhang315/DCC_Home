@@ -54,6 +54,7 @@ myApp.controller('LoginCtrl', function($scope, $http, $cookies, $rootScope, $win
     // logout function
     $rootScope.logout = function() {
         $cookies.remove('userid');
+        console.log($cookies.get('userid'));
     };
 });
 
@@ -157,7 +158,7 @@ myApp.controller('SetTrainingProgram', function($scope, $rootScope, $http, $wind
 
     $http.get('/users/trainingprogramController').then(function(result) {
         $scope.trainingprogram.pName = result.data.pName;
-        
+
     })
     $scope.msg = '';
     $rootScope.edit = function() {
