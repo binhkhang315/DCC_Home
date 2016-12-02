@@ -70,7 +70,7 @@ describe('<Unit Test for Routing>', function() {
                 .expect(200, done)
         });
     });
-    
+
     describe('', function() {
         return it('Test case 8 : get /users/trainingprogram ', function(done) {
             request(route)
@@ -224,6 +224,18 @@ describe('<Unit test for Login>', function() {
                         assert.equal(res.body.userid, null);
                         return done();
                     });
+            });
+        });
+        describe('', function() {
+            return it('Test case 8 : Check cookie when logouted', function(done) {
+                var req = request(route).get('/users/logout');
+                req.cookies = null;
+                req
+                .set('Accept','application/json')
+                .end(function(err, res) {
+                    assert.equal(res.status, '302');
+                    return done();
+                });
             });
         });
 });
