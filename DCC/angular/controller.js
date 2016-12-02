@@ -54,7 +54,6 @@ myApp.controller('LoginCtrl', function($scope, $http, $cookies, $rootScope, $win
     // logout function
     $rootScope.logout = function() {
         $cookies.remove('userid');
-        console.log($cookies.get('userid'));
     };
 });
 
