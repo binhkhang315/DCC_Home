@@ -150,7 +150,7 @@ myApp.controller('SetProfileCtrl', function($scope, $rootScope, $http, $window) 
 });
 
 //----------------------------Set training program----------------------------------------
-myApp.controller('SetTrainingProgram', function($scope, $rootScope, $http, $window) {
+myApp.controller('SetTrainingProgram', function($scope, $rootScope, $http) {
     $scope.trainingprogram = {
         pName: ''
     };
