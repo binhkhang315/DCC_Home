@@ -160,12 +160,6 @@ myApp.controller('SetTrainingProgram', function($scope, $rootScope, $http, $wind
 
     })
     $scope.msg = '';
-    $rootScope.edit = function() {
-        $http.post('/users/trainingprogramReturnValue', $scope.trainingprogram).then(function(result) {
-            $scope.msg = result.data.msg;
-            $window.location.href = '/users/trainingprogram';
-        });
-    };
 });
 
 //-----------------------------------------------------------------------------------------
