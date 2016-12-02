@@ -149,6 +149,27 @@ myApp.controller('SetProfileCtrl', function($scope, $rootScope, $http, $window) 
     };
 });
 
+//----------------------------Set training program----------------------------------------
+myApp.controller('SetTrainingProgram', function($scope, $rootScope, $http, $window) {
+    $scope.trainingprogram = {
+        pName: ''
+    };
+
+    $http.get('/users/trainingprogramController').then(function(result) {
+        $scope.trainingprogram.pName = result.data.pName;
+        
+    })
+    $scope.msg = '';
+    $rootScope.edit = function() {
+        $http.post('/users/trainingprogramReturnValue', $scope.trainingprogram).then(function(result) {
+            $scope.msg = result.data.msg;
+            $window.location.href = '/users/trainingprogram';
+        });
+    };
+});
+
+//-----------------------------------------------------------------------------------------
+
 // AddCourseCtrl: add course controller
 myApp.controller('AddCourseCtrl', function($scope, $rootScope, $http, CourseList, ToastService) {
 

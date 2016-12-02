@@ -189,4 +189,8 @@ router.get('/logout', function(req, res) {
     res.redirect('/');
 });
 //----------------------------------------------------
+router.get('/trainingprogram', function(req,res){
+    log.info('/routes/users: GET /users/trainingprogram');
+    res.render('trainingprogram')
+})
 module.exports = router;

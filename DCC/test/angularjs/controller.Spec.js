@@ -586,6 +586,51 @@ describe("SetProfileCtrl Unit testing #8", function() {
 
 });
 
+
+//---------Test for SetTrainingProgram---------------------------------
+describe("SetTrainingProgram Unit testing #10", function() {
+    var controller, $controller, $scope, $rootScope, createController;
+
+    beforeEach(angular.mock.module('myApp', function($provide){
+            $provide.value('$window', {
+              location:{
+                href:'/users/trainingprogram'
+              }
+            });
+        }));
+    beforeEach(inject(function($injector) {
+        $rootScope = $injector.get('$rootScope');
+        $controller = $injector.get('$controller');
+        $httpBackend = $injector.get('$httpBackend');
+        createController = {
+            setProfile: function() {
+                return $controller('SetTrainingProgram', {
+                    $scope: $rootScope
+                });
+            }
+        }
+
+    }));
+
+    it('Test 1: SetTrainingProgram Be Defined', inject(function($controller) {
+        controller = createController.setProfile();
+        expect(controller).toBeDefined();
+    }));
+
+    it('Test 2: get /users/trainingprogramController', inject(function($controller) {
+        controller = createController.setProfile();
+        var data = {
+          pName: 'AXE',
+        };
+        $httpBackend.whenGET('/users/trainingprogramController').respond(data);
+        $httpBackend.flush();
+        expect($rootScope.trainingprogram.pName).toBe(data.pName);
+    }));
+});
+//---------------------------------------------------------------------
+
+
+
 // TODO: this controller must be done more
 describe("FeedbackCtrl Unit testing #9", function() {
     var controller, $controller, $scope, $rootScope, createController;

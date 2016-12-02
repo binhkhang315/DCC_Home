@@ -70,6 +70,14 @@ describe('<Unit Test for Routing>', function() {
                 .expect(200, done)
         });
     });
+    
+    describe('', function() {
+        return it('Test case 8 : get /users/trainingprogram ', function(done) {
+            request(route)
+                .get('/users/trainingprogram')
+                .expect(200, done)
+        });
+    });
 
 });
 
