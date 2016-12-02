@@ -64,7 +64,7 @@ router.get('/userprofile', function(req, res) {
 
 router.get('/userprofileController', function(req, res) {
     log.info('/routes/users: GET /users/userprofileController');
-
+    if(req.isAuthenticated()){
     models.User
       .findOrCreate({
         where: {username: req.user.mail},
@@ -90,6 +90,7 @@ router.get('/userprofileController', function(req, res) {
            pTrainee: user[0].dataValues.trainee
         });
     });
+  }
 });
 
 router.get('/edituserprofile', function(req, res) {
