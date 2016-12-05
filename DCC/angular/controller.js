@@ -127,6 +127,9 @@ myApp.controller('SetProfileCtrl', function($scope, $rootScope, $http, $window) 
    }, {
        id: '3',
        name: 'Trainee Dashboard'
+   }, {
+       id: '4',
+       name: 'Default Dashboard' //Empty Dashboard
    }];
    $scope.setAction = function(action) {
        $scope.selectedAction = action;
@@ -146,6 +149,10 @@ myApp.controller('SetProfileCtrl', function($scope, $rootScope, $http, $window) 
                $scope.trainer = false;
                $scope.trainee = true;
                break;
+           default:
+               $scope.admin = false;
+               $scope.trainer = false;
+               $scope.trainee = false;
          }
    };
 
@@ -181,6 +188,8 @@ myApp.controller('SetProfileCtrl', function($scope, $rootScope, $http, $window) 
       } else
       if($scope.user.pTrainee){
          $scope.setAction($scope.actions[2]);
+       } else {
+          $scope.setAction($scope.actions[3]); 
        }
     });
 

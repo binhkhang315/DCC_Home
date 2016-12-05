@@ -531,7 +531,19 @@ describe("SetFeatureCtrl Unit testing #7", function() {
 
 describe("SetProfileCtrl Unit testing #8", function() {
     var controller, $controller, $scope, $rootScope, createController;
-
+    var action=[{
+       id: '1',
+       name: 'Admin Dashboard'
+    }, {
+       id: '2',
+       name: 'Trainer Dashboard'
+    }, {
+       id: '3',
+       name: 'Trainee Dashboard'
+    },{
+       id: '4',
+       name: 'Trainee Dashboard'
+    }];
     beforeEach(angular.mock.module('myApp', function($provide){
             $provide.value('$window', {
               location:{
@@ -558,94 +570,8 @@ describe("SetProfileCtrl Unit testing #8", function() {
         expect(controller).toBeDefined();
     }));
 
-    it('Test 2: get /users/userprofileController as Admin', inject(function($controller) {
+    it('Test 2: get /users/userprofileController view Default Dashboard', inject(function($controller) {
         controller = createController.setProfile();
-              var action=[{
-             id: '1',
-             name: 'Admin Dashboard'
-         }, {
-             id: '2',
-             name: 'Trainer Dashboard'
-         }, {
-             id: '3',
-             name: 'Trainee Dashboard'
-         }];
-        var data = {
-          pStatus: 'abc',
-          pName: 'lam',
-          pDoB: '10/11/95',
-          pPhone: '123456689',
-          pLocation: 'DEK',
-          pEmail: 'lamz@gmail.com',
-          pAvatar: 'acb',
-          pAdmin: 1,
-          pTrainer: 1,
-          pTrainee: 0
-        };
-        $httpBackend.whenGET('/users/userprofileController').respond(data);
-        $httpBackend.flush();
-        expect($rootScope.user.pStatus).toBe(data.pStatus);
-        expect($rootScope.user.pName).toBe(data.pName);
-        expect($rootScope.user.pDoB).toBe(data.pDoB);
-        expect($rootScope.user.pPhone).toBe(data.pPhone);
-        expect($rootScope.user.pLocation).toBe(data.pLocation);
-        expect($rootScope.user.pEmail).toBe(data.pEmail);
-        expect($rootScope.user.pAvatar).toBe(data.pAvatar);
-        expect($rootScope.user.pAdmin).toBe(data.pAdmin);
-        expect($rootScope.user.pTrainer).toBe(data.pTrainer);
-        expect($rootScope.user.pTrainee).toBe(data.pTrainee);
-        expect($rootScope.selectedAction.id).toBe(action[0].id);
-    }));
-    it('Test 3: get /users/userprofileController as Trainer', inject(function($controller) {
-        controller = createController.setProfile();
-              var action=[{
-             id: '1',
-             name: 'Admin Dashboard'
-         }, {
-             id: '2',
-             name: 'Trainer Dashboard'
-         }, {
-             id: '3',
-             name: 'Trainee Dashboard'
-         }];
-        var data = {
-          pStatus: 'abc',
-          pName: 'lam',
-          pDoB: '10/11/95',
-          pPhone: '123456689',
-          pLocation: 'DEK',
-          pEmail: 'lamz@gmail.com',
-          pAvatar: 'acb',
-          pAdmin: 0,
-          pTrainer: 1,
-          pTrainee: 0
-        };
-        $httpBackend.whenGET('/users/userprofileController').respond(data);
-        $httpBackend.flush();
-        expect($rootScope.user.pStatus).toBe(data.pStatus);
-        expect($rootScope.user.pName).toBe(data.pName);
-        expect($rootScope.user.pDoB).toBe(data.pDoB);
-        expect($rootScope.user.pPhone).toBe(data.pPhone);
-        expect($rootScope.user.pLocation).toBe(data.pLocation);
-        expect($rootScope.user.pEmail).toBe(data.pEmail);
-        expect($rootScope.user.pAvatar).toBe(data.pAvatar);
-        expect($rootScope.user.pAdmin).toBe(data.pAdmin);
-        expect($rootScope.user.pTrainer).toBe(data.pTrainer);
-        expect($rootScope.user.pTrainee).toBe(data.pTrainee);
-        expect($rootScope.selectedAction.id).toBe(action[1].id);
-    }));
-    it('Test 4: get /users/userprofileController Trainee', inject(function($controller) {
-        controller = createController.setProfile();
-              var action=[{
-             id: '1',
-             name: 'Admin Dashboard'
-         }, {
-             id: '2',
-             name: 'Trainer Dashboard'
-         }, {
-             id: '3',
-             name: 'Trainee Dashboard'
-         }];
         var data = {
           pStatus: 'abc',
           pName: 'lam',
@@ -656,7 +582,7 @@ describe("SetProfileCtrl Unit testing #8", function() {
           pAvatar: 'acb',
           pAdmin: 0,
           pTrainer: 0,
-          pTrainee: 1
+          pTrainee: 0
         };
         $httpBackend.whenGET('/users/userprofileController').respond(data);
         $httpBackend.flush();
@@ -670,10 +596,43 @@ describe("SetProfileCtrl Unit testing #8", function() {
         expect($rootScope.user.pAdmin).toBe(data.pAdmin);
         expect($rootScope.user.pTrainer).toBe(data.pTrainer);
         expect($rootScope.user.pTrainee).toBe(data.pTrainee);
+        expect($rootScope.selectedAction.id).toBe(action[3].id);
+    }));
+    it('Test 3: get /users/userprofileController view Admin Dashboard', inject(function($controller) {
+        controller = createController.setProfile();
+        var data = {
+          pAdmin: 1,
+          pTrainer: 0,
+          pTrainee: 0
+        };
+        $httpBackend.whenGET('/users/userprofileController').respond(data);
+        $httpBackend.flush();
+        expect($rootScope.selectedAction.id).toBe(action[0].id);
+    }));
+    it('Test 4: get /users/userprofileController view Trainer Dashboard', inject(function($controller) {
+        controller = createController.setProfile();
+
+        var data = {
+          pAdmin: 0,
+          pTrainer: 1,
+          pTrainee: 0
+        };
+        $httpBackend.whenGET('/users/userprofileController').respond(data);
+        $httpBackend.flush();
+        expect($rootScope.selectedAction.id).toBe(action[1].id);
+    }));
+    it('Test 5: get /users/userprofileController view Trainee Dashboard', inject(function($controller) {
+        controller = createController.setProfile();
+        var data = {
+          pAdmin: 0,
+          pTrainer: 0,
+          pTrainee: 1
+        };
+        $httpBackend.whenGET('/users/userprofileController').respond(data);
+        $httpBackend.flush();
         expect($rootScope.selectedAction.id).toBe(action[2].id);
     }));
-
-    it('Test 5: Edit userProfile', inject(function($controller) {
+    it('Test 6: Edit userProfile', inject(function($controller) {
         controller = createController.setProfile();
         var user = {
           pStatus: 'status',
