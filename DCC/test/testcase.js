@@ -700,18 +700,18 @@ describe('<Unit test for feedback function>', function() {
 
 
 
-describe('<Logout Function>', function() {
-    return it('Test for get /users/logout ', function(done) {
-        var req = request(route).get('/users/logout');
-        req.cookies = null;
-        req
-        .set('Accept','application/json')
-        .end(function(err, res) {
-            assert.equal(res.status, '302');
-            if(err)
-              return done(err);
-            done();
-        });
-    });
-});
+// describe('<Logout Function>', function() {
+//     return it('Test for get /users/logout ', function(done) {
+//         var req = request(route).get('/users/logout');
+//         req.cookies = null;
+//         req
+//         .set('Accept','application/json')
+//         .end(function(err, res) {
+//             assert.equal(res.status, '302');
+//             if(err)
+//               return done(err);
+//             done();
+//         });
+//     });
+// });
 //-----------------------------------------------------------------------
