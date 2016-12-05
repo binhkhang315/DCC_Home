@@ -1,31 +1,31 @@
 <?xml version="1.0"?>
-<testsuite name="PhantomJS 2.1.1 (Windows 8 0.0.0)" package="" timestamp="2016-12-05T07:20:12" id="0" hostname="VN-LAP-77-VNPC" tests="44" errors="0" failures="0" time="0.897">
+<testsuite name="PhantomJS 2.1.1 (Windows 8 0.0.0)" package="" timestamp="2016-12-05T07:29:29" id="0" hostname="VN-LAP-77-VNPC" tests="44" errors="0" failures="0" time="0.936">
   <properties>
     <property name="browser.fullName" value="Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/538.1 (KHTML, like Gecko) PhantomJS/2.1.1 Safari/538.1"/>
   </properties>
-  <testcase name="GetListCtrl Unit testing #1 Test 1. CourseList service, true result" time="0.326" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).GetListCtrl Unit testing #1"/>
-  <testcase name="GetListCtrl Unit testing #1 Test 2. CourseList service, true result" time="0.011" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).GetListCtrl Unit testing #1"/>
+  <testcase name="GetListCtrl Unit testing #1 Test 1. CourseList service, true result" time="0.328" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).GetListCtrl Unit testing #1"/>
+  <testcase name="GetListCtrl Unit testing #1 Test 2. CourseList service, true result" time="0.01" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).GetListCtrl Unit testing #1"/>
   <testcase name="GetListCtrl Unit testing #1 Test 3. CourseList service, false result" time="0.01" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).GetListCtrl Unit testing #1"/>
   <testcase name="GetListCtrl Unit testing #1 Test 4. CourseList service, false result" time="0.009" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).GetListCtrl Unit testing #1"/>
   <testcase name="GetListCtrl Unit testing #1 Test 5: editCourse() test" time="0.009" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).GetListCtrl Unit testing #1"/>
   <testcase name="GetListCtrl Unit testing #1 Test 6: editCourse() test" time="0.009" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).GetListCtrl Unit testing #1"/>
-  <testcase name="GetListCtrl Unit testing #1 Test 7: deleteCourse() test" time="0.009" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).GetListCtrl Unit testing #1"/>
-  <testcase name="GetListCtrl Unit testing #1 Test 8: deleteCourse() test" time="0.011" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).GetListCtrl Unit testing #1"/>
-  <testcase name="LoginCtrl Unit testing #2 Test 1: LoginCtrl Be Defined" time="0.022" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).LoginCtrl Unit testing #2"/>
-  <testcase name="LoginCtrl Unit testing #2 Test 2: Check Login Success " time="0.065" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).LoginCtrl Unit testing #2"/>
+  <testcase name="GetListCtrl Unit testing #1 Test 7: deleteCourse() test" time="0.01" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).GetListCtrl Unit testing #1"/>
+  <testcase name="GetListCtrl Unit testing #1 Test 8: deleteCourse() test" time="0.009" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).GetListCtrl Unit testing #1"/>
+  <testcase name="LoginCtrl Unit testing #2 Test 1: LoginCtrl Be Defined" time="0.032" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).LoginCtrl Unit testing #2"/>
+  <testcase name="LoginCtrl Unit testing #2 Test 2: Check Login Success " time="0.07" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).LoginCtrl Unit testing #2"/>
   <testcase name="LoginCtrl Unit testing #2 Test 3: Check Login Fail: username true, password false " time="0.018" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).LoginCtrl Unit testing #2"/>
-  <testcase name="LoginCtrl Unit testing #2 Test 4: Check Login Fail: username false, password true " time="0.017" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).LoginCtrl Unit testing #2"/>
+  <testcase name="LoginCtrl Unit testing #2 Test 4: Check Login Fail: username false, password true " time="0.016" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).LoginCtrl Unit testing #2"/>
   <testcase name="LoginCtrl Unit testing #2 Test 5: Check Login Fail: username null" time="0.016" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).LoginCtrl Unit testing #2"/>
-  <testcase name="LoginCtrl Unit testing #2 Test 6: Check Login Fail: password null " time="0.015" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).LoginCtrl Unit testing #2"/>
-  <testcase name="LoginCtrl Unit testing #2 Test 7: Check cookies when user logout " time="0.012" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).LoginCtrl Unit testing #2"/>
+  <testcase name="LoginCtrl Unit testing #2 Test 6: Check Login Fail: password null " time="0.016" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).LoginCtrl Unit testing #2"/>
+  <testcase name="LoginCtrl Unit testing #2 Test 7: Check cookies when user logout " time="0.015" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).LoginCtrl Unit testing #2"/>
   <testcase name="AddCourseCtrl Unit testing #3 Test 1: AddCourseCtrl Be Defined" time="0.012" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).AddCourseCtrl Unit testing #3"/>
-  <testcase name="AddCourseCtrl Unit testing #3 Test 2: addCourse() test" time="0.018" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).AddCourseCtrl Unit testing #3"/>
-  <testcase name="UpdateCourseCtrl Unit testing #4 Test 1: UpdateCourseCtrl Be Defined" time="0.012" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).UpdateCourseCtrl Unit testing #4"/>
-  <testcase name="UpdateCourseCtrl Unit testing #4 Test 2: updateCourse() test" time="0.017" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).UpdateCourseCtrl Unit testing #4"/>
-  <testcase name="SetCourseCtrl Unit testing #5 Test 1: setCourse Be Defined" time="0.008" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).SetCourseCtrl Unit testing #5"/>
+  <testcase name="AddCourseCtrl Unit testing #3 Test 2: addCourse() test" time="0.017" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).AddCourseCtrl Unit testing #3"/>
+  <testcase name="UpdateCourseCtrl Unit testing #4 Test 1: UpdateCourseCtrl Be Defined" time="0.013" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).UpdateCourseCtrl Unit testing #4"/>
+  <testcase name="UpdateCourseCtrl Unit testing #4 Test 2: updateCourse() test" time="0.019" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).UpdateCourseCtrl Unit testing #4"/>
+  <testcase name="SetCourseCtrl Unit testing #5 Test 1: setCourse Be Defined" time="0.009" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).SetCourseCtrl Unit testing #5"/>
   <testcase name="SetCourseCtrl Unit testing #5 Test 2: post /course/getCourse" time="0.009" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).SetCourseCtrl Unit testing #5"/>
-  <testcase name="SetCourseCtrl Unit testing #5 Test 3: post /course/getCourse: courseName null" time="0.008" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).SetCourseCtrl Unit testing #5"/>
-  <testcase name="IsDeletedCourseCtrl Unit testing #6 Test 1: IsDeletedCourseCtrl Be Defined" time="0.011" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).IsDeletedCourseCtrl Unit testing #6"/>
+  <testcase name="SetCourseCtrl Unit testing #5 Test 3: post /course/getCourse: courseName null" time="0.01" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).SetCourseCtrl Unit testing #5"/>
+  <testcase name="IsDeletedCourseCtrl Unit testing #6 Test 1: IsDeletedCourseCtrl Be Defined" time="0.013" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).IsDeletedCourseCtrl Unit testing #6"/>
   <testcase name="IsDeletedCourseCtrl Unit testing #6 Test 2: isDeletedCourse() test" time="0.016" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).IsDeletedCourseCtrl Unit testing #6"/>
   <testcase name="SetFeatureCtrl Unit testing #7 Test 1: SetFeatureCtrl Be Defined" time="0.009" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).SetFeatureCtrl Unit testing #7"/>
   <testcase name="SetFeatureCtrl Unit testing #7 Test 2: get /course/features test" time="0.009" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).SetFeatureCtrl Unit testing #7"/>
@@ -33,20 +33,20 @@
   <testcase name="SetProfileCtrl Unit testing #8 Test 2: get /users/userprofileController as Admin" time="0.01" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).SetProfileCtrl Unit testing #8"/>
   <testcase name="SetProfileCtrl Unit testing #8 Test 3: get /users/userprofileController as Trainer" time="0.009" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).SetProfileCtrl Unit testing #8"/>
   <testcase name="SetProfileCtrl Unit testing #8 Test 4: get /users/userprofileController Trainee" time="0.01" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).SetProfileCtrl Unit testing #8"/>
-  <testcase name="SetProfileCtrl Unit testing #8 Test 5: Edit userProfile" time="0.01" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).SetProfileCtrl Unit testing #8"/>
-  <testcase name="SetTrainingProgram Unit testing #10 Test 1: SetTrainingProgram Be Defined" time="0.018" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).SetTrainingProgram Unit testing #10"/>
+  <testcase name="SetProfileCtrl Unit testing #8 Test 5: Edit userProfile" time="0.012" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).SetProfileCtrl Unit testing #8"/>
+  <testcase name="SetTrainingProgram Unit testing #10 Test 1: SetTrainingProgram Be Defined" time="0.015" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).SetTrainingProgram Unit testing #10"/>
   <testcase name="SetTrainingProgram Unit testing #10 Test 2: get /users/trainingprogramController" time="0.015" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).SetTrainingProgram Unit testing #10"/>
-  <testcase name="FeedbackCtrl Unit testing #9 Test 1: FeedbackCtrl Be Defined" time="0.019" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).FeedbackCtrl Unit testing #9"/>
-  <testcase name="CalendarCtrl Unit testing #7 Test 1: CalendarCtrl Be Defined" time="0.015" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).CalendarCtrl Unit testing #7"/>
+  <testcase name="FeedbackCtrl Unit testing #9 Test 1: FeedbackCtrl Be Defined" time="0.016" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).FeedbackCtrl Unit testing #9"/>
+  <testcase name="CalendarCtrl Unit testing #7 Test 1: CalendarCtrl Be Defined" time="0.016" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).CalendarCtrl Unit testing #7"/>
   <testcase name="CalendarCtrl Unit testing #7 Test 2: setDirection(): direction !== vertical,  dayFormat === d " time="0.015" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).CalendarCtrl Unit testing #7"/>
-  <testcase name="CalendarCtrl Unit testing #7 Test 3: setDirection(): direction === vertical,  dayFormat === EEEE, MMMM d " time="0.015" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).CalendarCtrl Unit testing #7"/>
-  <testcase name="CalendarCtrl Unit testing #7 Test 4: setDirection(): direction === null,  dayFormat !== EEEE, MMMM d " time="0.015" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).CalendarCtrl Unit testing #7"/>
-  <testcase name="CalendarCtrl Unit testing #7 Test 5: prevMonth()" time="0.013" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).CalendarCtrl Unit testing #7"/>
-  <testcase name="CalendarCtrl Unit testing #7 Test 6: nextMonth()" time="0.01" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).CalendarCtrl Unit testing #7"/>
-  <testcase name="CalendarCtrl Unit testing #7 Test 6: nextMonth()" time="0.009" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).CalendarCtrl Unit testing #7"/>
-  <testcase name="Service test courseService test 1. getCourses function test 1" time="0.007" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).Service test"/>
-  <testcase name="Service test courseService test 2. getCourses function test 2" time="0.005" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).Service test"/>
-  <testcase name="Service test courseService test 3. getCourses function test 3" time="0.005" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).Service test"/>
+  <testcase name="CalendarCtrl Unit testing #7 Test 3: setDirection(): direction === vertical,  dayFormat === EEEE, MMMM d " time="0.014" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).CalendarCtrl Unit testing #7"/>
+  <testcase name="CalendarCtrl Unit testing #7 Test 4: setDirection(): direction === null,  dayFormat !== EEEE, MMMM d " time="0.016" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).CalendarCtrl Unit testing #7"/>
+  <testcase name="CalendarCtrl Unit testing #7 Test 5: prevMonth()" time="0.015" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).CalendarCtrl Unit testing #7"/>
+  <testcase name="CalendarCtrl Unit testing #7 Test 6: nextMonth()" time="0.015" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).CalendarCtrl Unit testing #7"/>
+  <testcase name="CalendarCtrl Unit testing #7 Test 6: nextMonth()" time="0.016" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).CalendarCtrl Unit testing #7"/>
+  <testcase name="Service test courseService test 1. getCourses function test 1" time="0.008" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).Service test"/>
+  <testcase name="Service test courseService test 2. getCourses function test 2" time="0.006" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).Service test"/>
+  <testcase name="Service test courseService test 3. getCourses function test 3" time="0.006" classname="PhantomJS_2_1_1_(Windows_8_0_0_0).Service test"/>
   <system-out>
     <![CDATA[
 ]]>

@@ -115,6 +115,9 @@ myApp.controller('SetFeatureCtrl', function($scope, $http) {
 });
 
 myApp.controller('SetProfileCtrl', function($scope, $rootScope, $http, $window) {
+  $scope.admin = false;
+  $scope.trainer = false;
+  $scope.trainee = false;
   $scope.actions = [{
        id: '1',
        name: 'Admin Dashboard'
