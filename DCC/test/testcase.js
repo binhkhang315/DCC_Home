@@ -245,20 +245,21 @@ describe('<Unit test for Login>', function() {
                     });
             });
         });
-        describe('', function() {
-            return it('Test case 8 : Check cookie when logouted', function(done) {
-                var req = request(route).get('/users/logout');
-                req.cookies = null;
-                req
-                .set('Accept','application/json')
-                .end(function(err, res) {
-                    assert.equal(res.status, '302');
-                    if(err)
-                      return done(err);
-                    done();
-                });
-            });
+});
+
+describe('<Logout Function>', function() {
+    return it('Test for get /users/logout ', function(done) {
+        var req = request(route).get('/users/logout');
+        req.cookies = null;
+        req
+        .set('Accept','application/json')
+        .end(function(err, res) {
+            assert.equal(res.status, '302');
+            if(err)
+              return done(err);
+            done();
         });
+    });
 });
 //------------------------------------------------------------------------------
 //------------------------------------------------------------------------------
@@ -684,7 +685,7 @@ describe('<Unit test for feedback function>', function() {
             courseId: 9998,
           })
           .end(function(err,res){
-            assert.equal(res.body.result,4);
+            assert.equal(res.body.result, 4);
             if(err)
               return done(err);
             done();
@@ -698,20 +699,4 @@ describe('<Unit test for feedback function>', function() {
     });
   });
 
-
-
-// describe('<Logout Function>', function() {
-//     return it('Test for get /users/logout ', function(done) {
-//         var req = request(route).get('/users/logout');
-//         req.cookies = null;
-//         req
-//         .set('Accept','application/json')
-//         .end(function(err, res) {
-//             assert.equal(res.status, '302');
-//             if(err)
-//               return done(err);
-//             done();
-//         });
-//     });
-// });
 //-----------------------------------------------------------------------
