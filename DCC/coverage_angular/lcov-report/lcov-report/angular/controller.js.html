@@ -20,24 +20,24 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">74.44% </span>
+        <span class="strong">79.1% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>134/180</span>
+        <span class='fraction'>140/177</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">45% </span>
+        <span class="strong">55% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>9/20</span>
+        <span class='fraction'>11/20</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">76% </span>
+        <span class="strong">79.59% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>38/50</span>
+        <span class='fraction'>39/49</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">74.44% </span>
+        <span class="strong">79.1% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>134/180</span>
+        <span class='fraction'>140/177</span>
       </div>
     </div>
   </div>
@@ -410,10 +410,7 @@
 365
 366
 367
-368
-369
-370
-371</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
+368</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
@@ -541,8 +538,13 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3×</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -557,16 +559,8 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3×</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -593,12 +587,12 @@
 <span class="cline-any cline-yes">2×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2×</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -910,34 +904,31 @@ myApp.controller('SetProfileCtrl', function($scope, $rootScope, $http, $window) 
        id: '3',
        name: 'Trainee Dashboard'
    }];
-   $scope.setAction = <span class="fstat-no" title="function not covered" >function(action) {</span>
-<span class="cstat-no" title="statement not covered" >       $scope.selectedAction = action;</span>
-<span class="cstat-no" title="statement not covered" >       switch (parseInt($scope.selectedAction.id)) {</span>
+   $scope.setAction = function(action) {
+       $scope.selectedAction = action;
+       switch (parseInt($scope.selectedAction.id)) {
            case 1:
-<span class="cstat-no" title="statement not covered" >               $scope.admin = true;</span>
-<span class="cstat-no" title="statement not covered" >               $scope.trainer = false;</span>
-<span class="cstat-no" title="statement not covered" >               $scope.trainee = false;</span>
-<span class="cstat-no" title="statement not covered" >               break;</span>
-           case 2:
+               $scope.admin = true;
+               $scope.trainer = false;
+               $scope.trainee = false;
+               break;
+<span class="branch-1 cbranch-no" title="branch not covered" >           case 2:</span>
 <span class="cstat-no" title="statement not covered" >               $scope.admin = false;</span>
 <span class="cstat-no" title="statement not covered" >               $scope.trainer = true;</span>
 <span class="cstat-no" title="statement not covered" >               $scope.trainee = false;</span>
 <span class="cstat-no" title="statement not covered" >               break;</span>
-           case 3:
+<span class="branch-2 cbranch-no" title="branch not covered" >           case 3:</span>
 <span class="cstat-no" title="statement not covered" >               $scope.admin = false;</span>
 <span class="cstat-no" title="statement not covered" >               $scope.trainer = false;</span>
 <span class="cstat-no" title="statement not covered" >               $scope.trainee = true;</span>
 <span class="cstat-no" title="statement not covered" >               break;</span>
-           default:
+<span class="branch-3 cbranch-no" title="branch not covered" >           default:</span>
 <span class="cstat-no" title="statement not covered" >               $scope.admin = false;</span>
 <span class="cstat-no" title="statement not covered" >               $scope.trainer = false;</span>
 <span class="cstat-no" title="statement not covered" >               $scope.trainee = false;</span>
          }
-<span class="cstat-no" title="statement not covered" >       $scope.submit();</span>
    };
-   $scope.submit = <span class="fstat-no" title="function not covered" >function() {</span>
-<span class="cstat-no" title="statement not covered" >       console.log("Yay!");</span>
-   };
+&nbsp;
     $scope.user = {
         pStatus: '',
         pName: '',
@@ -962,8 +953,8 @@ myApp.controller('SetProfileCtrl', function($scope, $rootScope, $http, $window) 
         $scope.user.pTrainer = result.data.pTrainer;
         $scope.user.pTrainee = result.data.pTrainee;
     }).then(function(){
-      <span class="missing-if-branch" title="if path not taken" >I</span>if($scope.user.pAdmin){
-<span class="cstat-no" title="statement not covered" >        $scope.setAction($scope.actions[0]);</span>
+      if($scope.user.pAdmin){
+        $scope.setAction($scope.actions[0]);
       } else
       <span class="missing-if-branch" title="if path not taken" >I</span>if($scope.user.pTrainer){
 <span class="cstat-no" title="statement not covered" >        $scope.setAction($scope.actions[1]);</span>
@@ -1159,7 +1150,7 @@ myApp.controller('CalendarCtrl', function($scope, $filter, $http, $q, MaterialCa
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Dec 05 2016 13:37:19 GMT+0700 (SE Asia Standard Time)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Dec 05 2016 14:12:14 GMT+0700 (SE Asia Standard Time)
 </div>
 </div>
 <script src="../prettify.js"></script>

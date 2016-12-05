@@ -524,6 +524,7 @@ describe("SetFeatureCtrl Unit testing #7", function() {
         expect($rootScope.courseFeedback).toBe(data.courseFeedback);
         expect($rootScope.courseTest).toBe(data.courseTest);
         expect($rootScope.courseRating).toBe(data.courseRating);
+
     }));
 
 });
@@ -559,6 +560,16 @@ describe("SetProfileCtrl Unit testing #8", function() {
 
     it('Test 2: get /users/userprofileController', inject(function($controller) {
         controller = createController.setProfile();
+              var action=[{
+             id: '1',
+             name: 'Admin Dashboard'
+         }, {
+             id: '2',
+             name: 'Trainer Dashboard'
+         }, {
+             id: '3',
+             name: 'Trainee Dashboard'
+         }];
         var data = {
           pStatus: 'abc',
           pName: 'lam',
@@ -566,7 +577,10 @@ describe("SetProfileCtrl Unit testing #8", function() {
           pPhone: '123456689',
           pLocation: 'DEK',
           pEmail: 'lamz@gmail.com',
-          pAvatar: 'acb'
+          pAvatar: 'acb',
+          pAdmin: 1,
+          pTrainer: 1,
+          pTrainee: 0
         };
         $httpBackend.whenGET('/users/userprofileController').respond(data);
         $httpBackend.flush();
@@ -577,6 +591,10 @@ describe("SetProfileCtrl Unit testing #8", function() {
         expect($rootScope.user.pLocation).toBe(data.pLocation);
         expect($rootScope.user.pEmail).toBe(data.pEmail);
         expect($rootScope.user.pAvatar).toBe(data.pAvatar);
+        expect($rootScope.user.pAdmin).toBe(data.pAdmin);
+        expect($rootScope.user.pTrainer).toBe(data.pTrainer);
+        expect($rootScope.user.pTrainee).toBe(data.pTrainee);
+        expect($rootScope.selectedAction.id).toBe(action[0].id);
     }));
 
     it('Test 3: Edit userProfile', inject(function($controller) {
@@ -600,6 +618,23 @@ describe("SetProfileCtrl Unit testing #8", function() {
         $httpBackend.flush();
         expect($rootScope.msg).toBe(data.msg);
     }));
+  //   it('Test 4: Set Action', inject(function($controller) {
+  //       controller = createController.setProfile();
+  //       var action=[{
+  //      id: '1',
+  //      name: 'Admin Dashboard'
+  //  }, {
+  //      id: '2',
+  //      name: 'Trainer Dashboard'
+  //  }, {
+  //      id: '3',
+  //      name: 'Trainee Dashboard'
+  //  }];
+  //  controller.setAction(action[0]);
+  //       expect($scope.admin).toBe(true);
+  //         expect($scope.trainer).toBe(false);
+  //           expect($scope.trainee).toBe(false);
+  //   }));
 
 });
 
