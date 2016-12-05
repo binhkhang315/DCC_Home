@@ -35,7 +35,19 @@ module.exports = function(sequelize, DataTypes) {
     avatar: {
       type: DataTypes.STRING,
       allowNull: false
-    }
+    },
+    admin: {
+    type: DataTypes.STRING,
+    allowNull: true
+  },
+  trainer: {
+    type: DataTypes.STRING,
+    allowNull: true
+  },
+  trainee: {
+    type: DataTypes.STRING,
+    allowNull: true
+  }
   }, {
     classMethods: {
       getUserByID: function(id,cb){

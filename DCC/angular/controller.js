@@ -2,8 +2,6 @@ var myApp = angular.module('myApp', ['ngCookies', 'ngTagsInput', 'textAngular', 
 
 // creat angular controller
 myApp.controller('ToastCtrl', function($scope, $rootScope, $mdToast) {
-
-
     $rootScope.showToast = function(msg) {
         $mdToast.show(
             $mdToast.simple()
@@ -117,6 +115,44 @@ myApp.controller('SetFeatureCtrl', function($scope, $http) {
 });
 
 myApp.controller('SetProfileCtrl', function($scope, $rootScope, $http, $window) {
+  $scope.actions = [{
+       id: '1',
+       name: 'Admin Dashboard'
+   }, {
+       id: '2',
+       name: 'Trainer Dashboard'
+   }, {
+       id: '3',
+       name: 'Trainee Dashboard'
+   }];
+   $scope.setAction = function(action) {
+       $scope.selectedAction = action;
+       switch (parseInt($scope.selectedAction.id)) {
+           case 1:
+               $scope.admin = true;
+               $scope.trainer = false;
+               $scope.trainee = false;
+               break;
+           case 2:
+               $scope.admin = false;
+               $scope.trainer = true;
+               $scope.trainee = false;
+               break;
+           case 3:
+               $scope.admin = false;
+               $scope.trainer = false;
+               $scope.trainee = true;
+               break;
+           default:
+               $scope.admin = false;
+               $scope.trainer = false;
+               $scope.trainee = false;
+         }
+       $scope.submit();
+   };
+   $scope.submit = function() {
+       console.log("Yay!");
+   };
     $scope.user = {
         pStatus: '',
         pName: '',
@@ -125,7 +161,9 @@ myApp.controller('SetProfileCtrl', function($scope, $rootScope, $http, $window) 
         pLocation: '',
         pEmail: '',
         pAvatar: '',
-        pAdmin: ''
+        pAdmin: '',
+        pTrainer: '',
+        pTrainee: ''
     };
     $http.get('/users/userprofileController').then(function(result) {
         $scope.user.pStatus = result.data.pStatus;
@@ -138,7 +176,17 @@ myApp.controller('SetProfileCtrl', function($scope, $rootScope, $http, $window) 
         $scope.user.pAdmin = result.data.pAdmin;
         $scope.user.pTrainer = result.data.pTrainer;
         $scope.user.pTrainee = result.data.pTrainee;
-    })
+    }).then(function(){
+      if($scope.user.pAdmin){
+        $scope.setAction($scope.actions[0]);
+      } else
+      if($scope.user.pTrainer){
+        $scope.setAction($scope.actions[1]);
+      } else
+      if($scope.user.pTrainee){
+         $scope.setAction($scope.actions[2]);
+       }
+    });
 
     $scope.msg = '';
     $rootScope.edit = function() {
