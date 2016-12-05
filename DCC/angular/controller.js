@@ -127,7 +127,6 @@ myApp.controller('SetProfileCtrl', function($scope, $rootScope, $http, $window) 
         pAvatar: '',
         pAdmin: ''
     };
-
     $http.get('/users/userprofileController').then(function(result) {
         $scope.user.pStatus = result.data.pStatus;
         $scope.user.pName = result.data.pName;
@@ -140,6 +139,7 @@ myApp.controller('SetProfileCtrl', function($scope, $rootScope, $http, $window) 
         $scope.user.pTrainer = result.data.pTrainer;
         $scope.user.pTrainee = result.data.pTrainee;
     })
+
     $scope.msg = '';
     $rootScope.edit = function() {
         $http.post('/users/userprofileReturnValue', $scope.user).then(function(result) {
