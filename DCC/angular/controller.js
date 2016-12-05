@@ -44,10 +44,6 @@ myApp.controller('LoginCtrl', function($scope, $http, $cookies, $rootScope, $win
                 $rootScope.userid = result.data.userid;
                 $scope.message = result.data.msg;
                 ToastService.showToast($scope.message);
-                // $http.get('/users/userprofileController').then(function(result) {
-                //     $scope.user.pEmail = result.data.pEmail;
-                // })
-
             } else {
                 $scope.isAuthenticated = false;
                 $scope.message = result.data.msg;
