@@ -97,7 +97,9 @@ describe('<Unit test for Login>', function() {
                 })
                 .end(function(err, res) {
                     Cookies = res.headers['set-cookie'].pop().split(';')[0];
-                    return done();
+                    if(err)
+                      return done(err);
+                    done();
                 });
         });
         return it('Test case 0 : Check authenticated: Logged in', function(done) {
@@ -106,7 +108,9 @@ describe('<Unit test for Login>', function() {
             req.set('Accept', 'application/json')
                 .end(function(err, res) {
                     assert.equal(res.text, 'qwe@gmail.com');
-                    return done();
+                    if(err)
+                      return done(err);
+                    done();
                 });
         });
     });
@@ -118,7 +122,9 @@ describe('<Unit test for Login>', function() {
             req.set('Accept', 'application/json')
                 .end(function(err, res) {
                     assert.equal(res.text, '');
-                    return done();
+                    if(err)
+                      return done(err);
+                    done();
                 });
         });
     });
@@ -133,7 +139,9 @@ describe('<Unit test for Login>', function() {
                 .end(function(err, res) {
                     assert.equal(res.body.userid, 'qwe@gmail.com');
                     globalCookies = res.headers['set-cookie'].pop().split(';')[0];
-                    return done();
+                    if(err)
+                      return done(err);
+                    done();
                 });
         });
     });
@@ -148,7 +156,9 @@ describe('<Unit test for Login>', function() {
                 })
                 .end(function(err, res) {
                     assert.equal(res.body.userid,null);
-                    return done();
+                    if(err)
+                      return done(err);
+                    done();
                 });
           });
       });
@@ -162,7 +172,9 @@ describe('<Unit test for Login>', function() {
                     })
                     .end(function(err, res) {
                         assert.equal(res.body.userid, null);
-                        return done();
+                        if(err)
+                          return done(err);
+                        done();
                     });
             });
         });
@@ -177,7 +189,9 @@ describe('<Unit test for Login>', function() {
                     })
                     .end(function(err, res) {
                         assert.equal(res.body.userid, null);
-                        return done();
+                        if(err)
+                          return done(err);
+                        done();
                     });
             });
         });
@@ -192,7 +206,9 @@ describe('<Unit test for Login>', function() {
                     })
                     .end(function(err, res) {
                         assert.equal(res.body.userid, null);
-                        return done();
+                        if(err)
+                          return done(err);
+                        done();
                     });
             });
         });
@@ -207,7 +223,9 @@ describe('<Unit test for Login>', function() {
                     })
                     .end(function(err, res) {
                         assert.equal(res.body.userid, null);
-                        return done();
+                        if(err)
+                          return done(err);
+                        done();
                     });
             });
         });
@@ -222,7 +240,9 @@ describe('<Unit test for Login>', function() {
                     })
                     .end(function(err, res) {
                         assert.equal(res.body.userid, null);
-                        return done();
+                        if(err)
+                          return done(err);
+                        done();
                     });
             });
         });
@@ -234,7 +254,9 @@ describe('<Unit test for Login>', function() {
                 .set('Accept','application/json')
                 .end(function(err, res) {
                     assert.equal(res.status, '302');
-                    return done();
+                    if(err)
+                      return done(err);
+                    done();
                 });
             });
         });
@@ -503,7 +525,9 @@ describe('<Unit test for userProfile function>', function() {
             .end(function(err, res) {
                 assert.equal(res.body.pName, 'qwe@gmail.com');
                 assert.equal(res.body.pEmail, 'qwe@gmail.com');
-                return done();
+                if(err)
+                  return done(err);
+                done();
             });
         });
     });
@@ -528,7 +552,9 @@ describe('<Unit test for userProfile function>', function() {
             })
             .end(function(err, res) {
                 assert.equal(res.body.msg, 'Success');
-                return done();
+                if(err)
+                  return done(err);
+                done();
             });
         });
     });
@@ -543,7 +569,9 @@ describe('<Unit test for userProfile function>', function() {
         		.attach('userPhoto', 'test/test.jpg')
             .end(function(err, res) {
                 assert.equal(res.status, '200');
-                return done();
+                if(err)
+                  return done(err);
+                done();
             });
         });
     });
@@ -563,7 +591,9 @@ describe('<Unit test for feedback function>', function() {
         })
       .end(function(err, res) {
         assert.equal(res.body.msg,'create successfully');
-        return done();
+        if(err)
+          return done(err);
+        done();
       });
       });
   });
@@ -579,7 +609,9 @@ describe('<Unit test for feedback function>', function() {
         })
         .end(function(err,res){
           assert.equal(res.body.msg,'update successfully');
-          return done();
+          if(err)
+            return done(err);
+          done();
         })
       });
     });
@@ -594,7 +626,9 @@ describe('<Unit test for feedback function>', function() {
           })
           .end(function(err,res) {
             assert.equal(res.body[0].comment, 'update feedback');
-            return done();
+            if(err)
+              return done(err);
+            done();
           });
           afterEach(function() {
               models.Feedback.destroy({
@@ -617,7 +651,9 @@ describe('<Unit test for feedback function>', function() {
           })
           .end(function(err,res){
             assert.equal(res.body.msg,'create successfully');
-            return done();
+            if(err)
+              return done(err);
+            done();
           });
         });
     });
@@ -633,7 +669,9 @@ describe('<Unit test for feedback function>', function() {
           })
           .end(function(err,res){
             assert.equal(res.body.msg,'update successfully');
-            return done();
+            if(err)
+              return done(err);
+            done();
           });
         });
     });
@@ -648,7 +686,9 @@ describe('<Unit test for feedback function>', function() {
           })
           .end(function(err,res){
             assert.equal(res.body.result,4);
-            return done();
+            if(err)
+              return done(err);
+            done();
           });
         });
     });
@@ -669,7 +709,9 @@ describe('<Logout Function>', function() {
         .set('Accept','application/json')
         .end(function(err, res) {
             assert.equal(res.status, '302');
-            return done();
+            if(err)
+              return done(err);
+            done();
         });
     });
 });

@@ -1,5 +1,5 @@
 TN:
-SF:D:\tools\DEK-Talentnet\DCC\angular\app.js
+SF:D:\DCC_PROJECT3\DEK-Talentnet\DCC\angular\app.js
 FNF:0
 FNH:0
 LF:0
@@ -8,7 +8,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:D:\tools\DEK-Talentnet\DCC\angular\controller.js
+SF:D:\DCC_PROJECT3\DEK-Talentnet\DCC\angular\controller.js
 FN:4,(anonymous_1)
 FN:7,(anonymous_2)
 FN:17,(anonymous_3)
@@ -273,7 +273,7 @@ BRF:10
 BRH:6
 end_of_record
 TN:
-SF:D:\tools\DEK-Talentnet\DCC\angular\service.js
+SF:D:\DCC_PROJECT3\DEK-Talentnet\DCC\angular\service.js
 FN:2,(anonymous_1)
 FN:3,(anonymous_2)
 FN:5,(anonymous_3)
