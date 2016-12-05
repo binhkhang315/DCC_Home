@@ -148,11 +148,8 @@ myApp.controller('SetProfileCtrl', function($scope, $rootScope, $http, $window) 
                $scope.trainer = false;
                $scope.trainee = false;
          }
-       $scope.submit();
    };
-   $scope.submit = function() {
-       console.log("Yay!");
-   };
+
     $scope.user = {
         pStatus: '',
         pName: '',
