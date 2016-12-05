@@ -146,10 +146,6 @@ myApp.controller('SetProfileCtrl', function($scope, $rootScope, $http, $window) 
                $scope.trainer = false;
                $scope.trainee = true;
                break;
-           default:
-               $scope.admin = false;
-               $scope.trainer = false;
-               $scope.trainee = false;
          }
    };
 
