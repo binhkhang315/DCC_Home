@@ -84,7 +84,6 @@ describe('<Unit Test for Routing>', function() {
 //---------------------------------------------------------------------------------------
 
 describe('<Unit test for Login>', function() {
-
     describe('', function() {
         var Cookies;
         beforeEach(function(done) {
@@ -155,7 +154,7 @@ describe('<Unit test for Login>', function() {
                     password: 'thach13'
                 })
                 .end(function(err, res) {
-                    assert.equal(res.body.userid,null);
+                    assert.equal(res.body.userid,1);
                     if(err)
                       return done(err);
                     done();
