@@ -154,7 +154,7 @@ describe('<Unit test for Login>', function() {
                     password: 'thach13'
                 })
                 .end(function(err, res) {
-                    assert.equal(res.body.userid,null);
+                    assert.equal(res.body.userid,1); // edit for HEY's testing
                     if(err)
                       return done(err);
                     done();
