@@ -63,7 +63,7 @@ router.get('/userprofile', function(req, res) {
     log.info('/routes/users: GET /users/userprofile');
     if(res.isAuthenticated)
           res.render('userprofile');
-      else res.redirect('../')
+      else res.render('index.html');
     });
 
 router.get('/userprofileController', function(req, res) {
@@ -99,7 +99,10 @@ router.get('/userprofileController', function(req, res) {
 
 router.get('/edituserprofile', function(req, res) {
   log.info('/routes/users: GET /users/edituserprofile');
-  res.render('edituserprofile');
+    if(res.isAuthenticated)
+        res.render('edituserprofile');
+    else res.render('index.html');
+
 });
 
 router.post('/userprofileReturnValue', function(req, res) {
@@ -194,7 +197,9 @@ router.get('/logout', function(req, res) {
 });
 //----------------------------------------------------
 router.get('/trainingprogram', function(req,res){
-    log.info('/routes/users: GET /users/trainingprogram');
-    res.render('trainingprogram')
+    log.info('/routes/trainingprogram: GET /users/trainingprogram');
+    if(res.isAuthenticated)
+      res.render('trainingprogram');
+    else res.render('index.html');
 })
 module.exports = router;

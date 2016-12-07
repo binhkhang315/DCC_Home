@@ -54,38 +54,11 @@ describe('<Unit Test for Routing>', function() {
                 .expect(200,done)
         });
     });
-
     describe('', function() {
-        return it('Test case 6.1 : get /users/userprofile When user logged in ', function(done) {
-            // request(route)
-            //     .get('/users/userprofile')
-            //     .expect(200,done)
-              var req = request(route);
-              req
-                .post('/users/login')
-                .set('Accept', 'application/json')
-                .send({
-                    username: 'qwe@gmail.com',
-                    password: 'qwe'})
-                .end(function(err, res) {
-                    assert.equal(res.status,200); // edit for HEY's testing
-                    if(err)
-                      return done(err);
-                    done();
-                });
-
-        });
-    });
-    describe('', function() {
-        return it('Test case 6.2 : get /users/userprofile When user not logged in ', function(done) {
-            // request(route)
-            //     .get('/users/userprofile')
-            //     .expect(200,done)
-              var req = request(route);
-              req
+        return it('Test case 6 : get /users/userprofile When user not logged in ', function(done) {
+            request(route)
                 .get('/users/userprofile')
-                .expect(302,done)
-
+                .expect(200,done)
         });
     });
 
