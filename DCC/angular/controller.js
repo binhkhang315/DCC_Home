@@ -189,7 +189,7 @@ myApp.controller('SetProfileCtrl', function($scope, $rootScope, $http, $window) 
       if($scope.user.pTrainee){
          $scope.setAction($scope.actions[2]);
        } else {
-          $scope.setAction($scope.actions[3]); 
+          $scope.setAction($scope.actions[3]);
        }
     });
 
@@ -357,6 +357,8 @@ myApp.controller('CalendarCtrl', function($scope, $filter, $http, $q, MaterialCa
     $http.get('/getEvents').then(function(result) {
         $scope.msg = 'test';
         events = result.data;
+        if(events===null)
+            $("#popups").hide();
         for (var i = 0; i < events.length; i++) {
             var event = events[i];
             var start = event.start.dateTime || event.start.date;
