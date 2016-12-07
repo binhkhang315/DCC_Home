@@ -51,7 +51,7 @@ describe('<Unit Test for Routing>', function() {
         return it('Test case 5 : get /course/trainerdashboard ', function(done) {
             request(route)
                 .get('/course/trainerdashboard')
-                .expect(200, done)
+                .expect(200,done)
         });
     });
 
@@ -59,7 +59,7 @@ describe('<Unit Test for Routing>', function() {
         return it('Test case 6 : get /users/userprofile ', function(done) {
             request(route)
                 .get('/users/userprofile')
-                .expect(200, done)
+                .expect(200,done)
         });
     });
 
