@@ -61,10 +61,11 @@ models.User.sync({
 //-----------routing-------------
 router.get('/userprofile', function(req, res) {
     log.info('/routes/users: GET /users/userprofile');
+    var au=false;
     if(res.isAuthenticated)
-        res.render('userprofile');
-    else res.redirect('../')
-});
+          res.render('userprofile');
+      else res.redirect('../')
+    });
 
 router.get('/userprofileController', function(req, res) {
     log.info('/routes/users: GET /users/userprofileController');
