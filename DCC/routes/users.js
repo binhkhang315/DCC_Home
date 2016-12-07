@@ -62,8 +62,8 @@ models.User.sync({
 router.get('/userprofile', function(req, res) {
     log.info('/routes/users: GET /users/userprofile');
     if(res.isAuthenticated)
-      res.render('userprofile');
-    else res.render('index');
+        res.render('userprofile');
+    else res.redirect('../')
 });
 
 router.get('/userprofileController', function(req, res) {

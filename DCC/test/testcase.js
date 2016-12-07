@@ -57,9 +57,20 @@ describe('<Unit Test for Routing>', function() {
 
     describe('', function() {
         return it('Test case 6 : get /users/userprofile ', function(done) {
-            request(route)
-                .get('/users/userprofile')
-                .expect(200,done)
+            // request(route)
+            //     .get('/users/userprofile')
+            //     .expect(200,done)
+            var req = request(route).get('/users/userprofile');
+            req
+            .set('Accept','application/json')
+            .end(function(err, res) {
+            if(!res.isAuthenticated)
+              assert.equal(res.status, '302');
+            else assert.equal(res.status,'200')
+              if(err)
+                return done(err);
+            done();
+              });
         });
     });
 
