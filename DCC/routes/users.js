@@ -61,7 +61,7 @@ models.User.sync({
 //-----------routing-------------
 router.get('/userprofile', function(req, res) {
     log.info('/routes/users: GET /users/userprofile');
-    if(res.isAuthenticated)
+    if(req.isAuthenticated)
           res.render('userprofile');
       else res.render('index.html');
     });
@@ -99,7 +99,7 @@ router.get('/userprofileController', function(req, res) {
 
 router.get('/edituserprofile', function(req, res) {
   log.info('/routes/users: GET /users/edituserprofile');
-    if(res.isAuthenticated)
+    if(req.isAuthenticated)
         res.render('edituserprofile');
     else res.render('index.html');
 
@@ -198,7 +198,7 @@ router.get('/logout', function(req, res) {
 //----------------------------------------------------
 router.get('/trainingprogram', function(req,res){
     log.info('/routes/trainingprogram: GET /users/trainingprogram');
-    if(res.isAuthenticated)
+    if(req.isAuthenticated)
       res.render('trainingprogram');
     else res.render('index.html');
 })

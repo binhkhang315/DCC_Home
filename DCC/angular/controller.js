@@ -357,7 +357,7 @@ myApp.controller('CalendarCtrl', function($scope, $filter, $http, $q, MaterialCa
     $http.get('/getEvents').then(function(result) {
         $scope.msg = 'test';
         events = result.data;
-        if(events===null)
+        if(result.data===null)
             $("#popups").hide();
         for (var i = 0; i < events.length; i++) {
             var event = events[i];
