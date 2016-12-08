@@ -1411,3 +1411,7 @@ h1 {
 .lte8 .wrapper:hover .tooltip {
     display: block;
 }
+
+.trainingprogram-list {
+    padding: 50px 0;
+}
