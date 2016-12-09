@@ -14,12 +14,6 @@ var opts = {
 };
 var log = require('simple-node-logger').createLogManager(opts).createLogger();
 
-
-var routes = require('./routes/index');
-var users = require('./routes/users');
-var course = require('./routes/course');
-var feedback = require('./routes/feedback');
-
 // Init App
 var app = express();
 // set view engine
@@ -53,10 +47,10 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use('/', routes);
-app.use('/users', users);
-app.use('/course', course);
-app.use('/feedback', feedback);
+app.use('/', require('./routes/index'));
+app.use('/users', require('./routes/users'));
+app.use('/course', require('./routes/course'));
+app.use('/feedback', require('./routes/feedback'));
 
 // models.User.belongsToMany(models.class, {as: 'Trainee', through: models.class_record, foreignKey:'trainee'});
 // models.class.belongsToMany(models.User, {as: 'StudyingClass', through: models.class_record, foreignKey:'class'});
