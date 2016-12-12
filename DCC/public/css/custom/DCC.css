@@ -55,7 +55,7 @@ div.event {
     }
 }
 .calLayout {
-    height: 760px;
+  margin-bottom: 2cm;
 }
 .cal {
     -webkit-box-sizing: border-box;
@@ -69,9 +69,9 @@ div.event {
         height: 400px;
     }
 }
-@media(max-width:500px) {
+@media(max-width:600px) {
     .cal {
-        height: 300px;
+        height: 400px;
     }
 }
 
