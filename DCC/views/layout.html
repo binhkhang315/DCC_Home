@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="">
         <meta name="author" content="">
-        <link rel="icon" href="/img/DCC-icon.png"/>
+        <link rel="icon" href="/img/logo/DCC-icon.png"/>
         <!---------------------------------------------------------------------------->
         <!-- [if !IE]><!-->
         <!-- Library JS -->
@@ -74,35 +74,19 @@
         <div class="" ng-cloak>
             <nav class="navbar navbar-dcc navbar-fixed-top topnav" role="navigation">
                 <div class="container" >
-                    <div class="navbar-menu">
-                        <div id="dl-menu" class="dl-menuwrapper">
+                    <div class="navbar-menu" style="padding: 5px;">
+                        <div class="dl-menuwrapper" id="dl-menu">
                             <button class="dl-trigger">MENU</button>
                             <ul class="dl-menu">
                               <li role="presentation" ng-hide="!userid">
-                                  <a href="/course">Courses</a>
-                              </li>
-                              <li role="presentation" ng-hide="!userid">
                                   <a href="/users/userprofile">Profile</a>
-                              </li>
-                            <li role="presentation" ng-hide="!userid">
-                                  <a href="/users/trainingprogram">Training Program</a>
                               </li>
                                 <li ng-hide="userid">
                                     <a id="login">Login</a>
                                 </li>
                                 <li role="presentation" ng-hide="!userid" >
-                                    <a href="#">{{userid}}&nbsp;<span class="glyphicon glyphicon-hand-right"></span>
-                                    </a>
+                                    <a href="#">{{userid}}&nbsp;</a>
                                     <ul class="dl-submenu">
-                                        <li role="presentation" ng-hide="!userid">
-                                            <a href="/course">Courses</a>
-                                        </li>
-                                        <li>
-                                            <a href="/users/userprofile">Profile</a>
-                                        </li>
-                                        <li>
-                                            <a href="/users/trainingprogram">Training Program</a>
-                                        </li>
                                         <li role="presentation" ng-hide="!userid" ng-click="logout()">
                                             <a href="/users/logout">Logout</a>
                                         </li>
@@ -113,11 +97,11 @@
                     </div>
 
                     <div class="navbar-header">
-                        <a class="navbar-home" href="/">
-                         <img class="navbar-logo img-responsive" src="/img/logo/DCC-ver4.png" alt="DCC Logo" width="95px">
-                            <a class="navbar-name " href="/">DEK<br>Competence Center</a>
-                        </a>
-                    </div>
+                         <a class="navbar-home" href="/">
+                          <img class="navbar-logo img-responsive" src="/img/logo/DCC-ver4.png" alt="DCC Logo" width="95px">
+                             <a class="navbar-name " href="/">DEK<br>Competence Center</a>
+                         </a>
+                     </div>
 
                     <div class="collapse navbar-rowmenu">
                         <ul class="nav navbar-nav navbar-right">
@@ -131,17 +115,12 @@
                                 <a data-toggle="modal" href="#loginModal">Login</a>
                             </li>
                             <li role="presentation" ng-hide="!userid" class="dropdown">
-                                <a onclick="myFunction()" class="dropbtn"> {{userid}} &nbsp;<span class="glyphicon glyphicon-hand-down"></span>
-                                </a>
+                                <a  onclick="myFunction()" class="dropbtn" style="padding: 10px;">
+                                  {{userid}} &nbsp;<img src="/img/profiles/defaultPic.jpg"
+                                class="profile-image img-circle" style="height: 30px;"></a>
                                 <ul id="myDropdown" class="dropdown-content">
                                     <li role="presentation" ng-hide="!userid">
-                                        <a href="/course">Courses</a>
-                                    </li>
-                                    <li role="presentation" ng-hide="!userid">
                                         <a href="/users/userprofile">Profile</a>
-                                    </li>
-                                    <li role="presentation" ng-hide="!userid">
-                                        <a href="/users/trainingprogram">Training Program</a>
                                     </li>
                                     <li role="presentation" ng-hide="!userid" ng-click="logout()">
                                         <a href="/users/logout">Logout</a>
