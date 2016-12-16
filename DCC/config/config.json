@@ -10,6 +10,7 @@
             "min": 0,
             "idle": 10000
         },
+        port: 3306,
         "logging": false
     },
     "test": {

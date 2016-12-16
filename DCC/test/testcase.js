@@ -1,8 +1,8 @@
 var request = require('supertest');
 var assert = require('chai').assert;
 var expect = require('chai').expect;
-var route = require('../app.js');
-var models = require('../models');
+var route = require('/app.js');
+var models = require('/server/models');
 
 
 
