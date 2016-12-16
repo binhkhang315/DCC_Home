@@ -1,9 +1,7 @@
 var SequelizeDatatypes = require('sequelize');
 
-module.exports.Course = function()
+module.exports =
 {
-  var _course =
-  {
     name:
     {
       type: SequelizeDatatypes.STRING,
@@ -35,6 +33,4 @@ module.exports.Course = function()
       allowNull: false,
       defaultValue: false
     }
-  };
-  return _course;
-}
+};

@@ -5,12 +5,11 @@ var opts = {
     dateFormat: 'YYYY.MM.DD'
 };
 var log = require('simple-node-logger').createLogManager(opts).createLogger();
-var DataObjects = require('./DataObjects');
-var _course = new DataObjects.Course.Course();
+var _courseModel = require('./DataObjects/Course');
 
 module.exports = function(sequelize)
 {
-  var Course = sequelize.define('course', _course,
+  var Course = sequelize.define('course', _courseModel,
   {
     classMethods:
     {
