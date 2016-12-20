@@ -17,19 +17,19 @@ module.exports = function(config) {
         files: [
             'node_modules/angular/angular.js',
             'node_modules/angular-mocks/angular-mocks.js',
-            'public/js/angular/angular-cookies.js',
-            'public/js/angular/ng-tags-input.js',
-            'public/js/angular/angular-animate.min.js',
-            'public/js/angular/angular-aria.min.js',
-            'public/js/angular/angular-material.js',
-            'public/js/angular/angular-material.min.js',
-            'public/js/angular/angular-material-calendar.js',
-            'public/js/angular/angular-material-calendar.min.js',
-            'public/js/angular/angular-material-mocks.js',
-            'public/js/textAngular/textAngular-rangy.min.js',
-            'public/js/textAngular/textAngular-sanitize.min.js',
-            'public/js/textAngular/textAngular.min.js',
-            'angular/*.js',
+            'client/assets/js/angular/angular-cookies.js',
+            'client/assets/js/angular/ng-tags-input.js',
+            'client/assets/js/angular/angular-animate.min.js',
+            'client/assets/angular/angular-aria.min.js',
+            'client/assets/js/angular/angular-material.js',
+            'client/assets/js/angular/angular-material.min.js',
+            'client/assets/js/angular/angular-material-calendar.js',
+            'client/assets/js/angular/angular-material-calendar.min.js',
+            'client/assets/angular/angular-material-mocks.js',
+            'client/assets/textAngular/textAngular-rangy.min.js',
+            'client/assets/textAngular/textAngular-sanitize.min.js',
+            'client/assets/textAngular/textAngular.min.js',
+            'client/angular/*.js',
             'test/angularjs/*.js'
         ],
 
@@ -46,7 +46,7 @@ module.exports = function(config) {
         // preprocess matching files before serving them to the browser
         // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
         preprocessors: {
-            'angular/*.js': ['coverage']
+            'client/angular/*.js': ['coverage']
         },
 
 

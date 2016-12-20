@@ -9,18 +9,17 @@ var AclSeq = require('acl-sequelize');
 var Sequelize = require('sequelize');
 var ldap = require('ldapjs');
 var models = require('../models');
-
+var path = require('path');
 var server = null;
-var LDAP_PORT = 389;
 // admin's credentials for connecting to openLDAP server
-var BASE_OPTS = require('/config/LDAPconfig');
-var log = require('/config/logConfig');
+var BASE_OPTS = require('../../config/LDAPconfig');
+var log = require('../../config/logConfig');
 
 // Upload file setting
 var multer	=	require('multer');
 var storage	=	multer.diskStorage({
   destination: function (req, file, callback) {
-    callback(null, '/client/assets/img');
+    callback(null, './client/assets/img/profiles');
   },
   filename: function (req, file, callback) {
     callback(null, file.fieldname + '-' + Date.now() + file.originalname);
@@ -30,7 +29,7 @@ var upload = multer({ storage : storage}).single('userPhoto');
 // connect to mysql
 
 var env       = process.env.NODE_ENV || "development";
-var config    = require(path.join(__dirname, '..', 'config', 'config.json'))[env];
+var config    = require(path.join(__dirname, '..','..', 'config', 'config.js'))[env];
 var db = new Sequelize(config.database, config.username, config.password, config);
 
 var acl       = new Acl(new AclSeq(db, { prefix: 'acl_' }));
@@ -43,8 +42,8 @@ models.User.sync({
 router.get('/userprofile', function(req, res) {
         log.info('/routes/users: GET /users/userprofile');
         if(req.isAuthenticated())
-          res.render('/client/views/userprofile');
-      else res.render('/client/views/index.html');
+          res.render('userprofile');
+       else res.render('index.html');
     });
 
 router.get('/userprofileController', function(req, res) {
@@ -81,8 +80,8 @@ router.get('/userprofileController', function(req, res) {
 router.get('/edituserprofile', function(req, res) {
   log.info('/routes/users: GET /users/edituserprofile');
     if(req.isAuthenticated())
-        res.render('/client/views/edituserprofile');
-    else res.render('/client/views/index.html');
+        res.render('edituserprofile');
+    else res.render('index.html');
 
 });
 
@@ -112,12 +111,12 @@ router.post('/photo',function(req,res){
 	upload(req,res,function() {
     models.User.update(
     {
-      avatar: '/img/' + req.file.filename
+      avatar: '/img/profiles/' + req.file.filename
     },
     {
       where: { username: req.user.mail }
     })
-    res.render('/client/views/userprofile');
+    res.render('userprofile');
 	});
 });
 
@@ -179,7 +178,7 @@ router.get('/logout', function(req, res) {
 router.get('/trainingprogram', function(req,res){
     log.info('/routes/trainingprogram: GET /users/trainingprogram');
     if(req.isAuthenticated())
-      res.render('/client/views/trainingprogram');
-    else res.render('/client/views/index.html');
+      res.render('trainingprogram');
+    else res.render('index.html');
 })
 module.exports = router;

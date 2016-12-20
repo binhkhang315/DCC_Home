@@ -1,13 +1,18 @@
 var models = require("../models");
 var express = require('express');
 var router = express.Router();
-var log = ('/config/logConfig');
+
+var opts = {
+  logDirectory: './client/assets/log',
+  fileNamePattern: 'roll-<DATE>.log',
+  dateFormat: 'YYYY.MM.DD'
+};
+
+var log = require('simple-node-logger').createLogManager(opts).createLogger();
 
 // models.Feedback.sync({
 //   force: false
 // });
-
-
 router.post('/comment', function(req, res) {
   var query = {
     where: {username: req.user.mail}

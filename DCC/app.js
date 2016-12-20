@@ -8,7 +8,7 @@ var passport = require('passport');
 var models = require("./server/models");
 var serveIndex = require('serve-index');
 
-var log = require('/config/logConfig');
+var log = require('./config/logConfig');
 
 // Init App
 var app = express();
@@ -28,7 +28,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '/client/assets')));
 app.use('/log', serveIndex('/client/assets/log'));
 app.use('/angular', express.static(path.join(__dirname, '/client/angular')));
-
+app.set('views', path.join(__dirname, '/client/views'));
 // Express Session
 // session will save user's credentials in 10 days
 app.use(session({

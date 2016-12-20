@@ -1,11 +1,11 @@
 var express = require('express');
 var router = express.Router();
-var gcal = require('/config/google_api/gcal.js');
-var log = require('/config/logConfig');
+var gcal = require('../../config/google_api/gcal.js');
+var log = require('../../config/logConfig');
 
 // get homepage
 router.get('/', function(req, res) {
-    res.render('/client/views/index');
+    res.render('./index');
 });
 router.get('/getEvents', function(req, res) {
     var events = null;

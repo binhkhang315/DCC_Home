@@ -1,4 +1,5 @@
 var _courseModel = require('./DataObjects/Course');
+var log = require('../../config/logConfig');
 
 module.exports = function(sequelize)
 {

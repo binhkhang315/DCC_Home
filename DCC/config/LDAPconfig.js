@@ -1,3 +1,4 @@
+  var LDAP_PORT = 389;
 module.exports = {
     server: {
         url: 'ldap://192.168.122.20:' + LDAP_PORT.toString(),

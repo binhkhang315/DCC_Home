@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var models = require('../models');
-var log = require('/config/logConfig');
+var log = require('../../config/logConfig');
 
 // force: true will drop the table if it already exists
 
@@ -28,7 +28,7 @@ router.post('/getCourse', function(req, res) {
 
 // add course to database
 router.post('/addCourse', function(req, res) {
-    log.info('/route/course: Add course :' + req.body);
+    log.info('/routes/course: Add course :' + req.body);
     models.course.sync({
         force: false
     }).then(function() {
@@ -113,8 +113,9 @@ router.post('/isDeletedCourse', function(req, res) {
 });
 
 router.get('/list', function(req, res) {
-    log.info('/route/course: get course list data');
+    log.info('/routes/course: get course list data');
     models.course.getCourses(function(course) {
+        console.log('ok');
         var datasend = {
             course: course,
             msg:'send list success'
@@ -124,20 +125,20 @@ router.get('/list', function(req, res) {
 });
 
 router.get('/', function(req, res) {
-    res.render('/client/views/courses');
+    res.render('courses');
     log.info('/route/course: GET /course');
 });
 router.get('/coursedetail/', function(req, res) {
-    res.render('/client/views/coursedetail');
+    res.render('coursedetail');
     log.info('/route/course: GET /course/coursedetail');
 });
 
 router.get('/coursedetail/:id', function(req, res) {
-    res.render('/client/views/coursedetail');
+    res.render('coursedetail');
     log.info('/route/course: GET /course/coursedetail/:id');
 });
 router.get('/trainerdashboard', function(req, res) {
     log.info('/route/course: GET /course/trainerdashboard');
-    res.render('/client/views/trainerdashboard');
+    res.render('trainerdashboard');
 });
 module.exports = router;
