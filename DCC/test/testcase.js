@@ -585,7 +585,7 @@ describe('<Unit test for feedback function>', function() {
       req
       // .set('Accept','application/json')
       .send({
-        courseId: 9999,
+        courseId: 10,
         comment: 'feedback'
         })
       .end(function(err, res) {
@@ -603,7 +603,7 @@ describe('<Unit test for feedback function>', function() {
         req.cookies = globalCookies;
         req
         .send({
-            courseId: 9999,
+            courseId: 10,
             comment: 'update feedback'
         })
         .end(function(err,res){
@@ -621,7 +621,7 @@ describe('<Unit test for feedback function>', function() {
           req.cookies = globalCookies;
           req
           .send({
-              courseId: 9999,
+              courseId: 10,
           })
           .end(function(err,res) {
             assert.equal(res.body[0].comment, 'update feedback');
@@ -632,7 +632,7 @@ describe('<Unit test for feedback function>', function() {
           afterEach(function() {
               models.Feedback.destroy({
                   where: {
-                      courseID: 9999
+                      courseID: 10
                     }
               });
           });
@@ -645,7 +645,7 @@ describe('<Unit test for feedback function>', function() {
           req.cookies = globalCookies;
           req
           .send({
-            courseId: 9998,
+            courseId: 12,
             rating: 3
           })
           .end(function(err,res){
@@ -663,7 +663,7 @@ describe('<Unit test for feedback function>', function() {
           req.cookies = globalCookies;
           req
           .send({
-            courseId: 9998,
+            courseId: 12,
             rating: 4
           })
           .end(function(err,res){
@@ -681,7 +681,7 @@ describe('<Unit test for feedback function>', function() {
           req.cookies = globalCookies;
           req
           .send({
-            courseId: 9998,
+            courseId: 12,
           })
           .end(function(err,res){
             assert.equal(res.body.result, 4);
@@ -693,7 +693,7 @@ describe('<Unit test for feedback function>', function() {
     });
     models.Feedback.destroy({
         where: {
-            courseID: 9998
+            courseID: 12
           }
     });
   });
