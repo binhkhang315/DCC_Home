@@ -12,8 +12,9 @@ router.get('/getEvents', function(req, res) {
     gcal.getEvents(function( eventList)
     {
         events = eventList;
+        res.send(events);
     });
-    res.send(events)
+    //res.send(events)
 });
 
 router.get('/isLogged', ensureAuthenticated, function() {

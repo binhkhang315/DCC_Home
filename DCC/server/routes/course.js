@@ -42,7 +42,7 @@ router.post('/addCourse', function(req, res) {
 
                 models.course.create({
                     name: req.body.courseName,
-                    description: req.body.courseDescription,
+                    description: req.body.courseDescription.slice(3, req.body.courseDescription.length - 4),
                     category: req.body.courseCategory,
                     test: req.body.courseTest,
                     documents: req.body.courseDocuments,
@@ -115,7 +115,6 @@ router.post('/isDeletedCourse', function(req, res) {
 router.get('/list', function(req, res) {
     log.info('/routes/course: get course list data');
     models.course.getCourses(function(course) {
-        console.log('ok');
         var datasend = {
             course: course,
             msg:'send list success'
