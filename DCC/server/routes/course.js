@@ -42,7 +42,7 @@ router.post('/addCourse', function(req, res) {
 
                 models.course.create({
                     name: req.body.courseName,
-                    description: req.body.courseDescription.slice(3, req.body.courseDescription.length - 4),
+                    description: req.body.courseDescription,
                     category: req.body.courseCategory,
                     test: req.body.courseTest,
                     documents: req.body.courseDocuments,

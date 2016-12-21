@@ -232,14 +232,16 @@ myApp.controller('AddCourseCtrl', function($scope, $rootScope, $http, CourseList
     $scope.postMsg = '';
     $scope.getMsg = '';
     $scope.addCourse = function() {
-
-        $http.post('/course/addCourse', $scope.courseslist).then(function(result) {
-            $scope.postMsg = result.data.msg;
-            CourseList.getCourses().then(function(result) {
-                $rootScope.coursesList = result;
-                ToastService.showToast($scope.postMsg);
-            });
+      if ($scope.courseslist.courseDescription.substr(0, 3) == '<p>') {
+        $scope.courseslist.courseDescription = $scope.courseslist.courseDescription.toString().slice(3, $scope.courseslist.courseDescription.length - 4);
+      }
+      $http.post('/course/addCourse', $scope.courseslist).then(function(result) {
+        $scope.postMsg = result.data.msg;
+        CourseList.getCourses().then(function(result) {
+          $rootScope.coursesList = result;
+          ToastService.showToast($scope.postMsg);
         });
+      });
     };
 });
 
@@ -250,6 +252,9 @@ myApp.controller('UpdateCourseCtrl', function($scope, $rootScope, $http, CourseL
     $scope.postMsg = '';
     $scope.getMsg = '';
     $scope.updateCourse = function() {
+        if ($scope.courseslistEdit.courseDescriptionEdit.substr(0, 3) == '<p>') {
+          $scope.courseslistEdit.courseDescriptionEdit = $scope.courseslistEdit.courseDescriptionEdit.toString().slice(3, $scope.courseslistEdit.courseDescriptionEdit.length - 4);
+        }
         $http.post('/course/updateCourse', $rootScope.courseslistEdit).then(function(result) {
             $scope.postMsg = result.data.msg;
             CourseList.getCourses().then(function(result) {
