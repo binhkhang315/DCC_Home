@@ -355,6 +355,8 @@ describe("UpdateCourseCtrl Unit testing #4", function() {
         $httpBackend.whenGET('/course/list').respond(getData);
         $httpBackend.flush();
         expect($rootScope.postMsg).toBe(postData.msg);
+
+
     }));
 });
 
