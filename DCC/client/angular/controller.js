@@ -251,7 +251,7 @@ myApp.controller('UpdateCourseCtrl', function($scope, $rootScope, $http, CourseL
     $scope.getMsg = '';
 
     $scope.updateCourse = function() {
-        $http.post('/course/updateCourse', $scope.courseslistEdit).then(function(result) {
+        $http.post('/course/updateCourse', $rootScope.courseslistEdit).then(function(result) {
             $scope.postMsg = result.data.msg;
             CourseList.getCourses().then(function(result) {
                 $rootScope.coursesList = result;
