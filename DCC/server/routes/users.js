@@ -108,14 +108,17 @@ router.post('/userprofileReturnValue', function(req, res) {
 router.post('/photo',function(req,res){
   log.info('/routes/users: Upload avatar');
   // upload avatar
-	upload(req,res,function() {
-    models.User.update(
+	upload(req,res,function(err) {
+    if (typeof req.file !== "undefined")
     {
-      avatar: '/img/profiles/' + req.file.filename
-    },
-    {
-      where: { username: req.user.mail }
-    })
+      models.User.update(
+      {
+        avatar: '/img/profiles/' + req.file.filename
+      },
+      {
+        where: { username: req.user.mail }
+      })
+    }
     res.render('userprofile');
 	});
 });
