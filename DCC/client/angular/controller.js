@@ -47,6 +47,11 @@ myApp.controller('LoginCtrl', function($scope, $http, $cookies, $rootScope, $win
                 $scope.message = result.data.msg;
                 ToastService.showToast($scope.message);
             }
+            if($scope.isAuthenticated === true){
+              setTimeout(function() {
+                window.location.href = "/users/userprofile";
+              }, 400);
+            }
         });
     };
     // logout function
