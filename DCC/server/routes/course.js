@@ -29,91 +29,103 @@ router.post('/getCourse', function(req, res) {
 // add course to database
 router.post('/addCourse', function(req, res) {
     log.info('/routes/course: Add course :' + req.body);
-    models.course.sync({
-        force: false
-    }).then(function() {
-        // this function check if the courseName is already existed
-        models.course.getByName(req.body.courseName, function(result) {
-            if (result) {
-                res.send({
-                    msg: 'Name already existed. Add fail!'
-                });
-            } else {
+    if(req.isAuthenticated()) {
+      models.course.sync({
+          force: false
+      }).then(function() {
+          // this function check if the courseName is already existed
+          models.course.getByName(req.body.courseName, function(result) {
+              if (result) {
+                  res.send({
+                      msg: 'Name already existed. Add fail!'
+                  });
+              } else {
 
-                models.course.create({
-                    name: req.body.courseName,
-                    description: req.body.courseDescription,
-                    category: req.body.courseCategory,
-                    test: req.body.courseTest,
-                    documents: req.body.courseDocuments,
-                    // trainerID: tID
-                }).then(function() {
-                    res.send({
-                        msg: 'Add course success!'
-                    });
-                });
-            }
-        });
+                  models.course.create({
+                      name: req.body.courseName,
+                      description: req.body.courseDescription,
+                      category: req.body.courseCategory,
+                      test: req.body.courseTest,
+                      documents: req.body.courseDocuments,
+                      // trainerID: tID
+                  }).then(function() {
+                      res.send({
+                          msg: 'Add course success!'
+                      });
+                  });
+              }
+          });
+      });
+  } else res.send({
+      msg: 'You must login first'
     });
 });
 
 // update course in database
 router.post('/updateCourse', function(req, res) {
     log.info('Get Course Information');
-    models.course.sync({
-        force: false
-    }).then(function() {
-        models.course.getByID(req.body.courseIDEdit, function(result) {
-            if (result) {
-              if (req.body.courseDescriptionEdit.substr(0, 3) == '<p>') {
-                req.body.courseDescriptionEdit =
-                  req.body.courseDescriptionEdit.slice(3, req.body.courseDescriptionEdit.toString().length - 4);
-              }
-                models.course.update({
-                    name: req.body.courseNameEdit,
-                    description: req.body.courseDescriptionEdit,
-                    category: req.body.courseCategoryEdit,
-                    test: req.body.courseTestEdit,
-                    documents: req.body.courseDocumentsEdit,
-                }, {
-                    where: {
-                        id: req.body.courseIDEdit
+    if(req.isAuthenticated()) {
+        models.course.sync({
+            force: false
+        }).then(function() {
+              models.course.getByID(req.body.courseIDEdit, function(result) {
+                  if (result) {
+                    if (req.body.courseDescriptionEdit.substr(0, 3) == '<p>') {
+                      req.body.courseDescriptionEdit =
+                        req.body.courseDescriptionEdit.slice(3, req.body.courseDescriptionEdit.toString().length - 4);
                     }
-                }).then(function() {
-                    res.send({
-                        msg: 'Edit course success!'
-                    });
-                });
-            } else {
-                res.send({
-                    msg: 'Course not found in database'
-                });
-            }
+                      models.course.update({
+                          name: req.body.courseNameEdit,
+                          description: req.body.courseDescriptionEdit,
+                          category: req.body.courseCategoryEdit,
+                          test: req.body.courseTestEdit,
+                          documents: req.body.courseDocumentsEdit,
+                      }, {
+                          where: {
+                              id: req.body.courseIDEdit
+                          }
+                      }).then(function() {
+                          res.send({
+                              msg: 'Edit course success!'
+                          });
+                      });
+                  } else {
+                      res.send({
+                          msg: 'Course not found in database'
+                      });
+                  }
 
-        });
-});
+              });
+      });
+    } else res.send({
+        msg: 'You must login first'
+      });
 });
 // mark course as deleted (isDeleted = true)
 router.post('/isDeletedCourse', function(req, res) {
     log.info('Get Delete Command');
-    models.course.getByID(req.body.courseIDDelete, function(result) {
-        if (result) {
-            models.course.update({
-                isDeleted: true
-            }, {
-                where: {
-                    id: req.body.courseIDDelete
-                }
-            });
-            res.send({
-                msg: 'Delete success'
-            });
-        } else {
-          res.send({
-              msg: 'Delete failure'
-          });
-        }
-    });
+    if(req.isAuthenticated()) {
+        models.course.getByID(req.body.courseIDDelete, function(result) {
+            if (result) {
+                models.course.update({
+                    isDeleted: true
+                }, {
+                    where: {
+                        id: req.body.courseIDDelete
+                    }
+                });
+                res.send({
+                    msg: 'Delete success'
+                });
+            } else {
+              res.send({
+                  msg: 'Delete failure'
+              });
+            }
+        });
+      } else res.send({
+          msg: 'You must login first'
+        });
 });
 
 router.get('/list', function(req, res) {
