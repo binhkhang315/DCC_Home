@@ -12,7 +12,7 @@ myApp.controller('ToastCtrl', function($scope, $rootScope, $mdToast) {
 });
 var events;
 
-myApp.controller('LoginCtrl', function($scope, $http, $cookies, $rootScope, $window, ToastService) {
+myApp.controller('LoginCtrl', function($scope, $http, $cookies, $rootScope, $window,  ToastService) {
 
 
     // get route '/isLogged' to check user logined or not
@@ -42,15 +42,13 @@ myApp.controller('LoginCtrl', function($scope, $http, $cookies, $rootScope, $win
                 $rootScope.userid = result.data.userid;
                 $scope.message = result.data.msg;
                 ToastService.showToast($scope.message);
+                setTimeout(function() {
+                  location.href = "/users/userprofile";
+                }, 500);
             } else {
                 $scope.isAuthenticated = false;
                 $scope.message = result.data.msg;
                 ToastService.showToast($scope.message);
-            }
-            if($scope.isAuthenticated === true){
-              setTimeout(function() {
-                window.location.href = "/users/userprofile";
-              }, 400);
             }
         });
     };
