@@ -70,7 +70,7 @@ router.post('/updateCourse', function(req, res) {
         }).then(function() {
               models.course.getByID(req.body.courseIDEdit, function(result) {
                   if (result) {
-                    if (req.body.courseDescriptionEdit.substr(0, 3) == '<p>') {
+                    if (req.body.courseDescriptionEdit.substr(0, 3) === '<p>') {
                       req.body.courseDescriptionEdit =
                         req.body.courseDescriptionEdit.slice(3, req.body.courseDescriptionEdit.toString().length - 4);
                     }
