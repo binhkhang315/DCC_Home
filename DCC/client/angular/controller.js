@@ -232,7 +232,7 @@ myApp.controller('AddCourseCtrl', function($scope, $rootScope, $http, CourseList
     $scope.postMsg = '';
     $scope.getMsg = '';
     $scope.addCourse = function() {
-      if ($scope.courseslist.courseDescription.substr(0, 3) == '<p>') {
+      if ($scope.courseslist.courseDescription.substr(0, 3) === '<p>') {
         $scope.courseslist.courseDescription = $scope.courseslist.courseDescription.toString().slice(3, $scope.courseslist.courseDescription.length - 4);
       }
       $http.post('/course/addCourse', $scope.courseslist).then(function(result) {
