@@ -29,7 +29,6 @@ router.post('/getCourse', function(req, res) {
 // add course to database
 router.post('/addCourse', function(req, res) {
     log.info('/routes/course: Add course :' + req.body);
-    if(req.isAuthenticated()) {
       models.course.sync({
           force: false
       }).then(function() {
@@ -56,15 +55,11 @@ router.post('/addCourse', function(req, res) {
               }
           });
       });
-  } else res.send({
-      msg: 'You must login first'
-    });
 });
 
 // update course in database
 router.post('/updateCourse', function(req, res) {
     log.info('Get Course Information');
-    if(req.isAuthenticated()) {
         models.course.sync({
             force: false
         }).then(function() {
@@ -97,14 +92,10 @@ router.post('/updateCourse', function(req, res) {
 
               });
       });
-    } else res.send({
-        msg: 'You must login first'
-      });
 });
 // mark course as deleted (isDeleted = true)
 router.post('/isDeletedCourse', function(req, res) {
     log.info('Get Delete Command');
-    if(req.isAuthenticated()) {
         models.course.getByID(req.body.courseIDDelete, function(result) {
             if (result) {
                 models.course.update({
@@ -122,9 +113,6 @@ router.post('/isDeletedCourse', function(req, res) {
                   msg: 'Delete failure'
               });
             }
-        });
-      } else res.send({
-          msg: 'You must login first'
         });
 });
 
