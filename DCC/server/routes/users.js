@@ -183,4 +183,10 @@ router.get('/trainingprogram', function(req,res){
       res.render('trainingprogram');
     else res.render('index.html');
 })
+router.get('/trainingprogram/catalog', function(req,res){
+    log.info('/routes/trainingprogram: GET /users/trainingprogram');
+    if(req.isAuthenticated())
+      res.render('trainingprogramcatalog');
+    else res.render('index.html');
+})
 module.exports = router;

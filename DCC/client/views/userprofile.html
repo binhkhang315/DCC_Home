@@ -15,39 +15,109 @@
           <ul class="dropdown-menu">
               <li>
                   <a href="#" ng-click="setAction({id: '1', name: 'Admin Dashboard'}) ;
-                  userprofile = 1 ; course = 0; administrator=0;trainerAdmin = 0;traineeAdmin = 0"
+                  userprofile = 1 ; course = 0; administrator=0;trainerAdmin = 0;traineeAdmin = 0;traineeDashboard=0"
                   ng-show="user.pAdmin">
                       Admin Dashboard</a>
                   <a href="#" ng-click="setAction({id: '2', name: 'Trainer Dashboard'}) ;
-                  userprofile = 1 ; course = 0; administrator=0;trainerAdmin = 0;traineeAdmin = 0"
+                  userprofile = 1 ; course = 0; administrator=0;trainerAdmin = 0;traineeAdmin = 0; traineeDashboard=0"
                   ng-show="user.pTrainer">
                       Trainer Dashboard</a>
                   <a href="#" ng-click="setAction({id: '3', name: 'Trainee Dashboard'}) ;
-                  userprofile = 1 ; course = 0; administrator=0;trainerAdmin = 0;traineeAdmin = 0"
+                  userprofile = 0 ; course = 0; administrator=0;trainerAdmin = 0;traineeAdmin = 0; traineeDashboard=1;"
                   ng-show="user.pTrainee">
                       Trainee Dashboard</a>
               </li>
           </ul>
       </li>
       <li data-toggle="tab" ng-show="admin"
-      ng-click="userprofile = 0;course = 0;administrator=1;trainerAdmin = 0;traineeAdmin = 0">
+      ng-click="userprofile = 0;course = 0;administrator=1;trainerAdmin = 0;traineeAdmin = 0; traineeDashboard=0">
           <a href="#">Administrator</a>
       </li>
       <li data-toggle="tab" ng-show="trainer"
-      ng-click="userprofile = 0;course = 0;administrator=0;trainerAdmin = 1;traineeAdmin = 0">
+      ng-click="userprofile = 0;course = 0;administrator=0;trainerAdmin = 1;traineeAdmin = 0; traineeDashboard=0">
           <a href="#">Trainer Administrator</a>
       </li>
       <li data-toggle="tab" ng-show="trainee"
-      ng-click="userprofile = 0;course = 0;administrator=0;trainerAdmin = 0;traineeAdmin = 1">
+      ng-click="userprofile = 0;course = 0;administrator=0;trainerAdmin = 0;traineeAdmin = 1; traineeDashboard=0">
           <a href="#">Trainee Administrator</a>
 
       </li>
       <li data-toggle="tab" ng-show="trainee || admin || trainer"
-      ng-click="userprofile = 0; course = 1;administrator=0;trainerAdmin = 0;traineeAdmin = 0">
+      ng-click="userprofile = 0; course = 1;administrator=0;trainerAdmin = 0;traineeAdmin = 0; traineeDashboard=0">
           <a href="#">Course</a>
+      </li>
+      <li data-toggle="tab" ng-show="trainee || admin || trainer"
+      ng-click="userprofile = 1; course = 0;administrator=0;trainerAdmin = 0;traineeAdmin = 0; traineeDashboard=0;">
+          <a href="#">Profile</a>
       </li>
   </ul>
   <div>
+    <div ng-show="traineeDashboard">
+      <body style="background-color: #F6F8F8" >
+        <br><br>
+          <div class="container" >
+            <!--list of catalog in here and use ng-repeat-->
+              <div class="row panel panel-default container" style="background-color:#ffffff;">
+              <br>
+                <a data-toggle="collapse" data-target="#demo" >
+                <div class="col-md-10">
+                  <div class="row">
+                    <div class="col-md-2">
+                      <img alt="orientation" class="img-responsive" src = "/img/catalog/orientation.png" width="95px">
+                    </div>
+                    <div class="col-md-10">
+                      <div class="row"><h1 style="color: #000000; font-size:36px"><b>ORIENTATION</b></h1></div>
+                      <div class="row" style="color: #33cc33" ><i>This is description of ORIENTATION</i></div>
+                    </div>
+                  </div>
+                  <br>
+                </div>
+                <div class="col-md-2" align="center">
+                  <br><br>
+                  <img alt="downarrow" src="/img/courseicon/downarrow.png" width="60px">
+                </div>
+                </a>
+              </div>
+
+              <div id="demo" class="collapse"> <!-- put outside div catalog-->
+              <!--list of courses in here and use ng-repeat-->
+              <div class="row" >
+              <div class="col-md-1"></div>
+              <div class="col-md-11"  >
+                    <div class="col-md-12 panel panel-default container">
+                    <br>
+                    <a href="/users/trainingprogram/catalog">
+                      <div class="col-md-12">
+                        <div class="row">
+                          <div class="col-md-2">
+                            <img alt="orientation" class="img-responsive" src = "/img/catalog/orientation.png" width="95px">
+                          </div>
+                          <div class="col-md-10">
+                            <div class="row"><h1 style="color: #000000; font-size:36px"><b>Linux Programing</b></h1></div>
+                            <div class="row" style="color: #33cc33" ><i>This is description of Linux Programing</i></div>
+                          </div>
+
+                        </div>
+                        <br/>
+                        <div class="row">
+                          <div class="progress">
+                             <div class="progress-bar progress-bar-striped active" role="progressbar"
+                             aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+                             40%
+                             <!-- when user learn course. prosses bar change, maybe you must change % of style by aria-valuenow and remove style width-->
+                             </div>
+                        </div>
+                      </div>
+                      </div>
+                          </a>
+                    </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+
+      </body>
+    </div>
       <div ng-show="course">
         <center><h3>This is Course page</h3></center>
       </div>
@@ -98,6 +168,7 @@
                   </div>
                 </div>
               </div>
+        </div>
         </div>
       </div>
     </div>

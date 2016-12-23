@@ -201,9 +201,18 @@ h2 {
 /***********slider text****************/
 
 .slidertext {
-    padding-top: 30px;
+    padding-top: 10px;
     font-size: 90px;
 }
+.slidertextdislaynumberofcourse {
+    padding-top: 10px;
+    font-size: 20px;
+}
+.slidertextdescription {
+    padding-top: 30px;
+    font-size: 30px;
+    color: #33CC33;
+  }
 @media(max-width:1300px) {
     .slidertext {
         padding-top: 25px;
