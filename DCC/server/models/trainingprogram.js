@@ -20,9 +20,7 @@ module.exports = function(sequelize, DataTypes) {
               Trainingprogram.findOne(query).then(cb);
           },
       },
-
-
-      tableName: 'TrainingProgram'
+      tableName: 'training_program'
   });
     return Trainingprogram;
 };

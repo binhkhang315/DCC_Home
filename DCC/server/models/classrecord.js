@@ -9,7 +9,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     },
   },{
-    tableName: 'classrecord'
+    tableName: 'class_record'
   });
   return Classrecord;
 };

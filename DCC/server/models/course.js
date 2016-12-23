@@ -59,7 +59,7 @@ module.exports = function(sequelize)
         Course.findAll(query).then(cb);
       },
     },
-    tableName: 'Courses'
+    tableName: 'course'
   });
   return Course;
 };
