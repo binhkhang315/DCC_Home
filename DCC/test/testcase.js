@@ -244,6 +244,7 @@ describe('<Unit test for Login>', function() {
                     });
             });
         });
+
 });
 
 describe('<Logout Function>', function() {

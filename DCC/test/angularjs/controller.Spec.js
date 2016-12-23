@@ -243,6 +243,7 @@ describe("LoginCtrl Unit testing #2", function() {
         $httpBackend.flush();
         expect($rootScope.isAuthenticated).toBe(false);
     });
+
     it('Test 7: Check cookies when user logout ', function() {
       controller = createController.loginCtrl();
       var user = {
@@ -260,6 +261,25 @@ describe("LoginCtrl Unit testing #2", function() {
       $rootScope.logout();
       expect($cookies.get('userid')).toBe(undefined);
     });
+
+    it('Test 8: Login success, redirect to userprofile.html ', function() {
+      controller = createController.loginCtrl();
+      var user = {
+          username: 'thach',
+          password: 'thach123'
+      };
+      $rootScope.user = user;
+      var data = {
+          userid: 'thach',
+          msg: 'You are authenticated!'
+      };
+      $rootScope.login();
+      $httpBackend.whenPOST('/users/login', user).respond(data);
+      $httpBackend.whenGET('/isLogged').respond(data);
+      $httpBackend.flush();
+      setTimeout(function() {expect(location.href).toEqual('/users/userprofile'); },500);
+    });
+
 });
 
 describe("AddCourseCtrl Unit testing #3", function() {
