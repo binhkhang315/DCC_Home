@@ -24,7 +24,7 @@
                         <tr ng-repeat="course in coursesList">
                             <td class="descpopup" style="font-weight:bold">
                                 <a href="/course/coursedetail/{{course.id}}">{{ course.name }}</a>
-                                <div class="descpopuptext">{{ course.description }}</div>
+                                <div class="descpopuptext" ng-bind-html="course.description">{{ course.description }}</div>
                             </td>
                             <td>{{ course.category }}</td>
                             <!-- <td>{{ course.trainerID }}</td> -->
