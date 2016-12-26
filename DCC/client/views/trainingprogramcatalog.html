@@ -4,7 +4,8 @@
     </head>
 
 
-    <body style="background-color: #F6F8F8" >
+    <body>
+      <div style="background-color: #F6F8F8">
       <div class="intro-header carousel slide" data-ride="carousel" style="height=100%" style="background-color: #F6F8F8">
         <div class="carousel-inner" role="listbox">
           <div
@@ -51,7 +52,7 @@
                                                     </div>
                                                     <div class="col-md-10">
                                                       <div class="row"><h1 style="color: #000000; font-size:36px"><b>{{ course.name }}</b></h1></div>
-                                                      <div class="row" style="color: #33cc33" ><i>"{{ course.description }}"</i></div>
+                                                      <div class="row" style="color: #33cc33" ng-bind-html="course.description"><i>"{{ course.description }}"</i></div>
                                                     </div>
                                                 </div>
                                                 <br>
@@ -99,5 +100,6 @@
             <!--  </div> -->
            </div>
         </div>
+      </div>
     </body>
 </html>

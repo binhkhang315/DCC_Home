@@ -15,39 +15,35 @@
           <ul class="dropdown-menu">
               <li>
                   <a href="#" ng-click="setAction({id: '1', name: 'Admin Dashboard'}) ;
-                  userprofile = 1 ; course = 0; administrator=0;trainerAdmin = 0;traineeAdmin = 0;traineeDashboard=0"
+                  userprofile = 0; adminCourse=0; trainerCourse=0;traineeCourse=0; adminDashboard=1; trainerDashboard = 0; traineeDashboard=0"
                   ng-show="user.pAdmin">
                       Admin Dashboard</a>
                   <a href="#" ng-click="setAction({id: '2', name: 'Trainer Dashboard'}) ;
-                  userprofile = 1 ; course = 0; administrator=0;trainerAdmin = 0;traineeAdmin = 0; traineeDashboard=0"
+                  userprofile = 0; adminCourse=0; trainerCourse=0;traineeCourse=0; adminDashboard=0; trainerDashboard = 1; traineeDashboard=0"
                   ng-show="user.pTrainer">
                       Trainer Dashboard</a>
                   <a href="#" ng-click="setAction({id: '3', name: 'Trainee Dashboard'}) ;
-                  userprofile = 0 ; course = 0; administrator=0;trainerAdmin = 0;traineeAdmin = 0; traineeDashboard=1;"
+                  userprofile = 0; adminCourse=0; trainerCourse=0;traineeCourse=0; adminDashboard=0; trainerDashboard = 0; traineeDashboard=1"
                   ng-show="user.pTrainee">
                       Trainee Dashboard</a>
               </li>
           </ul>
       </li>
-      <li data-toggle="tab" ng-show="admin"
-      ng-click="userprofile = 0;course = 0;administrator=1;trainerAdmin = 0;traineeAdmin = 0; traineeDashboard=0">
-          <a href="#">Administrator</a>
+
+      <li data-toggle="tab" ng-show=" admin "
+      ng-click="userprofile = 0; adminCourse=1; trainerCourse=0;traineeCourse=0; adminDashboard=0; trainerDashboard = 0; traineeDashboard=0">
+          <a href="#">Course Manager</a>
       </li>
       <li data-toggle="tab" ng-show="trainer"
-      ng-click="userprofile = 0;course = 0;administrator=0;trainerAdmin = 1;traineeAdmin = 0; traineeDashboard=0">
-          <a href="#">Trainer Administrator</a>
+      ng-click="userprofile = 0; adminCourse=0; trainerCourse=1;traineeCourse=0; adminDashboard=0; trainerDashboard = 0; traineeDashboard=0">
+          <a href="#">Course Review</a>
       </li>
       <li data-toggle="tab" ng-show="trainee"
-      ng-click="userprofile = 0;course = 0;administrator=0;trainerAdmin = 0;traineeAdmin = 1; traineeDashboard=0">
-          <a href="#">Trainee Administrator</a>
-
+      ng-click="userprofile = 0; adminCourse=0; trainerCourse=0;traineeCourse=1; adminDashboard=0; trainerDashboard = 0; traineeDashboard=0">
+          <a href="#">Course Resignter</a>
       </li>
       <li data-toggle="tab" ng-show="trainee || admin || trainer"
-      ng-click="userprofile = 0; course = 1;administrator=0;trainerAdmin = 0;traineeAdmin = 0; traineeDashboard=0">
-          <a href="#">Course</a>
-      </li>
-      <li data-toggle="tab" ng-show="trainee || admin || trainer"
-      ng-click="userprofile = 1; course = 0;administrator=0;trainerAdmin = 0;traineeAdmin = 0; traineeDashboard=0;">
+      ng-click="userprofile = 1; adminCourse=0; trainerCourse=0;traineeCourse=0; adminDashboard=0; trainerDashboard = 0; traineeDashboard=0">
           <a href="#">Profile</a>
       </li>
   </ul>
@@ -56,7 +52,7 @@
       <body style="background-color: #F6F8F8" >
         <br><br>
           <div class="container" >
-            <!--list of catalog in here and use ng-repeat-->
+            <!--list of training program in here and use ng-repeat-->
               <div class="row panel panel-default container" style="background-color:#ffffff;">
               <br>
                 <a data-toggle="collapse" data-target="#demo" >
@@ -79,7 +75,7 @@
                 </a>
               </div>
 
-              <div id="demo" class="collapse"> <!-- put outside div catalog-->
+              <div id="demo" class="collapse"> <!-- put outside div training program-->
               <!--list of courses in here and use ng-repeat-->
               <div class="row" >
               <div class="col-md-1"></div>
@@ -118,13 +114,119 @@
 
       </body>
     </div>
-      <div ng-show="course">
-        <center><h3>This is Course page</h3></center>
+      <div ng-show="traineeCourse">
+        <center><h3>This is Course page for trainee</h3></center>
+        <div>
+          <div class = "row">
+          <div class="form-group">
+            <div class = "col-md-6">
+                  <label class="col-sm-4 control-label">Training Program</label>
+                  <div class="col-sm-8">
+                      <select class="form-control" name="trainingprogramCategory" id = "tpCatagory" onchange="myFu()">
+                          <option value="1">Orientation
+                          <option value="2">On The Job
+                          <option value="3">On De-mand
+                      </select>
+                      <!-- <script>
+                      function myFu(){
+                              var x = document.getElementById("tpCatagory").value;
+                              document.getElementById("demo").innerHTML = "You selected: " + x;
+
+                          }
+                      </script>  -->
+                  </div>
+            </div>
+            <div class = "col-md-6">
+                  <label class="col-sm-4 control-label">Course</label>
+                  <div class="col-sm-8" >
+                      <select class="form-control" name="courseCategory" id="courseCategory">
+                          <option>General Orientation</option>
+                          <option>Linux Programming</option>
+                          <option>AXE Overview</option>
+                          <option>CBA Overview</option>
+                          <option>IMS Overview</option>
+                          <option>AXE Overview</option>
+                          <option>sth else</option>
+                      </select>
+                  </div>
+          </div>
+              </div>
+        </div>
+        <div>
+            <div class="container" style="background-color: #F6F8F8" >
+          <div class = "course-list container" ng-controller="GetListCtrl">
+
+          <!-- you must add the condition in here  <div {{course.category}} = "Linux Programming"> -->
+                <div ng-repeat="course in coursesList" >
+                    <div class="row" >
+                        <div class="col-md-11"  >
+                              <div class="col-md-12 panel panel-default container" id="a">
+                                    <br>
+                                    <a href="/course/coursedetail/{{course.id}}">
+                                        <div class="col-md-10">
+                                              <div class="row">
+                                                  <div class="col-md-2">
+                                                    <img alt="orientation" class="img-responsive" src = "/img/catalog/orientation.png" width="95px">
+                                                  </div>
+                                                  <div class="col-md-10">
+                                                    <div class="row"><h1 style="color: #000000; font-size:36px"><b>{{ course.name }}</b></h1></div>
+                                                    <div class="row" style="color: #33cc33" ng-bind-html="course.description"><i>{{ course.description }}</i></div>
+                                                  </div>
+                                              </div>
+                                              <br>
+                                        </div>
+                                    </a>
+                                      <div class="col-md-2">
+                                          <div class="row">
+                                           Ratting or sth else
+                                          </div>
+                                          <div class="row">
+                                            <img alt="GeneralOrientation" src="/img/courseicon/user.png" width="50px">
+                                            9/10 <!--right number is defined by admin; left number is changed by user click-->
+                                          </div>
+                                          <div class="row" id="c">
+                                             <button  onClick="fn3()" class="btn btn-success" >
+                                                <span class="glyphicon glyphicon-plus"  ></span>
+                                              </button>
+                                          </div>
+                                      </div>
+                              </div>
+                        </div>
+                    </div>
+                  <!--this function restart when u reload page, MUST CHANGE-->
+                    <script>
+                    var fn3 = (function() {
+                              var first = true;
+                              return function() {
+                                first ? fn1() : fn2();
+                                first = !first;
+                              }
+                            })();
+
+                            function fn1() {
+                              // TODO: change id :"a" to id of {{course.id}} ; id"a" in line 44
+                              document.getElementById("a").style.backgroundColor = "gray";
+                              // in this function we aslo must change the color of title and descri... text
+                              document.getElementById("c").innerHTML = '<button  onClick="fn3()" class="btn btn-danger" ><span class="glyphicon glyphicon-minus"  ></span></button>';
+                            };
+                            function fn2() {
+                              document.getElementById("a").style.backgroundColor = "white";
+                                document.getElementById("c").innerHTML = '<button  onClick="fn3()" class="btn btn-success" ><span class="glyphicon glyphicon-plus"></span></button>';
+                            };
+                    </script>
+               </div>
+          <!--  </div> -->
+         </div>
+       </div>
+        </div>
       </div>
-      <div ng-show="administrator">
+      <div ng-show="adminCourse">
+        <center><h3>This is Course page for admin</h3></center>
+      </div>
+      <div ng-show="adminDashboard">
         <center><h3>This is Administrator page</h3></center>
       </div>
-      <div ng-show="trainerAdmin">
+      <div ng-show="trainerDashboard">
         <center><h3>This is Trainer Administrator page</h3></center>
       </div>
       <div ng-show="traineeAdmin">
