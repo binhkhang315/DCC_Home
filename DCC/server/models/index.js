@@ -29,4 +29,18 @@ Object.keys(db).forEach(function(modelName)
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
+
+// define table associations
+
+// association of table session and training_program
+db.session.belongsTo(db.training_program, { foreignKey: 'belong2TraingProgram' });
+db.training_program.hasMany(db.session, { foreignKey: 'belong2TraingProgram' });
+// association of table session and session_type
+db.session.belongsTo(db.session_type, { foreignKey: 'belong2SessionType' });
+db.session_type.hasMany(db.session, { foreignKey: 'belong2SessionType' });
+
+// association of table session and course
+db.course.belongsTo(db.session, { foreignKey: 'belong2Session' });
+db.session.hasMany(db.course, { foreignKey: 'belong2Session' });
+
 module.exports = db;

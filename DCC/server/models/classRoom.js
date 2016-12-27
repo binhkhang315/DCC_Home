@@ -6,7 +6,7 @@ module.exports = function(sequelize, DataTypes) {
 
         },
 
-        tableName: 'classRoom'
+        tableName: 'class_room'
     });
     return ClassRoom;
 };

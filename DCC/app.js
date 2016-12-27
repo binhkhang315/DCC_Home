@@ -51,30 +51,13 @@ app.use('/course', require('./server/routes/course'));
 app.use('/feedback', require('./server/routes/feedback'));
 //app.use('/session',require('./server/routes/session'));
 
-//models.User.belongsToMany(models.class, {as: 'Trainee', through: models.class_record, foreignKey:'trainee'});
-// models.class.belongsToMany(models.User, {as: 'StudyingClass', through: models.class_record, foreignKey:'class'});
+//create database tables
+models.sequelize.sync({force:false});
 
-models.User.belongsToMany(models.course, {through: models.Feedback});
-models.course.belongsToMany(models.User, {through: models.Feedback});
-
-// models.course.belongsToMany(models.User,{as:'Trainer', through: 'trainer_course', foreignKey: 'course', otherKey:'trainer'});
-// models.class.belongsToMany(models.course,{through: 'course_class'});
-// models.course.belongsToMany(models.class,{through: 'course_class'});
-
-//new database
-models.User.belongsToMany(models.session, {through: models.class});
-
-
-models.class_record.sync({
-    force: false
-});
-models.Feedback.sync({
-    force: false
-});
-models.sequelize.sync({
-    force:false
-});
-//
+//test data query
+models.training_program.findAll({ include: [ models.session ] }).then(function(tasks) {
+  console.log(JSON.stringify(tasks))
+})
 
 
 // Set Port

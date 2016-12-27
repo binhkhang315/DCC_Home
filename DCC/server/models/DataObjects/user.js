@@ -40,7 +40,8 @@ module.exports=
   },
   trainee: {
     type: SequelizeDatatypes.STRING,
-    allowNull: true
+    allowNull: true,
+    defaultValue: 1    
   },
   createdAt:{
     type: SequelizeDatatypes.DATE,

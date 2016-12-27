@@ -1,8 +1,7 @@
 var _courseModel = require('./DataObjects/Course');
 var log = require('../../config/logConfig');
 
-module.exports = function(sequelize)
-{
+module.exports = function(sequelize) {
     var Course = sequelize.define('course', _courseModel, {
         classMethods: {
             getCourses: function(cb)
@@ -36,5 +35,5 @@ module.exports = function(sequelize)
 
         tableName: 'course'
     });
-  return Course;
+    return Course;
 };

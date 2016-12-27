@@ -17,19 +17,19 @@ module.exports =
       type: SequelizeDatatypes.TEXT,
       allowNull: true
     },
-    sessiontype:
-    {
-      type: SequelizeDatatypes.TEXT,
-      allowNull: false
-    },
-    belong2TrainingProgram:
-    {
-        type: SequelizeDatatypes.INTEGER,
-        allowNull: false
-    },
     img:
     {
         type: SequelizeDatatypes.TEXT,
         allowNull: true
+    },
+    belong2TraingProgram:
+    {
+        type: SequelizeDatatypes.INTEGER,
+        allowNull: false
+    },
+    belong2SessionType:
+    {
+        type: SequelizeDatatypes.INTEGER,
+        allowNull: false
     }
 };
