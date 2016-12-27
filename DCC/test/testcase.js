@@ -498,7 +498,7 @@ describe('<Unit test for Course model', function() {
 describe('<Unit test for User model>', function() {
     describe('Method User', function() {
         return it('Test case 1: getUserByID', function(done) {
-            models.User.getUserByID('1', function(user) {
+            models.User.getUserByID('3', function(user) {
                 assert.equal(user.username, 'trainee2');
                 return done();
             })
@@ -508,7 +508,7 @@ describe('<Unit test for User model>', function() {
     describe('', function() {
         return it('Test case 2: getUserByName', function(done) {
             models.User.getUserByName('qwe@gmail.com', function(user) {
-                assert.equal(user.id, '8');
+                assert.equal(user.id, '1');
                 return done();
             })
         });
@@ -586,7 +586,7 @@ describe('<Unit test for feedback function>', function() {
       req
       // .set('Accept','application/json')
       .send({
-        courseId: 10,
+        courseId: 3,
         comment: 'feedback'
         })
       .end(function(err, res) {
@@ -604,7 +604,7 @@ describe('<Unit test for feedback function>', function() {
         req.cookies = globalCookies;
         req
         .send({
-            courseId: 10,
+            courseId: 3,
             comment: 'update feedback'
         })
         .end(function(err,res){
@@ -622,7 +622,7 @@ describe('<Unit test for feedback function>', function() {
           req.cookies = globalCookies;
           req
           .send({
-              courseId: 10,
+              courseId: 3,
           })
           .end(function(err,res) {
             assert.equal(res.body[0].comment, 'update feedback');
@@ -633,7 +633,7 @@ describe('<Unit test for feedback function>', function() {
           afterEach(function() {
               models.Feedback.destroy({
                   where: {
-                      courseID: 10
+                      courseID: 3
                     }
               });
           });
@@ -646,7 +646,7 @@ describe('<Unit test for feedback function>', function() {
           req.cookies = globalCookies;
           req
           .send({
-            courseId: 12,
+            courseId: 5,
             rating: 3
           })
           .end(function(err,res){
@@ -664,7 +664,7 @@ describe('<Unit test for feedback function>', function() {
           req.cookies = globalCookies;
           req
           .send({
-            courseId: 12,
+            courseId: 5,
             rating: 4
           })
           .end(function(err,res){
@@ -682,7 +682,7 @@ describe('<Unit test for feedback function>', function() {
           req.cookies = globalCookies;
           req
           .send({
-            courseId: 12,
+            courseId: 5,
           })
           .end(function(err,res){
             assert.equal(res.body.result, 4);
@@ -694,7 +694,7 @@ describe('<Unit test for feedback function>', function() {
     });
     models.Feedback.destroy({
         where: {
-            courseID: 12
+            courseID: 5
           }
     });
   });

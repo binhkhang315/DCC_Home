@@ -2,29 +2,20 @@ var SequelizeDatatypes = require('sequelize');
 
 module.exports=
 {
-    name:
-    {
-        type: SequelizeDatatypes.TEXT,
-        allowNull: false
-    },
-        description:
-    {
+    comment: {
         type: SequelizeDatatypes.TEXT,
         allowNull: true
     },
-    durationOnClass:
-    {
-        type: SequelizeDatatypes.TIME,
+    rating: {
+        type: SequelizeDatatypes.INTEGER,
         allowNull: true
     },
-    belong2Session:
-    {
+    commentedBy:{
         type: SequelizeDatatypes.INTEGER,
         allowNull: false
     },
-    img:
-    {
-        type: SequelizeDatatypes.TEXT,
+    classId:{
+        type: SequelizeDatatypes.INTEGER,
         allowNull: false
-    }
+    },
 }

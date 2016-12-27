@@ -41,7 +41,7 @@
                   <div ng-repeat="course in coursesList" >
                       <div class="row" >
                           <div class="col-md-11"  >
-                                <div class="col-md-12 panel panel-default container" id="a">
+                                <div class="col-md-12 panel panel-default container" id="{{course.id}}">
                                       <br>
                                       <a href="/course/coursedetail/{{course.id}}">
                                           <div class="col-md-10">
@@ -51,7 +51,7 @@
                                                     </div>
                                                     <div class="col-md-10">
                                                       <div class="row"><h1 style="color: #000000; font-size:36px"><b>{{ course.name }}</b></h1></div>
-                                                      <div class="row" style="color: #33cc33" ><i>"{{ course.description }}"</i></div>
+                                                      <div class="row" style="color: #33cc33" ng-bind-html="course.description"><i>"{{ course.description }}"</i></div>
                                                     </div>
                                                 </div>
                                                 <br>
@@ -86,12 +86,12 @@
 
                               function fn1() {
                                 // TODO: change id :"a" to id of {{course.id}} ; id"a" in line 44
-                                document.getElementById("a").style.backgroundColor = "gray";
+                                document.getElementById("{{course.id}}").style.backgroundColor = "gray";
                                 // in this function we aslo must change the color of title and descri... text
                                 document.getElementById("c").innerHTML = '<button  onClick="fn3()" class="btn btn-danger" ><span class="glyphicon glyphicon-minus"  ></span></button>';
                               };
                               function fn2() {
-                                document.getElementById("a").style.backgroundColor = "white";
+                                document.getElementById("{{course.id}}").style.backgroundColor = "white";
                                   document.getElementById("c").innerHTML = '<button  onClick="fn3()" class="btn btn-success" ><span class="glyphicon glyphicon-plus"></span></button>';
                               };
                       </script>
