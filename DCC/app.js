@@ -69,10 +69,10 @@ models.class_record.sync({
     force: false
 });
 models.Feedback.sync({
-  force: false
+    force: false
 });
 models.sequelize.sync({
-  force:false
+    force:false
 });
 //
 
