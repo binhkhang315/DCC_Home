@@ -1,35 +1,28 @@
 var models = require("../models");
 var express = require('express');
 var router = express.Router();
+var log = require('../../config/logConfig');
 
-var opts = {
-    logDirectory: './client/assets/log',
-    fileNamePattern: 'roll-<DATE>.log',
-    dateFormat: 'YYYY.MM.DD'
-};
-
-var log = require('simple-node-logger').createLogManager(opts).createLogger();
-
-// models.Feedback.sync({
-//   force: false
-// });
+models.Feedback.sync({
+    force: false
+});
 router.post('/comment', function(req, res) {
     var query = {
-        where: {username: req.user.mail}
+        where: {email: req.user.mail}
     };
 
     log.info('/route/feedback : comment for course that its id is ' + req.body.courseId);
-    models.user.findOne(query).then(function(user) {
+    models.User.findOne(query).then(function(user) {
         var queryFeedback = {
             where: {
-                UserId: user.id,
+                userId: user.id,
                 courseId: req.body.courseId
             }
         };
         models.Feedback.findOne(queryFeedback).then(function(feedback) {
             if (feedback === null) {
                 models.Feedback.create({
-                    UserId: user.id,
+                    userId: user.id,
                     comment: req.body.comment,
                     courseId: req.body.courseId,
                 }).then(function() {
@@ -42,10 +35,7 @@ router.post('/comment', function(req, res) {
                     comment: req.body.comment,
                     courseId: req.body.courseId,
                 }, {
-                    where: {
-                        UserId: user.id,
-                        courseId: req.body.courseId,
-                    }
+                    where: queryFeedback
                 }).then(function() {
                     res.send({
                         msg: 'update successfully'
@@ -59,11 +49,11 @@ router.post('/comment', function(req, res) {
 router.post('/rating', function(req, res) {
     log.info('/route/feedback : rating for course that its id is ' + req.body.courseId);
     models.User.findOne({
-        where: {username: req.user.mail}
+        where: {email: req.user.mail}
     }).then(function(user) {
         models.Feedback.findOne({
             where: {
-                UserId: user.id,
+                userId: user.id,
                 courseId: req.body.courseId
             }
         }).then(function(feedback) {
@@ -79,11 +69,10 @@ router.post('/rating', function(req, res) {
                 });
             } else {
                 models.Feedback.update({
-                    rating: req.body.rating,
-                    courseId: req.body.courseId,
+                    rating: req.body.rating
                 }, {
                     where: {
-                        UserId: user.id,
+                        userId: user.id,
                         courseId: req.body.courseId,
                     }
                 }).then(function() {
@@ -96,8 +85,8 @@ router.post('/rating', function(req, res) {
     });
 });
 
-router.post('/showFeedback', function(req, res) {
-    log.info('/route/feedback : show feedback for course that its id is ' + req.body.courseId);
+router.post('/getAllFeedbacks', function(req, res) {
+    log.info('/route/getAllFeedbacks : show all feedbacks for course that its id is ' + req.body.courseId);
     models.Feedback.findAll({
         where: {
             courseId: req.body.courseId
@@ -106,8 +95,19 @@ router.post('/showFeedback', function(req, res) {
         res.send(feedback);
     })
 });
+router.post('/getFeedback', function(req, res) {
+    log.info('/route/getAllFeedbacks : show all feedbacks for course that its id is ' + req.body.courseId);
+    models.Feedback.findOne({
+        where: {
+            userId: req.body.userId,
+            courseId: req.body.courseId
+        }
+    }).then(function(feedback) {
+        res.send(feedback);
+    })
+});
 
-router.post('/showAverageRating',function(req,res){
+router.post('/getAverageRating',function(req,res){
     log.info('/route feedback : show average rating for a course');
     models.Feedback.findAll({
         where:{

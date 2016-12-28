@@ -517,8 +517,8 @@ describe('<Unit test for User model>', function() {
 
 describe('<Unit test for userProfile function>', function() {
     describe('Send data to font-end', function() {
-        return it('Get /users/userprofileController ', function(done) {
-            var req = request(route).get('/users/userprofileController');
+        return it('Get /users/getUserInfo ', function(done) {
+            var req = request(route).get('/users/getUserInfo');
             req.cookies = globalCookies;
             req
             .set('Accept','application/json')

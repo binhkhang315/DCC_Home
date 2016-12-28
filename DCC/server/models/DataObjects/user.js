@@ -43,15 +43,6 @@ module.exports=
         allowNull: true,
         defaultValue: 1
     },
-    createdAt:{
-        type: SequelizeDatatypes.DATE,
-        allowNull:false
-    },
-    updatedAt:
-    {
-        type: SequelizeDatatypes.DATE,
-        allowNull: false
-    },
     belong2Team:
     {
         type: SequelizeDatatypes.INTEGER,
