@@ -12,12 +12,11 @@ module.exports=
         type: SequelizeDatatypes.TEXT,
         allowNull: true
     },
-    durationOnClass:
+    duration:
     {
         type: SequelizeDatatypes.TIME,
         allowNull: true
     },
-
     img:
     {
         type: SequelizeDatatypes.TEXT,
@@ -33,7 +32,7 @@ module.exports=
         type: SequelizeDatatypes.TEXT,
         allowNull: true
     },
-    belong2Session:
+    sessionId:
     {
         type: SequelizeDatatypes.INTEGER,
         allowNull: false

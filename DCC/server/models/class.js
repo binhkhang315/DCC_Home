@@ -1,6 +1,6 @@
 var _classModel = require("./DataObjects/class");
 module.exports = function(sequelize, DataTypes) {
-    var Class = sequelize.define('class', _classModel, {
+    var Class = sequelize.define('Class', _classModel, {
         classMethods: {
             getClass: function(cb)
             {

@@ -10,7 +10,7 @@ module.exports=
         type: SequelizeDatatypes.INTEGER,
         allowNull: true
     },
-    commentedBy:{
+    userId:{
         type: SequelizeDatatypes.INTEGER,
         allowNull: false
     },

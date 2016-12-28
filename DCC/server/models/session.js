@@ -2,7 +2,7 @@ var log = require('../../config/logConfig');
 var _sessionModel=require('./DataObjects/session');
 
 module.exports = function(sequelize, DataTypes) {
-    var Session = sequelize.define('session', _sessionModel, {
+    var Session = sequelize.define('Session', _sessionModel, {
         classMethods: {
             getAllSession: function(cb) {
                 log.info('/models/session: getAllSession() : ')

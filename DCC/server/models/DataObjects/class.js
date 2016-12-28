@@ -4,27 +4,17 @@ module.exports=
 {
     className:
     {
-      type: SequelizeDatatypes.TEXT,
-      allowNull: true
+        type: SequelizeDatatypes.TEXT,
+        allowNull: true
     },
-    classRoom:
+    startTime:
     {
-        type: SequelizeDatatypes.INTEGER,
-        allowNull: false
+        type: SequelizeDatatypes.TIME,
+        allowNull: true
     },
-    sessionId:
+    isClosed:
     {
-        type: SequelizeDatatypes.INTEGER,
-        allowNull: false
-    },
-    trainer:
-    {
-        type: SequelizeDatatypes.INTEGER,
-        allowNull: false
-    },
-      isClosed:
-    {
-        type: SequelizeDatatypes.INTEGER,
+        type: SequelizeDatatypes.BOOLEAN,
         allowNull: true
     },
     maxAttendant:
@@ -32,4 +22,19 @@ module.exports=
         type: SequelizeDatatypes.INTEGER,
         allowNull: true
     },
+    courseId:
+    {
+        type: SequelizeDatatypes.INTEGER,
+        allowNull: false
+    },
+    classRoomId:
+    {
+        type: SequelizeDatatypes.INTEGER,
+        allowNull: false
+    },
+    trainerId:
+    {
+        type: SequelizeDatatypes.INTEGER,
+        allowNull: false
+    }
 }

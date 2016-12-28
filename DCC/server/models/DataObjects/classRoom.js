@@ -9,7 +9,7 @@ module.exports=
     },
     laptop:
     {
-        type: SequelizeDatatypes.INTEGER,
+        type: SequelizeDatatypes.BOOLEAN,
         allowNull: true
     },
     date:

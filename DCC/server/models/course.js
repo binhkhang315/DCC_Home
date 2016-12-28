@@ -2,7 +2,7 @@ var _courseModel = require('./DataObjects/Course');
 var log = require('../../config/logConfig');
 
 module.exports = function(sequelize) {
-    var Course = sequelize.define('course', _courseModel, {
+    var Course = sequelize.define('Course', _courseModel, {
         classMethods: {
             getCourses: function(cb)
             {

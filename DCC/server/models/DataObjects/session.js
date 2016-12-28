@@ -22,12 +22,12 @@ module.exports =
         type: SequelizeDatatypes.TEXT,
         allowNull: true
     },
-    belong2TraingProgram:
+    traingProgramId:
     {
         type: SequelizeDatatypes.INTEGER,
         allowNull: false
     },
-    belong2SessionType:
+    sessionTypeId:
     {
         type: SequelizeDatatypes.INTEGER,
         allowNull: false

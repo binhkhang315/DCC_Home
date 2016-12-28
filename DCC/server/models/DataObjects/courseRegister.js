@@ -1,20 +1,15 @@
 var SequelizeDatatypes = require('sequelize');
 
-module.exports=
+module.exports =
 {
-    isPassed:
-    {
-        type: SequelizeDatatypes.BOOLEAN,
-        allowNull: false
-    },
-    classId:
-    {
-        type: SequelizeDatatypes.INTEGER,
-        allowNull: false
-    },
     traineeId:
     {
         type: SequelizeDatatypes.INTEGER,
         allowNull: false
-    }
+    },
+    courseId:
+    {
+        type: SequelizeDatatypes.INTEGER,
+        allowNull: false
+    },
 }
