@@ -40,7 +40,7 @@
       </li>
       <li data-toggle="tab" ng-show="trainee"
       ng-click="userprofile = 0; adminCourse=0; trainerCourse=0;traineeCourse=1; adminDashboard=0; trainerDashboard = 0; traineeDashboard=0">
-          <a href="#">Course Resignter</a>
+          <a href="#">Courses Register</a>
       </li>
       <li data-toggle="tab" ng-show="trainee || admin || trainer"
       ng-click="userprofile = 1; adminCourse=0; trainerCourse=0;traineeCourse=0; adminDashboard=0; trainerDashboard = 0; traineeDashboard=0">
@@ -48,189 +48,173 @@
       </li>
   </ul>
   <div>
-    <div ng-show="traineeDashboard">
+    <div ng-show="traineeDashboard" ng-controller="CourseRegisterController">
       <body style="background-color: #F6F8F8" >
         <br><br>
-          <div class="container" >
+          <div class="container">
             <!--list of training program in here and use ng-repeat-->
-              <div class="row panel panel-default container" style="background-color:#ffffff;">
-              <br>
-                <a data-toggle="collapse" data-target="#demo" >
-                <div class="col-md-10">
-                  <div class="row">
-                    <div class="col-md-2">
-                      <img alt="orientation" class="img-responsive" src = "/img/catalog/orientation.png" width="95px">
-                    </div>
-                    <div class="col-md-10">
-                      <div class="row"><h1 style="color: #000000; font-size:36px"><b>ORIENTATION</b></h1></div>
-                      <div class="row" style="color: #33cc33" ><i>This is description of ORIENTATION</i></div>
-                    </div>
-                  </div>
-                  <br>
-                </div>
-                <div class="col-md-2" align="center">
-                  <br><br>
-                  <img alt="downarrow" src="/img/courseicon/downarrow.png" width="60px">
-                </div>
-                </a>
-              </div>
-
-              <div id="demo" class="collapse"> <!-- put outside div training program-->
-              <!--list of courses in here and use ng-repeat-->
-              <div class="row" >
-              <div class="col-md-1"></div>
-              <div class="col-md-11"  >
-                    <div class="col-md-12 panel panel-default container">
-                    <br>
-                    <a href="/users/trainingprogram/catalog">
-                      <div class="col-md-12">
-                        <div class="row">
-                          <div class="col-md-2">
-                            <img alt="orientation" class="img-responsive" src = "/img/catalog/orientation.png" width="95px">
+            <div  >
+                <div ng-repeat="trainingprogram in trainingProgramList" >
+                      <div class="row panel panel-default container" style="background-color:#ffffff;">
+                      <br>
+                        <a data-toggle="collapse" data-target="#{{ trainingprogram.id }}" ng-click = "trainingProgramDetail(trainingprogram.id )" >
+                        <div class="col-md-10 col-sm-10 col-xs-10">
+                          <div class="row">
+                            <div class="col-md-2 col-sm-2 ">
+                              <ng-avatar initials="{{ trainingprogram.name }}" max-length="1" auto-color="true" round-shape="true"  width="95"></ng-avatar>
+                            </div>
+                            <div class="col-md-10  col-sm-10 col-xs-10">
+                              <div class="row"><h1 style="color: #000000; font-size:36px"><b>{{ trainingprogram.name }}</b></h1></div>
+                              <div class="row" style="color: #33cc33" ><i>This is description of {{ trainingprogram.name }}</i></div>
+                            </div>
                           </div>
-                          <div class="col-md-10">
-                            <div class="row"><h1 style="color: #000000; font-size:36px"><b>Linux Programing</b></h1></div>
-                            <div class="row" style="color: #33cc33" ><i>This is description of Linux Programing</i></div>
-                          </div>
-
+                          <br>
                         </div>
-                        <br/>
-                        <div class="row">
-                          <div class="progress">
-                             <div class="progress-bar progress-bar-striped active" role="progressbar"
-                             aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
-                             40%
-                             <!-- when user learn course. prosses bar change, maybe you must change % of style by aria-valuenow and remove style width-->
-                             </div>
+                        <div class="col-md-2 col-sm-2 col-xs-2" align="center">
+                          <br><br>
+                          <img alt="downarrow" src="/img/courseicon/downarrow.png" width="60px">
                         </div>
+                       </a>
                       </div>
+                      <div id="{{ trainingprogram.id }}" class="collapse"> <!-- put outside div training program-->
+                              <!--list of courses in here and use ng-repeat-->
+                              <div class="row"  ng-repeat = "session in sessionByTrainingProgramList" >
+                                  <div class="col-md-1 col-sm-1 col-xs-1"></div>
+                                  <div class="col-md-11 col-sm-11 col-xs-11"  >
+                                        <div class="col-md-12 col-sm-12 col-xs-12 panel panel-default container">
+                                        <br>
+                                        <a href="/users/trainingprogram/session/{{session.id}}">
+                                          <div class="col-md-12 col-sm-12 col-xs-12 ">
+                                            <div class="row">
+                                              <div class="col-md-2 col-sm-2 ">
+                                                <ng-avatar initials="{{session.name}}" max-length="1" auto-color="true" round-shape="true"  width="95"></ng-avatar>
+                                              </div>
+                                              <div class="col-md-10 col-sm-10 col-xs-10">
+                                                <div class="row"><h1 style="color: #000000; font-size:36px"><b>{{session.name}}</b></h1></div>
+                                                <div class="row" style="color: #33cc33" ><i>This is description of {{session.name}}</i></div>
+                                              </div>
+                                            </div>
+                                            <br/>
+                                            <div class="col-md-12 col-sm-12 col-xs-12 " >
+                                              <div class="progress" >
+                                                 <div class="progress-bar progress-bar-striped active" role="progressbar"
+                                                 aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+                                                 40%
+                                                 <!-- when user learn course. prosses bar change, maybe you must change % of style by aria-valuenow and remove style width-->
+                                                 </div>
+                                            </div>
+                                          </div>
+                                          </div>
+                                        </a>
+                                        </div>
+                                  </div>
+                              </div>
                       </div>
-                          </a>
-                    </div>
-                  </div>
-              </div>
+                </div>
             </div>
           </div>
-
       </body>
     </div>
-      <div ng-show="traineeCourse">
+    <div ng-show="traineeCourse" ng-controller = "CourseRegisterController">
         <center><h3>This is Course page for trainee</h3></center>
         <div>
           <div class = "row">
-          <div class="form-group">
-            <div class = "col-md-6">
-                  <label class="col-sm-4 control-label">Training Program</label>
-                  <div class="col-sm-8">
-                      <select class="form-control" name="trainingprogramCategory" id = "tpCatagory" onchange="myFu()">
-                          <option value="1">Orientation
-                          <option value="2">On The Job
-                          <option value="3">On De-mand
-                      </select>
-                      <!-- <script>
-                      function myFu(){
-                              var x = document.getElementById("tpCatagory").value;
-                              document.getElementById("demo").innerHTML = "You selected: " + x;
-
-                          }
-                      </script>  -->
-                  </div>
-            </div>
-            <div class = "col-md-6">
-                  <label class="col-sm-4 control-label">Course</label>
-                  <div class="col-sm-8" >
-                      <select class="form-control" name="courseCategory" id="courseCategory">
-                          <option>General Orientation</option>
-                          <option>Linux Programming</option>
-                          <option>AXE Overview</option>
-                          <option>CBA Overview</option>
-                          <option>IMS Overview</option>
-                          <option>AXE Overview</option>
-                          <option>sth else</option>
-                      </select>
-                  </div>
-          </div>
+            <div class="form-group">
+              <div class = "col-md-6">
+                    <label class="col-sm-4 control-label">Training Program</label>
+                    <div class="col-sm-8">
+                        <select class="form-control" name="trainingprogramCategory"
+                            ng-options ="trainingprogram.name for trainingprogram in trainingProgramList track by trainingprogram.id "
+                            ng-change = "updateChange()"
+                            ng-model = "trainingProgramIDSelected">
+                        </select>
+                        {{trainingProgramIDSelected.id}}
+                    </div>
               </div>
-        </div>
-        <div>
-            <div class="container" style="background-color: #F6F8F8" >
-          <div class = "course-list container" ng-controller="GetListCtrl">
-
-          <!-- you must add the condition in here  <div {{course.category}} = "Linux Programming"> -->
-                <div ng-repeat="course in coursesList" >
-                    <div class="row" >
-                        <div class="col-md-11"  >
-                              <div class="col-md-12 panel panel-default container" id="a">
-                                    <br>
-                                    <a href="/course/coursedetail/{{course.id}}">
-                                        <div class="col-md-10">
-                                              <div class="row">
-                                                  <div class="col-md-2">
-                                                    <img alt="orientation" class="img-responsive" src = "/img/catalog/orientation.png" width="95px">
+              <div class = "col-md-6">
+                    <label class="col-sm-4 control-label">Sessions</label>
+                    <div class="col-sm-8" >
+                        <select class="form-control" name="courseCategory"
+                                ng-options ="session.name for session in sessionByTrainingProgramList track by session.id "
+                                ng-change = "updateCourseList()"
+                                ng-model = "sessionIDSelected ">
+                            <!-- <option ng-repeat="session in sessionByTrainingProgramList" value={{session.id}} >{{ session.name }}</option> -->
+                        </select>
+                        {{sessionIDSelected.id}}
+                    </div>
+              </div>
+            </div>
+          </div>
+          <div class="container" style="background-color: #F6F8F8" >
+                    <div class = "course-list container">
+                        <div ng-repeat="course in courseBySessionIDList" >
+                            <div class="row" >
+                                <div class="col-md-11"  >
+                                      <div class="col-md-12 panel panel-default container" >
+                                            <br>
+                                            <a href="/course/coursedetail/{{course.id}}">
+                                                <div class="col-md-10">
+                                                      <div class="row">
+                                                          <div class="col-md-2">
+                                                            <ng-avatar initials="{{ course.name }}" max-length="1" auto-color="true" round-shape="true"  width="95"></ng-avatar>
+                                                          </div>
+                                                          <div class="col-md-10">
+                                                            <div class="row"><h1 style="color: #000000; font-size:36px"><b>{{ course.name }}</b></h1></div>
+                                                            <div class="row" style="color: #33cc33" ng-bind-html="course.description"><i>{{ course.description }}</i></div>
+                                                          </div>
+                                                      </div>
+                                                      <br>
+                                                </div>
+                                            </a>
+                                              <div class="col-md-2">
+                                                  <div class="row">
+                                                   Ratting or sth else
                                                   </div>
-                                                  <div class="col-md-10">
-                                                    <div class="row"><h1 style="color: #000000; font-size:36px"><b>{{ course.name }}</b></h1></div>
-                                                    <div class="row" style="color: #33cc33" ng-bind-html="course.description"><i>{{ course.description }}</i></div>
+                                                  <div class="row">
+                                                    <img alt="GeneralOrientation" src="/img/courseicon/user.png" width="50px">
+                                                        9/10 <!--right number is defined by admin; left number is changed by user click-->
+                                                  </div>
+                                                  <div class="row">
+                                                     <toggle ng-model="register" ng-change="RegisterCourse(course.id, register)" on="Register" off="UnRegister" onstyle="btn-success" offstyle="btn-danger"></toggle>
+                                                     {{register}}
                                                   </div>
                                               </div>
-                                              <br>
-                                        </div>
-                                    </a>
-                                      <div class="col-md-2">
-                                          <div class="row">
-                                           Ratting or sth else
-                                          </div>
-                                          <div class="row">
-                                            <img alt="GeneralOrientation" src="/img/courseicon/user.png" width="50px">
-                                            9/10 <!--right number is defined by admin; left number is changed by user click-->
-                                          </div>
-                                          <div class="row" id="c">
-                                             <button  onClick="fn3()" class="btn btn-success" >
-                                                <span class="glyphicon glyphicon-plus"  ></span>
-                                              </button>
-                                          </div>
+                                              {{registeredList.courseRegister}}
                                       </div>
+                                </div>
+                            </div>
+                       </div>
+                       <div type="button" class="btn btn-info btn-lg" data-toggle="modal" href="#confirmModal">Confirm</div>
+                       <div id="confirmModal" class="modal fade" role="dialog">
+                          <div class="modal-dialog">
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Confirm Courses Register</h4>
                               </div>
+                              <div class="modal-body">
+                                <p>Do you want register courses</p>
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-success" onclick="confirmRegister()" data-dismiss="modal">Yes</button>
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                              </div>
+                            </div>
+                          </div>
                         </div>
                     </div>
-                  <!--this function restart when u reload page, MUST CHANGE-->
-                    <script>
-                    var fn3 = (function() {
-                              var first = true;
-                              return function() {
-                                first ? fn1() : fn2();
-                                first = !first;
-                              }
-                            })();
-
-                            function fn1() {
-                              // TODO: change id :"a" to id of {{course.id}} ; id"a" in line 44
-                              document.getElementById("a").style.backgroundColor = "gray";
-                              // in this function we aslo must change the color of title and descri... text
-                              document.getElementById("c").innerHTML = '<button  onClick="fn3()" class="btn btn-danger" ><span class="glyphicon glyphicon-minus"  ></span></button>';
-                            };
-                            function fn2() {
-                              document.getElementById("a").style.backgroundColor = "white";
-                                document.getElementById("c").innerHTML = '<button  onClick="fn3()" class="btn btn-success" ><span class="glyphicon glyphicon-plus"></span></button>';
-                            };
-                    </script>
-               </div>
-          <!--  </div> -->
-         </div>
-       </div>
+          </div>
         </div>
-      </div>
-      <div ng-show="adminCourse">
+    </div>
+    <div ng-show="adminCourse">
         <center><h3>This is Course page for admin</h3></center>
-      </div>
+    </div>
       <div ng-show="adminDashboard">
         <center><h3>This is Administrator page</h3></center>
       </div>
       <div ng-show="trainerDashboard">
         <center><h3>This is Trainer Administrator page</h3></center>
-      </div>
-      <div ng-show="traineeAdmin">
-        <center><h3>This is Trainee Administrator page</h3></center>
       </div>
       <div class="panel panel-info col-xs-12 col-sm-12" ng-show="userprofile">
           <div class="panel-heading">
@@ -271,8 +255,8 @@
                 </div>
               </div>
         </div>
-        </div>
-      </div>
-    </div>
+  </div>
+
+     </div>
   </body>
 </html>

@@ -55,6 +55,9 @@ app.use('/feedback', require('./server/routes/feedback'));
 
 models.User.belongsToMany(models.course, {through: models.Feedback});
 models.course.belongsToMany(models.User, {through: models.Feedback});
+models.training_program.sync({
+  force: false
+});
 
 // models.course.belongsToMany(models.User,{as:'Trainer', through: 'trainer_course', foreignKey: 'course', otherKey:'trainer'});
 // models.class.belongsToMany(models.course,{through: 'course_class'});

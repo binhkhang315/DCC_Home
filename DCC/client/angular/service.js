@@ -1,4 +1,5 @@
 var courseService = angular.module('course',['ngCookies']);
+
 courseService.service('CourseList',['$http','$q',function($http,$q){
     this.getCourses = function(){
       var deferred = $q.defer();

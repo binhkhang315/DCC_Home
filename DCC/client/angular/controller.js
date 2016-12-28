@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp', ['ngCookies', 'ngTagsInput', 'textAngular', 'ngMaterial', 'materialCalendar', 'course']);
+var myApp = angular.module('myApp', ['ngCookies', 'ngTagsInput', 'textAngular', 'ngMaterial', 'materialCalendar', 'course', 'courseRegister', 'ui.toggle', 'ngAvatar']);
 
 // creat angular controller
 myApp.controller('ToastCtrl', function($scope, $rootScope, $mdToast) {

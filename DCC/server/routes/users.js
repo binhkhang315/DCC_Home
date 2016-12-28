@@ -179,14 +179,29 @@ router.get('/logout', function(req, res) {
 //----------------------------------------------------
 router.get('/trainingprogram', function(req,res){
     log.info('/routes/trainingprogram: GET /users/trainingprogram');
-    if(req.isAuthenticated())
       res.render('trainingprogram');
-    else res.render('index.html');
 })
-router.get('/trainingprogram/catalog', function(req,res){
+
+router.get('/trainingprogram/list', function(req, res) {
+    log.info('/routes/users: get trainingprogram list data');
+    models.training_program.getTraining(function(trainingprogram) {
+        var datasend = {
+            trainingprogram: trainingprogram,
+            msg:'send list success'
+        };
+        res.send(datasend);
+    });
+})
+
+router.get('/trainingprogram/session/', function(req,res){
     log.info('/routes/trainingprogram: GET /users/trainingprogram');
     if(req.isAuthenticated())
-      res.render('trainingprogramcatalog');
+      res.render('sessiondetail');
     else res.render('index.html');
 })
+router.get('/trainingprogram/session/:id', function(req, res) {
+    res.render('sessiondetail');
+    log.info('/route/course: GET /course/session/:id');
+});
+
 module.exports = router;

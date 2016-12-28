@@ -25,7 +25,6 @@ router.post('/getCourse', function(req, res) {
         });
     });
 });
-
 // add course to database
 router.post('/addCourse', function(req, res) {
     log.info('/routes/course: Add course :' + req.body);
@@ -108,6 +107,17 @@ router.get('/list', function(req, res) {
     models.course.getCourses(function(course) {
         var datasend = {
             course: course,
+            msg:'send list success'
+        };
+        res.send(datasend);
+    });
+});
+
+router.get('/list/byCategory', function(req, res) {
+    log.info('/routes/course: get course list data');
+    models.course.getByCategory(function(courseListByCategory) {
+        var datasend = {
+            courseListByCategory: courseListByCategory,
             msg:'send list success'
         };
         res.send(datasend);

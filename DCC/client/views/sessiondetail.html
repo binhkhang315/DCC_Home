@@ -5,7 +5,7 @@
 
 
     <body>
-      <div style="background-color: #F6F8F8">
+      <div style="background-color: #F6F8F8"  ng-controller="CourseRegisterController">
       <div class="intro-header carousel slide" data-ride="carousel" style="height=100%" style="background-color: #F6F8F8">
         <div class="carousel-inner" role="listbox">
           <div
@@ -16,9 +16,9 @@
                                                     -moz-background-size: cover;
                                                     -o-background-size: cover;
                                                     background-size: cover;">
-                <p class="slidertext">LINUX PROGAMMING</p>
+                <p class="slidertext">{{session.name}}</p>
                 <p class="slidertextdislaynumberofcourse">10 sessions</p>
-                <p class="slidertextdescription "><i>This is sciption of Linux programming</i></p>
+                <p class="slidertextdescription "><i>This is sciption of {{session.name}}</i></p>
             </div>
         </div>
       </div>
@@ -36,10 +36,10 @@
       <br><br>
         <div class="container" style="background-color: #F6F8F8" >
             <!--list of courses in here and use ng-repeat-->
-            <div class = "course-list container" ng-controller="GetListCtrl">
+            <div class = "course-list container" >
 
             <!-- you must add the condition in here  <div {{course.category}} = "Linux Programming"> -->
-                  <div ng-repeat="course in coursesList" >
+                  <div ng-repeat="course in courseBySessionIDList" >
                       <div class="row" >
                           <div class="col-md-11"  >
                                 <div class="col-md-12 panel panel-default container" id="a">
@@ -48,7 +48,7 @@
                                           <div class="col-md-10">
                                                 <div class="row">
                                                     <div class="col-md-2">
-                                                      <img alt="orientation" class="img-responsive" src = "/img/catalog/orientation.png" width="95px">
+                                                      <ng-avatar initials="{{ course.name }}" max-length="1" auto-color="true" round-shape="true"  width="95"></ng-avatar>
                                                     </div>
                                                     <div class="col-md-10">
                                                       <div class="row"><h1 style="color: #000000; font-size:36px"><b>{{ course.name }}</b></h1></div>

@@ -12,6 +12,15 @@ module.exports = function(sequelize, DataTypes) {
     },
   },{
       classMethods:{
+        getTraining: function(cb)
+        {
+          log.info('/models/course: getCourses() : ');
+          var query =
+          {
+
+          };
+          Trainingprogram.findAll(query).then(cb);
+        },
           getTrainingByID: function(idTP,cb){
               log.info('/models/user: getTrainingByID :'+ idTP);
               var query={
