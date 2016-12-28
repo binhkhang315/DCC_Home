@@ -32,6 +32,10 @@ module.exports=
         type: SequelizeDatatypes.TEXT,
         allowNull: true
     },
+    isDeleted:{
+        type: SequelizeDatatypes.BOOLEAN,
+        allowNull: true
+    },
     sessionId:
     {
         type: SequelizeDatatypes.INTEGER,
