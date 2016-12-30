@@ -47,7 +47,7 @@ router.post('/addCourse', function(req, res) {
                     test: req.body.courseTest,
                     documents: req.body.courseDocuments,
                     isDeleted:  0,
-                    sessionId: req.body.sessionId,
+                    sessionId: req.body.courseSession,
                     img: '/img/course/default.png',
                 }).then(function() {
                     res.send({
@@ -66,17 +66,17 @@ router.post('/updateCourse', function(req, res) {
         force: false
     }).then(function() {
         models.Course.update({
-            name: req.body.courseName,
-            description: req.body.courseDescription,
-            duration: req.body.courseDuration,
-            test: req.body.courseTest,
-            documents: req.body.courseDocuments,
-            isDeleted:  req.body.isDeleted,
-            sessionId: req.body.sessionId,
-            img: req.body.img,
+            name: req.body.courseNameEdit,
+            description: req.body.courseDescriptionEdit,
+            duration: req.body.courseDurationEdit,
+            test: req.body.courseTestEdit,
+            documents: req.body.courseDocumentsEdit,
+            isDeleted:  0,
+            sessionId: req.body.courseSessionEdit,
+            img:  '/img/course/default.png',
         }, {
             where: {
-                id: req.body.courseId
+                id: req.body.courseIDEdit
             }
         }).then(function() {
             res.send({
@@ -87,15 +87,15 @@ router.post('/updateCourse', function(req, res) {
 });
 
 // mark course as deleted (isDeleted = true)
-router.post('/deleteCourse', function(req, res) {
+router.post('/isDeletedCourse', function(req, res) {
     log.info('Get Delete Command');
-    models.Course.getByID(req.body.courseId, function(result) {
+    models.Course.getByID(req.body.courseIDDelete, function(result) {
         if (result) {
             models.Course.update({
                 isDeleted: true
             }, {
                 where: {
-                    id: req.body.courseId
+                    id: req.body.courseIDDelete
                 }
             });
             res.send({
@@ -111,13 +111,24 @@ router.post('/deleteCourse', function(req, res) {
 
 router.get('/list', function(req, res) {
     log.info('/routes/course: get course list data');
-    models.Course.getCourses(function(courses) {
+    // models.Course.getCourses(function(courses) {
+    //     var datasend = {
+    //         courses: courses,
+    //         msg:'send list success'
+    //     };
+    //     res.send(datasend);
+    // });
+    models.Course.findAll({
+        where:{isDeleted: false},
+        include: [ models.Session ]
+    }).then(function(courses) {
         var datasend = {
-            courses: courses,
+            course: courses,
             msg:'send list success'
         };
         res.send(datasend);
-    });
+    })
+
 });
 
 router.get('/', function(req, res) {

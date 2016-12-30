@@ -36,9 +36,14 @@ module.exports=
         type: SequelizeDatatypes.BOOLEAN,
         allowNull: true
     },
-    sessionId:
+    courseTypeId:
     {
         type: SequelizeDatatypes.INTEGER,
         allowNull: false
-    }
+    },
+    traingProgramId:
+    {
+        type: SequelizeDatatypes.INTEGER,
+        allowNull: false
+    },
 }

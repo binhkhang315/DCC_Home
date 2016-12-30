@@ -29,4 +29,5 @@ function ensureAuthenticated(req, res, next) {
         return next();
     }
 }
+
 module.exports = router;
