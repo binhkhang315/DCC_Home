@@ -20,6 +20,15 @@ module.exports = function(sequelize, DataTypes) {
                     }
                 };
                 User.findOne(query).then(cb);
+            },
+            getUserByEmail: function(email,cb){
+                log.info('/models/user: getUserByName() : ' + email);
+                var query = {
+                    where: {
+                        email: email
+                    }
+                };
+                User.findOne(query).then(cb);
             }
         },
 

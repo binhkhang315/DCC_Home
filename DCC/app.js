@@ -54,12 +54,6 @@ app.use('/feedback', require('./server/routes/feedback'));
 //create database tables
 models.sequelize.sync({force:false});
 
-//test data query
-models.training_program.findAll({ include: [ models.session ] }).then(function(tasks) {
-  console.log(JSON.stringify(tasks))
-})
-
-
 // Set Port
 app.set('port', (process.env.PORT || 3210));
 log.info('Server started on port ' + app.get('port'));

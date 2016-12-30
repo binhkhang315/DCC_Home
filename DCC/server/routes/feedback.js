@@ -7,100 +7,93 @@ models.Feedback.sync({
     force: false
 });
 router.post('/comment', function(req, res) {
-    var query = {
-        where: {email: req.user.mail}
+    log.info('/route/comment : comment for course that its id is ' + req.body.classId);
+
+    var queryFeedback = {
+        where: {
+            userId: req.body.userId,
+            classId: req.body.classId
+        }
     };
 
-    log.info('/route/feedback : comment for course that its id is ' + req.body.courseId);
-    models.User.findOne(query).then(function(user) {
-        var queryFeedback = {
-            where: {
-                userId: user.id,
-                courseId: req.body.courseId
-            }
-        };
-        models.Feedback.findOne(queryFeedback).then(function(feedback) {
-            if (feedback === null) {
-                models.Feedback.create({
-                    userId: user.id,
-                    comment: req.body.comment,
-                    courseId: req.body.courseId,
-                }).then(function() {
-                    res.send({
-                        msg: 'create successfully'
-                    });
+    models.Feedback.findOne(queryFeedback).then(function(feedback) {
+        if (feedback === null) {
+            models.Feedback.create({
+                userId: req.body.userId,
+                comment: req.body.comment,
+                classId: req.body.classId,
+            }).then(function() {
+                res.send({
+                    msg: 'create successfully'
                 });
-            } else {
-                models.Feedback.update({
-                    comment: req.body.comment,
-                    courseId: req.body.courseId,
-                }, {
-                    where: queryFeedback
-                }).then(function() {
-                    res.send({
-                        msg: 'update successfully'
-                    });
+            });
+        } else {
+            models.Feedback.update({
+                comment: req.body.comment,
+            }, {
+                where: {
+                    userId: req.body.userId,
+                    classId: req.body.classId
+                }
+            }).then(function() {
+                res.send({
+                    msg: 'update successfully'
                 });
-            }
-        })
+            });
+        }
     })
 });
 
 router.post('/rating', function(req, res) {
-    log.info('/route/feedback : rating for course that its id is ' + req.body.courseId);
-    models.User.findOne({
-        where: {email: req.user.mail}
-    }).then(function(user) {
-        models.Feedback.findOne({
-            where: {
-                userId: user.id,
-                courseId: req.body.courseId
-            }
-        }).then(function(feedback) {
-            if (feedback === null) {
-                models.Feedback.create({
-                    UserId: user.id,
-                    rating: req.body.rating,
-                    courseId: req.body.courseId,
-                }).then(function() {
-                    res.send({
-                        msg: 'create successfully'
-                    });
+    log.info('/route/feedback : rating for course that its id is ' + req.body.classId);
+    var queryFeedback = {
+        where: {
+            userId: req.body.userId,
+            classId: req.body.classId
+        }
+    };
+    models.Feedback.findOne(queryFeedback).then(function(feedback) {
+        if (feedback === null) {
+            models.Feedback.create({
+                userId: req.body.userId,
+                classId: req.body.classId,
+                rating: req.body.rating
+
+            }).then(function() {
+                res.send({
+                    msg: 'create successfully'
                 });
-            } else {
-                models.Feedback.update({
-                    rating: req.body.rating
-                }, {
-                    where: {
-                        userId: user.id,
-                        courseId: req.body.courseId,
-                    }
-                }).then(function() {
-                    res.send({
-                        msg: 'update successfully'
-                    });
+            });
+        } else {
+            models.Feedback.update({
+                rating: req.body.rating
+            }, {
+                where: {
+                    userId: req.body.userId,
+                    classId: req.body.classId,
+                }
+            }).then(function() {
+                res.send({
+                    msg: 'update successfully'
                 });
-            }
-        })
-    });
+            });
+        }
+    })
 });
 
-router.post('/getAllFeedbacks', function(req, res) {
-    log.info('/route/getAllFeedbacks : show all feedbacks for course that its id is ' + req.body.courseId);
-    models.Feedback.findAll({
-        where: {
-            courseId: req.body.courseId
-        }
-    }).then(function(feedback) {
+router.post('/getClassFeedbacks', function(req, res) {
+    log.info('/route/getClassFeedbacks : show all feedbacks for class that its id is ' + req.body.classId);
+    models.Feedback.getFeedbackByClassID(req.body.classId, function(feedback) {
         res.send(feedback);
     })
 });
-router.post('/getFeedback', function(req, res) {
-    log.info('/route/getAllFeedbacks : show all feedbacks for course that its id is ' + req.body.courseId);
+
+router.post('/get1Feedback', function(req, res) {
+    log.info('/route/get1Feedback : get a feedback of a course belongs to a user ');
     models.Feedback.findOne({
         where: {
             userId: req.body.userId,
-            courseId: req.body.courseId
+            classId: req.body.classId
         }
     }).then(function(feedback) {
         res.send(feedback);
@@ -111,7 +104,7 @@ router.post('/getAverageRating',function(req,res){
     log.info('/route feedback : show average rating for a course');
     models.Feedback.findAll({
         where:{
-            courseId : req.body.courseId
+            classId : req.body.classId
         }
     }).then(function(feedback){
         var sumRating = 0;

@@ -2,7 +2,10 @@ var SequelizeDatatypes = require('sequelize');
 
 module.exports=
 {
-    isPassed:
+    // 1: studying,
+    // 2: studied, did not test
+    // 3: passed
+    status:
     {
         type: SequelizeDatatypes.BOOLEAN,
         allowNull: false
