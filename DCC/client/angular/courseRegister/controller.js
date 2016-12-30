@@ -1,19 +1,21 @@
 var myApp = angular.module('myApp');
 
 myApp.controller('CourseRegisterController', function($scope, $rootScope, CourseRegisterService) {
+    $scope.sessionByTrainingProgramList = [];
 
     $scope.trainingProgramList =CourseRegisterService.getTrainingProgram()
     $scope.trainingProgramIDSelected = {
         id: 1
     }
     $scope.updateChange = function() {
-        $scope.sessionByTrainingProgramList = CourseRegisterService.getSessionListByTrainingProgramID($scope.trainingProgramIDSelected.id)
+        $scope.sessionByTrainingProgramList[$scope.trainingProgramIDSelected.id] = CourseRegisterService.getSessionListByTrainingProgramID($scope.trainingProgramIDSelected.id)
     }
     $scope.sessionIDSelected = {
         id: 1
     }
     // set first look for page
-    $scope.sessionByTrainingProgramList = CourseRegisterService.getSessionListByTrainingProgramID(1)
+
+    $scope.sessionByTrainingProgramList[1] = CourseRegisterService.getSessionListByTrainingProgramID(1)
     $scope.courseBySessionIDList =  CourseRegisterService.getCourseBySessionIDList(1)
 
     $scope.updateCourseList = function() {
@@ -39,19 +41,8 @@ myApp.controller('CourseRegisterController', function($scope, $rootScope, Course
     }
 
     //controller TraineeDashboard
-    $scope.trainingProgramDetail = function(number) {
-        if (number == 1)
-        {
-            $scope.sessionByTrainingProgramList = CourseRegisterService.getSessionListByTrainingProgramID(1);
-        }
-        if (number == 2)
-        {
-            $scope.sessionByTrainingProgramList = CourseRegisterService.getSessionListByTrainingProgramID(2);
-        }
-        if (number == 3)
-        {
-            $scope.sessionByTrainingProgramList = CourseRegisterService.getSessionListByTrainingProgramID(3);
-        }
+    $scope.showSessionOfTraingingProgram = function(id) {
+        $scope.sessionByTrainingProgramList[id] = CourseRegisterService.getSessionListByTrainingProgramID(id);
     }
 
   });

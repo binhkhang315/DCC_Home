@@ -25,6 +25,7 @@
         <script src="/js/angular/angular-material-calendar.js"></script>
         <script src="/js/angular/ng-tags-input.js"></script>
         <script src ="/js/bootstrapToggle/angular-bootstrap-toggle.min.js"> </script>
+        <script src ="/js/bootstrapToggle/angular-bootstrap-toggle.js"> </script>
         <script src ="/js/angularAvatar/angular-avatar.js"> </script>
         <script src ="/js/angularAvatar/angular-avatar.min.js"> </script>
         <!-- textAngular -->
@@ -65,6 +66,7 @@
         <!-- <link rel="stylesheet" href="/css/custom/style.css"> -->l
         <!-- bootstrapToggle -->
         <link rel="stylesheet" href="/css/bootstrapToggle/angular-bootstrap-toggle.min.css">
+        <link rel="stylesheet" href="/css/bootstrapToggle/angular-bootstrap-toggle.css">
 
         <!-- Library Fonts -->
         <link rel="stylesheet" type="text/css" href="/css/font-awesome/font-awesome.min.css">
@@ -111,8 +113,8 @@
 
                     <div class="collapse navbar-rowmenu">
                         <ul class="nav navbar-nav navbar-right">
-                            <li>
-                              <a id="button-course" href="/course">Courses</a>
+                            <li ng-hide="!userid">
+                              <a id="button-dashboard" href="/users/userprofile">Dashboard</a>
                             </li>
                             <li>
                                 <a id="button-calendar" href="/#calendar">Training Calendar</a>

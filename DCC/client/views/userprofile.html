@@ -57,7 +57,7 @@
                 <div ng-repeat="trainingprogram in trainingProgramList" >
                       <div class="row panel panel-default container" style="background-color:#ffffff;">
                       <br>
-                        <a data-toggle="collapse" data-target="#{{ trainingprogram.id }}" ng-click = "trainingProgramDetail(trainingprogram.id )" >
+                        <a data-toggle="collapse" data-target="#{{ trainingprogram.id }}" ng-click = "showSessionOfTraingingProgram(trainingprogram.id )" >
                         <div class="col-md-10 col-sm-10 col-xs-10">
                           <div class="row">
                             <div class="col-md-2 col-sm-2 ">
@@ -78,7 +78,7 @@
                       </div>
                       <div id="{{ trainingprogram.id }}" class="collapse"> <!-- put outside div training program-->
                               <!--list of courses in here and use ng-repeat-->
-                              <div class="row"  ng-repeat = "session in sessionByTrainingProgramList" >
+                              <div class="row"  ng-repeat = "session in sessionByTrainingProgramList[trainingprogram.id]" >
                                   <div class="col-md-1 col-sm-1 col-xs-1"></div>
                                   <div class="col-md-11 col-sm-11 col-xs-11"  >
                                         <div class="col-md-12 col-sm-12 col-xs-12 panel panel-default container">
@@ -128,19 +128,19 @@
                             ng-change = "updateChange()"
                             ng-model = "trainingProgramIDSelected">
                         </select>
-                        {{trainingProgramIDSelected.id}}
+                        <!-- {{trainingProgramIDSelected.id}} -->
                     </div>
               </div>
               <div class = "col-md-6">
                     <label class="col-sm-4 control-label">Sessions</label>
-                    <div class="col-sm-8" >
+                    <div class="col-sm-7" >
                         <select class="form-control" name="courseCategory"
-                                ng-options ="session.name for session in sessionByTrainingProgramList track by session.id "
+                                ng-options ="session.name for session in sessionByTrainingProgramList[trainingProgramIDSelected.id] track by session.id "
                                 ng-change = "updateCourseList()"
                                 ng-model = "sessionIDSelected ">
                             <!-- <option ng-repeat="session in sessionByTrainingProgramList" value={{session.id}} >{{ session.name }}</option> -->
                         </select>
-                        {{sessionIDSelected.id}}
+                        <!-- {{sessionIDSelected.id}} -->
                     </div>
               </div>
             </div>
@@ -175,11 +175,11 @@
                                                         9/10 <!--right number is defined by admin; left number is changed by user click-->
                                                   </div>
                                                   <div class="row">
-                                                     <toggle ng-model="register" ng-change="RegisterCourse(course.id, register)" on="Register" off="UnRegister" onstyle="btn-success" offstyle="btn-danger"></toggle>
-                                                     {{register}}
+                                                     <toggle size="btn-sm" ng-model="register" ng-change="RegisterCourse(course.id, register)" on="Register" off="UnRegister" onstyle="btn-success" offstyle="btn-danger"></toggle>
+                                                     <!-- {{register}} -->
                                                   </div>
                                               </div>
-                                              {{registeredList.courseRegister}}
+                                              <!-- {{registeredList.courseRegister}} -->
                                       </div>
                                 </div>
                             </div>
