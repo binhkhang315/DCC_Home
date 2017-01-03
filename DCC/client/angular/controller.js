@@ -13,8 +13,6 @@ myApp.controller('ToastCtrl', function($scope, $rootScope, $mdToast) {
 var events;
 
 myApp.controller('LoginCtrl', function($scope, $http, $cookies, $rootScope, $window,  ToastService) {
-
-
     // get route '/isLogged' to check user logined or not
     $http.get('/isLogged')
         .then(function(res) {
@@ -169,19 +167,25 @@ myApp.controller('SetProfileCtrl', function($scope, $rootScope, $http, $window) 
         pAvatar: '',
         pAdmin: '',
         pTrainer: '',
-        pTrainee: ''
+        pTrainee: '',
+        pBelong2Team: '',
+        pIsExperienced: ''
     };
-    $http.get('/users/userprofileController').then(function(result) {
-        $scope.user.pStatus = result.data.pStatus;
-        $scope.user.pName = result.data.pName;
-        $scope.user.pDoB = result.data.pDoB;
-        $scope.user.pPhone = result.data.pPhone;
-        $scope.user.pLocation = result.data.pLocation;
-        $scope.user.pEmail = result.data.pEmail;
-        $scope.user.pAvatar = result.data.pAvatar;
-        $scope.user.pAdmin = result.data.pAdmin;
-        $scope.user.pTrainer = result.data.pTrainer;
-        $scope.user.pTrainee = result.data.pTrainee;
+
+
+    $http.get('/users/getUserInfo').then(function(result) {
+        $scope.user.pStatus = result.data.status;
+        $scope.user.pName = result.data.username;
+        $scope.user.pDoB = result.data.dob;
+        $scope.user.pPhone = result.data.phone;
+        $scope.user.pLocation = result.data.location;
+        $scope.user.pEmail = result.data.email;
+        $scope.user.pAvatar = result.data.avatar;
+        $scope.user.pAdmin = result.data.admin;
+        $scope.user.pTrainer = result.data.trainer;
+        $scope.user.pTrainee = result.data.trainee;
+        $scope.user.pBelong2Team = result.data.belong2Team;
+        $scope.user.pIsExperienced = result.data.isExperienced;
     }).then(function(){
       if($scope.user.pAdmin){
         $scope.setAction($scope.actions[0]);
@@ -227,10 +231,9 @@ myApp.controller('AddCourseCtrl', function($scope, $rootScope, $http, CourseList
     $scope.courseslist = {
         courseName: '',
         courseDescription: '',
-        courseCategory: '',
         courseTest: '',
         courseDocuments: '',
-        // courseTrainerID: ''
+
     };
     $scope.postMsg = '';
     $scope.getMsg = '';

@@ -1,19 +1,39 @@
+var _classModel = require("./DataObjects/class");
 module.exports = function(sequelize, DataTypes) {
-  var Class = sequelize.define('class', {
-    location: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    laptop: {
-      type: DataTypes.BOOLEAN,
-      allowNull: true
-    },
-    date : {
-      type: DataTypes.DATE,
-      allowNull: true
-    },
-  },{
-    tableName: 'class'
-  });
-  return Class;
+    var Class = sequelize.define('Class', _classModel, {
+        classMethods: {
+            getClass: function(cb)
+            {
+                log.info('/models/class: getClass()');
+                Class.findAll().then(cb);
+            },
+
+            getClassByID: function(id, cb)
+            {
+                log.info('/models/class: getClassByID()' + id);
+                var query ={
+                    where:
+                    {
+                        id: id
+                    }
+                };
+                Class.findOne(query).then(cb);
+            },
+
+            getClassByName: function(name, cb)
+            {
+                log.info('/models/class: getClassByName()' + name);
+                var query ={
+                    where:
+                    {
+                        className: name
+                    }
+                };
+                Class.findOne(query).then(cb);
+            },
+        },
+
+        tableName: 'class'
+    });
+    return Class;
 };
