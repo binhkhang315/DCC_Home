@@ -49,9 +49,10 @@ app.use('/', require('./server/routes/index'));
 app.use('/users', require('./server/routes/users'));
 app.use('/course', require('./server/routes/course'));
 app.use('/feedback', require('./server/routes/feedback'));
+//app.use('/session',require('./server/routes/session'));
 
-// models.User.belongsToMany(models.class, {as: 'Trainee', through: models.class_record, foreignKey:'trainee'});
-// models.class.belongsToMany(models.User, {as: 'StudyingClass', through: models.class_record, foreignKey:'class'});
+//create database tables
+models.sequelize.sync({force:false});
 
 models.User.belongsToMany(models.course, {through: models.Feedback});
 models.course.belongsToMany(models.User, {through: models.Feedback});

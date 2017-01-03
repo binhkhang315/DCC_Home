@@ -1,4 +1,6 @@
 var log = require('../../config/logConfig');
+var _trainingprogramModel= require('./DataObjects/trainingProgram');
+var Sequelize = require('sequelize');
 
 module.exports = function(sequelize, DataTypes) {
   var Trainingprogram = sequelize.define('training_program', {

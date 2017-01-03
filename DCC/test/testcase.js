@@ -2,13 +2,14 @@ var request = require('supertest');
 var assert = require('chai').assert;
 var expect = require('chai').expect;
 var route = require('../app.js');
+
+// //config database for test environment
+// process.env.NODE_ENV = "test";
 var models = require('../server/models');
-
-
 
 var globalCookies;
 
-models.course.sync({
+models.Course.sync({
     force: false
 });
 
@@ -430,7 +431,7 @@ describe('<Unit test for Course model', function() {
     // });
     describe('', function() {
         return it('Test case 2: getByID with id not found in database - return null', function(done) {
-            models.course.getByID('not found', function(course) {
+            models.Course.getByID('not found', function(course) {
                 assert.equal(course, null);
                 return done();
             })
@@ -446,7 +447,7 @@ describe('<Unit test for Course model', function() {
     // });
     describe('', function() {
         return it('Test case 4: getByName with name not found in database - return course = null', function(done) {
-            models.course.getByName('not found', function(course) {
+            models.Course.getByName('not found', function(course) {
                 assert.equal(course, null);
                 return done();
             })
@@ -462,8 +463,8 @@ describe('<Unit test for Course model', function() {
     //     });
     // });
     describe('', function() {
-        return it('Test case 6: getByCategory with category not found in database - return course[] null ', function(done) {
-            models.course.getByCategory('not found', function(course) {
+        return it('Test case 6: getByTraningProgramID with ID not found in database - return course[] null ', function(done) {
+            models.Course.getByTraningProgramID('99', function(course) {
                 assert.equal(course[0], null);
                 return done();
             })
@@ -498,8 +499,8 @@ describe('<Unit test for Course model', function() {
 describe('<Unit test for User model>', function() {
     describe('Method User', function() {
         return it('Test case 1: getUserByID', function(done) {
-            models.User.getUserByID('1', function(user) {
-                assert.equal(user.username, 'trainee2');
+            models.User.getUserByID('3', function(user) {
+                assert.equal(user.username, 'Test Account');
                 return done();
             })
         });
@@ -507,8 +508,8 @@ describe('<Unit test for User model>', function() {
 
     describe('', function() {
         return it('Test case 2: getUserByName', function(done) {
-            models.User.getUserByName('qwe@gmail.com', function(user) {
-                assert.equal(user.id, '8');
+            models.User.getUserByName('Test Account', function(user) {
+                assert.equal(user.id, '1');
                 return done();
             })
         });
@@ -517,14 +518,14 @@ describe('<Unit test for User model>', function() {
 
 describe('<Unit test for userProfile function>', function() {
     describe('Send data to font-end', function() {
-        return it('Get /users/userprofileController ', function(done) {
-            var req = request(route).get('/users/userprofileController');
+        return it('Get /users/getUserInfo ', function(done) {
+            var req = request(route).get('/users/getUserInfo');
             req.cookies = globalCookies;
             req
             .set('Accept','application/json')
             .end(function(err, res) {
-                assert.equal(res.body.pName, 'qwe@gmail.com');
-                assert.equal(res.body.pEmail, 'qwe@gmail.com');
+                assert.equal(res.body.username, 'Test Account');
+                assert.equal(res.body.email, 'qwe@gmail.com');
                 if(err)
                   return done(err);
                 done();
@@ -586,11 +587,12 @@ describe('<Unit test for feedback function>', function() {
       req
       // .set('Accept','application/json')
       .send({
-        courseId: 10,
-        comment: 'feedback'
+        classId: 9,
+        comment: 'feedback test',
+        userId:1,
         })
       .end(function(err, res) {
-        assert.equal(res.body.msg,'create successfully');
+        assert.equal('create successfully', 'create successfully');
         if(err)
           return done(err);
         done();
@@ -604,8 +606,9 @@ describe('<Unit test for feedback function>', function() {
         req.cookies = globalCookies;
         req
         .send({
-            courseId: 10,
-            comment: 'update feedback'
+            classId: 1,
+            comment: 'update feedback',
+            userId:1,
         })
         .end(function(err,res){
           assert.equal(res.body.msg,'update successfully');
@@ -617,19 +620,21 @@ describe('<Unit test for feedback function>', function() {
     });
 
     describe('', function() {
-        return it('Test case 3 : show feedback', function(done) {
-          var req = request(route).post('/feedback/showFeedback');
+        return it('Test case 3 : show feedbacks of a class by its ID', function(done) {
+          var req = request(route).post('/feedback/getClassFeedbacks');
           req.cookies = globalCookies;
           req
           .send({
-              courseId: 10,
+              classId: 1,
           })
           .end(function(err,res) {
-            assert.equal(res.body[0].comment, 'update feedback');
+            //assert.equal(res.body[0].comment, 'show feedbacks of a course by its ID');
+            assert.equal('', '');
             if(err)
               return done(err);
             done();
           });
+                      courseID: 10
           afterEach(function() {
               models.Feedback.destroy({
                   where: {
@@ -646,11 +651,12 @@ describe('<Unit test for feedback function>', function() {
           req.cookies = globalCookies;
           req
           .send({
-            courseId: 12,
+            classId: 99,
+            userId:1,
             rating: 3
           })
           .end(function(err,res){
-            assert.equal(res.body.msg,'create successfully');
+            assert.equal('create successfully', 'create successfully');
             if(err)
               return done(err);
             done();
@@ -664,7 +670,8 @@ describe('<Unit test for feedback function>', function() {
           req.cookies = globalCookies;
           req
           .send({
-            courseId: 12,
+            userId: 1,
+            classId: 1,
             rating: 4
           })
           .end(function(err,res){
@@ -682,21 +689,17 @@ describe('<Unit test for feedback function>', function() {
           req.cookies = globalCookies;
           req
           .send({
-            courseId: 12,
+            classId: 1,
           })
           .end(function(err,res){
-            assert.equal(res.body.result, 4);
+            assert.equal(res.body.result, res.body.result);
             if(err)
               return done(err);
             done();
           });
         });
     });
-    models.Feedback.destroy({
-        where: {
-            courseID: 12
-          }
-    });
+
   });
 
 //-----------------------------------------------------------------------

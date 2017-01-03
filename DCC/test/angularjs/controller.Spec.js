@@ -592,7 +592,7 @@ describe("SetProfileCtrl Unit testing #8", function() {
         expect(controller).toBeDefined();
     }));
 
-    it('Test 2: get /users/userprofileController view Default Dashboard', inject(function($controller) {
+    it('Test 2: get /users/getUserInfo view Default Dashboard', inject(function($controller) {
         controller = createController.setProfile();
         var data = {
           pStatus: 'abc',
@@ -606,7 +606,7 @@ describe("SetProfileCtrl Unit testing #8", function() {
           pTrainer: 0,
           pTrainee: 0
         };
-        $httpBackend.whenGET('/users/userprofileController').respond(data);
+        $httpBackend.whenGET('/users/getUserInfo').respond(data);
         $httpBackend.flush();
         expect($rootScope.user.pStatus).toBe(data.pStatus);
         expect($rootScope.user.pName).toBe(data.pName);
@@ -620,18 +620,18 @@ describe("SetProfileCtrl Unit testing #8", function() {
         expect($rootScope.user.pTrainee).toBe(data.pTrainee);
         expect($rootScope.selectedAction.id).toBe(action[3].id);
     }));
-    it('Test 3: get /users/userprofileController view Admin Dashboard', inject(function($controller) {
+    it('Test 3: get /users/getUserInfo view Admin Dashboard', inject(function($controller) {
         controller = createController.setProfile();
         var data = {
           pAdmin: 1,
           pTrainer: 0,
           pTrainee: 0
         };
-        $httpBackend.whenGET('/users/userprofileController').respond(data);
+        $httpBackend.whenGET('/users/getUserInfo').respond(data);
         $httpBackend.flush();
         expect($rootScope.selectedAction.id).toBe(action[0].id);
     }));
-    it('Test 4: get /users/userprofileController view Trainer Dashboard', inject(function($controller) {
+    it('Test 4: get /users/getUserInfo view Trainer Dashboard', inject(function($controller) {
         controller = createController.setProfile();
 
         var data = {
@@ -639,18 +639,18 @@ describe("SetProfileCtrl Unit testing #8", function() {
           pTrainer: 1,
           pTrainee: 0
         };
-        $httpBackend.whenGET('/users/userprofileController').respond(data);
+        $httpBackend.whenGET('/users/getUserInfo').respond(data);
         $httpBackend.flush();
         expect($rootScope.selectedAction.id).toBe(action[1].id);
     }));
-    it('Test 5: get /users/userprofileController view Trainee Dashboard', inject(function($controller) {
+    it('Test 5: get /users/getUserInfo view Trainee Dashboard', inject(function($controller) {
         controller = createController.setProfile();
         var data = {
           pAdmin: 0,
           pTrainer: 0,
           pTrainee: 1
         };
-        $httpBackend.whenGET('/users/userprofileController').respond(data);
+        $httpBackend.whenGET('/users/getUserInfo').respond(data);
         $httpBackend.flush();
         expect($rootScope.selectedAction.id).toBe(action[2].id);
     }));
@@ -670,7 +670,7 @@ describe("SetProfileCtrl Unit testing #8", function() {
         };
         $rootScope.user = user;
         $rootScope.edit();
-        $httpBackend.whenGET('/users/userprofileController').respond(user);
+        $httpBackend.whenGET('/users/getUserInfo').respond(user);
         $httpBackend.whenPOST('/users/userprofileReturnValue', user).respond(data);
         $httpBackend.flush();
         expect($rootScope.msg).toBe(data.msg);
