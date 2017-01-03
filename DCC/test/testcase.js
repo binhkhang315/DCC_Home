@@ -48,13 +48,13 @@ describe('<Unit Test for Routing>', function() {
                 .expect(200, done)
         });
     });
-    describe('', function() {
-        return it('Test case 5 : get /course/trainerdashboard ', function(done) {
-            request(route)
-                .get('/course/trainerdashboard')
-                .expect(200,done)
-        });
-    });
+    // describe('', function() {
+    //     return it('Test case 5 : get /course/trainerdashboard ', function(done) {
+    //         request(route)
+    //             .get('/course/trainerdashboard')
+    //             .expect(200,done)
+    //     });
+    // });
     describe('', function() {
         return it('Test case 6 : get /users/userprofile When user not logged in ', function(done) {
             request(route)
@@ -499,7 +499,7 @@ describe('<Unit test for Course model', function() {
 describe('<Unit test for User model>', function() {
     describe('Method User', function() {
         return it('Test case 1: getUserByID', function(done) {
-            models.User.getUserByID('3', function(user) {
+            models.User.getUserByID('1', function(user) {
                 assert.equal(user.username, 'Test Account');
                 return done();
             })

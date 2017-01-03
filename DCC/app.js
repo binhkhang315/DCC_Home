@@ -25,12 +25,15 @@ app.use(bodyParser.urlencoded({
 app.use(cookieParser());
 
 // Set Static Folder
-app.use(express.static(path.join(__dirname, '/client/assets')));
-app.use('/log', serveIndex('/client/assets/log'));
-app.use('/angular', express.static(path.join(__dirname, '/client/angular')));
-app.set('views', path.join(__dirname, '/client/views'));
+// app.use(express.static(path.join(__dirname, '/client/assets')));
+// app.use('/log', serveIndex('/client/assets/log'));
+// app.use('/angular', express.static(path.join(__dirname, '/client/angular')));
+// app.set('views', path.join(__dirname, '/client/views'));
 // Express Session
 // session will save user's credentials in 10 days
+app.set('views', path.join(__dirname, '/client'));
+app.use(express.static(path.join(__dirname, '/client')));
+
 app.use(session({
     secret: 'secret',
     cookie: {
@@ -46,36 +49,13 @@ app.use(passport.session());
 
 //register router
 app.use('/', require('./server/routes/index'));
-app.use('/users', require('./server/routes/users'));
-app.use('/course', require('./server/routes/course'));
-app.use('/feedback', require('./server/routes/feedback'));
+// app.use('/users', require('./server/routes/users'));
+// app.use('/course', require('./server/routes/course'));
+// app.use('/feedback', require('./server/routes/feedback'));
 //app.use('/session',require('./server/routes/session'));
 
 //create database tables
 models.sequelize.sync({force:false});
-
-models.User.belongsToMany(models.course, {through: models.Feedback});
-models.course.belongsToMany(models.User, {through: models.Feedback});
-models.training_program.sync({
-  force: false
-});
-
-// models.course.belongsToMany(models.User,{as:'Trainer', through: 'trainer_course', foreignKey: 'course', otherKey:'trainer'});
-// models.class.belongsToMany(models.course,{through: 'course_class'});
-// models.course.belongsToMany(models.class,{through: 'course_class'});
-
-
-models.class_record.sync({
-    force: false
-});
-models.Feedback.sync({
-  force: false
-});
-models.sequelize.sync({
-  force:false
-});
-//
-
 
 // Set Port
 app.set('port', (process.env.PORT || 3210));
