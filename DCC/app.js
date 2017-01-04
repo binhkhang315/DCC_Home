@@ -31,7 +31,7 @@ app.use(cookieParser());
 // app.set('views', path.join(__dirname, '/client/views'));
 // Express Session
 // session will save user's credentials in 10 days
-app.set('views', path.join(__dirname, '/client'));
+app.set('partials', path.join(__dirname, '/client'));
 app.use(express.static(path.join(__dirname, '/client')));
 
 app.use(session({
@@ -49,7 +49,7 @@ app.use(passport.session());
 
 //register router
 app.use('/', require('./server/routes/index'));
-// app.use('/users', require('./server/routes/users'));
+app.use('/users', require('./server/routes/users'));
 // app.use('/course', require('./server/routes/course'));
 // app.use('/feedback', require('./server/routes/feedback'));
 //app.use('/session',require('./server/routes/session'));

@@ -167,7 +167,8 @@ router.post('/login', function(req, res, next) {
             log.info('User login failed.');
             res.send({
                 userid: null,
-                msg: 'You are not authenticated!'
+                success: false,
+                msg: 'Wrong email or password',
             });
         } else {
             // else login success
@@ -178,7 +179,9 @@ router.post('/login', function(req, res, next) {
                 }
                 log.info('User login: ' + user.mail);
                 return res.send({
-                    userid: user.mail,
+                    email: user.mail,
+                    userRole: 3,
+                    success: true,
                     msg: 'You are authenticated!'
                 })
             });
