@@ -36,12 +36,12 @@ myApp.run(function($rootScope, $state) {
 	$rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams){
 		if(toState && toState.data && toState.data.auth && !window.sessionStorage["userInfo"]){
 			event.preventDefault();
-			window.location.href = "login";
+			window.location.href = "#login";
 		}
 
 		if(!toState && !toState.data && !toState.data.auth && window.sessionStorage["userInfo"]){
 			event.preventDefault();
-			window.location.href = "dashboard";
+			window.location.href = "#dashboard";
 		}
 	});
 });
