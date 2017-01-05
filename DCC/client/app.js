@@ -4,43 +4,44 @@
 var myApp = angular.module('myApp', [
   'ui.router',
   'ui.bootstrap',
-  'validation', 
-  'validation.rule', 
+  'validation',
+  'validation.rule',
   'users',
   'dashboard',
-  'reports',
-  'customers'
+  'courseRegister',
+  'home',
+  'calendarModule',
 ]);
 
 //Config phase
 myApp.config(function($urlRouterProvider, $httpProvider) {
   //session check and redirect to specific state
   if(!window.sessionStorage["userInfo"]){
-	$urlRouterProvider.otherwise("/login");  
+	$urlRouterProvider.otherwise("homepage");
   }else{
-	$urlRouterProvider.otherwise("/dashboard");  
+	$urlRouterProvider.otherwise("dashboard");
   }
-    
+
 });
 
 //Run phase
 myApp.run(function($rootScope, $state) {
 	$rootScope.$state = $state; //Get state info in view
-	
+
 	if(window.sessionStorage["userInfo"]){
 		$rootScope.userInfo = JSON.parse(window.sessionStorage["userInfo"]);
 	}
-	
+
 	//Check session and redirect to specific page
 	$rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams){
 		if(toState && toState.data && toState.data.auth && !window.sessionStorage["userInfo"]){
 			event.preventDefault();
-			window.location.href = "#login";
-		}		
-		
+			window.location.href = "login";
+		}
+
 		if(!toState && !toState.data && !toState.data.auth && window.sessionStorage["userInfo"]){
 			event.preventDefault();
-			window.location.href = "#dashboard";
+			window.location.href = "dashboard";
 		}
 	});
 });
@@ -50,10 +51,10 @@ myApp.factory('dataTable', ['$filter', 'ngTableParams', function($filter, ngTabl
 
     var factoryDefinition = {
       render: function($scope, config, componentId, data) {
-        
+
 		if(!config) config ={};
 		var config = angular.extend({}, {page:1, count:10}, config)
-		
+
 		$scope[componentId] = new ngTableParams(config, {
 			total: data.length, // length of data
 			getData: function($defer, params) {
@@ -67,12 +68,12 @@ myApp.factory('dataTable', ['$filter', 'ngTableParams', function($filter, ngTabl
 				params.total(orderedData.length); // set total for recalc pagination
 				$defer.resolve(orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count()));
 			}
-		}); 
-		
-		
+		});
+
+
       }
     }
-	
+
     return factoryDefinition;
   }
 ]);
