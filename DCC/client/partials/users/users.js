@@ -40,11 +40,14 @@ myApp.factory('userServices', ['$http', function($http) {
 myApp.controller('loginController', ['$scope', 'userServices', '$location', '$rootScope', function($scope, userServices, $location, $rootScope) {
 
     //$scope.login = {"username":"qwe@gmail.com", "password": "qwe"};
+    $scope.login = {};
+    $scope.login.msg ='';
     $scope.doLogin = function() {
         if ($scope.loginForm.$valid) {
             userServices.login($scope.login).then(function(result){
                 $scope.data = result;
                 console.log(result.data); //DEBUG
+                $scope.login.msg = result.data.msg;
                 if (result.data.success) {
                     window.sessionStorage["userInfo"] = JSON.stringify(result.data);
                     $rootScope.userInfo = JSON.parse(window.sessionStorage["userInfo"]);
