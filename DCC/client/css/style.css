@@ -16,7 +16,9 @@ body {
 p {
 	font: 13px/1.7em 'Open Sans';
 }
-
+.h1 .h2 .h3 .h4{
+    color: black;
+}
 input,
 button,
 select,
@@ -64,7 +66,9 @@ textarea {
 /*------------------------------------------------------------------
 [2. Navbar / .navbar]
 */
-
+.navbar {
+    margin-bottom: 0;
+}
 .navbar .container {
 	position: relative;
 }
@@ -253,7 +257,6 @@ textarea {
 .main {
 	padding-bottom: 2em;
 
-	border-bottom: 1px solid #000;
 }
 
 
@@ -350,8 +353,8 @@ textarea {
 
 	position: relative;
 
-	height: 40px;
-	line-height: 40px;
+	height: 60px;
+	line-height: 60px;
 
 	background: #f9f6f1;
 	background:-moz-linear-gradient(top, #f9f6f1 0%, #f2efea 100%); /* FF3.6+ */
@@ -644,7 +647,7 @@ ul.messages_layout .dropdown-menu  li{ width:100%; font-size:11px;}
 .dropdown-menu li>a:hover, .dropdown-menu .active>a, .dropdown-menu .active>a:hover { background:#00ba8b;}
 
 .accordion-heading { background:#e5e5e5;  }
-.accordion-heading a { color:#545454; text-decoration:none; font-weight:bold; }
+.accordion-heading a { color:#000000; text-decoration:none; font-weight:bold; }
 
 .btn-facebook-alt i {
 color: #23386a;
