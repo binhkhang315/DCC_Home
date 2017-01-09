@@ -1,18 +1,18 @@
 'use strict';
 
-angular.module('home', []);
+angular.module('home', ['calendarModule']);
 
 //Routers
 myApp.config(function($stateProvider) {
     $stateProvider.state('home', {
         url: '/homepage',
         templateUrl: 'partials/home/home.html',
-        controller: 'homeCtrl',
+        controller: 'homeCtrl'
     });
 
 });
 
-myApp.controller('homeCtrl', [function(moment, alert, calendarConfig) {
-
-
-}]);
+myApp.controller('homeCtrl', [ '$scope', function($scope) {
+    $scope.templates =
+        { name: 'template3.html', url: 'partials/calendarModule/calendar.html'};
+  }]);
