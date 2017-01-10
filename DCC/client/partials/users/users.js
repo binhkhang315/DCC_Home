@@ -41,6 +41,7 @@ myApp.controller('loginController', ['$scope', 'userServices', '$location', '$ro
     //$scope.login = {"username":"qwe@gmail.com", "password": "qwe"};
     $scope.login = {};
     $scope.login.msg ='';
+
     $scope.doLogin = function() {
         if ($scope.loginForm.$valid) {
             userServices.login($scope.login).then(function(result){
@@ -51,10 +52,13 @@ myApp.controller('loginController', ['$scope', 'userServices', '$location', '$ro
                     window.sessionStorage["userInfo"] = JSON.stringify(result.data);
                     $rootScope.userInfo = JSON.parse(window.sessionStorage["userInfo"]);
                     // redirect to dashboard after login
-                    $scope.hidemodal = "modal";
-                    $scope.login.msg ='';
                     $location.path("/dashboard");
                 }
+                //--show the pop up to infor login result
+                var popup = document.getElementById("snackbar")
+                popup.className = result.data.success? "success":"error";
+                setTimeout(function(){ popup.className = "" }, 3000);
+                //--end: show the pop
             });
         }
     };
