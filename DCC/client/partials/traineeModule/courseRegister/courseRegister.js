@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('courseRegister', ['chart.js']);
+angular.module('courseRegister', ['ui.toggle']);
 
 //Routers
 myApp.config(function($stateProvider) {
