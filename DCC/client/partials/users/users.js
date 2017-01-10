@@ -6,8 +6,7 @@ myApp.config(function($stateProvider) {
 
     //Login
     $stateProvider.state('login', {
-        url: "/login",
-        templateUrl: 'partials/users/login.html',
+        templateUrl: 'partials/common/loginHeader.html',
         controller: 'loginController'
     });
 
@@ -52,6 +51,7 @@ myApp.controller('loginController', ['$scope', 'userServices', '$location', '$ro
                     window.sessionStorage["userInfo"] = JSON.stringify(result.data);
                     $rootScope.userInfo = JSON.parse(window.sessionStorage["userInfo"]);
                     // redirect to dashboard after login
+                    $scope.hidemodal = "modal";
                     $location.path("/dashboard");
                 }
             });

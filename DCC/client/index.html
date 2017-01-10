@@ -38,6 +38,7 @@
 <body>
     <div ng-include="'partials/common/loginHeader.html'" ng-show="!userInfo"></div> <!-- loginHeader -->
     <div ng-include="'partials/common/userHeader.html'" ng-show="userInfo"></div> <!-- loginHeader -->
+    
     <div ng-include="'partials/common/adminHeader.html'" ng-show="userInfo.userRole == 1"></div> <!-- adminHeader -->
     <div ng-include="'partials/common/trainerHeader.html'" ng-show="userInfo.userRole == 2"></div> <!-- trainerHeader -->
     <div ng-include="'partials/common/traineeHeader.html'" ng-show="userInfo.userRole == 3"></div> <!-- traineeHeader -->
