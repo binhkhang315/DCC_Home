@@ -6,7 +6,6 @@ myApp.config(function($stateProvider) {
 
     //calendar
     $stateProvider.state('calendar', {
-        url: "/calendar",
         templateUrl: 'partials/calendarModule/calendar.html',
         controller: 'calendarController'
     });

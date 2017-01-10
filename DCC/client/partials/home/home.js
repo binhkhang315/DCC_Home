@@ -5,7 +5,7 @@ angular.module('home', ['calendarModule']);
 //Routers
 myApp.config(function($stateProvider) {
     $stateProvider.state('home', {
-        url: '/homepage',
+        url: '/home',
         templateUrl: 'partials/home/home.html',
         controller: 'homeCtrl'
     });
