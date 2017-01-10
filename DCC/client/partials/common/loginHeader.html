@@ -1,24 +1,83 @@
 <nav class="navbar navbar-dcc navbar-fixed-top topnav" role="navigation">
-                <div class="container" >
-                    <div class="navbar-header">
-                         <a class="navbar-home" href="/">
-                          <img class="navbar-logo img-responsive" src="/img/logo/DCC-icon.png" alt="DCC Logo" width="95px">
-                             <a class="navbar-name" href="/"><font size="5">DEK<br>Competence Center</font></a>
-                         </a>
-                     </div>
+    <div class="container" >
+        <div class="navbar-menu" style="padding: 5px;">
+            <div class="dl-menuwrapper" id="dl-menu">
+                <button class="dl-trigger">MENU</button>
+                <li ng-hide="userid">
+                    <a id="login">Login</a>
+                </li>
+            </ul>
+        </div>
+    </div>
 
-                    <div class="collapse navbar-rowmenu">
-                        <ul class="nav navbar-nav navbar-right">
-                            <li>
-                                <a id="button-calendar" href="/#calendar">Training Calendar</a>
-                            </li>
-                            <li>
-                                <a id="button-contact" href="/#contact">Contact</a>
-                            </li>
-                            <li>
-                                <a href="./#/login">Login</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+    <div class="navbar-header">
+        <a class="navbar-home" href="/">
+            <img class="navbar-logo img-responsive" src="/img/logo/DCC-icon.png" alt="DCC Logo" width="95px">
+            <a class="navbar-name" href="/"><font size="5">DEK<br>Competence Center</font></a>
+        </a>
+    </div>
+
+    <div class="collapse navbar-rowmenu">
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                <a id="button-calendar" href="/#calendar">Training Calendar</a>
+            </li>
+            <li>
+                <a id="button-contact" href="/#contact">Contact</a>
+            </li>
+            <li>
+                <a data-toggle="modal" data-target="#loginModal">Login</a>
+            </li>
+        </ul>
+    </div>
+</div>
 </nav>
+
+
+
+<div class="modal fade" id="loginModal" role="dialog" ng-controller="loginController">
+	<div class="modal-dialog" >
+		<!-- Modal content-->
+		<div class="modal-content">
+			<form name="loginForm"  role="form" class="form-horizontal" novalidate>
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Account Login</h4>
+				</div>
+				<div class="modal-body">
+					<div class="form-group">
+						<label class="col-sm-4 control-label">Username</label>
+						<div class="col-sm-8">
+							<input type="text" name="email"
+							value=""
+							placeholder="Email"
+							class="login"
+							ng-model="login.username"
+							validator="required"
+							required-error-message="Email is required"
+							email-error-message="Invalid email address"
+							valid-method="watch"/>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-4 control-label">Password</label>
+						<div class="col-sm-8">
+							<input type="password" name="password"
+							value=""
+							placeholder="Password"
+							class="login "
+							ng-model="login.password"
+							validator="required"
+							required-error-message="Password is required"
+							valid-method="watch" />
+						</div>
+					</div>
+					<p style="color:red;" align="center">{{login.msg}}</p>
+				</div>
+				<div class="modal-footer">
+					<button type="submit" class="btn btn-default"  ng-click="doLogin()" data-dismiss="modal" >Submit</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
