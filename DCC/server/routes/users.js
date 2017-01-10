@@ -180,12 +180,16 @@ router.post('/login', function(req, res, next) {
                     return next();
                 }
                 log.info('User login: ' + user.mail);
-                return res.send({
-                    email: user.mail,
-                    userRole: 3,
-                    success: true,
-                    msg: 'You are authenticated!'
-                })
+                models.User.getUserByEmail(user.mail, function(userResult){
+                    return res.send({
+                        email: user.mail,
+                        userRole: 3,
+                        success: true,
+                        avatar: userResult.avatar,
+                        msg: 'You are authenticated!'
+                    })
+                });
+
             });
         }
     }) (req, res, next);

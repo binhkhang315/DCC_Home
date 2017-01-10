@@ -40,11 +40,11 @@ myApp.factory('userServices', ['$http', function($http) {
             return $http.get('/users/logout').success(function(data) { return data; });
         },
         getUserProfile: function() {
-          return $http.get('partials/users/mock/user.json').success(function(data) { return data; });
+            return $http.get('partials/users/mock/user.json').success(function(data) { return data; });
         },
         updateUserProfile: function(emailReq) {
-        return $http.post('partials/common/mock/success.json', emailReq).success(function(data) { return data; });
-      },
+            return $http.post('partials/common/mock/success.json', emailReq).success(function(data) { return data; });
+        },
     }
 
     return factoryDefinitions;
@@ -62,6 +62,7 @@ myApp.controller('loginController', ['$scope', 'userServices', '$location', '$ro
         if ($scope.loginForm.$valid) {
             userServices.login($scope.login).then(function(result){
                 $scope.data = result;
+                console.log("use info: ");
                 console.log(result.data); //DEBUG
                 $scope.login.msg = result.data.msg;
                 if (result.data.success) {
@@ -92,21 +93,28 @@ myApp.controller('logoutController', ['$scope', 'userServices', '$location', '$r
 
 //Get user information
 myApp.controller('userProfileCtrl', ['$scope', 'userServices', '$location', '$rootScope', function($scope, userServices, $location, $rootScope) {
-    $scope.userInfo = {};
-
+    $scope.userDetail = {};
+    //$scope.userInfo.msg ='';
     userServices.getUserProfile().then(function(result){
         console.log (result.data);
-        $scope.userInfo = result.data;
+        $scope.userDetail = result.data;
     });
-
+$scope.editResultmesage ="";
     //update User Profile
     $scope.updateUserProfile = function() {
-       userServices.updateUserProfile($scope.userInfo.email).then(function(result){
-          //$scope.userInfo = result.data;
-       });
-        $location.path("/userProfile");
+        userServices.updateUserProfile($scope.userDetail.email).then(function(result){
+            $scope.userDetail = result.data;
+            $location.path("/userProfile");
+        });
     };
+
     $scope.cancel = function() {
-          $location.path("/userProfile");
+        // reset user infor back to original
+        $scope.editResultmesage = "some message.....";
+
+        var popup = document.getElementById("snackbar")
+        popup.className = true? "success":"error";
+        setTimeout(function(){ popup.className = "" }, 3000);
+        $location.path("/userProfile");
     }
 }]);
