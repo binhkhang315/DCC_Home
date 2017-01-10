@@ -52,6 +52,7 @@ myApp.controller('loginController', ['$scope', 'userServices', '$location', '$ro
                     $rootScope.userInfo = JSON.parse(window.sessionStorage["userInfo"]);
                     // redirect to dashboard after login
                     $scope.hidemodal = "modal";
+                    $scope.login.msg ='';
                     $location.path("/dashboard");
                 }
             });
