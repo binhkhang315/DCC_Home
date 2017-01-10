@@ -17,7 +17,7 @@ var myApp = angular.module('myApp', [
 myApp.config(function($urlRouterProvider, $httpProvider) {
   //session check and redirect to specific state
   if(!window.sessionStorage["userInfo"]){
-	$urlRouterProvider.otherwise("homepage");
+	$urlRouterProvider.otherwise("home");
   }else{
 	$urlRouterProvider.otherwise("dashboard");
   }
@@ -36,7 +36,7 @@ myApp.run(function($rootScope, $state) {
 	$rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams){
 		if(toState && toState.data && toState.data.auth && !window.sessionStorage["userInfo"]){
 			event.preventDefault();
-			window.location.href = "#login";
+			window.location.href = "#home";
 		}
 
 		if(!toState && !toState.data && !toState.data.auth && window.sessionStorage["userInfo"]){

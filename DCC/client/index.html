@@ -31,10 +31,11 @@
 </head>
 <body>
     <div ng-include="'partials/common/loginHeader.html'"></div> <!-- loginHeader -->
-    <div ng-include="'partials/common/adminHeader.html'" ng-show="userInfo.userRole == 1"></div> <!-- adminHeader -->
-    <div ng-include="'partials/common/trainerHeader.html'" ng-show="userInfo.userRole == 2"></div> <!-- trainerHeader -->
-    <div ng-include="'partials/common/traineeHeader.html'" ng-show="userInfo.userRole == 3"></div> <!-- traineeHeader -->
-
+    <div ng-show="$state.current.name != 'home'">
+        <div ng-include="'partials/common/adminHeader.html'" ng-show="userInfo.userRole == 1"></div> <!-- adminHeader -->
+        <div ng-include="'partials/common/trainerHeader.html'" ng-show="userInfo.userRole == 2"></div> <!-- trainerHeader -->
+        <div ng-include="'partials/common/traineeHeader.html'" ng-show="userInfo.userRole == 3"></div> <!-- traineeHeader -->
+    </div>
     <div class="main">
         <div class="main-inner">
             <div class="" ui-view>

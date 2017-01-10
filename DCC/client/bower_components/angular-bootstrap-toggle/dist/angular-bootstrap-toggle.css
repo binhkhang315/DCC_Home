@@ -52,7 +52,7 @@
   border-width: 0 1px;
 }
 .toggle.btn {
-  min-width: 59px;
+  min-width: 100px;
   min-height: 34px;
 }
 .toggle-on.btn {
@@ -60,6 +60,7 @@
 }
 .toggle-off.btn {
   padding-left: 24px;
+  width: 100px;
 }
 .toggle.btn-lg {
   min-width: 79px;
