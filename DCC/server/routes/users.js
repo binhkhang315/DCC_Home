@@ -49,6 +49,7 @@ router.get('/userprofile', function(req, res) {
 });
 
 router.get('/getUserInfo', function(req, res) {
+console.log('/routes/users: GET /users/getUserInfo');
     log.info('/routes/users: GET /users/getUserInfo');
     if(req.isAuthenticated()){
         models.User.findOrCreate({
@@ -69,6 +70,7 @@ router.get('/getUserInfo', function(req, res) {
             }
         })
         .then(function(user) {
+            console.log(user);
             res.send({
                 username: user[0].dataValues.username,
                 status: user[0].dataValues.status,
@@ -101,10 +103,10 @@ router.post('/userprofileReturnValue', function(req, res) {
     log.info('/routes/users: Save edit userprofile');
     models.User.update(
         {
-            status: req.body.pStatus,
-            dob: req.body.pDoB,
-            phone: req.body.pPhone,
-            location: req.body.pLocation
+            status: req.body.status,
+            dob: req.body.dob,
+            phone: req.body.phone,
+            location: req.body.location
         },
         {
             where: { email: req.user.mail }

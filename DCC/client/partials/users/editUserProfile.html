@@ -1,0 +1,76 @@
+<div class="container profile">
+    <div class="widget widget-nopad">
+        <div class="widget-header"></i>
+            <center><font size="6px" style="color: black"><b>Edit User Profile</b></font></center>
+        </div>
+        <div class="widget-content">
+            <div class="widget big-stats-container">
+                <div class="widget-content" >
+                    <div class="col-xs-12 col-sm-12 ">
+                        
+                            <div class="panel-heading">
+                                <h3 class="panel-title">{{ userInfo.username }}</h3>
+                            </div>
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-3 col-lg-3 ">
+                                        <img alt="User Picture" ng-src="{{ userInfo.avatar }}" class="img-responsive">
+                                        <form id="uploadForm" enctype="multipart/form-data" action="/users/photo" method="post">
+                                            <input class="btn btn-default col-md-12 col-sm-12 col-xs-12" style="margin-top: 5px" type="file" name="userPhoto"/>
+                                            <input class="btn btn-primary col-md-12 col-sm-12 col-xs-12" style="margin-top: 5px" type="submit" value="Upload Image" name="submit">
+                                            <span id="status"></span>
+                                        </form>
+                                    </div>
+                                    <div class=" col-md-9 col-lg-9 ">
+                                        <table class="table table-user-information">
+                                            <tbody>
+                                                <tr>
+                                                    <td>Name</td>
+                                                    <td>
+                                                        <input id="username" type="text" ng-model="userInfo.username">
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Status</td>
+                                                    <td>
+                                                        <input id="statusUser" type="text" ng-model="userInfo.status">
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Date of Birth</td>
+                                                    <td>
+                                                        <input id="dob" type="text" ng-model="userInfo.dob">
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Phone</td>
+                                                    <td>
+                                                        <input id="phone" type="text" ng-model="userInfo.phone">
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Location</td>
+                                                    <td>
+                                                        <input id="loc" type="text" ng-model="userInfo.location">
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Email</td>
+                                                    <td>
+                                                        <a ng-href="{{ userInfo.email }}">{{ userInfo.email }}</a>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <button type="button" class="btn btn-primary  pull-right" ng-click="updateUserProfile()">Save</button>
+                                        <button ng-click="cancel()" class="btn  pull-right">Cancel</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
