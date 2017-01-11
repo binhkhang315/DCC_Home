@@ -12,7 +12,7 @@ myApp.config(function($stateProvider) {
     //Logout
     $stateProvider.state('logout', {
         url: "/logout",
-        template: "<h3>Logging out...</h3>",
+        template: "",
         controller: 'logoutController'
     });
     //userProfile
@@ -82,8 +82,9 @@ myApp.controller('logoutController', ['$scope', 'userServices', '$location', '$r
         console.log("----> logout success"); //DEBUG
         sessionStorage.clear();
         $rootScope.userInfo = false;
+        $rootScope.ShowPopupMessage("Logout successfully", "success");
         // redirect ro home page after logout
-        $location.path("/");
+        $location.path("/home");
     })
 }]);
 

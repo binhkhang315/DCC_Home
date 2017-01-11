@@ -19,8 +19,6 @@ myApp.config(function($urlRouterProvider, $httpProvider) {
     //session check and redirect to specific state
     if(!window.sessionStorage["userInfo"]){
         $urlRouterProvider.otherwise("home");
-    }else{
-        $urlRouterProvider.otherwise("dashboard");
     }
 
 });
