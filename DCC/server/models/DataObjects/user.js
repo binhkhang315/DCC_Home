@@ -30,18 +30,9 @@ module.exports=
         type: SequelizeDatatypes.STRING,
         allowNull: false
     },
-    admin: {
-        type: SequelizeDatatypes.STRING,
+    role: {
+        type: SequelizeDatatypes.INTEGER,
         allowNull: true
-    },
-    trainer: {
-        type: SequelizeDatatypes.STRING,
-        allowNull: true
-    },
-    trainee: {
-        type: SequelizeDatatypes.STRING,
-        allowNull: true,
-        defaultValue: 1
     },
     belong2Team:
     {
