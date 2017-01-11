@@ -11,6 +11,7 @@ var myApp = angular.module('myApp', [
     'courseRegister',
     'home',
     'calendarModule',
+    'courseDetail'
 ]);
 
 //Config phase
