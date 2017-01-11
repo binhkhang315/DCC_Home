@@ -901,3 +901,8 @@ However, delay the fade out process for 2.5 seconds */
 	color: black;
 	font-size: 15px;
 }
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover{
+	color: white;
+	background-color: #00BA8B;
+	font-size: 15px;
+}
