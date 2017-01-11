@@ -49,7 +49,7 @@ router.get('/userprofile', function(req, res) {
 });
 
 router.get('/getUserInfo', function(req, res) {
-console.log('/routes/users: GET /users/getUserInfo');
+    console.log('/routes/users: GET /users/getUserInfo');
     log.info('/routes/users: GET /users/getUserInfo');
     if(req.isAuthenticated()){
         models.User.findOrCreate({
@@ -180,14 +180,39 @@ router.post('/login', function(req, res, next) {
                     return next();
                 }
                 log.info('User login: ' + user.mail);
-                models.User.getUserByEmail(user.mail, function(userResult){
-                    return res.send({
-                        email: user.mail,
-                        userRole: 3,
+                models.User.findOrCreate({
+                    where: {email: req.user.mail},
+                    defaults: {
+                        username: 'Your Name',
+                        status: 'some status',
+                        dob: '01/01/2001',
+                        phone: '0000 000 000',
+                        location: 'DEK Vietnam',
+                        email: req.user.mail,
+                        avatar: '/img/profiles/defaultProfile.jpg',
+                        role: 3, //default user is a trainee
+                        belong2Team: 'Team 7Up',
+                        isExperienced: 0,
+                    }
+                })
+                .then(function(user) {
+                    res.send({
+                        username: user[0].dataValues.username,
+                        status: user[0].dataValues.status,
+                        dob: user[0].dataValues.dob,
+                        phone: user[0].dataValues.phone,
+                        location: user[0].dataValues.location,
+                        email: user[0].dataValues.email,
+                        avatar: user[0].dataValues.avatar,
+                        userRole: user[0].dataValues.role,
+                        trainer: user[0].dataValues.trainer,
+                        trainee: user[0].dataValues.trainee,
+                        belong2Team: user[0].dataValues.belong2Team,
+                        isExperienced: user[0].dataValues.isExperienced,
+
                         success: true,
-                        avatar: userResult.avatar,
                         msg: 'You are authenticated!'
-                    })
+                    });
                 });
 
             });
@@ -204,7 +229,7 @@ router.get('/logout', function(req, res) {
 //----------------------------------------------------
 router.get('/trainingprogram', function(req,res){
     log.info('/routes/trainingprogram: GET /users/trainingprogram');
-      res.render('trainingprogram');
+    res.render('trainingprogram');
 })
 
 router.get('/trainingprogram/list', function(req, res) {
@@ -221,7 +246,7 @@ router.get('/trainingprogram/list', function(req, res) {
 router.get('/trainingprogram/session/', function(req,res){
     log.info('/routes/trainingprogram: GET /users/trainingprogram');
     if(req.isAuthenticated())
-      res.render('sessiondetail');
+    res.render('sessiondetail');
     else res.render('index.html');
 })
 router.get('/trainingprogram/session/:id', function(req, res) {

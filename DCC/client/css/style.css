@@ -897,3 +897,12 @@ However, delay the fade out process for 2.5 seconds */
     from {bottom: 30px; opacity: 1;}
     to {bottom: 0; opacity: 0;}
 }
+.nav-tabs > li > a, .nav-tabs > li > a:focus, .nav-tabs > li > a:hover{
+	color: black;
+	font-size: 15px;
+}
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover{
+	color: white;
+	background-color: #00BA8B;
+	font-size: 15px;
+}
