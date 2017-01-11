@@ -21,11 +21,11 @@ module.exports = function(sequelize, DataTypes) {
                 };
                 User.findOne(query).then(cb);
             },
-            getUserByEmail: function(email,cb){
-                log.info('/models/user: getUserByName() : ' + email);
+            getUserByEmail: function(userEmail, cb){
+                log.info('/models/user: getUserByEmail() : ' + userEmail);
                 var query = {
                     where: {
-                        email: email
+                        email: userEmail
                     }
                 };
                 User.findOne(query).then(cb);
