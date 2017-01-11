@@ -37,40 +37,11 @@ models.User.sync({
     force: false
 });
 
-//-----------routing-------------
-router.get('/userprofile', function(req, res) {
-    log.info('/routes/users: GET /users/userprofile');
-    if(req.isAuthenticated()){
-        res.render('userprofile');
-    }
-    else {
-        res.render('index.html');
-    }
-});
-
 router.get('/getUserInfo', function(req, res) {
     console.log('/routes/users: GET /users/getUserInfo');
     log.info('/routes/users: GET /users/getUserInfo');
-    if(req.isAuthenticated()){
-        models.User.findOrCreate({
-            where: {email: req.user.mail},
-            defaults: {
-                username: 'Test Account',
-                status: 'some status',
-                dob: '01/01/2001',
-                phone: '0909 999 999',
-                location: 'DEK Vietnam',
-                email: req.user.mail,
-                avatar: '/img/profiles/defaultProfile.jpg',
-                admin:0,
-                trainer:0,
-                trainee:1,
-                belong2Team: 'Team 7Up',
-                isExperienced: 0,
-            }
-        })
-        .then(function(user) {
-            console.log(user);
+    passport.authenticate('ldapauth', {
+        function(user) {
             res.send({
                 username: user[0].dataValues.username,
                 status: user[0].dataValues.status,
@@ -85,20 +56,9 @@ router.get('/getUserInfo', function(req, res) {
                 belong2Team: user[0].dataValues.belong2Team,
                 isExperienced: user[0].dataValues.isExperienced,
             });
-        });
-    }
+        }
+    });
 });
-
-router.get('/edituserprofile', function(req, res) {
-    log.info('/routes/users: GET /users/edituserprofile');
-    if(req.isAuthenticated()){
-        res.render('edituserprofile');
-    }
-    else {
-        res.render('index.html');
-    }
-});
-
 router.post('/userprofileReturnValue', function(req, res) {
     log.info('/routes/users: Save edit userprofile');
     models.User.update(
@@ -117,8 +77,6 @@ router.post('/userprofileReturnValue', function(req, res) {
         });
     });
 });
-
-
 router.post('/photo',function(req,res){
     log.info('/routes/users: Upload avatar');
     // upload avatar
@@ -137,7 +95,6 @@ router.post('/photo',function(req,res){
         res.render('userprofile');
     });
 });
-
 // passport Strategy
 passport.use(new LdapStrategy(BASE_OPTS, function(user, callback) {
     // if authenticate success, user is returned here
@@ -204,7 +161,7 @@ router.post('/login', function(req, res, next) {
                         location: user[0].dataValues.location,
                         email: user[0].dataValues.email,
                         avatar: user[0].dataValues.avatar,
-                        userRole: user[0].dataValues.role,
+                        role: user[0].dataValues.role,
                         trainer: user[0].dataValues.trainer,
                         trainee: user[0].dataValues.trainee,
                         belong2Team: user[0].dataValues.belong2Team,
@@ -225,33 +182,6 @@ router.get('/logout', function(req, res) {
     req.logout();
     req.session.destroy();
     res.redirect('/');
-});
-//----------------------------------------------------
-router.get('/trainingprogram', function(req,res){
-    log.info('/routes/trainingprogram: GET /users/trainingprogram');
-    res.render('trainingprogram');
-})
-
-router.get('/trainingprogram/list', function(req, res) {
-    log.info('/routes/users: get trainingprogram list data');
-    models.training_program.getTraining(function(trainingprogram) {
-        var datasend = {
-            trainingprogram: trainingprogram,
-            msg:'send list success'
-        };
-        res.send(datasend);
-    });
-})
-
-router.get('/trainingprogram/session/', function(req,res){
-    log.info('/routes/trainingprogram: GET /users/trainingprogram');
-    if(req.isAuthenticated())
-    res.render('sessiondetail');
-    else res.render('index.html');
-})
-router.get('/trainingprogram/session/:id', function(req, res) {
-    res.render('sessiondetail');
-    log.info('/route/course: GET /course/session/:id');
 });
 
 module.exports = router;

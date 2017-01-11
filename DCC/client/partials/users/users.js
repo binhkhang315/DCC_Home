@@ -40,7 +40,7 @@ myApp.factory('userServices', ['$http', function($http) {
             return $http.get('/users/logout').success(function(data) { return data; });
         },
         getUserProfile: function() {
-            return $http.get('partials/users/mock/user.json').success(function(data) { return data; });
+            return $http.get('/users/getUserInfo').success(function(data) { return data; });
         },
         updateUserProfile: function(emailReq) {
             return $http.post('partials/common/mock/success.json', emailReq).success(function(data) { return data; });
