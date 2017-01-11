@@ -56,26 +56,22 @@ myApp.controller('loginController', ['$scope', 'userServices', '$location', '$ro
 
     //$scope.login = {"username":"qwe@gmail.com", "password": "qwe"};
     $scope.login = {};
-    $scope.login.msg ='';
-
     $scope.doLogin = function() {
         if ($scope.loginForm.$valid) {
             userServices.login($scope.login).then(function(result){
                 $scope.data = result;
                 console.log("use info: ");
                 console.log(result.data); //DEBUG
-                $scope.login.msg = result.data.msg;
                 if (result.data.success) {
                     window.sessionStorage["userInfo"] = JSON.stringify(result.data);
                     $rootScope.userInfo = JSON.parse(window.sessionStorage["userInfo"]);
+                    $rootScope.ShowPopupMessage(result.data.msg, "success");
                     // redirect to dashboard after login
                     $location.path("/dashboard");
+                }else{
+                    $rootScope.ShowPopupMessage(result.data.msg, "error");
                 }
-                //--show the pop up to infor login result
-                var popup = document.getElementById("snackbar")
-                popup.className = result.data.success? "success":"error";
-                setTimeout(function(){ popup.className = "" }, 3000);
-                //--end: show the pop
+
             });
         }
     };
@@ -99,22 +95,21 @@ myApp.controller('userProfileCtrl', ['$scope', 'userServices', '$location', '$ro
         console.log (result.data);
         $scope.userDetail = result.data;
     });
-$scope.editResultmesage ="";
+    $scope.editResultmesage ="";
     //update User Profile
     $scope.updateUserProfile = function() {
         userServices.updateUserProfile($scope.userDetail.email).then(function(result){
+            $rootScope.ShowPopupMessage("Updated your profile successfully", "success");
             $scope.userDetail = result.data;
+            $rootScope.userInfo = result.data;
             $location.path("/userProfile");
         });
     };
 
     $scope.cancel = function() {
         // reset user infor back to original
-        $scope.editResultmesage = "some message.....";
 
-        var popup = document.getElementById("snackbar")
-        popup.className = true? "success":"error";
-        setTimeout(function(){ popup.className = "" }, 3000);
+        $rootScope.ShowPopupMessage("Ignore all changes", "info");
         $location.path("/userProfile");
     }
 }]);

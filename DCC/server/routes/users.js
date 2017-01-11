@@ -61,7 +61,7 @@ console.log('/routes/users: GET /users/getUserInfo');
                 phone: '0909 999 999',
                 location: 'DEK Vietnam',
                 email: req.user.mail,
-                avatar: '/img/profiles/defaultPic.png',
+                avatar: '/img/profiles/defaultProfile.jpg',
                 admin:0,
                 trainer:0,
                 trainee:1,
