@@ -33,10 +33,8 @@ myApp.controller('MyCoursesCtrl', ['$scope', 'dashboardServices', function($scop
         result.data.forEach(traningProgram => {
             traningProgram.myCourseList.forEach(course => {
                 if (course.status == 'Enrolled') {course.backgroundColor = '#4FC3F7'}
-                else if (course.status == 'Learning') {course.backgroundColor = '#e57300'}
-                else if (course.status == 'Not test') {course.backgroundColor = '#F44336'}
                 else if (course.status == 'Learned') {course.backgroundColor = '#8BC34A'}
-                else {course.backgroundColor = '#4FC3F7'}
+                else {course.backgroundColor = 'black'}
             });
         });
 		$scope.myTrainingProgramList = result.data;
