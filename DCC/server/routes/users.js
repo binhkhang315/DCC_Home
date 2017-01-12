@@ -37,29 +37,7 @@ models.User.sync({
     force: false
 });
 
-router.get('/getUserInfo', function(req, res) {
-    console.log('/routes/users: GET /users/getUserInfo');
-    log.info('/routes/users: GET /users/getUserInfo');
-    passport.authenticate('ldapauth', {
-        function(user) {
-            res.send({
-                username: user[0].dataValues.username,
-                status: user[0].dataValues.status,
-                dob: user[0].dataValues.dob,
-                phone: user[0].dataValues.phone,
-                location: user[0].dataValues.location,
-                email: user[0].dataValues.email,
-                avatar: user[0].dataValues.avatar,
-                admin: user[0].dataValues.admin,
-                trainer: user[0].dataValues.trainer,
-                trainee: user[0].dataValues.trainee,
-                belong2Team: user[0].dataValues.belong2Team,
-                isExperienced: user[0].dataValues.isExperienced,
-            });
-        }
-    });
-});
-router.post('/userprofileReturnValue', function(req, res) {
+router.post('/updateUserProfile', function(req, res) {
     log.info('/routes/users: Save edit userprofile');
     models.User.update(
         {
@@ -69,10 +47,11 @@ router.post('/userprofileReturnValue', function(req, res) {
             location: req.body.location
         },
         {
-            where: { email: req.user.mail }
+            where: { email: req.body.email }
         }
     ).then(function () {
         res.send({
+            success: true,
             msg: "Success"
         });
     });
