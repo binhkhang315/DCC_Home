@@ -60,7 +60,7 @@ router.post('/updateUserProfile', function(req, res) {
 router.post('/photo',function(req,res){
     log.info('/routes/users: Upload avatar');
     // upload avatar
-    upload(req,res,function() {
+    upload(req, res, function() {
         if (typeof req.file !== "undefined")
         {
             models.User.update(
@@ -72,7 +72,10 @@ router.post('/photo',function(req,res){
                 }
             )
         }
-        res.render('userprofile');
+        res.end({
+            success: true,
+            msg: "Uploaded your new profile image"
+        });
     });
 });
 // passport Strategy
