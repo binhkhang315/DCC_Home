@@ -40,10 +40,10 @@ myApp.factory('userServices', ['$http', function($http) {
             return $http.get('/users/logout').success(function(data) { return data; });
         },
         getUserProfile: function() {
-            return $http.get('partials/users/mock/user.json').success(function(data) { return data; });
+            return $http.get('/users/getUserInfo').success(function(data) { return data; });
         },
         updateUserProfile: function(emailReq) {
-            return $http.post('partials/common/mock/success.json', emailReq).success(function(data) { return data; });
+            return $http.post('/users/updateUserProfile', emailReq).success(function(data) { return data; });
         },
     }
 
@@ -53,7 +53,6 @@ myApp.factory('userServices', ['$http', function($http) {
 
 //Controllers
 myApp.controller('loginController', ['$scope', 'userServices', '$location', '$rootScope', function($scope, userServices, $location, $rootScope) {
-
     //$scope.login = {"username":"qwe@gmail.com", "password": "qwe"};
     $scope.login = {};
     $scope.doLogin = function() {
@@ -90,20 +89,21 @@ myApp.controller('logoutController', ['$scope', 'userServices', '$location', '$r
 
 //Get user information
 myApp.controller('userProfileCtrl', ['$scope', 'userServices', '$location', '$rootScope', function($scope, userServices, $location, $rootScope) {
-    $scope.userDetail = {};
-    //$scope.userInfo.msg ='';
-    userServices.getUserProfile().then(function(result){
-        console.log (result.data);
-        $scope.userDetail = result.data;
-    });
-    $scope.editResultmesage ="";
+    // clone $rootScope.userInfo to $scope.userDetail
+    $scope.userDetail = (JSON.parse(JSON.stringify($rootScope.userInfo)));
     //update User Profile
     $scope.updateUserProfile = function() {
-        userServices.updateUserProfile($scope.userDetail.email).then(function(result){
-            $rootScope.ShowPopupMessage("Updated your profile successfully", "success");
-            $scope.userDetail = result.data;
-            $rootScope.userInfo = result.data;
-            $location.path("/userProfile");
+        userServices.updateUserProfile($scope.userDetail).then(function(result){
+            if (result.data.success){
+                //// clone $scope.userDetail to $rootScope.userInfo
+                $rootScope.userInfo = (JSON.parse(JSON.stringify($scope.userDetail)));
+                window.sessionStorage["userInfo"] = JSON.stringify($rootScope.userInfo);
+                $rootScope.ShowPopupMessage(result.data.msg, "success");
+                $location.path("/userProfile");
+            }else{
+                $rootScope.ShowPopupMessage(result.data.msg, "error");
+            }
+
         });
     };
 
