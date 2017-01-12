@@ -20,29 +20,29 @@ myApp.factory('courseRegisterServices', ['$http', function($http) {
         getTrainingProgram: function() {
             return $http.get('partials/traineeModule/courseRegister/mock/trainingprogram.json').success(function(data) { return data; });
         },
+        getOpeningCourse: function() {
+            return $http.get('partials/traineeModule/courseRegister/mock/openingCourse.json').success(function(data) { return data; });
+        },
+        getMyEnrolledCourse: function() {
+            return $http.get('partials/traineeModule/courseRegister/mock/myEnroll.json').success(function(data) { return data; });
+        },
     }
     return factoryDefinitions;
-
 }
 ]);
 
 
 //Controllers
 myApp.controller('courseRegisterCtrl', ['$scope', 'courseRegisterServices', function($scope, courseRegisterServices) {
+    //Clone Object function
     function clone(obj) {
         var copy;
-
-        // Handle the 3 simple types, and null or undefined
         if (null == obj || "object" != typeof obj) return obj;
-
-        // Handle Date
         if (obj instanceof Date) {
             copy = new Date();
             copy.setTime(obj.getTime());
             return copy;
         }
-
-        // Handle Array
         if (obj instanceof Array) {
             copy = [];
             for (var i = 0, len = obj.length; i < len; i++) {
@@ -50,8 +50,6 @@ myApp.controller('courseRegisterCtrl', ['$scope', 'courseRegisterServices', func
             }
             return copy;
         }
-
-        // Handle Object
         if (obj instanceof Object) {
             copy = {};
             for (var attr in obj) {
@@ -59,23 +57,22 @@ myApp.controller('courseRegisterCtrl', ['$scope', 'courseRegisterServices', func
             }
             return copy;
         }
-
         throw new Error("Unable to copy obj! Its type isn't supported.");
     }
 
-    courseRegisterServices.getTrainingProgram().then(function(result){
-        var tempCourseList = [];
-        $scope.trainingProgramList = result.data;
-        for(var i=0; i < $scope.trainingProgramList.length; i++){
-            for(var j=0; j < $scope.trainingProgramList[i].myCourseList.length; j++){
-                if ($scope.trainingProgramList[i].myCourseList[j].isOpening === 1) {
-                    tempCourseList.push($scope.trainingProgramList[i].myCourseList[j]);
-                }
-            }
-        }
-        $scope.openingCourseList = tempCourseList;
+    courseRegisterServices.getMyEnrolledCourse().then(function(result){
+        $scope.myEnrolledCourse = result.data;
     });
 
+    courseRegisterServices.getOpeningCourse().then(function(result){
+        $scope.openingCourseList = result.data;
+    });
+
+
+    courseRegisterServices.getTrainingProgram().then(function(result){
+
+        $scope.trainingProgramList = result.data;
+    });
 
     $scope.findCourse = function(courseSearchKey){
         var key = $scope.courseSearchKey;
@@ -94,7 +91,5 @@ myApp.controller('courseRegisterCtrl', ['$scope', 'courseRegisterServices', func
             }
         }
         $scope.courseListSearchResult = courseListSearch;
-        //$scope.trainingProgramSearchResult = trainingProgram;
-
     }
 }]);

@@ -29,7 +29,7 @@
                                 </center>
 
                             </div>
-                            <div class="control-group">
+                            <div ng-show="courseSearchKey"  class="control-group">
                                 <div class="controls">
                                     <div class="panel-group">
                                         <div class="panel panel-default" ng-repeat="course in courseListSearchResult">
@@ -46,7 +46,7 @@
                                                         </div>
                                                         <div class="col-md-2">
                                                             <br><br>
-                                                            <toggle ng-model="toggleValue" ng-change="changed()" onstyle="btn-success" offstyle="btn-danger" on="Register" off="Un-register"></toggle>
+                                                            <toggle ng-init="toggleValue=1" ng-model="toggleValue" ng-change="changed()" onstyle="btn-success" offstyle="btn-danger" on="Register" off="Un-register"></toggle>
                                                         </div>
                                                     </div>
 
@@ -85,7 +85,7 @@
                                                         </div>
                                                         <div class="col-md-2">
                                                             <br><br>
-                                                            <toggle ng-model="toggleValue" ng-change="changed()" onstyle="btn-success" offstyle="btn-danger" on="Register" off="Un-register"></toggle>
+                                                            <toggle ng-init="toggleValue=1" ng-model="toggleValue" ng-change="changed()" onstyle="btn-success" offstyle="btn-danger" on="Register" off="Un-register"></toggle>
                                                         </div>
                                                     </div>
                                                 </a>
@@ -135,7 +135,7 @@
                                                             </div>
                                                             <div class="col-md-2">
                                                                 <br><br>
-                                                                <toggle ng-model="toggleValue" ng-change="changed()" onstyle="btn-success" offstyle="btn-danger" on="Register" off="Un-register"></toggle>
+                                                                <toggle ng-init="toggleValue=1" ng-model="toggleValue" ng-change="changed()" onstyle="btn-success" offstyle="btn-danger" on="Register" off="Un-register"></toggle>
                                                             </div>
                                                         </div>
                                                     </li>
