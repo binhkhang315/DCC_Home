@@ -2,7 +2,7 @@ var SequelizeDatatypes = require('sequelize');
 
 module.exports=
 {
-    comment: {
+    comments: {
         type: SequelizeDatatypes.TEXT,
         allowNull: true
     },

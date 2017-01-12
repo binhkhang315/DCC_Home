@@ -40,9 +40,6 @@ db.CourseType.hasMany(db.Course, { foreignKey: 'courseTypeId' });
 //association of table class and course
 db.Class.belongsTo(db.Course, { foreignKey: 'courseId' });
 db.Course.hasMany(db.Class, { foreignKey: 'courseId' });
-// //association of table class and classroom
-db.Class.belongsTo(db.ClassRoom, { foreignKey: 'classRoomId' });
-db.ClassRoom.hasMany(db.Class, { foreignKey: 'classRoomId' });
 // //association of table class and user
 db.Class.belongsTo(db.User, { foreignKey: 'trainerId' });
 db.User.hasMany(db.Class, { foreignKey: 'trainerId' });
@@ -58,11 +55,5 @@ db.User.hasMany(db.Feedback, { foreignKey: 'userId' });
 //association of table feedback and class
 db.Feedback.belongsTo(db.Class, { foreignKey: 'classId' });
 db.Class.hasMany(db.Feedback, { foreignKey: 'classId' });
-//association of table course_register and course
-db.CourseRegister.belongsTo(db.Course, { foreignKey: 'courseId' });
-db.Course.hasMany(db.CourseRegister, { foreignKey: 'courseId' });
-//association of table course_register and user
-db.CourseRegister.belongsTo(db.User, { foreignKey: 'traineeId' });
-db.User.hasMany(db.CourseRegister, { foreignKey: 'traineeId' });
 
 module.exports = db;

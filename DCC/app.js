@@ -49,6 +49,7 @@ app.use(passport.session());
 
 //register router
 app.use('/', require('./server/routes/index'));
+app.use('/trainee', require('./server/traineeModule/route/traineeRoutes'));
 app.use('/users', require('./server/routes/users'));
 // app.use('/course', require('./server/routes/course'));
 // app.use('/feedback', require('./server/routes/feedback'));
