@@ -36,7 +36,7 @@ module.exports=
     },
     belong2Team:
     {
-        type: SequelizeDatatypes.INTEGER,
+        type: SequelizeDatatypes.STRING,
         allowNull: true
     },
     isExperienced:{
