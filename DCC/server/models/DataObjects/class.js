@@ -2,32 +2,12 @@ var SequelizeDatatypes = require('sequelize');
 
 module.exports=
 {
-    className:
+    location:
     {
-        type: SequelizeDatatypes.TEXT,
-        allowNull: true
-    },
-    startTime:
-    {
-        type: SequelizeDatatypes.TIME,
-        allowNull: true
-    },
-    isClosed:
-    {
-        type: SequelizeDatatypes.BOOLEAN,
-        allowNull: true
-    },
-    maxAttendant:
-    {
-        type: SequelizeDatatypes.INTEGER,
+        type: SequelizeDatatypes.STRING,
         allowNull: true
     },
     courseId:
-    {
-        type: SequelizeDatatypes.INTEGER,
-        allowNull: false
-    },
-    classRoomId:
     {
         type: SequelizeDatatypes.INTEGER,
         allowNull: false
@@ -36,5 +16,25 @@ module.exports=
     {
         type: SequelizeDatatypes.INTEGER,
         allowNull: false
+    },
+    startTime:
+    {
+        type: SequelizeDatatypes.TIME,
+        allowNull: true
+    },
+    endTime:
+    {
+        type: SequelizeDatatypes.TIME,
+        allowNull: true
+    },
+    maxAttendant:
+    {
+        type: SequelizeDatatypes.INTEGER,
+        allowNull: true
+    },
+    note:
+    {
+        type: SequelizeDatatypes.STRING,
+        allowNull: true
     }
 }
