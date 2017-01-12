@@ -38,5 +38,6 @@ myApp.controller('MyCoursesCtrl', ['$scope', 'dashboardServices', function($scop
             });
         });
 		$scope.myTrainingProgramList = result.data;
+        
 	});
 }]);
