@@ -108,25 +108,25 @@ router.post('/isDeletedCourse', function(req, res) {
     });
 });
 
-router.get('/list', function(req, res) {
+router.get('/getAllCourses', function(req, res) {
     log.info('/routes/course: get course list data');
-    // models.Course.getCourses(function(courses) {
+    // // models.Course.getCourses(function(courses) {
+    // //     var datasend = {
+    // //         courses: courses,
+    // //         msg:'send list success'
+    // //     };
+    // //     res.send(datasend);
+    // // });
+    // models.Course.findAll({
+    //     where:{isDeleted: false},
+    //     include: [ models.Session ]
+    // }).then(function(courses) {
     //     var datasend = {
-    //         courses: courses,
+    //         course: courses,
     //         msg:'send list success'
     //     };
     //     res.send(datasend);
-    // });
-    models.Course.findAll({
-        where:{isDeleted: false},
-        include: [ models.Session ]
-    }).then(function(courses) {
-        var datasend = {
-            course: courses,
-            msg:'send list success'
-        };
-        res.send(datasend);
-    })
+    // })
 
 });
 

@@ -18,7 +18,9 @@ myApp.config(function($stateProvider) {
 myApp.factory('courseRegisterServices', ['$http', function($http) {
     var factoryDefinitions = {
         getTrainingProgram: function() {
-            return $http.get('partials/traineeModule/courseRegister/mock/trainingprogram.json').success(function(data) { return data; });
+            //return $http.get('partials/traineeModule/courseRegister/mock/trainingprogram.json').success(function(data) { return data; });
+            //return $http.get('course/traineeModule/courseRegister/mock/trainingprogram.json').success(function(data) { return data; });
+            return $http.get('/trainee/getTrainingProgram').success(function(data) { return data; });
         },
         getOpeningCourse: function() {
             return $http.get('partials/traineeModule/courseRegister/mock/openingCourse.json').success(function(data) { return data; });
@@ -70,8 +72,18 @@ myApp.controller('courseRegisterCtrl', ['$scope', 'courseRegisterServices', func
 
 
     courseRegisterServices.getTrainingProgram().then(function(result){
+        var temptrainingProgramList = clone(result.data);
+        for(var i = temptrainingProgramList.length - 1; i >= 0; i--){
+            for(var j = temptrainingProgramList[i].myCourseList.length - 1; j >= 0; j--){
+                for(var k = $scope.myEnrolledCourse.length - 1; k >= 0; k--) {
+                    if ($scope.myEnrolledCourse[k].id === temptrainingProgramList[i].myCourseList[j].id) {
+                        temptrainingProgramList[i].myCourseList.splice(j,1);
+                    }
+                }
+            }
+        }
 
-        $scope.trainingProgramList = result.data;
+        $scope.trainingProgramList = temptrainingProgramList;
     });
 
     $scope.findCourse = function(courseSearchKey){
