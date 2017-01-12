@@ -13,7 +13,7 @@
     <div class="navbar-header">
         <a class="navbar-home" href="/#home">
             <img class="navbar-logo img-responsive" src="/img/logo/DCC-icon.png" alt="DCC Logo" width="95px">
-            <a class="navbar-name" href="/#home"><font size="5">DEK<br>Competence Center</font></a>
+            <a id="homepageid" class="navbar-name" href="/#home"><font size="5">DEK<br>Competence Center</font></a>
         </a>
     </div>
 
@@ -52,6 +52,7 @@
         'use strict';
 
         $("#button-calendar").click(function(e) {
+            window.location.href = "#home";
             //        e.preventDefault();
             $('html, body').animate({
                 scrollTop: $("#calendar").offset().top - 100
@@ -59,6 +60,7 @@
         });
 
         $("#button-contact").click(function(e) {
+            window.location.href = "#home";
             //        e.preventDefault();
             $('html, body').animate({
                 scrollTop: $("#contact").offset().top

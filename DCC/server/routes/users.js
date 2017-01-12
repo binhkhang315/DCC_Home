@@ -45,7 +45,7 @@ router.post('/updateUserProfile', function(req, res) {
             status: req.body.status,
             dob: req.body.dob,
             phone: req.body.phone,
-            location: req.body.location
+            role: req.body.role
         },
         {
             where: { email: req.body.email }
