@@ -3,16 +3,7 @@ var _trainingprogramModel= require('./DataObjects/trainingProgram');
 var Sequelize = require('sequelize');
 
 module.exports = function(sequelize, DataTypes) {
-  var Trainingprogram = sequelize.define('TrainingProgram', {
-    IdTP: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
-    nameTP: {
-        type: DataTypes.STRING,
-        allowNull: true
-    },
-  },{
+  var Trainingprogram = sequelize.define('TrainingProgram', _trainingprogramModel,{
       classMethods:{
         getTraining: function(cb)
         {
