@@ -53,7 +53,6 @@ myApp.factory('userServices', ['$http', function($http) {
 
 //Controllers
 myApp.controller('loginController', ['$scope', 'userServices', '$location', '$rootScope', function($scope, userServices, $location, $rootScope) {
-
     //$scope.login = {"username":"qwe@gmail.com", "password": "qwe"};
     $scope.login = {};
     $scope.doLogin = function() {
@@ -98,10 +97,13 @@ myApp.controller('userProfileCtrl', ['$scope', 'userServices', '$location', '$ro
             if (result.data.success){
                 //// clone $scope.userDetail to $rootScope.userInfo
                 $rootScope.userInfo = (JSON.parse(JSON.stringify($scope.userDetail)));
-                $rootScope.ShowPopupMessage("Updated your profile successfully", "success");
+                window.sessionStorage["userInfo"] = JSON.stringify($rootScope.userInfo);
+                $rootScope.ShowPopupMessage(result.data.msg, "success");
                 $location.path("/userProfile");
+            }else{
+                $rootScope.ShowPopupMessage(result.data.msg, "error");
             }
-            $rootScope.ShowPopupMessage(result.data.msg, "success");
+
         });
     };
 

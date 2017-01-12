@@ -41,6 +41,7 @@ router.post('/updateUserProfile', function(req, res) {
     log.info('/routes/users: Save edit userprofile');
     models.User.update(
         {
+            username: req.body.username,
             status: req.body.status,
             dob: req.body.dob,
             phone: req.body.phone,
