@@ -26,7 +26,7 @@ router.post('/addCourse', function(req, res) {
                     isDeleted:  0,
                     courseTypeId: '1',
                     traingProgramId: '1',
-                    img: '/img/courses/training-icon-1.svg',
+                    imgLink: '/img/courses/training-icon-1.svg',
                 }).then(function() {
                     res.send({
                         success: true,
@@ -53,7 +53,7 @@ router.post('/updateCourse', function(req, res) {
             isDeleted:  0,
             courseTypeId: '1',
             traingProgramId: '1',
-            img: '/img/courses/training-icon-1.svg',
+            imgLink: '/img/courses/training-icon-1.svg',
         }, {
             where: {
                 id: req.body.id
@@ -70,13 +70,13 @@ router.post('/updateCourse', function(req, res) {
 // mark course as deleted (isDeleted = true)
 router.post('/isDeletedCourse', function(req, res) {
     log.info('Get Delete Command');
-    models.Course.getByID(req.body.courseIDDelete, function(result) {
+    models.Course.getByID(req.body.id, function(result) {
         if (result) {
             models.Course.update({
                 isDeleted: true
             }, {
                 where: {
-                    id: req.body.courseIDDelete
+                    id: req.body.id
                 }
             });
             res.send({

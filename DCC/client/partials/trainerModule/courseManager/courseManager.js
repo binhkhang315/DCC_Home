@@ -48,7 +48,7 @@ myApp.controller('courseManagerCtrl', [ '$scope', '$rootScope','courseManagerSer
         $scope.coursesList ={};
         //GetCourseList
         courseManagerServices.getCourseList().then(function(result){
-            $scope.coursesList=result;
+            $scope.coursesList=result.data.course;
         });
         //dislay modal of edit & add course
         $scope.funtionTitle = '';
@@ -95,6 +95,12 @@ myApp.controller('courseManagerCtrl', [ '$scope', '$rootScope','courseManagerSer
         };
         //delete course
         $scope.isDeletedCourse = function() {
+            // clone $scope.coursesProperty to $scope.coursesPropertyEdit
+            $scope.coursesPropertyDelete = {
+                id: course.id,
+                name: course.name,
+                isDeleted: course.isDeleted
+            };
             courseManagerServices.updateCourse($scope.coursesPropertyDelete).then(function(result){
                 if (result.data.success){
                     courseManagerServices.getCourseList().then(function(result) {
