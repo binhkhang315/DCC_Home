@@ -14,14 +14,9 @@ module.exports=
         type: SequelizeDatatypes.INTEGER,
         allowNull: true
     },
-    traineeId:
+    traineeEmail:
     {
-        type: SequelizeDatatypes.INTEGER,
-        allowNull: true
-    },
-    trainee_request_open:
-    {
-        type: SequelizeDatatypes.BOOLEAN,
+        type: SequelizeDatatypes.STRING,
         allowNull: true
     }
 }
