@@ -28,25 +28,25 @@ router.post('/getCourse', function(req, res) {
 });
 // add course to database
 router.post('/addCourse', function(req, res) {
-    log.info('/routes/course: Add course :' + req.body.courseName);
+    log.info('/routes/course: Add course :' + req.body.name);
     models.Course.sync({
         force: false
     }).then(function() {
         // this function check if the courseName is already existed
-        models.Course.getByName(req.body.courseName, function(result) {
+        models.Course.getByName(req.body.name, function(result) {
             if (result) {
                 res.send({
                     msg: 'Name already existed. Add fail!'
                 });
             } else {
                 models.Course.create({
-                    name: req.body.courseName,
-                    description: req.body.courseDescription,
-                    duration: req.body.courseDuration,
-                    test: req.body.courseTest,
-                    documents: req.body.courseDocuments,
+                    name: req.body.name,
+                    description: req.body.description,
+                    duration: req.body.duration,
+                    test: req.body.test,
+                    documents: req.body.documents,
                     isDeleted:  0,
-                    sessionId: req.body.courseSession,
+                    sessionId: req.body.session,
                     img: '/img/course/default.png',
                 }).then(function() {
                     res.send({
@@ -65,17 +65,17 @@ router.post('/updateCourse', function(req, res) {
         force: false
     }).then(function() {
         models.Course.update({
-            name: req.body.courseNameEdit,
-            description: req.body.courseDescriptionEdit,
-            duration: req.body.courseDurationEdit,
-            test: req.body.courseTestEdit,
-            documents: req.body.courseDocumentsEdit,
+            name: req.body.nameEdit,
+            description: req.body.descriptionEdit,
+            duration: req.body.durationEdit,
+            test: req.body.testEdit,
+            documents: req.body.documentsEdit,
             isDeleted:  0,
-            sessionId: req.body.courseSessionEdit,
+            sessionId: req.body.sessionEdit,
             img:  '/img/course/default.png',
         }, {
             where: {
-                id: req.body.courseIDEdit
+                id: req.body.idEdit
             }
         }).then(function() {
             res.send({
@@ -108,25 +108,25 @@ router.post('/isDeletedCourse', function(req, res) {
     });
 });
 
-router.get('/list', function(req, res) {
+router.get('/getAllCourses', function(req, res) {
     log.info('/routes/course: get course list data');
-    // models.Course.getCourses(function(courses) {
+    // // models.Course.getCourses(function(courses) {
+    // //     var datasend = {
+    // //         courses: courses,
+    // //         msg:'send list success'
+    // //     };
+    // //     res.send(datasend);
+    // // });
+    // models.Course.findAll({
+    //     where:{isDeleted: false},
+    //     include: [ models.Session ]
+    // }).then(function(courses) {
     //     var datasend = {
-    //         courses: courses,
+    //         course: courses,
     //         msg:'send list success'
     //     };
     //     res.send(datasend);
-    // });
-    models.Course.findAll({
-        where:{isDeleted: false},
-        include: [ models.Session ]
-    }).then(function(courses) {
-        var datasend = {
-            course: courses,
-            msg:'send list success'
-        };
-        res.send(datasend);
-    })
+    // })
 
 });
 

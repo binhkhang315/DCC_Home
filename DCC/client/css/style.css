@@ -911,3 +911,13 @@ However, delay the fade out process for 2.5 seconds */
 	color: black;
 	font-size: 15px;
 }
+
+.table-user-information> tbody> tr {
+    border-top: 1px solid rgb(221, 221, 221);
+}
+.table-user-information> tbody> tr:first-child {
+    border-top: 0;
+}
+.table-user-information> tbody> tr> td {
+    border-top: 0;
+}

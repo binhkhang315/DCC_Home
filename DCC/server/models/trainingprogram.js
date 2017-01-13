@@ -10,14 +10,13 @@ module.exports = function(sequelize, DataTypes) {
           log.info('/models/course: getCourses() : ');
           var query =
           {
-
+                include: [ models.Course ]
           };
           Trainingprogram.findAll(query).then(cb);
         },
           getTrainingByID: function(idTP,cb){
               log.info('/models/user: getTrainingByID :'+ idTP);
               var query={
-                  where: {idTP:idTP}
               };
               Trainingprogram.findOne(query).then(cb);
           },
