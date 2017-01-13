@@ -1,51 +1,51 @@
+
 <nav class="navbar navbar-dcc navbar-fixed-top topnav" role="navigation" >
-    <div class="container" >
-        <div class="navbar-menu" style="padding: 5px;">
-            <div class="dl-menuwrapper" id="dl-menu">
-                <button class="dl-trigger">MENU</button>
-                <li ng-hide="userid">
-                    <a id="login">Login</a>
+    <div class="container container-fluid" >
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#loginNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-home" href="/#home">
+                <img class="navbar-logo img-responsive" src="/img/logo/DCC-icon.png" alt="DCC Logo" width="95px">
+                <a id="homepageid" class="navbar-name" href="/#home"><font size="5">DEK<br>Competence Center</font></a>
+            </a>
+        </div>
+
+        <div class="collapse navbar-rowmenu navbar-collapse" id="loginNavbar">
+            <ul class="nav navbar-nav navbar-right">
+
+                <li ng-show="$state.current.name == 'home' && userInfo">
+                    <a id="button-dashboard" href="#dashboard">Dashboard</a>
+                </li>
+                <li>
+                    <a id="button-calendar" href="#calendar">Training Calendar</a>
+                </li>
+                <li>
+                    <a id="button-contact" href="#contact">Contact</a>
+                </li>
+                <li>
+                    <a data-toggle="modal" data-target="#loginModal" ng-show="!userInfo">Login</a>
+                </li>
+                <li class="brand dropdown" ng-show="userInfo"  style="hover:{}">
+                    <a class="dropdown-toggle" data-toggle="dropdown" style="padding:2px;">
+                        <img  style="display: inline-block; margin-right: 5px; border-radius: 50%;" class="img-responsive" src = "{{userInfo.avatar}}" width="50px">
+                        {{userInfo.username}}   &nbsp <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#dashboard"><font size="3"><span class="icon-dashboard">&nbsp&nbsp&nbsp</span>Dashboard</font></a></li>
+                        <li><a href="#userProfile"><font size="3"><span class="glyphicon glyphicon-user">&nbsp</span>Profile</font></a></li>
+
+                        <li class="divider"></li>
+                        <li><a href="#logout"><font size="3"><span class="glyphicon glyphicon-log-out">&nbsp</span>Logout</font></a></li>
+                    </ul>
                 </li>
             </ul>
         </div>
     </div>
-
-    <div class="navbar-header">
-        <a class="navbar-home" href="/#home">
-            <img class="navbar-logo img-responsive" src="/img/logo/DCC-icon.png" alt="DCC Logo" width="95px">
-            <a id="homepageid" class="navbar-name" href="/#home"><font size="5">DEK<br>Competence Center</font></a>
-        </a>
-    </div>
-
-    <div class="collapse navbar-rowmenu">
-        <ul class="nav navbar-nav navbar-right">
-
-            <li ng-show="$state.current.name == 'home' && userInfo">
-                <a id="button-dashboard" href="#dashboard">Dashboard</a>
-            </li>
-            <li>
-                <a id="button-calendar" href="#calendar">Training Calendar</a>
-            </li>
-            <li>
-                <a id="button-contact" href="#contact">Contact</a>
-            </li>
-            <li>
-                <a data-toggle="modal" data-target="#loginModal" ng-show="!userInfo">Login</a>
-            </li>
-            <li class="brand dropdown" ng-show="userInfo" >
-                <a class="dropdown-toggle" data-toggle="dropdown" style="padding:2px;">
-                    <img  style="display: inline-block; margin-right: 5px; border-radius: 50%;" class="img-responsive" src = "{{userInfo.avatar}}" width="50px">
-                     {{userInfo.username}}<b class="caret"></b>
-                </a>
-                <ul class="dropdown-menu">
-                    <li><a href="#userProfile"><font size="3">Profile</font></a></li>
-                    <li><a href="#logout"><font size="3">Logout</font></a></li>
-                </ul>
-            </li>
-        </ul>
-    </div>
-</div>
 </nav>
+
 
 <script>
     $(document).ready(function() {
@@ -68,6 +68,7 @@
         });
     });
 </script>
+
 <div ng-controller="loginController">
     <div class="modal fade" id="loginModal" role="dialog" >
         <div class="modal-dialog" >
