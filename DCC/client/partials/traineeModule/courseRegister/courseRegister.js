@@ -23,7 +23,8 @@ myApp.factory('courseRegisterServices', ['$http', function($http) {
             return $http.get('/trainee/getTrainingProgram').success(function(data) { return data; });
         },
         getOpeningCourse: function() {
-            return $http.get('partials/traineeModule/courseRegister/mock/openingCourse.json').success(function(data) { return data; });
+            //return $http.get('partials/traineeModule/courseRegister/mock/openingCourse.json').success(function(data) { return data; });
+            return $http.get('/trainee/getOpeningCourse').success(function(data) { return data; });
         },
         getMyEnrolledCourse: function() {
             return $http.get('partials/traineeModule/courseRegister/mock/myEnroll.json').success(function(data) { return data; });
@@ -66,40 +67,55 @@ myApp.controller('courseRegisterCtrl', ['$scope', 'courseRegisterServices', func
         $scope.myEnrolledCourse = result.data;
     });
 
-    courseRegisterServices.getOpeningCourse().then(function(result){
-        $scope.openingCourseList = result.data;
+    courseRegisterServices.getTrainingProgram().then(function(result){
+        // var temptrainingProgramList = clone(result.data);
+        // for(var i = temptrainingProgramList.length - 1; i >= 0; i--){
+        //     for(var j = temptrainingProgramList[i].Courses.length - 1; j >= 0; j--){
+        //         for(var k = $scope.myEnrolledCourse.length - 1; k >= 0; k--) {
+        //             if ($scope.myEnrolledCourse[k].id === temptrainingProgramList[i].Courses[j].id) {
+        //                 temptrainingProgramList[i].Courses.splice(j,1);
+        //             }
+        //         }
+        //     }
+        // }
+        //
+        // $scope.trainingProgramList = temptrainingProgramList;
+        $scope.trainingProgramList = result.data.data;
+        //$scope.test = result.data.msg;
     });
 
-
-    courseRegisterServices.getTrainingProgram().then(function(result){
-        var temptrainingProgramList = clone(result.data);
-        for(var i = temptrainingProgramList.length - 1; i >= 0; i--){
-            for(var j = temptrainingProgramList[i].myCourseList.length - 1; j >= 0; j--){
-                for(var k = $scope.myEnrolledCourse.length - 1; k >= 0; k--) {
-                    if ($scope.myEnrolledCourse[k].id === temptrainingProgramList[i].myCourseList[j].id) {
-                        temptrainingProgramList[i].myCourseList.splice(j,1);
+    courseRegisterServices.getOpeningCourse().then(function(result){
+        var openingClass = result.data.data;
+        var tempOpeningCourse = [];
+        for (var i = 0; i <  $scope.trainingProgramList.length; i++){
+            for(var j = 0; j < $scope.trainingProgramList[i].Courses.length; j++){
+                for(var k = 0; k < openingClass.length; k++){
+                    if($scope.trainingProgramList[i].Courses[j].id == openingClass[k].courseId){
+                        tempOpeningCourse.push($scope.trainingProgramList[i].Courses[j]);
                     }
                 }
             }
         }
+        $scope.openingCourseList = tempOpeningCourse;
 
-        $scope.trainingProgramList = temptrainingProgramList;
     });
+
 
     $scope.findCourse = function(courseSearchKey){
         var key = $scope.courseSearchKey;
         var trainingProgram = clone($scope.trainingProgramList);
+        // $scope.test = key;
         var courseListSearch = [];
         for(var i=trainingProgram.length-1; i>=0; i--){
-            for(var j=trainingProgram[i].myCourseList.length-1; j>=0; j--){
-                if((trainingProgram[i].myCourseList[j].name.toUpperCase()).indexOf(key.toUpperCase())===-1){
-                    trainingProgram[i].myCourseList.splice(j,1);
+            for(var j=trainingProgram[i].Courses.length-1; j>=0; j--){
+                if((trainingProgram[i].Courses[j].name.toUpperCase()).indexOf(key.toUpperCase())===-1){
+                    trainingProgram[i].Courses.splice(j,1);
                 }
             }
         }
         for (var i = 0; i < trainingProgram.length; i++) {
-            for (var j = 0; j < trainingProgram[i].myCourseList.length; j++) {
-                courseListSearch.push(trainingProgram[i].myCourseList[j]);
+            for (var j = 0; j < trainingProgram[i].Courses.length; j++) {
+                courseListSearch.push(trainingProgram[i].Courses[j]);
             }
         }
         $scope.courseListSearchResult = courseListSearch;

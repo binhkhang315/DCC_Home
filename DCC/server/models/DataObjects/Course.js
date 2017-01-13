@@ -17,7 +17,7 @@ module.exports=
         type: SequelizeDatatypes.TIME,
         allowNull: true
     },
-    img:
+    imgLink:
     {
         type: SequelizeDatatypes.TEXT,
         allowNull: false

@@ -10,7 +10,7 @@ module.exports = function(sequelize, DataTypes) {
           log.info('/models/course: getCourses() : ');
           var query =
           {
-
+                include: [ models.Course ]
           };
           Trainingprogram.findAll(query).then(cb);
         },

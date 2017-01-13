@@ -12,7 +12,7 @@ module.exports =
         type: SequelizeDatatypes.TEXT,
         allowNull: true
     },
-    img:
+    imgLink:
     {
         type: SequelizeDatatypes.TEXT,
         allowNull: true

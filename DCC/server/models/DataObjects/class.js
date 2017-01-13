@@ -19,10 +19,15 @@ module.exports=
     },
     startTime:
     {
-        type: SequelizeDatatypes.TIME,
+        type: SequelizeDatatypes.DATE,
         allowNull: true
     },
     endTime:
+    {
+        type: SequelizeDatatypes.DATE,
+        allowNull: true
+    },
+    duration:
     {
         type: SequelizeDatatypes.TIME,
         allowNull: true
