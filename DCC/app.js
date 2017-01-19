@@ -5,10 +5,8 @@ var bodyParser = require('body-parser');
 var expressLayouts = require('express-ejs-layouts');
 var session = require('express-session');
 var passport = require('passport');
-var models = require("./server/models");
-var serveIndex = require('serve-index');
-
-var log = require('./config/logConfig');
+var models = require('./server/models');
+var authMiddleware = require('./server/middleware/authMiddleware.js')
 
 // Init App
 var app = express();
@@ -23,17 +21,6 @@ app.use(bodyParser.urlencoded({
     extended: false
 }));
 app.use(cookieParser());
-
-// Set Static Folder
-// app.use(express.static(path.join(__dirname, '/client/assets')));
-// app.use('/log', serveIndex('/client/assets/log'));
-// app.use('/angular', express.static(path.join(__dirname, '/client/angular')));
-// app.set('views', path.join(__dirname, '/client/views'));
-// Express Session
-// session will save user's credentials in 10 days
-app.set('partials', path.join(__dirname, '/client'));
-app.use(express.static(path.join(__dirname, '/client')));
-
 app.use(session({
     secret: 'secret',
     cookie: {
@@ -47,21 +34,30 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
+//register static dir
+app.set('partials', path.join(__dirname, '/client'));
+app.use(express.static(path.join(__dirname, '/client')));
+
 //register router
-app.use('/', require('./server/routes/index'));
-app.use('/trainee', require('./server/traineeModule/route/traineeRoutes'));
-app.use('/admin', require('./server/adminModule/route/adminRoutes'));
-app.use('/users', require('./server/routes/users'));
-// app.use('/course', require('./server/routes/course'));
-// app.use('/feedback', require('./server/routes/feedback'));
-//app.use('/session',require('./server/routes/session'));
+// app.use('/',        require('./server/routes/index'));
+// app.use('/common',        require('./server/routes/common'));
+// app.use('/trainee', ensureAuthenticated, require('./server/routes/trainee'));
+// app.use('/trainer', ensureAuthenticated, require('./server/routes/trainer'));
+// app.use('/admin',   ensureAuthenticated, require('./server/routes/admin'));
+// app.use('/user',    ensureAuthenticated, require('./server/routes/user'));
+
+app.use('/',        require('./server/routes/index.js'));
+app.use('/common',        require('./server/routes/common'));
+app.use('/trainee', require('./server/routes/trainee'));
+app.use('/trainer', require('./server/routes/trainer'));
+app.use('/admin', require('./server/routes/admin'));
+app.use('/user', require('./server/routes/user'));
 
 //create database tables
 models.sequelize.sync({force:false});
 
 // Set Port
 app.set('port', (process.env.PORT || 3210));
-log.info('Server started on port ' + app.get('port'));
 var server = app.listen(app.get('port'), function() {
     console.log('Server started on port ' + app.get('port'));
 });

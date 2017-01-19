@@ -6,13 +6,16 @@ var myApp = angular.module('myApp', [
     'ui.bootstrap',
     'validation',
     'validation.rule',
+    'textAngular',
     'users',
-    'dashboard',
-    'courseRegister',
+    'trainee_dashboard',
+    'trainee_courseRegister',
     'home',
     'calendarModule',
     'courseDetail',
-    'courseManager'
+    'admin_courseManagement',
+    'admin_dashboard',
+
 ]);
 
 //Config phase
@@ -50,7 +53,13 @@ myApp.run(function($rootScope, $state) {
 
         if(!toState && !toState.data && !toState.data.auth && window.sessionStorage["userInfo"]){
             event.preventDefault();
-            window.location.href = "#dashboard";
+            if ($rootScope.userInfo.role == 3){
+                window.location.href = "#trainee_dashboard";
+            } else if ($rootScope.userInfo.role == 2){
+                window.location.href = "#trainer_dashboard";
+            } else if ($rootScope.userInfo.role == 1){
+                window.location.href = "#admin_dashboard";
+            }
         }
     });
 });

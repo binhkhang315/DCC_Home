@@ -32,8 +32,8 @@ db.Sequelize = Sequelize;
 // define table associations
 
 // association of table session and training_program
-db.Course.belongsTo(db.TrainingProgram, { foreignKey: 'traingProgramId' });
-db.TrainingProgram.hasMany(db.Course, { foreignKey: 'traingProgramId' });
+db.Course.belongsTo(db.TrainingProgram, { foreignKey: 'trainingProgramId' });
+db.TrainingProgram.hasMany(db.Course, { foreignKey: 'trainingProgramId' });
 // association of table session and session_type
 db.Course.belongsTo(db.CourseType, { foreignKey: 'courseTypeId' });
 db.CourseType.hasMany(db.Course, { foreignKey: 'courseTypeId' });
@@ -55,5 +55,8 @@ db.User.hasMany(db.Feedback, { foreignKey: 'userId' });
 //association of table feedback and class
 db.Feedback.belongsTo(db.Class, { foreignKey: 'classId' });
 db.Class.hasMany(db.Feedback, { foreignKey: 'classId' });
+//association of table RequestOpening and course
+db.RequestOpening.belongsTo(db.Course, { foreignKey: 'courseId' });
+db.Course.hasMany(db.RequestOpening, { foreignKey: 'courseId' });
 
 module.exports = db;
